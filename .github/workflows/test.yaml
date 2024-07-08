@@ -34,6 +34,12 @@ on:
         - 'demo'
         - 'live'
         - 'app'
+      execuion-id:
+        description: Execution Id
+        default: ''
+      jira-cookie:
+        description: JIRA Cookie
+        default: ''
   workflow_run:
     workflows:
       - Deployment Workflow

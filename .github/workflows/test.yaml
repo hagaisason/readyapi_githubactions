@@ -1,0 +1,139 @@
+name: Windows ReadyAPI TestRunner Downstream Test Workflow
+
+defaults:
+  run:
+    shell: cmd
+
+on:
+  #schedule:
+    #- cron: '30 10 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      test_set:
+        type: choice
+        description: Test Set
+        default: ''
+        options:
+        - ''
+        - 'Petstore'
+        - 'Facebook'
+        - 'Mix'
+        - 'ORUnext'
+        - 'OTA-19177 [Feature] (HM): Access Sensitive Data'
+      test:
+        type: choice
+        description: Test
+        default: ''
+        options:
+        - ''
+        - 'User Creation'
+        - 'Cookie Approval'
+        - 'CARB Port Search Results Download'
+        - '[Test] [OTA-19173] Event generation for the export of sensitive data'
+        - '[TU] [Test] [OTA-19173] Event generation for the export of sensitive data'
+        - '[TU-P] [Test] [OTA-19173] Event generation for the export of sensitive data'
+        - 'Test'
+        - 'Test 2'
+        - 'Test 3'
+        - 'Download CARB Search History'
+        - 'Download CARB Search History 2'
+      environment:
+        type: choice
+        description: Environment
+        default: 'demo'
+        options:
+        - 'demo'
+        - 'live'
+        - 'app'
+  workflow_run:
+    workflows:
+      - Deployment Workflow
+    types:
+      - completed
+  repository_dispatch:
+    types: [upstream-event]
+
+env:
+  test_set: ${{ github.event.inputs.test_set || '' }}
+  test: ${{ github.event.inputs.test || '' }}
+  environment: ${{ github.event.inputs.environment || 'demo' }}
+
+jobs:
+  test-job:
+    runs-on: windows-latest
+    steps:
+      - name: Enable Long Paths
+        run: git config --system core.longpaths true
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+      - name: Setup 7-Zip
+        uses: milliewalky/setup-7-zip@v1
+      - name: Unzip Profile Files
+        run: |
+          cd ${{ github.workspace }}\Certificates
+          7z x -p${{ secrets.PASSWORD }} -o${{ github.workspace }}\Certificates ${{ github.workspace }}\Certificates\Certificates.zip
+      - name: Unzip Certificate Files
+        run: |
+          cd ${{ github.workspace }}\Profiles
+          7z x -p${{ secrets.PASSWORD }} -o${{ github.workspace }}\Profiles ${{ github.workspace }}\Profiles\Profiles.zip
+      - name: Setup Firefox Browser
+        uses: browser-actions/setup-firefox@v1.5.0
+        with:
+          firefox-version: 'latest'
+      - name: Setup Firefox User Profile
+        run: |
+          C:
+          cd  C:\Program Files\Firefox_latest
+          dir
+          firefox -CreateProfile selenium
+      - name: Add Profile Files To Profile Folder
+        run: |
+          C:
+          cd %Appdata%\mozilla\firefox\profiles
+          dir /b /o:gn
+          for /f "delims=" %%a in ('dir /b /o:gn') do set "selenium_profile=%%a"
+          xcopy "${{github.workspace}}\Profiles\" "%Appdata%\mozilla\firefox\profiles\%selenium_profile%" /y /e /h /c /i
+      - name: Setup Geckodriver
+        uses: browser-actions/setup-geckodriver@latest
+      - name: Download ReadyAPI
+        run: curl -o ${{ github.workspace }}\ReadyAPI-x64-3.51.0.exe https://dl.eviware.com/ready-api/3.51.0/ReadyAPI-x64-3.51.0.exe
+      - name: Install ReadyAPI
+        run: ${{ github.workspace }}\ReadyAPI-x64-3.51.0.exe -q
+      - name: Add .jar Files To ReadyAPI
+        run: xcopy "${{github.workspace}}\Executables\*.jar" "C:\Program Files\SmartBear\ReadyAPI-3.51.0\bin\ext" /y
+      - name: Run Test
+        if: env.test_set == '' && env.test != ''
+        run: |
+          echo "The value for Test Set cannot be empty when chosing a Test"
+          exit 1
+      - name: Run Test
+        if: env.test_set == '' && env.test == ''
+        run: testrunner.bat -r -a -j -J -f${{ github.workspace }}\Reports "-E${{ env.environment }}" "-RProject Report" -FPDF "-EDefault environment" -accessKey ${{ secrets.API_KEY }} ${{ github.workspace }}\poc-readyapi-project
+        working-directory: C:\Program Files\SmartBear\ReadyAPI-3.51.0\bin
+      - name: Run Test
+        if: env.test_set != '' && env.test == ''
+        run: testrunner.bat -r -a -j -J -f${{ github.workspace }}\Reports "-E${{ env.environment }}" "-RTestSuite Report" -FPDF "-EDefault environment" -accessKey ${{ secrets.API_KEY }} "-s${{ env.test_set }}" ${{ github.workspace }}\poc-readyapi-project
+        working-directory: C:\Program Files\SmartBear\ReadyAPI-3.51.0\bin
+      - name: Run Test
+        if: env.test_set != '' && env.test != ''
+        run: testrunner.bat -r -a -j -J -f${{ github.workspace }}\Reports "-E${{ env.environment }}" "-RTestCase Report" -FPDF "-EDefault environment" -accessKey ${{ secrets.API_KEY }} "-s${{ env.test_set }}" "-c${{ env.test }}" ${{ github.workspace }}\poc-readyapi-project
+        working-directory: C:\Program Files\SmartBear\ReadyAPI-3.51.0\bin
+      - name: Publish Test Results
+        uses: mikepenz/action-junit-report@v4
+        if: always()
+        id: testresults
+        with:
+          detailed_summary: true
+          report_paths: ${{ github.workspace }}\Reports\TEST-*.xml
+      - name: Upload Reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Reports
+          path: ${{ github.workspace }}\Reports
+      - name: Upload Screenshots
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Screenshots
+          path: ${{ github.workspace }}\Screenshots

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/api/aps_campaigns/campaigns/{actionCode}/{criterion}/batches/operations/{requestId}/stop" path="/api/aps_campaigns/campaigns/{actionCode}/{criterion}/batches/operations/{requestId}/stop" id="377086cd-b839-4b90-811b-887eda0acfd2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="78874966-6f24-482e-98e0-3fc1085512cafileName">%2Fapi%2Faps_campaigns%2Fcampaigns%2F%7BactionCode%7D%2F%7Bcriterion%7D%2Fbatches%2Foperations%2F%7BrequestId%7D%2Fstop</con:setting>
+    <con:setting id="377086cd-b839-4b90-811b-887eda0acfd2fileName">%2Fapi%2Faps_campaigns%2Fcampaigns%2F%7BactionCode%7D%2F%7Bcriterion%7D%2Fbatches%2Foperations%2F%7BrequestId%7D%2Fstop</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter required="true">
+      <con:name>requestId</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+      <con:description>requestId</con:description>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="revokeStopRequest" id="d9d38780-909b-4e44-89dc-c74fc18d7ca5" method="DELETE">
+    <con:description>Revoke stop request for batch</con:description>
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>204</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="a93c6612-a66d-4e0b-9f10-4835499eb503" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="requestId" value=""/>
+      </con:parameters>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

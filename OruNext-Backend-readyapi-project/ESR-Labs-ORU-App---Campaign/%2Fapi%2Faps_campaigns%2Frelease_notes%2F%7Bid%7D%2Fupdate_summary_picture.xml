@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/api/aps_campaigns/release_notes/{id}/update_summary_picture" path="/api/aps_campaigns/release_notes/{id}/update_summary_picture" id="7286fd5c-946e-4ac7-8db2-5a68b4a5e29b" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="3801f0c2-da80-43de-9e28-34cf2389886efileName">%2Fapi%2Faps_campaigns%2Frelease_notes%2F%7Bid%7D%2Fupdate_summary_picture</con:setting>
+    <con:setting id="7286fd5c-946e-4ac7-8db2-5a68b4a5e29bfileName">%2Fapi%2Faps_campaigns%2Frelease_notes%2F%7Bid%7D%2Fupdate_summary_picture</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>id</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="getUpdateSummaryPictureUsingGET" id="1eaf8cf8-6e51-47ca-a44a-4e8a00496688" method="GET">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/octet-stream</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/octet-stream</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/octet-stream</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/octet-stream</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="78d7a099-e3a5-4d28-86bb-20f553c03fe8" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="id" value=""/>
+      </con:parameters>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>ORU-app</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:method name="createUpdateSummaryPictureUsingPOST" id="fd3fdbfa-daa1-4197-84a1-98e8da2e9322" method="POST">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>file</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+    </con:parameters>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>201</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>multipart/form-data</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="1c682f9e-353b-4be9-8c29-1390ee9c86bd" mediaType="multipart/form-data">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="file" value=""/>
+        <con:entry key="id" value=""/>
+      </con:parameters>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>ORU-app</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:method name="updateUpdateSummaryPictureUsingPUT" id="ee3f2878-7e3e-4328-85ce-ddc83f1101bc" method="PUT">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>file</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+    </con:parameters>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>201</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>multipart/form-data</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="652ac686-1a56-4043-af06-72869367f0bc" mediaType="multipart/form-data">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="file" value=""/>
+        <con:entry key="id" value=""/>
+      </con:parameters>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>ORU-app</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:method name="deleteUpdateSummaryPictureUsingDELETE" id="38b2e1ab-983d-41b6-bcd4-37ce829a6a4a" method="DELETE">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>204</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="073fd506-9376-40ad-9e0d-2e4476eabaa8" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="id" value=""/>
+      </con:parameters>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>ORU-app</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

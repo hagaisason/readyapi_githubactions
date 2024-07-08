@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/api/aps_campaigns/recall/campaigns" path="/api/aps_campaigns/recall/campaigns" id="0ea878fa-ba60-4683-8bee-151ecc9c1ab9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="876714d9-2d50-4ac5-93d6-eb9128760680fileName">%2Fapi%2Faps_campaigns%2Frecall%2Fcampaigns</con:setting>
+    <con:setting id="0ea878fa-ba60-4683-8bee-151ecc9c1ab9fileName">%2Fapi%2Faps_campaigns%2Frecall%2Fcampaigns</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:method name="listReCallCampaigns" id="c8964565-aa8d-4f1d-ad46-a1a22ee7768c" method="GET">
+    <con:description>List all ReCall updates</con:description>
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:sampleContent xsi:nil="true"/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="92cbfd08-c739-48a7-8721-d1a9f78a7b35" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

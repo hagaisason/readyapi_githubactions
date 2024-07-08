@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/oemil/vehicles/ecus/flash-document-data/process/{processing_id}" path="/oemil/vehicles/ecus/flash-document-data/process/{processing_id}" id="59eca886-9964-4284-9fb7-34449a1eeed9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="dbbfebed-0b71-45d5-aa88-addb8aacaa0cfileName">%2Foemil%2Fvehicles%2Fecus%2Fflash-document-data%2Fprocess%2F%7Bprocessing_id%7D</con:setting>
+    <con:setting id="59eca886-9964-4284-9fb7-34449a1eeed9fileName">%2Foemil%2Fvehicles%2Fecus%2Fflash-document-data%2Fprocess%2F%7Bprocessing_id%7D</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter required="true">
+      <con:name>processing_id</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+      <con:description>processing_id</con:description>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="checkRequestStatus" id="ba7629a9-5e40-4cc7-b545-05caf710d86b" method="GET">
+    <con:description>Retrieves the status regarding previously requested flash document container(s) according to a processing ID. Download ID of corresponding flash document container, which already have been created, will be provided.</con:description>
+    <con:settings/>
+    <con:parameters>
+      <con:parameter required="true">
+        <con:name>Authorization</con:name>
+        <con:value/>
+        <con:style>HEADER</con:style>
+        <con:default/>
+        <con:description>Authorization</con:description>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>oemil-api-version</con:name>
+        <con:value/>
+        <con:style>HEADER</con:style>
+        <con:default/>
+        <con:description>oemil-api-version</con:description>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>oemil-client-app</con:name>
+        <con:value/>
+        <con:style>HEADER</con:style>
+        <con:default/>
+        <con:description>oemil-client-app</con:description>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>oemil-client-brand</con:name>
+        <con:value/>
+        <con:style>HEADER</con:style>
+        <con:default/>
+        <con:description>oemil-client-brand</con:description>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>oemil-client-country</con:name>
+        <con:value/>
+        <con:style>HEADER</con:style>
+        <con:default/>
+        <con:description>oemil-client-country</con:description>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>oemil-trace-id</con:name>
+        <con:value/>
+        <con:style>HEADER</con:style>
+        <con:default/>
+        <con:description>oemil-trace-id</con:description>
+      </con:parameter>
+    </con:parameters>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:sampleContent xsi:nil="true"/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="b45ec031-465b-4177-9053-9bb4d2e746ec" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com/api/vw-group-services-mock</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="Authorization" value=""/>
+        <con:entry key="oemil-trace-id" value=""/>
+        <con:entry key="oemil-client-brand" value=""/>
+        <con:entry key="oemil-client-app" value=""/>
+        <con:entry key="processing_id" value=""/>
+        <con:entry key="oemil-client-country" value=""/>
+        <con:entry key="oemil-api-version" value=""/>
+      </con:parameters>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>ORU-app</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

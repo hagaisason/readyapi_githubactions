@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/api/aps_campaigns/campaigns/{actionCode}/{criterion}/statisticsHistory" path="/api/aps_campaigns/campaigns/{actionCode}/{criterion}/statisticsHistory{changeMeasureCode}" id="b64aa7a5-f757-47f6-9a4d-1ddf432f51e3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="b30190e0-2b5c-4891-a04b-afe3991f0335fileName">%2Fapi%2Faps_campaigns%2Fcampaigns%2F%7BactionCode%7D%2F%7Bcriterion%7D%2FstatisticsHistory</con:setting>
+    <con:setting id="b64aa7a5-f757-47f6-9a4d-1ddf432f51e3fileName">%2Fapi%2Faps_campaigns%2Fcampaigns%2F%7BactionCode%7D%2F%7Bcriterion%7D%2FstatisticsHistory</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>actionCode</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+    </con:parameter>
+    <con:parameter>
+      <con:name>changeMeasureCode</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+    </con:parameter>
+    <con:parameter>
+      <con:name>criterion</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="getCampaignStatisticsHistory" id="506c5370-617b-4b1c-9e30-bf16801aeb0d" method="GET">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>endTime</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+      <con:parameter>
+        <con:name>periodLength</con:name>
+        <con:value>PT15S</con:value>
+        <con:style>QUERY</con:style>
+        <con:default>PT15S</con:default>
+      </con:parameter>
+      <con:parameter>
+        <con:name>startTime</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+    </con:parameters>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="71146a64-dcc0-4ec4-9d4d-44411d8f185c" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="changeMeasureCode" value=""/>
+        <con:entry key="criterion" value=""/>
+        <con:entry key="actionCode" value=""/>
+        <con:entry key="periodLength" value="PT15S"/>
+        <con:entry key="startTime" value=""/>
+        <con:entry key="endTime" value=""/>
+      </con:parameters>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>ORU-app</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

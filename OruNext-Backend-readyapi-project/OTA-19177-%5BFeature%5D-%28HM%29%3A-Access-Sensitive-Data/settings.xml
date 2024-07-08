@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite id="9d4c8d28-f5fe-4ec7-a833-96b4df2a7e92" name="OTA-19177 [Feature] (HM): Access Sensitive Data" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="cfafea53-e5e7-4357-a5e0-7739469d72a1fileName">OTA-19177-%5BFeature%5D-%28HM%29%3A-Access-Sensitive-Data</con:setting>
+    <con:setting id="9d4c8d28-f5fe-4ec7-a833-96b4df2a7e92fileName">OTA-19177-%5BFeature%5D-%28HM%29%3A-Access-Sensitive-Data</con:setting>
+  </con:settings>
+  <con:runType>SEQUENTIAL</con:runType>
+  <con:properties>
+    <con:property>
+      <con:name>driverPath</con:name>
+      <con:value>C:/Program Files/SmartBear/ReadyAPI-3.45.0/bin/ext/geckodriver.exe</con:value>
+    </con:property>
+    <con:property>
+      <con:name>testSet</con:name>
+      <con:value>OTA-19177</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:environmentSpec>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testSuite>

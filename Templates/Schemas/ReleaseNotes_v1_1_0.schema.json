@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Schema of translated Release Notes",
+    "javaType": "domain.backend.mbb.v1.models.uota_v3.ReleaseNotes",
+    "type": "object",
+    "required": [
+        "Language",
+        "Title",
+        "UpdateDescription",
+        "AdditionalFunctions",
+        "UpdateSummary"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "Language": {
+            "type": "string",
+            "description": "Language code",
+            "pattern": "^[a-zA-Z0-9_]{5}$"
+        },
+        "Title": {
+            "type": "string",
+            "description": "Short name/title of update",
+            "pattern": "^[^\n]+$",
+            "minLength": 1,
+            "maxLength": 1024
+        },
+        "UpdateDescription": {
+            "type": "string",
+            "maxLength": 1000000
+        },
+        "AdditionalFunctions": {
+            "type": "string",
+            "maxLength": 1000000
+        },
+        "UpdateSummary": {
+            "type": "string",
+            "maxLength": 1000000
+        },
+        "FreeText": {
+            "type": "string",
+            "description": "This field is deprecated and used only for backward compatibility with the vehicle",
+            "maxLength": 1024
+        }
+    }
+}

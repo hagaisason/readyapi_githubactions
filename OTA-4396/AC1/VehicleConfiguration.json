@@ -1,0 +1,73 @@
+{
+    "schema": "DiagAssemblyStatus_DetailLevel_Update_Schema_V1.3.2.json",
+    "description": "",
+    "assemblyStatus": {
+        "vehicleInformation": {
+            "VIN": "FLORINVEH73177666"
+        },
+        "assemblyInformation": [
+            {
+                "ecuInformation": {
+                    "dataObjects": {
+                        "partNumber": "85F907468  ",
+                        "zdcVersion": "",
+                        "fazitIdString": [
+                            "BPA-08528.01.2115281234"
+                        ],
+                        "zdcPartNumber": "",
+                        "asamFileVersion": "004030",
+                        "hardwareVersion": "X09",
+                        "softwareVersion": "G111",
+                        "asamFileIdentifier": "EV_HCP5GatewAU416",
+                        "hardwarePartNumber": "85F907468  "
+                    },
+                    "logicalLink": "",
+                    "diagnosisAddress": "0019"
+                }
+            },
+            {
+                "ecuInformation": {
+                    "dataObjects": {
+                        "partNumber": "TESTMOD31",
+                        "zdcVersion": "----",
+                        "fazitIdString": [
+                            "000-00000.00.0000000000"
+                        ],
+                        "zdcPartNumber": "-----------",
+                        "asamFileVersion": "004030",
+                        "softwareVersion": "G111",
+                        "asamFileIdentifier": "EV_HCP5MODAU416",
+                        "hardwarePartNumber": "TESTMOD31"
+                    },
+                    "logicalLink": "",
+                    "diagnosisAddress": "8124"
+                }
+            },
+            {
+                "ecuInformation": {
+                    "dataObjects": {
+                        "partNumber": "85E907808  ",
+                        "zdcVersion": "8109",
+                        "fazitIdString": [
+                            "BPG-81020.01.2114800043"
+                        ],
+                        "zdcPartNumber": "F5S909133A ",
+                        "asamFileVersion": "002008",
+                        "hardwareVersion": "H08",
+                        "softwareVersion": "X061",
+                        "asamFileIdentifier": "EV_ELVISAU41X",
+                        "hardwarePartNumber": "85E907808  "
+                    },
+                    "logicalLink": "",
+                    "diagnosisAddress": "8133"
+                }
+            }
+        ]
+    },
+    "releaseVersion": "1.0.0",
+    "assemblyStatusMetaData": {
+        "vcHash": "3B2D94B1AA3FF369AB58DA9201A70707102317DD546D72C1929DCC7F12026B07",
+        "newestEntryTimestamp": "2023-08-03T10:40:25.672Z",
+        "oldestEntryTimestamp": "2022-06-10T10:38:47.833Z"
+    }
+}

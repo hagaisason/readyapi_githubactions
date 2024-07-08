@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="GetPageConfluence" path="/confluence/pages/viewpage.action?pageId={page_id}" id="7b0b2725-8859-4c8a-a78e-d7da0bb19c18" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="8b720b4c-1506-4524-a0f5-a224d8c4736efileName">GetPageConfluence</con:setting>
+    <con:setting id="edd89a0b-2219-4b1a-9398-26d728d39c0cfileName">GetPageConfluence</con:setting>
+    <con:setting id="7b0b2725-8859-4c8a-a78e-d7da0bb19c18fileName">GetPageConfluence</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>page_id</con:name>
+      <con:style>TEMPLATE</con:style>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="Method 3" id="521af5e3-e1d5-4896-aa2b-1d5677c65714" method="GET">
+    <con:settings/>
+    <con:parameters/>
+    <con:request name="Get HTML file - Confluence" id="79055681-8d2a-4844-baba-af9b1a69969d" mediaType="application/json">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="cookie" value="seraph.confluence=540127470:a9b75928e894268cc06267ac3d53d5b3a2a1c501; JSESSIONID=F176384797098BD0B2C83831B2C4FBF4; structure.pages.referrer=https://devstack.vwgroup.com; _ga=GA1.2.87303452.1627892548; mywork.tab.tasks=false; AWSALB=6QBWKc/+XqmqbORHqHrmJLrIYa/wggkEGM7A3MZyXISBID0VJkgskyfmKx3uACDkOVR/BZNcjo/6dupLxFe1jd1Mw4N4f3UCwjMd3zEvDZAEfxT0jiydiAFeqATQ4+3R6YTRx8qj7XIgIdyUDsXqx9kdc85IEsczyjndyPhCc/EyUI1fnND6cYMgAYeQyA==; AWSALBCORS=6QBWKc/+XqmqbORHqHrmJLrIYa/wggkEGM7A3MZyXISBID0VJkgskyfmKx3uACDkOVR/BZNcjo/6dupLxFe1jd1Mw4N4f3UCwjMd3zEvDZAEfxT0jiydiAFeqATQ4+3R6YTRx8qj7XIgIdyUDsXqx9kdc85IEsczyjndyPhCc/EyUI1fnND6cYMgAYeQyA==" xmlns="http://eviware.com/soapui/config"/></con:setting>
+      </con:settings>
+      <con:endpoint>https://devstack.vwgroup.com</con:endpoint>
+      <con:request/>
+      <con:originalUri>https://devstack.vwgroup.com/</con:originalUri>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="page_id" value="347260189"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>page_id</con:entry>
+      </con:parameterOrder>
+      <con:environmentSpec>
+        <con:entry environmentId="dfd5de6c-73df-4d55-82a2-7bb3dbd3eecf">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

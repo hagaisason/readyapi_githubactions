@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/api/aps_campaigns/campaigns/{actionCode}/{criterion}/{changeMeasureCode}/vehicles/{vin}" path="/api/aps_campaigns/campaigns/{actionCode}/{criterion}/{changeMeasureCode}/vehicles/{vin}" id="e3aa07cd-e27b-496a-a4d1-b35532f73a57" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="4071bcf5-f41b-4676-8cc0-3c366b9611c2fileName">%2Fapi%2Faps_campaigns%2Fcampaigns%2F%7BactionCode%7D%2F%7Bcriterion%7D%2F%7BchangeMeasureCode%7D%2Fvehicles%2F%7Bvin%7D</con:setting>
+    <con:setting id="e3aa07cd-e27b-496a-a4d1-b35532f73a57fileName">%2Fapi%2Faps_campaigns%2Fcampaigns%2F%7BactionCode%7D%2F%7Bcriterion%7D%2F%7BchangeMeasureCode%7D%2Fvehicles%2F%7Bvin%7D</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter required="true">
+      <con:name>actionCode</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+      <con:description>actionCode</con:description>
+    </con:parameter>
+    <con:parameter required="true">
+      <con:name>changeMeasureCode</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+      <con:description>changeMeasureCode</con:description>
+    </con:parameter>
+    <con:parameter required="true">
+      <con:name>criterion</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+      <con:description>criterion</con:description>
+    </con:parameter>
+    <con:parameter required="true">
+      <con:name>vin</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+      <con:description>vin</con:description>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="getCampaignVehicleState_1" id="5d755a09-ae02-42df-b2ed-4f8599972ce5" method="GET">
+    <con:description>Return current update state for requested vehicle in campaign</con:description>
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:sampleContent xsi:nil="true"/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="2d591f19-7190-4cd4-8082-e1fcf7ce8788" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="changeMeasureCode" value=""/>
+        <con:entry key="criterion" value=""/>
+        <con:entry key="actionCode" value=""/>
+        <con:entry key="vin" value=""/>
+      </con:parameters>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

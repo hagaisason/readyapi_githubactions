@@ -1,0 +1,27 @@
+{
+    "schema": "urn:schema:volkswagen.de/orunext_crc_diagmaster/1_0",
+    "containerIdent": {
+        "updateType": 1,
+        "diagnosticAddress": 129,
+        "diagnosticAddressInverted": 65406,
+        "sparePartNumber": "1eHmz4Fpk",
+        "softwareVersion": "T444",
+        "containerVersion": "TEST"
+    },
+    "expectedHashvalues": {
+        "expHashvaluesLengthBytesLengthBytes": 32,
+        "expectedIvdHashvalueRegular": "74105EADA46628175C9B32BF6E647F00BF45590BE4ECEC9F98639739B78CCACF",
+        "expectedIvdHashvalueInverted": "8BEFA1525B99D7E8A364CD40919B80FF40BAA6F41B131360679C68C648733530"
+    },
+    "securedChecksums": {
+        "diagAddrIvdHashCRC32Regular": "543B87B7",
+        "diagAddrIvdHashCRC32Inverted": "4845B75A"
+    },
+    "validationParameters": {
+        "procedure": "0x0253-Calculate_integrity_validation_data",
+        "Calculate_integrity_validation_data": {
+            "typeOfCalculation": 1,
+            "typeOfHashValue": 1
+        }
+    }
+}

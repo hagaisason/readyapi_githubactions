@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="statusUpdate" path="/uota_v3/{updateId}/statusUpdates" id="8fe5834f-9a6c-4035-80a3-dfa2dd1b7ae1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="081cbb44-da65-4db7-af1f-537f1d2703e9fileName">statusUpdate</con:setting>
+    <con:setting id="ba421b91-ffc6-4115-9243-0f08271989d0fileName">statusUpdate</con:setting>
+    <con:setting id="8fe5834f-9a6c-4035-80a3-dfa2dd1b7ae1fileName">statusUpdate</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter required="true">
+      <con:name>updateId</con:name>
+      <con:value>updateId</con:value>
+      <con:style>TEMPLATE</con:style>
+      <con:default>updateId</con:default>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="Method 1" id="5eb789cf-59cf-4a38-95ea-7ae8dc4fd2fb" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:request name="Request 1" id="5f16848c-f0f8-4098-bb6e-bc2aa28653f7" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiJCYWNrZW5kVGVzdGluZyIsImFsZyI6IlJTMjU2In0.eyAgICJzY3AiIDogWyJ0MV9hOmNhcmNsb3VkIl0sIAoJCQkJCQkJCSJ2ZXIiIDogIjEiLAoJCQkJCQkJCSJpc3MiIDogImludGVjaCIsIAoJCQkJCQkJCSJjY2giIDogIlZFSElDTEUiLCAKCQkJCQkJCQkic3R5cCIgOiAiVDEiLAoJCQkJCQkJCSJ0eXAiIDogIkFUIiwgCgkJCQkJCQkJImV4cCIgOiAxNjQ5Njg0MDQ3LAoJCQkJCQkJCSJpYXQiIDogMTY0OTY4MDQ0NywKCQkJCQkJCQkiYXVkIiA6IFsiVldHTVFUVEMwMURFQVBQMSIsCgkJCQkJCQkJICAgICAgICAgICAgIlZXR0RTUERFQVBQMSIsCgkJCQkJCQkJICAgICAgICAgICAgIlZXR01RVFQwMURFQVBQMSJdLAoKCQkJCQkJCQkgInZpbiIgOiAiVzBMMEFITDQ4NTgxMTg1NTUiLAoJCQkJCQkJCSAidG50IiA6ICJBdWRpLERFIgoJCQkJCQkJCX0.S1h_okgwY3hJbEe8NDyyNeblm28eWyYcstUs4WjNUuY0wCZysg27K62qWID5sT_uAWUpV19ziADJdzHHvRZENBtF9WAK9mbC8ECN-KiiY42Az1cvrogmxqulA4pwjzGyIavZyBxdVmQBloY_BaQ3RjDjwXU4-kohdt4eK3pGpB5G5KgiJxJR5Eyhw7EXiD51WjDipki74tje6wNNiargad0oS8uysjaqi50BsjkiCxf5wi-rJDoXGEMxSDBMBCdVKnbHIGcTqzJrQxdGPVmoffz1PdhYJ78IDbDls9CIP_TjnIwJvPoYLobvU2TyS3dWjgIScd8VcMuHUuo_mXOtqA"/>
+  &lt;con:entry key="Content-Type" value="application/vnd.vwg.orunext.StatusUpdates_v1+json"/>
+&lt;/xml-fragment></con:setting>
+      </con:settings>
+      <con:endpoint>https://api.demo.orunext.com</con:endpoint>
+      <con:request>{
+	"statusUpdates":
+	[
+  {
+    "Timestamp": "2022-04-07T07:47:57.157Z",
+    "DiagAssemblyStateHash": "496477F368471EC1969207247CDA0F03882E32E76BDD47D7B214790A1C10F8BB",
+    "Severity": "INFO",
+    "Event": "update.started",
+    "Description": "Test SDK",
+    "DownloadProgress": {
+      "DownloadedSize": 100,
+      "TotalSize": 100
+    }  
+  }
+]
+}</con:request>
+      <con:originalUri>https://demo.orunext.com/uota_v3/2769a208-172c-4c3f-81c3-8cbf0a602c30/statusUpdate</con:originalUri>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="updateId" value="ecb6bb73-ec31-47c4-ad06-22650bbe837f"/>
+      </con:parameters>
+      <con:environmentSpec>
+        <con:entry environmentId="dfd5de6c-73df-4d55-82a2-7bb3dbd3eecf">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="cadeee3c-c131-4727-a303-b17898acdedb">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="6579a9ac-c496-456c-8ca0-d04088a601b8">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="b895e883-4d3f-481d-a439-6406666cd451">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>ORU-app</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="cadeee3c-c131-4727-a303-b17898acdedb">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="6579a9ac-c496-456c-8ca0-d04088a601b8">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="b895e883-4d3f-481d-a439-6406666cd451">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="cadeee3c-c131-4727-a303-b17898acdedb">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="6579a9ac-c496-456c-8ca0-d04088a601b8">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="b895e883-4d3f-481d-a439-6406666cd451">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

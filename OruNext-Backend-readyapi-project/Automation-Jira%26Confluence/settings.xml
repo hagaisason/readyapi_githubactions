@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:interface xsi:type="con:RestService" id="6b03ffb5-6b33-4b29-973c-8b624327f1ab" name="Automation Jira&amp;Confluence" type="rest_ex" wadlVersion="https://swagger.io/openapiv3/specification" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="03408458-fc94-4d40-8f9b-f3b34e853e33fileName">Automation</con:setting>
+    <con:setting id="20b09085-9184-48e8-9bd5-a14edea90373fileName">Automation-Jira%26Confluence</con:setting>
+    <con:setting id="6b03ffb5-6b33-4b29-973c-8b624327f1abfileName">Automation-Jira%26Confluence</con:setting>
+  </con:settings>
+  <con:definitionCache type="TEXT" rootPart="Automation.json">
+    <con:part>
+      <con:url>Automation.json</con:url>
+      <con:content>{"openapi":"3.0.1","info":{"title":"Automation","version":"1.0.0"},"servers":[{"url":"/"}],"paths":{"/jira/rest/api/2/issue":{"post":{"requestBody":{"content":{"application/json":{"example":"{\n    \"type\": {\n        \"name\": \"Test\"\n    },\n    \"inwardIssue\": {\n        \"key\": \"OTA-4018\"\n    },\n    \"outwardIssue\": {\n        \"key\": \"OTA-3957\"\n    }\n}"}}},"responses":{"default":{"description":"Default response"}}}},"/jira/rest/api/2/issue/{issueKey}":{"get":{"responses":{"default":{"description":"Default response"}}},"parameters":[{"name":"issueKey","in":"path","required":true,"style":"simple","explode":false}]},"/jira/rest/raven/1.0/api/testset/{testSetKey}/test":{"post":{"requestBody":{"content":{"application/json":{"example":"{\n\t\"add\" : [\n\t\t\"OTA-4028\"\n\t]\t\n}"}}},"responses":{"default":{"description":"Default response"}}},"parameters":[{"name":"testSetKey","in":"path","required":true,"style":"simple","explode":false}]},"/jira/rest/raven/1.0/api/testplan/{testPlanKey}/test":{"get":{"description":"","responses":{"default":{"description":"Default response"}}},"parameters":[{"name":"testPlanKey","in":"path","required":true,"style":"simple","explode":false}]},"/jira/rest/raven/1.0/api/testexec/{testExecKey}/test":{"post":{"requestBody":{"content":{"application/json":{"example":"{\n\t\"add\" : [\n\t\t\"OTA-4041\"\n\t]\t\n}"}}},"responses":{"default":{"description":"Default response"}}},"parameters":[{"name":"testExecKey","in":"path","required":true,"style":"simple","explode":false}]},"/jira/rest/raven/1.0/api/testplan/{testPlanKey}/testexecution":{"post":{"requestBody":{"content":{"application/json":{"example":"{\n\t\"add\" : [\n\t\t\"OTA-4041\"\n\t]\t\n}"}}},"responses":{"default":{"description":"Default response"}}},"parameters":[{"name":"testPlanKey","in":"path","required":true,"style":"simple","explode":false}]},"/jira/rest/greenhopper/1.0/epics/{epic-key}/add":{"put":{"requestBody":{"content":{"application/json":{"example":"{\r\n   \"ignoreEpics\" : true,\r\n   \"issueKeys\" : [\r\n      \"OTA-4066\"\n   ]\r\n}"}}},"responses":{"default":{"description":"Default response"}}},"parameters":[{"name":"epic-key","in":"path","required":true,"style":"simple","explode":false}]},"/jira/rest/raven/1.0/api/testplan/{testPlanKey}/test/{testKey}":{"delete":{"requestBody":{"content":{"application/json":{}}},"responses":{"default":{"description":"Default response"}}}},"/jira/rest/api/2/issue/{issueIdOrKey}":{"put":{"requestBody":{"content":{"application/json":{"example":"{\n\t\"fields\": {\n\t    \"customfield_10006\" : 5\n\t}\n}\n"}}},"responses":{"default":{"description":"Default response"}}},"parameters":[{"name":"issueIdOrKey","in":"path","required":true,"style":"simple","explode":false}]},"/confluence/pages/viewpage.action?pageId={page_id}":{"get":{"responses":{"default":{"description":"Default response"}}},"parameters":[{"name":"page_id","in":"path","required":true,"style":"simple","explode":false}]},"/confluence/rest/api/content/332245363?expand=body.storage":{"get":{"responses":{"default":{"description":"Default response"}}}},"/jira/rest/api/2/issueLink":{"description":"","post":{"description":"","requestBody":{"content":{"application/json":{"example":"{\n\t\"outwardIssue\" : {\n\t\t\"key\" : \"OTA-4023\"\n\t},\n\t\"inwardIssue\" : {\n\t\t\"key\" : \"OTA-4022\"\n\t},\n\t\"type\" : {\n\t\t\"name\" : \"Test\"\n\t}\n}"}}},"responses":{"default":{"description":"Default response"}}}}},"components":{"securitySchemes":{"OEM.IL":{"type":"oauth2","flows":{"authorizationCode":{"scopes":{}}}},"MyAuth":{"type":"oauth2","flows":{"implicit":{"authorizationUrl":"https://idp.cloud.vwgroup.com/auth/realms/kums-mfa/protocol/openid-connect/auth","scopes":{"openid":""}}}}}}}</con:content>
+      <con:type>https://swagger.io/openapiv3/specification</con:type>
+    </con:part>
+  </con:definitionCache>
+  <con:endpoints>
+    <con:endpoint>https://devstack.vwgroup.com</con:endpoint>
+  </con:endpoints>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:interface>

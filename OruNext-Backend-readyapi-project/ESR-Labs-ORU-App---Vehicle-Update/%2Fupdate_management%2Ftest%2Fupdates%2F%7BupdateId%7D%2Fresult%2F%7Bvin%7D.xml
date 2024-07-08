@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/update_management/test/updates/{updateId}/result/{vin}" path="/update_management/test/updates/{updateId}/result/{vin}" id="13559d86-334b-4592-9fe6-b3676a5ef739" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="e836dca0-eeba-4fab-9272-3f0aac7168edfileName">%2Fupdate_management%2Ftest%2Fupdates%2F%7BupdateId%7D%2Fresult%2F%7Bvin%7D</con:setting>
+    <con:setting id="13559d86-334b-4592-9fe6-b3676a5ef739fileName">%2Fupdate_management%2Ftest%2Fupdates%2F%7BupdateId%7D%2Fresult%2F%7Bvin%7D</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter required="true">
+      <con:name>updateId</con:name>
+      <con:style>TEMPLATE</con:style>
+      <con:description>updateId</con:description>
+    </con:parameter>
+    <con:parameter required="true">
+      <con:name>vin</con:name>
+      <con:style>TEMPLATE</con:style>
+      <con:description>vin</con:description>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="triggerUpdateResultUsingPOST" id="726792f4-6453-40f6-9e15-280bed359945" method="POST">
+    <con:description>triggerUpdateResult</con:description>
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+      <con:sampleContent>{
+  "configuration" : {
+    "assemblyStatus" : {
+      "assemblyInformation" : [ {
+        "ecuInformation" : {
+          "dataObjects" : {
+            "asamFileIdentifier" : "string",
+            "asamFileVersion" : "string",
+            "datasetName" : [ "string" ],
+            "datasetVersion" : [ "string" ],
+            "diagnosisAddress" : [ "string" ],
+            "ecuSerialNumber" : "string",
+            "fazitIdString" : [ "string" ],
+            "fdsProjectData" : [ "string" ],
+            "gwBusIdentList" : [ "string" ],
+            "gwComponentList" : [ "string" ],
+            "gwComponentListEcuIdentification" : [ "string" ],
+            "hardwarePartNumber" : "string",
+            "hardwareVersion" : "string",
+            "ivdConfCurrent" : "string",
+            "ivdProgCurrent" : "string",
+            "lifeCycleData" : "string",
+            "obdClassDescription" : [ "string" ],
+            "obdSupportedPIDS" : [ "string" ],
+            "partNumber" : "string",
+            "regNameVersion" : [ "string" ],
+            "sfdProtectionData" : "string",
+            "sfdProtectionDataValidation" : "string",
+            "sfdProtectionMode" : "string",
+            "slaveBusIdentList" : [ "string" ],
+            "slaveComponentList" : [ "string" ],
+            "softwareBlockIdent" : [ "string" ],
+            "softwareBlockProtection" : [ "string" ],
+            "softwareVersion" : "string",
+            "subSystemNodeAdress" : [ "string" ],
+            "technicalSpecificationVersion" : [ "string" ],
+            "zdcPartNumber" : "string",
+            "zdcVersion" : "string"
+          },
+          "diagnosisAddress" : "string",
+          "logicalLink" : "string",
+          "masterDiagnosisAddress" : "string"
+        }
+      } ],
+      "vehicleInformation" : {
+        "VIN" : "string"
+      }
+    },
+    "assemblyStatusMetaData" : {
+      "mcdVersion" : "string",
+      "newestEntryTimestamp" : "string",
+      "oldestEntryTimestamp" : "string",
+      "pdxVersion" : "string",
+      "requestOptions" : {
+        "detailLevel" : "string",
+        "diagNodeFilter" : "string",
+        "hashAlgorithm" : "string"
+      },
+      "vcHash" : "string"
+    },
+    "description" : "string",
+    "releaseVersion" : "string",
+    "schema" : "string"
+  },
+  "result" : {
+    "actualEnergyUsage" : "string",
+    "customerInstallConfirmationTime" : "yyyy-MM-dd'T'HH:mm:ss.SSSZ",
+    "customerStartAttempts" : 0,
+    "customerWarning" : "none",
+    "error" : "string",
+    "errorDetails" : "string",
+    "estimatedEnergyUsage" : "string",
+    "estimatedUpdateDuration" : 0,
+    "measureId" : "string",
+    "mileage" : 0,
+    "result" : "completed",
+    "schema" : "string",
+    "timestamp" : "yyyy-MM-dd'T'HH:mm:ss.SSSZ",
+    "updateEndTime" : "yyyy-MM-dd'T'HH:mm:ss.SSSZ",
+    "updateId" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "updateSession" : {
+      "domainResults" : [ {
+        "diagnosticAddress" : "string",
+        "errorCategories" : 0,
+        "errorDetails" : "string",
+        "integrityValidationResult" : {
+          "errorDetails" : "string",
+          "resultCode" : 0,
+          "status" : "none"
+        },
+        "resultCode" : 0,
+        "retries" : 0,
+        "safetyValidationResult" : {
+          "errorDetails" : "string",
+          "resultCode" : 0,
+          "status" : "none"
+        },
+        "sessionStatus" : "none",
+        "sessionType" : "update",
+        "updateItemId" : 0
+      } ],
+      "errorCategories" : 0,
+      "errorDetails" : "string",
+      "resultCode" : 0,
+      "sessionStatus" : "none"
+    },
+    "updateStartTime" : "yyyy-MM-dd'T'HH:mm:ss.SSSZ",
+    "vcHash" : "string",
+    "vehicle" : "string"
+  }
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>201</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="40034f66-56dc-4d52-bcd0-415d6ac57078" mediaType="application/json" postQueryString="false">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request>{\r
+  "configuration" : {\r
+    "assemblyStatus" : {\r
+      "assemblyInformation" : [ {\r
+        "ecuInformation" : {\r
+          "dataObjects" : {\r
+            "asamFileIdentifier" : "string",\r
+            "asamFileVersion" : "string",\r
+            "datasetName" : [ "string" ],\r
+            "datasetVersion" : [ "string" ],\r
+            "diagnosisAddress" : [ "string" ],\r
+            "ecuSerialNumber" : "string",\r
+            "fazitIdString" : [ "string" ],\r
+            "fdsProjectData" : [ "string" ],\r
+            "gwBusIdentList" : [ "string" ],\r
+            "gwComponentList" : [ "string" ],\r
+            "gwComponentListEcuIdentification" : [ "string" ],\r
+            "hardwarePartNumber" : "string",\r
+            "hardwareVersion" : "string",\r
+            "ivdConfCurrent" : "string",\r
+            "ivdProgCurrent" : "string",\r
+            "lifeCycleData" : "string",\r
+            "obdClassDescription" : [ "string" ],\r
+            "obdSupportedPIDS" : [ "string" ],\r
+            "partNumber" : "string",\r
+            "regNameVersion" : [ "string" ],\r
+            "sfdProtectionData" : "string",\r
+            "sfdProtectionDataValidation" : "string",\r
+            "sfdProtectionMode" : "string",\r
+            "slaveBusIdentList" : [ "string" ],\r
+            "slaveComponentList" : [ "string" ],\r
+            "softwareBlockIdent" : [ "string" ],\r
+            "softwareBlockProtection" : [ "string" ],\r
+            "softwareVersion" : "string",\r
+            "subSystemNodeAdress" : [ "string" ],\r
+            "technicalSpecificationVersion" : [ "string" ],\r
+            "zdcPartNumber" : "string",\r
+            "zdcVersion" : "string"\r
+          },\r
+          "diagnosisAddress" : "string",\r
+          "logicalLink" : "string",\r
+          "masterDiagnosisAddress" : "string"\r
+        }\r
+      } ],\r
+      "vehicleInformation" : {\r
+        "VIN" : "string"\r
+      }\r
+    },\r
+    "assemblyStatusMetaData" : {\r
+      "mcdVersion" : "string",\r
+      "newestEntryTimestamp" : "string",\r
+      "oldestEntryTimestamp" : "string",\r
+      "pdxVersion" : "string",\r
+      "requestOptions" : {\r
+        "detailLevel" : "string",\r
+        "diagNodeFilter" : "string",\r
+        "hashAlgorithm" : "string"\r
+      },\r
+      "vcHash" : "string"\r
+    },\r
+    "description" : "string",\r
+    "releaseVersion" : "string",\r
+    "schema" : "string"\r
+  },\r
+  "result" : {\r
+    "actualEnergyUsage" : "string",\r
+    "customerInstallConfirmationTime" : "yyyy-MM-dd'T'HH:mm:ss.SSSZ",\r
+    "customerStartAttempts" : 0,\r
+    "customerWarning" : "none",\r
+    "error" : "string",\r
+    "errorDetails" : "string",\r
+    "estimatedEnergyUsage" : "string",\r
+    "estimatedUpdateDuration" : 0,\r
+    "measureId" : "string",\r
+    "mileage" : 0,\r
+    "result" : "completed",\r
+    "schema" : "string",\r
+    "timestamp" : "yyyy-MM-dd'T'HH:mm:ss.SSSZ",\r
+    "updateEndTime" : "yyyy-MM-dd'T'HH:mm:ss.SSSZ",\r
+    "updateId" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",\r
+    "updateSession" : {\r
+      "domainResults" : [ {\r
+        "diagnosticAddress" : "string",\r
+        "errorCategories" : 0,\r
+        "errorDetails" : "string",\r
+        "integrityValidationResult" : {\r
+          "errorDetails" : "string",\r
+          "resultCode" : 0,\r
+          "status" : "none"\r
+        },\r
+        "resultCode" : 0,\r
+        "retries" : 0,\r
+        "safetyValidationResult" : {\r
+          "errorDetails" : "string",\r
+          "resultCode" : 0,\r
+          "status" : "none"\r
+        },\r
+        "sessionStatus" : "none",\r
+        "sessionType" : "update",\r
+        "updateItemId" : 0\r
+      } ],\r
+      "errorCategories" : 0,\r
+      "errorDetails" : "string",\r
+      "resultCode" : 0,\r
+      "sessionStatus" : "none"\r
+    },\r
+    "updateStartTime" : "yyyy-MM-dd'T'HH:mm:ss.SSSZ",\r
+    "vcHash" : "string",\r
+    "vehicle" : "string"\r
+  }\r
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+      <con:parameterOrder>
+        <con:entry>updateId</con:entry>
+        <con:entry>vin</con:entry>
+      </con:parameterOrder>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>ORU-app</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

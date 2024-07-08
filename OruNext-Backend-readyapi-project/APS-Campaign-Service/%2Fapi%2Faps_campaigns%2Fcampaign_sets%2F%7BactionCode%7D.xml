@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/api/aps_campaigns/campaign_sets/{actionCode}" path="/api/oru/aps_campaigns/campaign_sets/{actionCode}" id="596de1d6-b038-4983-98c4-3e056a1a2685" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="904f229f-fac1-4a7a-98e5-f77a8626fafafileName">%2Fapi%2Faps_campaigns%2Fcampaign_sets%2F%7BactionCode%7D</con:setting>
+    <con:setting id="596de1d6-b038-4983-98c4-3e056a1a2685fileName">%2Fapi%2Faps_campaigns%2Fcampaign_sets%2F%7BactionCode%7D</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter required="true">
+      <con:name>actionCode</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+      <con:description>actionCode</con:description>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="getCampaignSet" id="ba14ad7f-91e7-4168-8c1c-fefc7772790e" method="GET">
+    <con:description>Find campaign set by Action Code</con:description>
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:sampleContent xsi:nil="true"/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="4e513029-4520-4ae2-996d-6860b6f5d0ff" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="actionCode" value=""/>
+      </con:parameters>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:method name="updateCampaignSet" id="81e8e8a5-0b5e-4497-8d50-833a33a6db2e" method="PUT">
+    <con:description>Update campaign set</con:description>
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+      <con:sampleContent>{
+  "actionCode" : "AABB",
+  "author" : "John Doe",
+  "campaigns" : [ {
+    "changeMeasureCode" : "string",
+    "criterion" : "12",
+    "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name" : "string",
+    "rank" : 0,
+    "state" : "BLOCKED"
+  } ],
+  "configuration" : {
+    "authorizationLevel" : 0,
+    "autoDownload" : true,
+    "autoInstall" : true,
+    "checkEnergyBudget" : true,
+    "energyCalculation" : true,
+    "highEnergyConsumption" : 1.1,
+    "highVoltageEnergyConsumption" : 1.1,
+    "highVoltageSupport" : true,
+    "highVoltageUpdateDuration" : "P2DT3H4M",
+    "lowEnergyConsumption" : 1.1,
+    "lowVoltageEnergyConsumption" : 1.1,
+    "lowVoltageUpdateDuration" : "P2DT3H4M",
+    "obdRelevance" : true,
+    "showDownload" : true,
+    "timerBasedUpdate" : true,
+    "tuningRelevance" : true,
+    "wifiUpdate" : true
+  },
+  "creationDate" : "string",
+  "name" : "Simple campaign set name",
+  "oemilInstance" : "MOCK",
+  "progressReportParameters" : {
+    "forceTimeInterval" : "P2DT3H4M",
+    "prerequisites" : {
+      "percentage" : 0,
+      "timeInterval" : "P2DT3H4M"
+    }
+  }
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:sampleContent xsi:nil="true"/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>201</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="69ba5c36-5995-4c95-a25e-844b72e452b9" mediaType="application/json" postQueryString="false">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request>{\r
+  "actionCode" : "AABB",\r
+  "author" : "John Doe",\r
+  "campaigns" : [ {\r
+    "changeMeasureCode" : "string",\r
+    "criterion" : "12",\r
+    "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",\r
+    "name" : "string",\r
+    "rank" : 0,\r
+    "state" : "BLOCKED"\r
+  } ],\r
+  "configuration" : {\r
+    "authorizationLevel" : 0,\r
+    "autoDownload" : true,\r
+    "autoInstall" : true,\r
+    "checkEnergyBudget" : true,\r
+    "energyCalculation" : true,\r
+    "highEnergyConsumption" : 1.1,\r
+    "highVoltageEnergyConsumption" : 1.1,\r
+    "highVoltageSupport" : true,\r
+    "highVoltageUpdateDuration" : "P2DT3H4M",\r
+    "lowEnergyConsumption" : 1.1,\r
+    "lowVoltageEnergyConsumption" : 1.1,\r
+    "lowVoltageUpdateDuration" : "P2DT3H4M",\r
+    "obdRelevance" : true,\r
+    "showDownload" : true,\r
+    "timerBasedUpdate" : true,\r
+    "tuningRelevance" : true,\r
+    "wifiUpdate" : true\r
+  },\r
+  "creationDate" : "string",\r
+  "name" : "Simple campaign set name",\r
+  "oemilInstance" : "MOCK",\r
+  "progressReportParameters" : {\r
+    "forceTimeInterval" : "P2DT3H4M",\r
+    "prerequisites" : {\r
+      "percentage" : 0,\r
+      "timeInterval" : "P2DT3H4M"\r
+    }\r
+  }\r
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="actionCode" value=""/>
+      </con:parameters>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:method name="deleteCampaignSet" id="c1fc3513-0095-4753-81ea-4b4a7e72d850" method="DELETE">
+    <con:description>Delete campaign set</con:description>
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:sampleContent xsi:nil="true"/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>204</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="480e75a9-7246-4c26-b7cb-1769f9fcbd7d" mediaType="application/json" postQueryString="false">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="actionCode" value=""/>
+      </con:parameters>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

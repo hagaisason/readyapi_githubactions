@@ -1,0 +1,33 @@
+{
+    "result": {
+        "schema": "UpdateResult_1.1.0.json",
+        "updateId": "43af1b57-4fb1-456d-9bb7-149b54009dd1",
+        "measureId": "CMC7556",
+        "timestamp": "2022-02-17T14:05:05.847+0000",
+        "vehicle": "FAKEVIN1441722481",
+        "vcHash": "442D6CA5E8060C64735FCC607CC862035496FA60F03159E7E3E7362D09EABE89",
+        "result": "completed",
+        "error": null,
+        "errorDetails": null,
+        "customerWarning": "none",
+        "actualEnergyUsage": "2.54 Ah"
+    },
+    "configuration": {
+        "schema": "DiagAssemblyStatus_DetailLevel_Update_Schema_V1.9.json",
+        "releaseVersion": "1.0.0",
+        "description": "",
+        "assemblyStatusMetaData": {
+            "newestEntryTimestamp": "",
+            "oldestEntryTimestamp": "",
+            "vcHash": "442D6CA5E8060C64735FCC607CC862035496FA60F03159E7E3E7362D09EABE89"
+        },
+        "assemblyStatus": {
+            "vehicleInformation": {
+                "VIN": "FAKEVIN1441722481"
+            },
+            "assemblyInformation": [
+                
+            ]
+        }
+    }
+}

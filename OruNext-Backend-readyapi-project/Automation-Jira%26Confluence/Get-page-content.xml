@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="Get page content" path="/confluence/rest/api/content/332245363?expand=body.storage" id="f4dc0490-8ed7-42ae-ac41-34e4d9be277a" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="afd3d52b-5f91-45ba-9608-17bbae182e77fileName">Get-page-content</con:setting>
+    <con:setting id="59b5deb5-2d8c-4b37-8058-db97ff859206fileName">Get-page-content</con:setting>
+    <con:setting id="f4dc0490-8ed7-42ae-ac41-34e4d9be277afileName">Get-page-content</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:method name="Method 1" id="3cbb31d7-a0b4-4705-a038-3e3ee0c624e4" method="GET">
+    <con:settings/>
+    <con:parameters/>
+    <con:request name="Request 1" id="2c802480-6533-421d-8e06-1ed799f3bdfe" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="cookie" value="seraph.confluence=576129126:bd706af847a53b1645dc7d5dd6a196ca4d448f6c; JSESSIONID=D6603ACDB07C085C2BCAB1931DB7F640; structure.pages.referrer=https://devstack.vwgroup.com; _ga=GA1.2.87303452.1627892548; mywork.tab.tasks=false; AWSALB=2fEiRYCln8oEbmVdsjQyhQjEZ59EzUi2LiJh9DE7Uu60nnNpZBqHCWu1UXoQpP4/wXDiqzWYEor6HSFLYQ+Iwvh+FXBCbqqlSHScfwQyBDZrKXRIdOldHA51cESrd3X9r7tMdqjn6HG6oxuxPadptex1mpm6kpsxRiw18xMkc88inf3hr3JvEE3P+SU49Q==; AWSALBCORS=2fEiRYCln8oEbmVdsjQyhQjEZ59EzUi2LiJh9DE7Uu60nnNpZBqHCWu1UXoQpP4/wXDiqzWYEor6HSFLYQ+Iwvh+FXBCbqqlSHScfwQyBDZrKXRIdOldHA51cESrd3X9r7tMdqjn6HG6oxuxPadptex1mpm6kpsxRiw18xMkc88inf3hr3JvEE3P+SU49Q==" xmlns="http://eviware.com/soapui/config"/></con:setting>
+      </con:settings>
+      <con:endpoint>https://devstack.vwgroup.com</con:endpoint>
+      <con:request/>
+      <con:originalUri>https://devstack.vwgroup.com/confluence/rest/api/content/332245363%3Fexpand=body.storage</con:originalUri>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

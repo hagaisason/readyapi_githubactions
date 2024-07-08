@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/api/aps_campaigns/test/campaigns/cleanup" path="/api/aps_campaigns/test/campaigns/cleanup" id="9983bef8-743e-4184-9039-d7cb62c4c8b8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="d6efa39d-7f30-49ed-b2c9-4859d7d75f12fileName">%2Fapi%2Faps_campaigns%2Ftest%2Fcampaigns%2Fcleanup</con:setting>
+    <con:setting id="9983bef8-743e-4184-9039-d7cb62c4c8b8fileName">%2Fapi%2Faps_campaigns%2Ftest%2Fcampaigns%2Fcleanup</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:method name="testCampaignCleanup" id="8c296529-45a0-4657-b781-b0159e06440c" method="DELETE">
+    <con:description>Trigger test campaign cleanup</con:description>
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>duration</con:name>
+        <con:value>P7D</con:value>
+        <con:style>QUERY</con:style>
+        <con:default>P7D</con:default>
+        <con:description>ISO-8601 duration format, default value is P7D.</con:description>
+      </con:parameter>
+      <con:parameter>
+        <con:name>fromStart</con:name>
+        <con:value>false</con:value>
+        <con:style>QUERY</con:style>
+        <con:dataType>boolean</con:dataType>
+        <con:default>false</con:default>
+        <con:description>Boolean value indicating which timestamp to count from, default value is false.</con:description>
+      </con:parameter>
+    </con:parameters>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>204</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="d8c3f275-9556-4d27-8194-17fd79c7ae0a" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="duration" value="P7D"/>
+        <con:entry key="fromStart" value="false"/>
+      </con:parameters>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

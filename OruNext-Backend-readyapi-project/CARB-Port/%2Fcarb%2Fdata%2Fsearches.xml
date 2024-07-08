@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/carb/data/searches" path="/carb/data/searches" id="9ad4031d-d131-4b72-875e-7ea68cc8969e" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="d4152ed8-ffc8-4837-a3fc-4c0734c2f6fdfileName">%2Fcarb%2Fdata%2Fsearches</con:setting>
+    <con:setting id="9ad4031d-d131-4b72-875e-7ea68cc8969efileName">%2Fcarb%2Fdata%2Fsearches</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:method name="searchCarbData" id="3f154db0-a5db-4237-8e0f-fea7cb9b70ad" method="POST">
+    <con:description>Search CARB data</con:description>
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+      <con:sampleContent>{
+  "columns" : [ "id", "name", "state" ],
+  "columnConditions" : [ {
+    "column" : "id",
+    "operator" : "eq",
+    "value" : 123,
+    "value2" : 789
+  } ],
+  "sortBy" : "id",
+  "sortDirection" : "asc",
+  "start" : 0,
+  "limit" : 10,
+  "count" : true,
+  "noDefaultLimit" : true
+}</con:sampleContent>
+    </con:representation>
+    <con:request name="Request 1" id="b94f2d3f-5db2-4885-946e-1528db616b1e" mediaType="application/json" postQueryString="false">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com/api/oru</con:endpoint>
+      <con:request>{\r
+  "columns" : [ "id", "name", "state" ],\r
+  "columnConditions" : [ {\r
+    "column" : "id",\r
+    "operator" : "eq",\r
+    "value" : 123,\r
+    "value2" : 789\r
+  } ],\r
+  "sortBy" : "id",\r
+  "sortDirection" : "asc",\r
+  "start" : 0,\r
+  "limit" : 10,\r
+  "count" : true,\r
+  "noDefaultLimit" : true\r
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+      <con:environmentSpec>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

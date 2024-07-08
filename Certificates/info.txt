@@ -1,0 +1,9 @@
+user id : EDRQA4B
+Passowrd : uXF,26yer@CH
+Client secret : 4caa1a36f8a3e9b51e257ea170315a1fa0e940f17a1e3b0743e82798d82d5475df50ee1bdcc0a354e6cfa83e6a6c05dad459
+client id :  idp-17f419b2-aeb2-4b3f-84ac-7e73e7ad1964
+
+
+curl -v -X POST -d 'grant_type=password' -d 'scope=openid' -d 'username=EDRQA4B' -d 'password=uXF,26yer@CH' -d 'client_id=idp-17f419b2-aeb2-4b3f-84ac-7e73e7ad1964' -d 'client_secret=4caa1a36f8a3e9b51e257ea170315a1fa0e940f17a1e3b0743e82798d82d5475df50ee1bdcc0a354e6cfa83e6a6c05dad459' --cert certificate.pem --key private.key https://idp.cloud.vwgroup.com/auth/realms/kums-mfa/protocol/openid-connect/token
+
+

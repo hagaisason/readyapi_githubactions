@@ -1,0 +1,18 @@
+{
+    "schema": "DiagAssemblyStatus_DetailLevel_Update_Schema_V1.9.json",
+    "releaseVersion": "1.0.0",
+    "description": "",
+    "assemblyStatusMetaData": {
+        "newestEntryTimestamp": "",
+        "oldestEntryTimestamp": "",
+        "vcHash": "5133D4DE886DA897959E738B64B069B4F97266D4024E3E7F6208F5EE57A2C3EA"
+    },
+    "assemblyStatus": {
+        "vehicleInformation": {
+            "VIN": "FAKEVIN8365270591"
+        },
+        "assemblyInformation": [
+            
+        ]
+    }
+}

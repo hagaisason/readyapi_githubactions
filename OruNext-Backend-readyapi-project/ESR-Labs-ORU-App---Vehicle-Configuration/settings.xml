@@ -1,0 +1,1365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:interface xsi:type="con:RestService" id="05d6ba15-64bc-4905-b3cb-ad43897a92b6" name="ESR Labs ORU App - Vehicle Configuration" type="rest_ex" wadlVersion="https://swagger.io/swagger2/specification" definitionUrl="C:\Users\U3631\Desktop\oru-app-vehicle-configuration.json" basePath="/api/oru" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:description>This application provides ORU facilities for VW Group vehicles</con:description>
+  <con:settings>
+    <con:setting id="53aaf595-16ea-4965-9b0e-b4976cfcf866fileName">ESR-Labs-ORU-App---Vehicle-Configuration</con:setting>
+    <con:setting id="05d6ba15-64bc-4905-b3cb-ad43897a92b6fileName">ESR-Labs-ORU-App---Vehicle-Configuration</con:setting>
+  </con:settings>
+  <con:definitionCache type="TEXT" rootPart="file:/C:/Users/U3631/Desktop/oru-app-vehicle-configuration.json">
+    <con:part>
+      <con:url>file:/C:/Users/U3631/Desktop/oru-app-vehicle-configuration.json</con:url>
+      <con:content>{
+    "swagger": "2.0",
+    "info": {
+        "description": "This application provides ORU facilities for VW Group vehicles",
+        "version": "2.0.0",
+        "title": "ESR Labs ORU App",
+        "contact": {
+            "name": "ESR Labs",
+            "url": "https://esrlabs.com",
+            "email": "contact@esrlabs.com"
+        },
+        "license": {
+            "name": " Copyright (c) 2020 ESR Labs. All rights reserved.\n \n NOTICE: All information contained herein is, and remains\n the property of ESR Labs and its suppliers, if any.\n The intellectual and technical concepts contained herein are\n proprietary to ESR Labs and its suppliers and may be covered\n by German and Foreign Patents, patents in process, and are protected\n by trade secret or copyright law.\n Dissemination of this information or reproduction of this material\n is strictly forbidden unless prior written permission is obtained\n from ESR Labs.\n"
+        }
+    },
+    "host": "oru-ui.demo.orunext.com",
+    "basePath": "/api",
+    "tags": [
+        {
+            "name": "Vehicle",
+            "description": "Set of endpoints for getting vehicle information."
+        },
+        {
+            "name": "VehicleConfiguration",
+            "description": "Set of endpoints for providing vehicle configurations."
+        }
+    ],
+    "paths": {
+        "/vehicle_configurations/configurations/download": {
+            "post": {
+                "tags": [
+                    "VehicleConfiguration"
+                ],
+                "summary": "Download vehicle configurations",
+                "operationId": "downloadVehicleConfigurations",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"
+                    },
+                    {
+                        "name": "includeHistory",
+                        "in": "query",
+                        "description": "includeHistory",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "in": "body",
+                        "name": "vins",
+                        "description": "vins",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/vehicle_configurations/configurations/upload": {
+            "post": {
+                "tags": [
+                    "VehicleConfiguration"
+                ],
+                "summary": "Upload vehicle configuration",
+                "operationId": "uploadConfiguration",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"
+                    },
+                    {
+                        "name": "VehicleConfiguration.json",
+                        "in": "formData",
+                        "description": "VehicleConfiguration.json",
+                        "required": true,
+                        "type": "file"
+                    },
+                    {
+                        "name": "brand",
+                        "in": "query",
+                        "description": "brand",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "language",
+                        "in": "query",
+                        "description": "language",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/DeferredResultOfResponseEntityOfVehicleConfiguration"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/vehicle_configurations/registrations/searches": {
+            "post": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Search vehicle registrations",
+                "operationId": "searchVehicleRegistrations",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"
+                    },
+                    {
+                        "in": "body",
+                        "name": "query",
+                        "description": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/VehicleRegistrationQuery"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/VehicleRegistrationView"
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/vehicle_configurations/vehicles": {
+            "get": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "List all vehicles",
+                "operationId": "getVehicleConfigurationVehicles",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Vehicle"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/vehicle_configurations/vehicles/searches": {
+            "post": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Search vehicle configuration vehicles",
+                "operationId": "searchVehicleConfigurationVehicles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"
+                    },
+                    {
+                        "in": "body",
+                        "name": "query",
+                        "description": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/VehicleConfigurationVehicleQuery"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/VehicleConfigurationVehicleView"
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/vehicle_configurations/vehicles/{vin}": {
+            "get": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Get vehicle",
+                "operationId": "getVehicleConfigurationVehicle",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"
+                    },
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "vin",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Vehicle"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Delete vehicle",
+                "operationId": "deleteVehicleConfigurationVehicle",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"
+                    },
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "vin",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/vehicle_configurations/vehicles/{vin}/configurations": {
+            "get": {
+                "tags": [
+                    "VehicleConfiguration"
+                ],
+                "summary": "List all vehicle configurations for vehicle",
+                "operationId": "getVehicleConfigurations",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"
+                    },
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "vin",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/VehicleConfiguration"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/vehicle_configurations/vehicles/{vin}/configurations/latest": {
+            "get": {
+                "tags": [
+                    "VehicleConfiguration"
+                ],
+                "summary": "Get latest known configuration for vehicle",
+                "operationId": "getLatestVehicleConfiguration",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"
+                    },
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "vin",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/vehicle_configurations/vehicles/{vin}/configurations/searches": {
+            "post": {
+                "tags": [
+                    "VehicleConfiguration"
+                ],
+                "summary": "Search vehicle configurations of vehicle",
+                "operationId": "searchVehicleConfigurationsOfVehicle",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"
+                    },
+                    {
+                        "in": "body",
+                        "name": "query",
+                        "description": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/VehicleConfigurationQuery"
+                        }
+                    },
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "vin",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/VehicleConfigurationView"
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/vehicle_configurations/vehicles/{vin}/configurations/{hash}": {
+            "get": {
+                "tags": [
+                    "VehicleConfiguration"
+                ],
+                "summary": "Get vehicle configurations for vehicle by hash",
+                "operationId": "getVehicleConfiguration",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"
+                    },
+                    {
+                        "name": "hash",
+                        "in": "path",
+                        "description": "hash",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "vin",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "VehicleConfiguration"
+                ],
+                "summary": "Delete a vehicle configuration",
+                "operationId": "deleteVehicleConfiguration",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"
+                    },
+                    {
+                        "name": "hash",
+                        "in": "path",
+                        "description": "hash",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "vin",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/EntityDeletionResult"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/vehicle_configurations/vehicles/{vin}/registrations": {
+            "get": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Get vehicle registrations",
+                "operationId": "getVehicleRegistrations",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"
+                    },
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "vin",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/VehicleRegistration"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/vehicle_configurations/vehicles/{vin}/registrations/{useCaseName}": {
+            "delete": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Delete vehicle registration for vin",
+                "operationId": "deleteVehicleRegistrationForVehicle",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"
+                    },
+                    {
+                        "name": "useCaseName",
+                        "in": "path",
+                        "description": "useCaseName",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "vin",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "definitions": {
+        "DeferredResultOfResponseEntityOfVehicleConfiguration": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "object"
+                },
+                "setOrExpired": {
+                    "type": "boolean"
+                }
+            },
+            "title": "DeferredResultOfResponseEntityOfVehicleConfiguration"
+        },
+        "EntityDeletionResult": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "title": "EntityDeletionResult"
+        },
+        "Vehicle": {
+            "type": "object",
+            "properties": {
+                "brand": {
+                    "type": "string"
+                },
+                "firstContact": {
+                    "type": "string",
+                    "example": "yyyy-MM-dd'T'HH:mm:ss'Z'"
+                },
+                "language": {
+                    "type": "string"
+                },
+                "lastContact": {
+                    "type": "string",
+                    "example": "yyyy-MM-dd'T'HH:mm:ss'Z'"
+                },
+                "latestConfigurationHash": {
+                    "type": "string"
+                },
+                "vin": {
+                    "type": "string"
+                }
+            },
+            "title": "Vehicle"
+        },
+        "VehicleConfiguration": {
+            "type": "object",
+            "properties": {
+                "configurationHash": {
+                    "type": "string",
+                    "example": "f06141d0a0edfa637b5c6d2d73daf0a680ee09f4"
+                },
+                "firstReport": {
+                    "type": "string",
+                    "example": "2019-02-18T12:34:56Z"
+                },
+                "lastReport": {
+                    "type": "string",
+                    "example": "2019-02-18T12:34:56Z"
+                },
+                "vin": {
+                    "type": "string"
+                }
+            },
+            "title": "VehicleConfiguration"
+        },
+        "VehicleConfigurationQuery": {
+            "type": "object",
+            "properties": {
+                "columns": {
+                    "type": "array",
+                    "example": [
+                        "id",
+                        "name",
+                        "state"
+                    ],
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "vin",
+                            "configurationHash",
+                            "firstReport",
+                            "lastReport"
+                        ]
+                    }
+                },
+                "columnConditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VehicleConfigurationQueryColumns"
+                    }
+                },
+                "sortBy": {
+                    "type": "string",
+                    "example": "id",
+                    "enum": [
+                        "vin",
+                        "configurationHash",
+                        "firstReport",
+                        "lastReport"
+                    ]
+                },
+                "sortDirection": {
+                    "type": "string",
+                    "example": "asc",
+                    "enum": [
+                        "asc",
+                        "desc"
+                    ]
+                },
+                "start": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 0
+                },
+                "limit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 10
+                },
+                "count": {
+                    "type": "boolean",
+                    "example": true
+                },
+                "noDefaultLimit": {
+                    "type": "boolean",
+                    "example": true
+                }
+            },
+            "title": "VehicleConfigurationQuery"
+        },
+        "VehicleConfigurationQueryColumns": {
+            "type": "object",
+            "required": [
+                "column",
+                "operator",
+                "value"
+            ],
+            "properties": {
+                "column": {
+                    "type": "string",
+                    "example": "id",
+                    "enum": [
+                        "vin",
+                        "configurationHash",
+                        "firstReport",
+                        "lastReport"
+                    ]
+                },
+                "operator": {
+                    "type": "string",
+                    "example": "eq",
+                    "description": "Numbers, Strings, Dates: eq, be, lt, le, ge, gt,\r\nStrings, Dates: matches, startsWith, endsWith, contains, containsIgnoringCase, doesNotContain,\r\nDates (requires value2): between",
+                    "enum": [
+                        "eq",
+                        "ne",
+                        "lt",
+                        "le",
+                        "ge",
+                        "gt",
+                        "matches",
+                        "notMatches",
+                        "similar",
+                        "notSimilar",
+                        "startsWith",
+                        "endsWith",
+                        "notEqualTo",
+                        "likeRegex",
+                        "stringEquals",
+                        "stringNotEquals",
+                        "contains",
+                        "containsIgnoringCase",
+                        "doesNotContain",
+                        "doesNotContainIgnoringCase",
+                        "between",
+                        "in",
+                        "notIn"
+                    ]
+                },
+                "value": {
+                    "type": "object",
+                    "example": 123
+                },
+                "value2": {
+                    "type": "object",
+                    "example": 789,
+                    "description": "Required for the 'between' operator"
+                }
+            },
+            "title": "VehicleConfigurationQueryColumns"
+        },
+        "VehicleConfigurationVehicleQuery": {
+            "type": "object",
+            "properties": {
+                "columns": {
+                    "type": "array",
+                    "example": [
+                        "id",
+                        "name",
+                        "state"
+                    ],
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "vin",
+                            "brand",
+                            "language",
+                            "latestConfigurationHash",
+                            "firstContact",
+                            "lastContact"
+                        ]
+                    }
+                },
+                "columnConditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VehicleConfigurationVehicleQueryColumns"
+                    }
+                },
+                "sortBy": {
+                    "type": "string",
+                    "example": "id",
+                    "enum": [
+                        "vin",
+                        "brand",
+                        "language",
+                        "latestConfigurationHash",
+                        "firstContact",
+                        "lastContact"
+                    ]
+                },
+                "sortDirection": {
+                    "type": "string",
+                    "example": "asc",
+                    "enum": [
+                        "asc",
+                        "desc"
+                    ]
+                },
+                "start": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 0
+                },
+                "limit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 10
+                },
+                "count": {
+                    "type": "boolean",
+                    "example": true
+                },
+                "noDefaultLimit": {
+                    "type": "boolean",
+                    "example": true
+                }
+            },
+            "title": "VehicleConfigurationVehicleQuery"
+        },
+        "VehicleConfigurationVehicleQueryColumns": {
+            "type": "object",
+            "required": [
+                "column",
+                "operator",
+                "value"
+            ],
+            "properties": {
+                "column": {
+                    "type": "string",
+                    "example": "id",
+                    "enum": [
+                        "vin",
+                        "brand",
+                        "language",
+                        "latestConfigurationHash",
+                        "firstContact",
+                        "lastContact"
+                    ]
+                },
+                "operator": {
+                    "type": "string",
+                    "example": "eq",
+                    "description": "Numbers, Strings, Dates: eq, be, lt, le, ge, gt,\r\nStrings, Dates: matches, startsWith, endsWith, contains, containsIgnoringCase, doesNotContain,\r\nDates (requires value2): between",
+                    "enum": [
+                        "eq",
+                        "ne",
+                        "lt",
+                        "le",
+                        "ge",
+                        "gt",
+                        "matches",
+                        "notMatches",
+                        "similar",
+                        "notSimilar",
+                        "startsWith",
+                        "endsWith",
+                        "notEqualTo",
+                        "likeRegex",
+                        "stringEquals",
+                        "stringNotEquals",
+                        "contains",
+                        "containsIgnoringCase",
+                        "doesNotContain",
+                        "doesNotContainIgnoringCase",
+                        "between",
+                        "in",
+                        "notIn"
+                    ]
+                },
+                "value": {
+                    "type": "object",
+                    "example": 123
+                },
+                "value2": {
+                    "type": "object",
+                    "example": 789,
+                    "description": "Required for the 'between' operator"
+                }
+            },
+            "title": "VehicleConfigurationVehicleQueryColumns"
+        },
+        "VehicleConfigurationVehicleView": {
+            "type": "object",
+            "properties": {
+                "brand": {
+                    "type": "string",
+                    "example": "Audi"
+                },
+                "count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 123,
+                    "description": "The total row count"
+                },
+                "firstContact": {
+                    "type": "string",
+                    "example": "2019-01-22T17:23:45Z"
+                },
+                "language": {
+                    "type": "string",
+                    "example": "de_DE"
+                },
+                "lastContact": {
+                    "type": "string",
+                    "example": "2019-01-22T17:23:45Z"
+                },
+                "latestConfigurationHash": {
+                    "type": "string",
+                    "example": "f06141d0a0edfa637b5c6d2d73daf0a680ee09f4"
+                },
+                "notEmpty": {
+                    "type": "boolean"
+                },
+                "vin": {
+                    "type": "string",
+                    "example": "BAUOTATEST0000004"
+                }
+            },
+            "title": "VehicleConfigurationVehicleView"
+        },
+        "VehicleConfigurationView": {
+            "type": "object",
+            "properties": {
+                "configurationHash": {
+                    "type": "string",
+                    "example": "f06141d0a0edfa637b5c6d2d73daf0a680ee09f4"
+                },
+                "count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 123,
+                    "description": "The total row count"
+                },
+                "firstReport": {
+                    "type": "string",
+                    "example": "2019-01-22T17:23:45Z"
+                },
+                "lastReport": {
+                    "type": "string",
+                    "example": "2019-01-22T17:23:45Z"
+                },
+                "notEmpty": {
+                    "type": "boolean"
+                },
+                "vin": {
+                    "type": "string",
+                    "example": "BAUOTATEST0000004"
+                }
+            },
+            "title": "VehicleConfigurationView"
+        },
+        "VehicleRegistration": {
+            "type": "object",
+            "properties": {
+                "useCase": {
+                    "type": "string"
+                },
+                "vehicle": {
+                    "type": "string"
+                }
+            },
+            "title": "VehicleRegistration"
+        },
+        "VehicleRegistrationQuery": {
+            "type": "object",
+            "properties": {
+                "columns": {
+                    "type": "array",
+                    "example": [
+                        "id",
+                        "name",
+                        "state"
+                    ],
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "vin",
+                            "useCase"
+                        ]
+                    }
+                },
+                "columnConditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VehicleRegistrationQueryColumns"
+                    }
+                },
+                "sortBy": {
+                    "type": "string",
+                    "example": "id",
+                    "enum": [
+                        "vin",
+                        "useCase"
+                    ]
+                },
+                "sortDirection": {
+                    "type": "string",
+                    "example": "asc",
+                    "enum": [
+                        "asc",
+                        "desc"
+                    ]
+                },
+                "start": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 0
+                },
+                "limit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 10
+                },
+                "count": {
+                    "type": "boolean",
+                    "example": true
+                },
+                "noDefaultLimit": {
+                    "type": "boolean",
+                    "example": true
+                }
+            },
+            "title": "VehicleRegistrationQuery"
+        },
+        "VehicleRegistrationQueryColumns": {
+            "type": "object",
+            "required": [
+                "column",
+                "operator",
+                "value"
+            ],
+            "properties": {
+                "column": {
+                    "type": "string",
+                    "example": "id",
+                    "enum": [
+                        "vin",
+                        "useCase"
+                    ]
+                },
+                "operator": {
+                    "type": "string",
+                    "example": "eq",
+                    "description": "Numbers, Strings, Dates: eq, be, lt, le, ge, gt,\r\nStrings, Dates: matches, startsWith, endsWith, contains, containsIgnoringCase, doesNotContain,\r\nDates (requires value2): between",
+                    "enum": [
+                        "eq",
+                        "ne",
+                        "lt",
+                        "le",
+                        "ge",
+                        "gt",
+                        "matches",
+                        "notMatches",
+                        "similar",
+                        "notSimilar",
+                        "startsWith",
+                        "endsWith",
+                        "notEqualTo",
+                        "likeRegex",
+                        "stringEquals",
+                        "stringNotEquals",
+                        "contains",
+                        "containsIgnoringCase",
+                        "doesNotContain",
+                        "doesNotContainIgnoringCase",
+                        "between",
+                        "in",
+                        "notIn"
+                    ]
+                },
+                "value": {
+                    "type": "object",
+                    "example": 123
+                },
+                "value2": {
+                    "type": "object",
+                    "example": 789,
+                    "description": "Required for the 'between' operator"
+                }
+            },
+            "title": "VehicleRegistrationQueryColumns"
+        },
+        "VehicleRegistrationView": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 123,
+                    "description": "The total row count"
+                },
+                "notEmpty": {
+                    "type": "boolean"
+                },
+                "useCase": {
+                    "type": "string",
+                    "example": "aps-campaigns"
+                },
+                "vin": {
+                    "type": "string",
+                    "example": "BAUOTATEST0000004"
+                }
+            },
+            "title": "VehicleRegistrationView"
+        },
+        "View": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 123,
+                    "description": "The total row count"
+                },
+                "notEmpty": {
+                    "type": "boolean"
+                }
+            },
+            "title": "View"
+        }
+    }
+}</con:content>
+      <con:type>https://swagger.io/swagger2/specification</con:type>
+    </con:part>
+  </con:definitionCache>
+  <con:endpoints>
+    <con:endpoint>https://demo.orunext.com</con:endpoint>
+  </con:endpoints>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:interface>

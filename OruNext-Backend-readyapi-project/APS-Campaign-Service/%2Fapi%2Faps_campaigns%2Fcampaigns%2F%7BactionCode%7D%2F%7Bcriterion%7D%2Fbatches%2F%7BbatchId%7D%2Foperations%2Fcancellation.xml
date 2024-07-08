@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/api/aps_campaigns/campaigns/{actionCode}/{criterion}/batches/{batchId}/operations/cancellation" path="/api/aps_campaigns/campaigns/{actionCode}/{criterion}/batches/{batchId}/operations/cancellation{changeMeasureCode}" id="b01c6cef-8e4d-4cee-91f2-752949289d79" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="29a90b3b-b01f-400a-92e0-4a8c0cc3ee3bfileName">%2Fapi%2Faps_campaigns%2Fcampaigns%2F%7BactionCode%7D%2F%7Bcriterion%7D%2Fbatches%2F%7BbatchId%7D%2Foperations%2Fcancellation</con:setting>
+    <con:setting id="b01c6cef-8e4d-4cee-91f2-752949289d79fileName">%2Fapi%2Faps_campaigns%2Fcampaigns%2F%7BactionCode%7D%2F%7Bcriterion%7D%2Fbatches%2F%7BbatchId%7D%2Foperations%2Fcancellation</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter required="true">
+      <con:name>actionCode</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+      <con:description>actionCode</con:description>
+    </con:parameter>
+    <con:parameter required="true">
+      <con:name>batchId</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:dataType>integer</con:dataType>
+      <con:default/>
+      <con:description>batchId</con:description>
+    </con:parameter>
+    <con:parameter required="true">
+      <con:name>changeMeasureCode</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+      <con:description>changeMeasureCode</con:description>
+    </con:parameter>
+    <con:parameter required="true">
+      <con:name>criterion</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+      <con:description>criterion</con:description>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="listOfAffectedBatchOperations" id="ee3e58dc-9405-4913-a15d-7dfa236129a4" method="GET">
+    <con:description>Retrieve list of affected batch operation requests by batch deletion</con:description>
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:sampleContent xsi:nil="true"/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="7c9ef0a4-4d6a-41eb-ac9e-91a33daec3dc" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="changeMeasureCode" value=""/>
+        <con:entry key="criterion" value=""/>
+        <con:entry key="actionCode" value=""/>
+        <con:entry key="batchId" value=""/>
+      </con:parameters>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

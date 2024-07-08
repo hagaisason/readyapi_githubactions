@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/vehicles/diagnostics/pdx/filenames" path="/vehicles/diagnostics/pdx/filenames" id="a52fd49c-661d-406a-90d4-827b91d3893d" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="01c350a4-1f97-401a-9ffa-8c6a2b977ceffileName">%2Fvehicles%2Fdiagnostics%2Fpdx%2Ffilenames</con:setting>
+    <con:setting id="a52fd49c-661d-406a-90d4-827b91d3893dfileName">%2Fvehicles%2Fdiagnostics%2Fpdx%2Ffilenames</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:method name="return_pdx_list_of_files_ov1_3" id="306b121c-9116-4be2-ad1d-8ea0da272657" method="GET">
+    <con:description>Returns a list of pdx-files information for specified brand and pdx-Level.</con:description>
+    <con:settings/>
+    <con:parameters>
+      <con:parameter required="true">
+        <con:name>oemil-client-app</con:name>
+        <con:value/>
+        <con:style>HEADER</con:style>
+        <con:default/>
+        <con:description>Predefined indicator for the application that is calling the OEM.IL.
+Needs to correspond to an entry in the OEM.IL internal list of valid client applications. Please ask OEM.IL Support for oemil-client-app
+  - single application: \&lt;PlanningIT short name>
+  - platform application: \&lt;platform short name>_\&lt;PlanningIT short name>
+The security gateway will extract the client-application from the token and add this header to the request by using that value. If both is present, a application value in the token and this http header, then the http header will override the token's application value, i.e. an existing "oemil-client-app" header will always be looped through to the API implementation.
+examples - VWConnect, CoVa, WCDP_ORU, WCDP_PDM</con:description>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>oemil-trace-id</con:name>
+        <con:value/>
+        <con:style>HEADER</con:style>
+        <con:default/>
+        <con:description>Client generated UUID string which has been uniquely created for that request. Can be used for problem analysis in case of errors.</con:description>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>oemil-client-brand</con:name>
+        <con:value/>
+        <con:style>HEADER</con:style>
+        <con:default/>
+        <con:description>The brand value of the OEM manufacturer to which the OEM.IL client belongs to. Expected to be a valid value as specified in the code list CL00441.
+If the client's brand is already part of the security token, that he brings, then this header is allowed to be omitted from the request. The security gateway will extract the brand from the token and add this header to the request by using that value. If both is present, a brand value in the token and this http header, the token's brand value will override the http header.
+#Brand derived from code list - CL00441 Brand (all brands inside and outside VW Group). Brand could be a part of the security token.
+CodeLists are defined in the IA Repository - https://ia/ia-gov-webclient/#/cls</con:description>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>oemil-client-country</con:name>
+        <con:value/>
+        <con:style>HEADER</con:style>
+        <con:default/>
+        <con:description>The country where the OEM.IL client is located. Expected as alpha-2 code of ISO3166-1. If the client's country is already part of the security token, that he brings, then this header is allowed to be omitted from the request. The security gateway will extract the country from the token and add this header to the request by using that value.
+If both is present, a country value in the token and this http header, the token's country value will override the http header.</con:description>
+      </con:parameter>
+      <con:parameter>
+        <con:name>oemil-lee-country</con:name>
+        <con:value/>
+        <con:style>HEADER</con:style>
+        <con:default/>
+        <con:description>Country in which the legal entity (LEE) is located according to ISO 3166, ALPHA-2-code, e.g. "CN" for China. If a CloudIdP token is used, then this attribute is mandatory. If no CloudIdP token is used, then this attribute will be ignored.</con:description>
+      </con:parameter>
+      <con:parameter>
+        <con:name>oemil-lee-name</con:name>
+        <con:value/>
+        <con:style>HEADER</con:style>
+        <con:default/>
+        <con:description>Code of the legal entity (LEE), e.g. Volkswagen Group has the legal entity code "000100". This means that in this example, the value of the attribute "oemil-lee-name" needs to be set to "000100". For example, all WCDP clients in Europe need to transmit this legal entity code. If a CloudIdP token is used, then this attribute is mandatory. If no CloudIdP token is used, then this attribute will be ignored.</con:description>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>oemil-api-version</con:name>
+        <con:value/>
+        <con:style>HEADER</con:style>
+        <con:default/>
+        <con:description>This header parameter describes the version of the OEM.IL API.
+The endpoint paths do not contain the service version at all.
+The parameter substitutes the versioning path parameter.
+The host and base path of the endpoints do not change and the sourcing will be managed by the "oemil-api-version" header.
+Please note that this header only references to the OEM.IL release version.</con:description>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>Authorization</con:name>
+        <con:value/>
+        <con:style>HEADER</con:style>
+        <con:default/>
+        <con:description>Bearer Authorization Token</con:description>
+      </con:parameter>
+      <con:parameter>
+        <con:name>limit</con:name>
+        <con:value>20</con:value>
+        <con:style>QUERY</con:style>
+        <con:dataType>integer</con:dataType>
+        <con:default>20</con:default>
+        <con:description>The number of elements per page that are to be retrieved – the default value is 20 and maximum value is 50.</con:description>
+      </con:parameter>
+      <con:parameter>
+        <con:name>offset</con:name>
+        <con:value>0</con:value>
+        <con:style>QUERY</con:style>
+        <con:dataType>integer</con:dataType>
+        <con:default>0</con:default>
+        <con:description>The index of page that is to be retrieved – the parameter is zero-indexed and its default value is 0.</con:description>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>brand</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description>Brand derived from x-code-list CL00003 BrandCode (describes a brand within the Volkswagen Group)</con:description>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>pdx_level</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:dataType>array</con:dataType>
+        <con:default/>
+        <con:description>Type of pdx Level
+- 68	PDX Level 0-TE
+- 87	PDX Level 0-TE_r
+- 39	PDX Level 1 ISO
+- 88	PDX Level 1 ISO_r
+- 62	PDX Level 1 ISO_T1*
+- 54	PDX Level 1 Softing*
+- 66	PDX Level 2-KD APR*
+- 40	PDX Level 2-KD ISO
+- 93	PDX Level 2-KD ISO_EU
+- 89	PDX Level 2-KD ISO_r
+- 92	PDX Level 2-KD ISO_rftg
+- 55	PDX Level 2-KD Softing*
+- 65	PDX Level 2-P APR*
+- 56	PDX Level 2-P ISO
+- 90	PDX Level 2-P ISO_r
+- 91	PDX Level 2-P ISO_rf
+- 63	PDX Level 2-P ISO_T1*
+- 57	PDX Level 2-P Softing*</con:description>
+      </con:parameter>
+    </con:parameters>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "pdx_files" : {
+    "pdx_car_platforms" : [ {
+      "car_platform" : "AU21X",
+      "pdx_levels" : [ {
+        "pdx_level" : "68",
+        "pdx_filenames" : [ {
+          "pdx_filename" : "AU37X_2017-07-22_2-329_P_r.pdx"
+        } ]
+      } ]
+    } ]
+  },
+  "offset" : 0,
+  "limit" : 20,
+  "total" : 1238
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/problem+json</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "pdx_files" : {
+    "pdx_car_platforms" : [ {
+      "car_platform" : "AU21X",
+      "pdx_levels" : [ {
+        "pdx_level" : "68",
+        "pdx_filenames" : [ {
+          "pdx_filename" : "AU37X_2017-07-22_2-329_P_r.pdx"
+        } ]
+      } ]
+    } ]
+  },
+  "offset" : 0,
+  "limit" : 20,
+  "total" : 1238
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>400</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "type" : "https://oemil.volkswagen.de/apidoc/statuscodes/index.html",
+  "title" : "string",
+  "status" : 1.5,
+  "detail" : "string",
+  "oem_error_code" : "string",
+  "oem_error_description" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/problem+json</con:mediaType>
+      <con:status>400</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "type" : "https://oemil.volkswagen.de/apidoc/statuscodes/index.html",
+  "title" : "string",
+  "status" : 1.5,
+  "detail" : "string",
+  "oem_error_code" : "string",
+  "oem_error_description" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "type" : "https://oemil.volkswagen.de/apidoc/statuscodes/index.html",
+  "title" : "string",
+  "status" : 1.5,
+  "detail" : "string",
+  "oem_error_code" : "string",
+  "oem_error_description" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/problem+json</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "type" : "https://oemil.volkswagen.de/apidoc/statuscodes/index.html",
+  "title" : "string",
+  "status" : 1.5,
+  "detail" : "string",
+  "oem_error_code" : "string",
+  "oem_error_description" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "type" : "https://oemil.volkswagen.de/apidoc/statuscodes/index.html",
+  "title" : "string",
+  "status" : 1.5,
+  "detail" : "string",
+  "oem_error_code" : "string",
+  "oem_error_description" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/problem+json</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "type" : "https://oemil.volkswagen.de/apidoc/statuscodes/index.html",
+  "title" : "string",
+  "status" : 1.5,
+  "detail" : "string",
+  "oem_error_code" : "string",
+  "oem_error_description" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>408</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "type" : "https://oemil.volkswagen.de/apidoc/statuscodes/index.html",
+  "title" : "string",
+  "status" : 1.5,
+  "detail" : "string",
+  "oem_error_code" : "string",
+  "oem_error_description" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/problem+json</con:mediaType>
+      <con:status>408</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "type" : "https://oemil.volkswagen.de/apidoc/statuscodes/index.html",
+  "title" : "string",
+  "status" : 1.5,
+  "detail" : "string",
+  "oem_error_code" : "string",
+  "oem_error_description" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>429</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "type" : "https://oemil.volkswagen.de/apidoc/statuscodes/index.html",
+  "title" : "string",
+  "status" : 1.5,
+  "detail" : "string",
+  "oem_error_code" : "string",
+  "oem_error_description" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/problem+json</con:mediaType>
+      <con:status>429</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "type" : "https://oemil.volkswagen.de/apidoc/statuscodes/index.html",
+  "title" : "string",
+  "status" : 1.5,
+  "detail" : "string",
+  "oem_error_code" : "string",
+  "oem_error_description" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>500</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "type" : "https://oemil.volkswagen.de/apidoc/statuscodes/index.html",
+  "title" : "string",
+  "status" : 1.5,
+  "detail" : "string",
+  "oem_error_code" : "string",
+  "oem_error_description" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/problem+json</con:mediaType>
+      <con:status>500</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "type" : "https://oemil.volkswagen.de/apidoc/statuscodes/index.html",
+  "title" : "string",
+  "status" : 1.5,
+  "detail" : "string",
+  "oem_error_code" : "string",
+  "oem_error_description" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>501</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "type" : "https://oemil.volkswagen.de/apidoc/statuscodes/index.html",
+  "title" : "string",
+  "status" : 1.5,
+  "detail" : "string",
+  "oem_error_code" : "string",
+  "oem_error_description" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/problem+json</con:mediaType>
+      <con:status>501</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "type" : "https://oemil.volkswagen.de/apidoc/statuscodes/index.html",
+  "title" : "string",
+  "status" : 1.5,
+  "detail" : "string",
+  "oem_error_code" : "string",
+  "oem_error_description" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>503</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "type" : "https://oemil.volkswagen.de/apidoc/statuscodes/index.html",
+  "title" : "string",
+  "status" : 1.5,
+  "detail" : "string",
+  "oem_error_code" : "string",
+  "oem_error_description" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/problem+json</con:mediaType>
+      <con:status>503</con:status>
+      <con:params/>
+      <con:sampleContent>{
+  "type" : "https://oemil.volkswagen.de/apidoc/statuscodes/index.html",
+  "title" : "string",
+  "status" : 1.5,
+  "detail" : "string",
+  "oem_error_code" : "string",
+  "oem_error_description" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:request name="Request 1" id="1c3aae2a-3aa4-4d1a-9d1d-f1a802049f47" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://oemil.volkswagen.de</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="oemil-trace-id" value=""/>
+        <con:entry key="Authorization" value=""/>
+        <con:entry key="oemil-lee-name" value=""/>
+        <con:entry key="offset" value="0"/>
+        <con:entry key="oemil-client-brand" value=""/>
+        <con:entry key="pdx_level" value=""/>
+        <con:entry key="oemil-client-app" value=""/>
+        <con:entry key="limit" value="20"/>
+        <con:entry key="oemil-lee-country" value=""/>
+        <con:entry key="brand" value=""/>
+        <con:entry key="oemil-client-country" value=""/>
+        <con:entry key="oemil-api-version" value=""/>
+      </con:parameters>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

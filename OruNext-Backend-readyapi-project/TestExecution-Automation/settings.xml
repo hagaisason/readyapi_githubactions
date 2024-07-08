@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:interface xsi:type="con:RestService" id="cb63cdfb-1373-4941-9e02-396673f45eb5" name="TestExecution Automation" type="rest_ex" wadlVersion="https://swagger.io/openapiv3/specification" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="96737e9b-b9a0-4c43-be12-450f36f1e620fileName">TestExecution-Automation</con:setting>
+    <con:setting id="0273d72d-9074-4112-bc0c-a1d4902b7883fileName">TestExecution-Automation</con:setting>
+    <con:setting id="cb63cdfb-1373-4941-9e02-396673f45eb5fileName">TestExecution-Automation</con:setting>
+  </con:settings>
+  <con:definitionCache type="TEXT" rootPart="TestExecution Automation.json">
+    <con:part>
+      <con:url>TestExecution Automation.json</con:url>
+      <con:content>{"openapi":"3.0.1","info":{"title":"TestExecution Automation","version":"1.0.0"},"servers":[{"url":"/"}],"paths":{"/jira/rest/raven/1.0/testrun/{testId}/steps":{"post":{"requestBody":{"content":{"application/json":{}}},"responses":{"default":{"description":"Default response"}}},"parameters":[{"name":"testId","in":"path","required":true,"style":"simple","explode":false}]},"/jira/rest/raven/1.0/testrun/{testId}/steps/{testStepId}/status":{"put":{"requestBody":{"content":{"application/json":{}}},"responses":{"default":{"description":"Default response"}}},"parameters":[{"name":"testId","in":"path","required":true,"style":"simple","explode":false},{"name":"testStepId","in":"path","required":true,"style":"simple","explode":false}]},"/jira/rest/raven/1.0/testrun/steps/{testStepId}/actualresult":{"put":{"requestBody":{"content":{"application/json":{}}},"responses":{"default":{"description":"Default response"}}},"parameters":[{"name":"testStepId","in":"path","required":true,"style":"simple","explode":false}]},"/jira/rest/raven/1.0/testexec/{testExecutionId}/execute/{testCaseId}":{"description":"","post":{"description":"","requestBody":{"content":{"application/json":{}}},"responses":{"default":{"description":"Default response"}}},"parameters":[{"name":"testExecutionId","in":"path","required":true},{"name":"testCaseId","in":"path","required":true}]}},"components":{"securitySchemes":{"Florin":{"type":"oauth2","flows":{"authorizationCode":{"authorizationUrl":"https://idp.cloud.vwgroup.com/auth/realms/kums-mfa/protocol/openid-connect/auth","tokenUrl":"https://idp.cloud.vwgroup.com/auth/realms/kums-mfa/protocol/openid-connect/token","scopes":{"openid":""}}}},"Florin_Auth":{"type":"oauth2","flows":{"implicit":{"authorizationUrl":"https://idp.cloud.vwgroup.com/auth/realms/kums-mfa/protocol/openid-connect/auth","scopes":{"openid":""}}}}}}}</con:content>
+      <con:type>https://swagger.io/openapiv3/specification</con:type>
+    </con:part>
+  </con:definitionCache>
+  <con:endpoints>
+    <con:endpoint>https://devstack.vwgroup.com</con:endpoint>
+  </con:endpoints>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:interface>

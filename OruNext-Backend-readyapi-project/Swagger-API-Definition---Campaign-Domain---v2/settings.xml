@@ -1,0 +1,4098 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:interface xsi:type="con:RestService" id="1e399943-b062-4ff0-a75d-e886a3999901" name="Swagger API Definition - Campaign Domain - v2" type="rest_ex" wadlVersion="https://swagger.io/swagger2/specification" definitionUrl="file:/C:/Users/U3637/Desktop/OEMIL_API_v2Campaign.yaml" basePath="/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:description>Provides API Services for the integration of Campaign Endpoints (v2)
+
+&lt;a href="../index.html">&lt;font size=5>Home&lt;/font>&lt;/a></con:description>
+  <con:settings>
+    <con:setting id="7a542c5d-48b3-473e-9379-247d36cbc660fileName">Swagger-API-Definition---Campaign-Domain---v2</con:setting>
+    <con:setting id="1e399943-b062-4ff0-a75d-e886a3999901fileName">Swagger-API-Definition---Campaign-Domain---v2</con:setting>
+  </con:settings>
+  <con:definitionCache type="TEXT" rootPart="file:/C:/Users/U3637/Desktop/OEMIL_API_v2Campaign.yaml">
+    <con:part>
+      <con:url>file:/C:/Users/U3637/Desktop/OEMIL_API_v2Campaign.yaml</con:url>
+      <con:content><![CDATA[swagger: '2.0'
+info:
+  version: v2
+  title: Swagger API Definition - Campaign Domain - v2
+  description: |
+    Provides API Services for the integration of Campaign Endpoints (v2)
+
+    <a href="../index.html"><font size=5>Home</font></a>
+host: oemil.volkswagen.de
+basePath: /services
+schemes:
+  - https
+produces:
+  - application/json
+  - application/problem+json
+parameters:
+  oemil-client-app:
+    name: oemil-client-app
+    in: header
+    description: >
+      Predefined indicator for the application that is calling the OEM.IL.
+
+      Needs to correspond to an entry in the OEM.IL internal list of valid
+      client applications. Please ask OEM.IL Support for oemil-client-app
+        - single application: \<PlanningIT short name>
+        - platform application: \<platform short name>_\<PlanningIT short name>
+      The security gateway will extract the client-application from the token
+      and add this header to the request by using that value. If both is
+      present, a application value in the token and this http header, then the
+      http header will override the token's application value, i.e. an existing
+      "oemil-client-app" header will always be looped through to the API
+      implementation.
+
+      examples - VWConnect, CoVa, WCDP_ORU, WCDP_PDM
+    required: true
+    type: string
+    x-parameter-version: 1.2
+    x-parameter-model: true
+  oemil-trace-id:
+    name: oemil-trace-id
+    in: header
+    description: >
+      Client generated UUID string which has been uniquely created for that
+      request. Can be used for problem analysis in case of errors.
+    required: true
+    type: string
+    maxLength: 255
+    x-parameter-version: 1.2
+    x-parameter-model: true
+  oemil-client-brand:
+    name: oemil-client-brand
+    in: header
+    description: >
+      The brand value of the OEM manufacturer to which the OEM.IL client belongs
+      to. Expected to be a valid value as specified in the code list CL00441.
+
+      If the client's brand is already part of the security token, that he
+      brings, then this header is allowed to be omitted from the request. The
+      security gateway will extract the brand from the token and add this header
+      to the request by using that value. If both is present, a brand value in
+      the token and this http header, the token's brand value will override the
+      http header.
+
+      #Brand derived from code list - CL00441 Brand (all brands inside and
+      outside VW Group). Brand could be a part of the security token.
+
+      CodeLists are defined in the IA Repository -
+      https://ia/ia-gov-webclient/#/cls
+    type: string
+    x-code-list: CL00441
+    required: true
+    x-parameter-version: 1.3
+    x-parameter-model: true
+  oemil-client-country:
+    name: oemil-client-country
+    in: header
+    description: >
+      The country where the OEM.IL client is located. Expected as alpha-2 code
+      of ISO3166-1. If the client's country is already part of the security
+      token, that he brings, then this header is allowed to be omitted from the
+      request. The security gateway will extract the country from the token and
+      add this header to the request by using that value.
+
+      If both is present, a country value in the token and this http header, the
+      token's country value will override the http header.
+    type: string
+    required: true
+    x-parameter-version: 1.2
+    x-parameter-model: true
+  oemil-lee-country:
+    name: oemil-lee-country
+    in: header
+    description: >
+      Country in which the legal entity (LEE) is located according to ISO 3166,
+      ALPHA-2-code, e.g. "CN" for China. If a CloudIdP token is used, then this
+      attribute is mandatory. If no CloudIdP token is used, then this attribute
+      will be ignored.
+    type: string
+    required: false
+    x-parameter-version: 1
+    x-parameter-model: true
+  oemil-lee-name:
+    name: oemil-lee-name
+    in: header
+    description: >
+      Code of the legal entity (LEE), e.g. Volkswagen Group has the legal entity
+      code "000100". This means that in this example, the value of the attribute
+      "oemil-lee-name" needs to be set to "000100". For example, all WCDP
+      clients in Europe need to transmit this legal entity code. If a CloudIdP
+      token is used, then this attribute is mandatory. If no CloudIdP token is
+      used, then this attribute will be ignored.
+    type: string
+    required: false
+    x-parameter-version: 1
+    x-parameter-model: true
+  oemil-api-version:
+    name: oemil-api-version
+    in: header
+    description: >
+      This header parameter describes the version of the OEM.IL API.
+
+      The endpoint paths do not contain the service version at all.
+
+      The parameter substitutes the versioning path parameter.
+
+      The host and base path of the endpoints do not change and the sourcing
+      will be managed by the "oemil-api-version" header.
+
+      Please note that this header only references to the OEM.IL release
+      version.
+    type: string
+    required: true
+    x-parameter-version: 1.2
+    x-parameter-model: true
+  accept-language:
+    name: accept-language
+    in: header
+    description: >
+      Multi-part string identifier for a language according to IETF RFC4646
+      (e.g. de, de-DE, de-Latn-DE, de-Latn-DE-1996). The OEM.IL falls back to
+      its own default language when the requested language is unavailable.
+    type: string
+    required: false
+    x-parameter-version: 1.2
+    x-parameter-model: true
+  Authorization:
+    name: Authorization
+    in: header
+    description: Bearer Authorization Token
+    type: string
+    maxLength: 1024
+    required: true
+    x-parameter-version: 1.2
+    x-parameter-model: true
+  vin:
+    name: vin
+    in: path
+    description: Unique vehicle identification number of the OEM
+    type: string
+    minLength: 17
+    maxLength: 17
+    required: true
+    x-parameter-version: 1.2
+    x-parameter-model: true
+securityDefinitions:
+  bearer:
+    name: Authorization
+    description: >-
+      The Bearer authentication scheme was originally created as part of OAuth
+      2.0 in RFC 6750.
+    type: apiKey
+    in: header
+responses:
+  '400':
+    description: >
+      Bad Request - The 400 (Bad Request) status code indicates that the server
+      cannot or will not process the request due to something that is perceived
+      to be a client error (e.g., malformed request syntax, invalid request
+      message framing, or deceptive request routing).
+    schema:
+      $ref: '#/definitions/error_code_ov1_2'
+  '401':
+    description: >
+      The 401 (Unauthorized) status code indicates that the request has not been
+      applied because it lacks valid authentication credentials for the target
+      resource.
+    schema:
+      $ref: '#/definitions/error_code_ov1_2'
+  '403':
+    description: >
+      Forbidden - The 403 (Forbidden) status code indicates that the server
+      understood the request but refuses to authorize it. The server that wishes
+      to make public why the request has been forbidden will describe that
+      reason in the response payload.
+    schema:
+      $ref: '#/definitions/error_code_ov1_2'
+  '404':
+    description: >
+      Not Found - The 404 (Not Found) status code indicates that the origin
+      server did not find a current representation for the target resource or is
+      not willing to disclose that one exists. A 404 status code does not
+      indicate whether this lack of representation is temporary or permanent.
+    schema:
+      $ref: '#/definitions/error_code_ov1_2'
+  '408':
+    description: >
+      The 408 (Request Timeout) status code indicates that the server did not
+      receive a complete request message within the time that it was prepared to
+      wait.
+    schema:
+      $ref: '#/definitions/error_code_ov1_2'
+  '429':
+    description: >
+      Too Many Requests - The 429 (Too Many Requests) status code indicates that
+      the resource has been exhausted, perhaps a per-user quota, or perhaps the
+      entire file system is out of space.
+    schema:
+      $ref: '#/definitions/error_code_ov1_2'
+  '501':
+    description: >
+      The 501 (Not Implemented) status code indicates that the server does not
+      support the functionality required to fulfill the request.
+    schema:
+      $ref: '#/definitions/error_code_ov1_2'
+  '503':
+    description: "The 503 (Service Unavailable) status code indicates that the server is currently unable to handle the request due to a temporary overload or scheduled maintenance, which will likely be alleviated after some\_delay.\n"
+    schema:
+      $ref: '#/definitions/error_code_ov1_2'
+  default:
+    description: >
+      Internal server error - The 500 (Internal Server Error) status code
+      indicates that the server encountered an unexpected condition that
+      prevented it from fulfilling the request.
+    schema:
+      $ref: '#/definitions/error_code_ov1_2'
+paths:
+  /campaigns/selections:
+    post:
+      description: Creates a response of multiple campaign data based on filter criteria.
+      tags:
+        - 'Z:in_preparation'
+      operationId: create_campaigns_selections_ov2
+      consumes:
+        - application/json
+      produces:
+        - application/json
+        - application/problem+json
+      externalDocs:
+        description: At the following address the returned status codes are given.
+        url: >-
+          https://oemil.volkswagen.de/apidoc/statuscodes/campaigns/selections/index.html
+      parameters:
+        - $ref: '#/parameters/oemil-client-app'
+        - $ref: '#/parameters/oemil-trace-id'
+        - $ref: '#/parameters/oemil-client-brand'
+        - $ref: '#/parameters/oemil-client-country'
+        - $ref: '#/parameters/oemil-lee-country'
+        - $ref: '#/parameters/oemil-lee-name'
+        - $ref: '#/parameters/oemil-api-version'
+        - $ref: '#/parameters/Authorization'
+        - name: campaign_filter
+          description: >-
+            This campaign_filter is optional. If no filter is set, the default
+            filter options will be chosen automatically.
+          in: body
+          schema:
+            $ref: '#/definitions/campaign_filter_ov2'
+          required: false
+      responses:
+        '200':
+          description: The campaign data has been returned successfully.
+          schema:
+            $ref: '#/definitions/campaigns_ov2'
+        '400':
+          $ref: '#/responses/400'
+        '401':
+          $ref: '#/responses/401'
+        '403':
+          $ref: '#/responses/403'
+        '408':
+          $ref: '#/responses/408'
+        '429':
+          $ref: '#/responses/429'
+        '500':
+          $ref: '#/responses/default'
+        '501':
+          $ref: '#/responses/501'
+        '503':
+          $ref: '#/responses/503'
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-endpoint-version: 2
+      x-endpoint-logic: true
+  /campaigns:
+    post:
+      description: Updates the campaign based on the vehicle identification number.
+      tags:
+        - Campaign
+      operationId: update_campaigns_ov2
+      consumes:
+        - application/json
+      produces:
+        - application/json
+        - application/problem+json
+      externalDocs:
+        description: At the following address the returned status codes are given.
+        url: 'https://oemil.volkswagen.de/apidoc/statuscodes/campaigns/index.html'
+      parameters:
+        - $ref: '#/parameters/oemil-client-app'
+        - $ref: '#/parameters/oemil-trace-id'
+        - $ref: '#/parameters/oemil-client-brand'
+        - $ref: '#/parameters/oemil-client-country'
+        - $ref: '#/parameters/oemil-lee-country'
+        - $ref: '#/parameters/oemil-lee-name'
+        - $ref: '#/parameters/oemil-api-version'
+        - $ref: '#/parameters/Authorization'
+        - name: campaign_vins
+          in: body
+          schema:
+            $ref: '#/definitions/campaign_vin_ov2'
+          required: true
+      responses:
+        '200':
+          description: The update process for the campaign has been started successfully.
+          schema:
+            $ref: '#/definitions/processing_id_ov2'
+        '400':
+          $ref: '#/responses/400'
+        '401':
+          $ref: '#/responses/401'
+        '403':
+          $ref: '#/responses/403'
+        '408':
+          $ref: '#/responses/408'
+        '429':
+          $ref: '#/responses/429'
+        '500':
+          $ref: '#/responses/default'
+        '501':
+          $ref: '#/responses/501'
+        '503':
+          $ref: '#/responses/503'
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-endpoint-version: 2
+      x-endpoint-logic: true
+  /campaigns/campaign-ids:
+    get:
+      description: Returns the campaign IDs based on given import date time interval.
+      tags:
+        - Campaign
+      operationId: return_campaign_ids_ov2
+      produces:
+        - application/json
+        - application/problem+json
+      externalDocs:
+        description: At the following address the returned status codes are given.
+        url: >-
+          https://oemil.volkswagen.de/apidoc/statuscodes/campaigns/campaign-ids/index.html
+      parameters:
+        - $ref: '#/parameters/oemil-client-app'
+        - $ref: '#/parameters/oemil-trace-id'
+        - $ref: '#/parameters/oemil-client-brand'
+        - $ref: '#/parameters/oemil-client-country'
+        - $ref: '#/parameters/oemil-lee-country'
+        - $ref: '#/parameters/oemil-lee-name'
+        - $ref: '#/parameters/oemil-api-version'
+        - $ref: '#/parameters/Authorization'
+        - name: import_date_from
+          in: query
+          description: >
+            Search pattern for minimum value for a specific range to query
+            campaign IDs that have been imported from this date according to
+            RFC3339. Specify the corresponding maximum value for attribute
+            import_date_until to complete the search interval, e.g.
+            "2015-06-28T14:07:17Z". If no search pattern is defined, then all
+            campaign IDs and their import date of the last 7 days are returned
+            per default. The attributes "import_date_from" and
+            "import_date_until" are connected to each other via logical AND
+            operator.
+          type: string
+          format: date-time
+          required: false
+        - name: import_date_until
+          in: query
+          description: >
+            Search pattern for minimum value for a specific range to query
+            campaign IDs that have been imported until this date according to
+            RFC3339. Specify the corresponding minimum value for attribute
+            import_date_from to complete the search interval, e.g.
+            "2015-06-28T14:07:17Z". If no search pattern is defined, then all
+            campaign IDs and their import date of the last 7 days are returned
+            per default. The attributes "import_date_from" and
+            "import_date_until" are connected to each other via logical AND
+            operator.
+          type: string
+          format: date-time
+          required: false
+      responses:
+        '200':
+          description: >-
+            The campaign IDs and related import dates have been returned
+            successfully.
+          schema:
+            $ref: '#/definitions/campaign_keys_ov2'
+        '400':
+          $ref: '#/responses/400'
+        '401':
+          $ref: '#/responses/401'
+        '403':
+          $ref: '#/responses/403'
+        '408':
+          $ref: '#/responses/408'
+        '429':
+          $ref: '#/responses/429'
+        '500':
+          $ref: '#/responses/default'
+        '501':
+          $ref: '#/responses/501'
+        '503':
+          $ref: '#/responses/503'
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-endpoint-version: 2
+      x-endpoint-logic: true
+  /campaigns/ecus/documentation:
+    post:
+      description: >-
+        Creates a request to update the campaign info (like status) and ecu
+        definitions for a defined vehicle (VIN) .
+      tags:
+        - Campaign
+      operationId: create_campaigns_ecus_documentation_ov2
+      consumes:
+        - application/json
+      produces:
+        - application/json
+        - application/problem+json
+      externalDocs:
+        description: At the following address the returned status codes are given.
+        url: >-
+          https://oemil.volkswagen.de/apidoc/statuscodes/campaigns/ecus/documentation/index.html
+      parameters:
+        - $ref: '#/parameters/oemil-client-app'
+        - $ref: '#/parameters/oemil-trace-id'
+        - $ref: '#/parameters/oemil-client-brand'
+        - $ref: '#/parameters/oemil-client-country'
+        - $ref: '#/parameters/oemil-lee-country'
+        - $ref: '#/parameters/oemil-lee-name'
+        - $ref: '#/parameters/oemil-api-version'
+        - $ref: '#/parameters/Authorization'
+        - name: campaign_ecus
+          in: body
+          schema:
+            $ref: '#/definitions/campaign_ecus_ov2'
+          required: true
+      responses:
+        '200':
+          description: >-
+            The update process for the campaign and vehicle ecu's has been
+            started successfully.
+          headers:
+            x-rate-limit-limit:
+              description: >
+                The rate limit ceiling for oem.il-client and request (separated
+                by pipe) - e.g. '500.000 | 54.000 | 6' - in case of error
+                rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-remaining:
+              description: >
+                The number of remaining requests for oem.il-client (separated by
+                pipe) - e.g. '321.836 | 36.000 | 2' - in case of error
+                rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-reset:
+              description: >
+                The remaining window before the rate limit resets in UTC epoch
+                seconds. - e.g. 123649363 - in case of error rate-limit is
+                optional/undefined
+              type: integer
+              format: int16
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-limit-source:
+              description: >
+                The source system rate limit ceiling for oem.il-client and
+                request (separated by pipe) - e.g. '500.000 | 54.000 | 6' - in
+                case of error rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-remaining-source:
+              description: >
+                The number of remaining source system requests for oem.il-client
+                (separated by pipe) - e.g. '321.836 | 36.000 | 2' - in case of
+                error rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-reset-source:
+              description: >
+                The remaining window before the source system rate limit resets
+                in UTC epoch seconds. - e.g. 123649363 - in case of error
+                rate-limit is optional/undefined
+              type: integer
+              format: int16
+              x-parameter-version: 1.5
+              x-parameter-model: true
+          schema:
+            $ref: '#/definitions/processing_id_ov2'
+        '400':
+          description: >
+            Bad Request - The 400 (Bad Request) status code indicates that the
+            server cannot or will not process the request due to something that
+            is perceived to be a client error (e.g., malformed request syntax,
+            invalid request message framing, or deceptive request routing).
+          schema:
+            $ref: '#/definitions/error_code_ov1_2'
+          headers:
+            x-rate-limit-limit:
+              description: >
+                The rate limit ceiling for oem.il-client and request (separated
+                by pipe) - e.g. '500.000 | 54.000 | 6' - in case of error
+                rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-remaining:
+              description: >
+                The number of remaining requests for oem.il-client (separated by
+                pipe) - e.g. '321.836 | 36.000 | 2' - in case of error
+                rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-reset:
+              description: >
+                The remaining window before the rate limit resets in UTC epoch
+                seconds. - e.g. 123649363 - in case of error rate-limit is
+                optional/undefined
+              type: integer
+              format: int16
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-limit-source:
+              description: >
+                The source system rate limit ceiling for oem.il-client and
+                request (separated by pipe) - e.g. '500.000 | 54.000 | 6' - in
+                case of error rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-remaining-source:
+              description: >
+                The number of remaining source system requests for oem.il-client
+                (separated by pipe) - e.g. '321.836 | 36.000 | 2' - in case of
+                error rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-reset-source:
+              description: >
+                The remaining window before the source system rate limit resets
+                in UTC epoch seconds. - e.g. 123649363 - in case of error
+                rate-limit is optional/undefined
+              type: integer
+              format: int16
+              x-parameter-version: 1.5
+              x-parameter-model: true
+        '401':
+          description: >
+            The 401 (Unauthorized) status code indicates that the server denied
+            the request due to missing or invalid authentification.
+          schema:
+            $ref: '#/definitions/error_code_ov1_2'
+          headers:
+            x-rate-limit-limit:
+              description: >
+                The rate limit ceiling for oem.il-client and request (separated
+                by pipe) - e.g. '500.000 | 54.000 | 6' - in case of error
+                rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-remaining:
+              description: >
+                The number of remaining requests for oem.il-client (separated by
+                pipe) - e.g. '321.836 | 36.000 | 2' - in case of error
+                rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-reset:
+              description: >
+                The remaining window before the rate limit resets in UTC epoch
+                seconds. - e.g. 123649363 - in case of error rate-limit is
+                optional/undefined
+              type: integer
+              format: int16
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-limit-source:
+              description: >
+                The source system rate limit ceiling for oem.il-client and
+                request (separated by pipe) - e.g. '500.000 | 54.000 | 6' - in
+                case of error rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-remaining-source:
+              description: >
+                The number of remaining source system requests for oem.il-client
+                (separated by pipe) - e.g. '321.836 | 36.000 | 2' - in case of
+                error rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-reset-source:
+              description: >
+                The remaining window before the source system rate limit resets
+                in UTC epoch seconds. - e.g. 123649363 - in case of error
+                rate-limit is optional/undefined
+              type: integer
+              format: int16
+              x-parameter-version: 1.5
+              x-parameter-model: true
+        '403':
+          description: >
+            Forbidden - The 403 (Forbidden) status code indicates that the
+            server understood the request but refuses to authorize it. The
+            server that wishes to make public why the request has been forbidden
+            will describe that reason in the response payload.
+          schema:
+            $ref: '#/definitions/error_code_ov1_2'
+          headers:
+            x-rate-limit-limit:
+              description: >
+                The rate limit ceiling for oem.il-client and request (separated
+                by pipe) - e.g. '500.000 | 54.000 | 6' - in case of error
+                rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-remaining:
+              description: >
+                The number of remaining requests for oem.il-client (separated by
+                pipe) - e.g. '321.836 | 36.000 | 2' - in case of error
+                rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-reset:
+              description: >
+                The remaining window before the rate limit resets in UTC epoch
+                seconds. - e.g. 123649363 - in case of error rate-limit is
+                optional/undefined
+              type: integer
+              format: int16
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-limit-source:
+              description: >
+                The source system rate limit ceiling for oem.il-client and
+                request (separated by pipe) - e.g. '500.000 | 54.000 | 6' - in
+                case of error rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-remaining-source:
+              description: >
+                The number of remaining source system requests for oem.il-client
+                (separated by pipe) - e.g. '321.836 | 36.000 | 2' - in case of
+                error rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-reset-source:
+              description: >
+                The remaining window before the source system rate limit resets
+                in UTC epoch seconds. - e.g. 123649363 - in case of error
+                rate-limit is optional/undefined
+              type: integer
+              format: int16
+              x-parameter-version: 1.5
+              x-parameter-model: true
+        '408':
+          description: >
+            The 408 (Request Timeout) status code indicates that the server did
+            not receive a complete request message within the time that it was
+            prepared to wait.
+          schema:
+            $ref: '#/definitions/error_code_ov1_2'
+          headers:
+            x-rate-limit-limit:
+              description: >
+                The rate limit ceiling for oem.il-client and request (separated
+                by pipe) - e.g. '500.000 | 54.000 | 6' - in case of error
+                rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-remaining:
+              description: >
+                The number of remaining requests for oem.il-client (separated by
+                pipe) - e.g. '321.836 | 36.000 | 2' - in case of error
+                rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-reset:
+              description: >
+                The remaining window before the rate limit resets in UTC epoch
+                seconds. - e.g. 123649363 - in case of error rate-limit is
+                optional/undefined
+              type: integer
+              format: int16
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-limit-source:
+              description: >
+                The source system rate limit ceiling for oem.il-client and
+                request (separated by pipe) - e.g. '500.000 | 54.000 | 6' - in
+                case of error rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-remaining-source:
+              description: >
+                The number of remaining source system requests for oem.il-client
+                (separated by pipe) - e.g. '321.836 | 36.000 | 2' - in case of
+                error rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-reset-source:
+              description: >
+                The remaining window before the source system rate limit resets
+                in UTC epoch seconds. - e.g. 123649363 - in case of error
+                rate-limit is optional/undefined
+              type: integer
+              format: int16
+              x-parameter-version: 1.5
+              x-parameter-model: true
+        '429':
+          description: >
+            Too Many Requests - The 429 (Too Many Requests) status code
+            indicates that the resource has been exhausted, perhaps a per-user
+            quota, or perhaps the entire file system is out of space.
+          schema:
+            $ref: '#/definitions/error_code_ov1_2'
+          headers:
+            x-rate-limit-limit:
+              description: >
+                The rate limit ceiling for oem.il-client and request (separated
+                by pipe) - e.g. '500.000 | 54.000 | 6' - in case of error
+                rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-remaining:
+              description: >
+                The number of remaining requests for oem.il-client (separated by
+                pipe) - e.g. '321.836 | 36.000 | 2' - in case of error
+                rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-reset:
+              description: >
+                The remaining window before the rate limit resets in UTC epoch
+                seconds. - e.g. 123649363 - in case of error rate-limit is
+                optional/undefined
+              type: integer
+              format: int16
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-limit-source:
+              description: >
+                The source system rate limit ceiling for oem.il-client and
+                request (separated by pipe) - e.g. '500.000 | 54.000 | 6' - in
+                case of error rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-remaining-source:
+              description: >
+                The number of remaining source system requests for oem.il-client
+                (separated by pipe) - e.g. '321.836 | 36.000 | 2' - in case of
+                error rate-limit is optional/undefined
+
+                - per day
+
+                - per 15 minute time window
+
+                - per 15 minute time window + vin
+              type: string
+              maxLength: 255
+              x-parameter-version: 1.5
+              x-parameter-model: true
+            x-rate-limit-reset-source:
+              description: >
+                The remaining window before the source system rate limit resets
+                in UTC epoch seconds. - e.g. 123649363 - in case of error
+                rate-limit is optional/undefined
+              type: integer
+              format: int16
+              x-parameter-version: 1.5
+              x-parameter-model: true
+        '500':
+          $ref: '#/responses/default'
+        '501':
+          $ref: '#/responses/501'
+        '503':
+          $ref: '#/responses/503'
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-endpoint-version: 2
+      x-endpoint-logic: true
+  '/campaigns/ecus/documentation/process/{processing_id}':
+    get:
+      description: >-
+        Returns campaign and vehicle configuration acknowledgements as
+        documentation status based on given processing ID.
+      tags:
+        - Campaign
+      operationId: return_documentation_status_ov2
+      produces:
+        - application/json
+        - application/problem+json
+      externalDocs:
+        description: At the following address the returned status codes are given.
+        url: >-
+          https://oemil.volkswagen.de/apidoc/statuscodes/campaigns/ecus/documentation/process/processing_id/index.html
+      parameters:
+        - $ref: '#/parameters/oemil-client-app'
+        - $ref: '#/parameters/oemil-trace-id'
+        - $ref: '#/parameters/oemil-client-brand'
+        - $ref: '#/parameters/oemil-client-country'
+        - $ref: '#/parameters/oemil-lee-country'
+        - $ref: '#/parameters/oemil-lee-name'
+        - $ref: '#/parameters/oemil-api-version'
+        - $ref: '#/parameters/Authorization'
+        - name: processing_id
+          in: path
+          description: >-
+            Search pattern for the ID of the process as Universally Unique
+            Identifier (UUID) in hexadecimal notation according to RFC4122, e.g.
+            550e8400-e29b-11d4-a716-446655440000.
+          type: string
+          format: uuid
+          required: true
+      responses:
+        '200':
+          description: >-
+            The campaign IDs and related import dates have been returned
+            successfully.
+          schema:
+            $ref: '#/definitions/documentation_status_ov2'
+        '400':
+          $ref: '#/responses/400'
+        '401':
+          $ref: '#/responses/401'
+        '403':
+          $ref: '#/responses/403'
+        '404':
+          $ref: '#/responses/404'
+        '408':
+          $ref: '#/responses/408'
+        '429':
+          $ref: '#/responses/429'
+        '500':
+          $ref: '#/responses/default'
+        '501':
+          $ref: '#/responses/501'
+        '503':
+          $ref: '#/responses/503'
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-endpoint-version: 2
+      x-endpoint-logic: true
+  '/campaigns/documentation/process/{processing_id}':
+    get:
+      description: >-
+        Returns the status of the documentation for campaigns based on given
+        processing ID.
+      tags:
+        - Campaign
+      operationId: return_campaign_documentation_status_ov2
+      produces:
+        - application/json
+        - application/problem+json
+      externalDocs:
+        description: At the following address the returned status codes are given.
+        url: >-
+          https://oemil.volkswagen.de/apidoc/statuscodes/campaigns/documentation/process/processing_id/index.html
+      parameters:
+        - $ref: '#/parameters/oemil-client-app'
+        - $ref: '#/parameters/oemil-trace-id'
+        - $ref: '#/parameters/oemil-client-brand'
+        - $ref: '#/parameters/oemil-client-country'
+        - $ref: '#/parameters/oemil-lee-country'
+        - $ref: '#/parameters/oemil-lee-name'
+        - $ref: '#/parameters/oemil-api-version'
+        - $ref: '#/parameters/Authorization'
+        - name: processing_id
+          in: path
+          description: >-
+            Search pattern for the ID of the process as Universally Unique
+            Identifier (UUID) in hexadecimal notation according to RFC4122, e.g.
+            550e8400-e29b-11d4-a716-446655440000.
+          type: string
+          format: uuid
+          required: true
+      responses:
+        '200':
+          description: >-
+            The campaign IDs and related import dates have been returned
+            successfully.
+          schema:
+            $ref: '#/definitions/campaign_documentation_status_ov2'
+        '400':
+          $ref: '#/responses/400'
+        '401':
+          $ref: '#/responses/401'
+        '403':
+          $ref: '#/responses/403'
+        '404':
+          $ref: '#/responses/404'
+        '408':
+          $ref: '#/responses/408'
+        '429':
+          $ref: '#/responses/429'
+        '500':
+          $ref: '#/responses/default'
+        '501':
+          $ref: '#/responses/501'
+        '503':
+          $ref: '#/responses/503'
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-endpoint-version: 2
+      x-endpoint-logic: true
+  '/campaigns/{campaign_id}/criteria':
+    get:
+      description: >-
+        Returns campaigns and criteria based on given campaign ID and list of
+        import dates.
+      tags:
+        - Campaign
+      operationId: return_campaigns_and_criteria_ov2
+      produces:
+        - application/json
+        - application/problem+json
+      externalDocs:
+        description: At the following address the returned status codes are given.
+        url: >-
+          https://oemil.volkswagen.de/apidoc/statuscodes/campaigns/campaign_id/criteria/index.html
+      parameters:
+        - $ref: '#/parameters/oemil-client-app'
+        - $ref: '#/parameters/oemil-trace-id'
+        - $ref: '#/parameters/oemil-client-brand'
+        - $ref: '#/parameters/oemil-client-country'
+        - $ref: '#/parameters/oemil-lee-country'
+        - $ref: '#/parameters/oemil-lee-name'
+        - $ref: '#/parameters/oemil-api-version'
+        - $ref: '#/parameters/Authorization'
+        - name: campaign_id
+          in: path
+          description: >-
+            Search pattern for campaign ID. The attributes "campaign_id" and
+            "import_dates" are connected to each other via logical AND operator.
+          type: string
+          maxLength: 4
+          required: true
+        - name: import_dates
+          in: query
+          description: >
+            Search pattern for a list of import dates according to RFC3339 to
+            query all those change records related to a campaign ID, that
+            matches the given import dates. If no import dates are defined, then
+            all change records related to the given campaign ID are returned.
+            The maximum value is defined as 50. The attributes "campaign_id" and
+            "import_dates" are connected to each other via logical AND operator.
+          type: array
+          items:
+            type: string
+            format: date-time
+          maxItems: 50
+          required: false
+          collectionFormat: csv
+        - name: offset
+          in: query
+          description: >
+            Offset (start pointer) of campaigns returned. Start Pointer (paging)
+            is depending on attribute "limit". If no value is defined, then the
+            default value is set to 0. The minimum value is defined as 0.
+          type: integer
+          minimum: 0
+          required: false
+        - name: limit
+          in: query
+          description: >
+            Maximum number of campaigns returned in the response at once. If no
+            value is defined, then the default value is set to 20. The minimum
+            value is defined as 10. If the total amount of returned campaigns is
+            less than 10, then the minimum value is not applied. The maximum
+            value is defined as 50.
+          type: integer
+          minimum: 10
+          maximum: 50
+          required: false
+      responses:
+        '200':
+          description: >-
+            The campaign IDs and related import dates have been returned
+            successfully.
+          schema:
+            $ref: '#/definitions/paging_campaign_change_records_ov2'
+        '400':
+          $ref: '#/responses/400'
+        '401':
+          $ref: '#/responses/401'
+        '403':
+          $ref: '#/responses/403'
+        '404':
+          $ref: '#/responses/404'
+        '408':
+          $ref: '#/responses/408'
+        '429':
+          $ref: '#/responses/429'
+        '500':
+          $ref: '#/responses/default'
+        '501':
+          $ref: '#/responses/501'
+        '503':
+          $ref: '#/responses/503'
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-endpoint-version: 2
+      x-endpoint-logic: true
+  '/campaigns/info/{vin}':
+    get:
+      description: Returns campaigns and criteria based on given vin.
+      tags:
+        - Campaign
+      operationId: return_campaigns_and_criteria_by_vin_ov2
+      produces:
+        - application/json
+        - application/problem+json
+      externalDocs:
+        description: At the following address the returned status codes are given.
+        url: >-
+          https://oemil.volkswagen.de/apidoc/statuscodes/campaigns/info/vin/index.html
+      parameters:
+        - $ref: '#/parameters/oemil-client-app'
+        - $ref: '#/parameters/oemil-trace-id'
+        - $ref: '#/parameters/oemil-client-brand'
+        - $ref: '#/parameters/oemil-client-country'
+        - $ref: '#/parameters/oemil-lee-country'
+        - $ref: '#/parameters/oemil-lee-name'
+        - $ref: '#/parameters/oemil-api-version'
+        - $ref: '#/parameters/accept-language'
+        - $ref: '#/parameters/Authorization'
+        - $ref: '#/parameters/vin'
+        - name: open_campaigns
+          in: query
+          description: >
+            Indicates if only open or all campaigns are requested. If true, only
+            open campaigns are requested. If false, all campaigns (open, closed
+            and canceled) are requested. By default, all campaigns are
+            requested. 
+          type: boolean
+          required: false
+      responses:
+        '200':
+          description: The campaign and criteria data has been returned successfully.
+          schema:
+            $ref: '#/definitions/campaign_and_criteria_data_by_vin_ov1'
+        '400':
+          $ref: '#/responses/400'
+        '401':
+          $ref: '#/responses/401'
+        '403':
+          $ref: '#/responses/403'
+        '404':
+          $ref: '#/responses/404'
+        '408':
+          $ref: '#/responses/408'
+        '429':
+          $ref: '#/responses/429'
+        '500':
+          $ref: '#/responses/default'
+        '503':
+          $ref: '#/responses/503'
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-endpoint-version: 2
+      x-endpoint-logic: true
+  '/campaigns/{campaign_id}/criteria/vehicles':
+    get:
+      description: >-
+        Returns criterion vehicles based on given criterion, campaign ID and
+        import date.
+      tags:
+        - Campaign
+      operationId: return_criterion_vehicles_ov2
+      produces:
+        - application/json
+        - application/problem+json
+      externalDocs:
+        description: At the following address the returned status codes are given.
+        url: >-
+          https://oemil.volkswagen.de/apidoc/statuscodes/campaigns/campaign_id/criteria/vehicles/index.html
+      parameters:
+        - $ref: '#/parameters/oemil-client-app'
+        - $ref: '#/parameters/oemil-trace-id'
+        - $ref: '#/parameters/oemil-client-brand'
+        - $ref: '#/parameters/oemil-client-country'
+        - $ref: '#/parameters/oemil-lee-country'
+        - $ref: '#/parameters/oemil-lee-name'
+        - $ref: '#/parameters/oemil-api-version'
+        - $ref: '#/parameters/Authorization'
+        - name: campaign_id
+          in: path
+          description: >-
+            Search pattern for a single campaign ID to retrieve vehicles related
+            to this specific campaign ID. The attributes "campaign_id",
+            "import_date" and "criterion" are connected to each other via
+            logical AND operator.
+          type: string
+          maxLength: 4
+          required: true
+        - name: import_date
+          in: query
+          description: >-
+            Search pattern for a single import date according to RFC3339 to
+            retrieve vehicles related to this specific import date. The
+            attributes "campaign_id", "import_date" and "criterion" are
+            connected to each other via logical AND operator.
+          type: string
+          format: date-time
+          required: true
+        - name: criterion
+          in: query
+          description: >
+            Search pattern for a single criterion to retrieve vehicles related
+            to this specific criterion. A criterion defines a grouping level for
+            underlying campaigns,
+
+            * e.g. criteria "01" means first enrollment of remote update,
+
+            * e.g. criteria "02" means second enrollment of remote update,
+
+            * etc.
+
+
+            The attributes "campaign_id", "import_date" and "criterion" are
+            connected to each other via logical AND operator.
+          type: string
+          maxLength: 2
+          required: true
+        - name: model_codes
+          in: query
+          description: >
+            Search pattern for a list of model codes according to MBV model code
+            related to a campaign ID. The attributes "import_date" and
+            "criterion" are connected to each other via logical AND operator.
+          type: array
+          items:
+            type: string
+            maxLength: 6
+          required: false
+          collectionFormat: csv
+        - name: offset
+          in: query
+          description: >-
+            Offset (start pointer) of vehicles returned. Start Pointer (paging)
+            is depending on attribute "limit". If no value is defined, then
+            value is set to 0 per default. The minimum value is defined as 0.
+          type: integer
+          minimum: 0
+          required: false
+        - name: limit
+          in: query
+          description: >-
+            Maximum number of vehicles returned in the response at once. If no
+            value is defined, then value is set to 2000 per default. The minimum
+            value is defined as 1000. If the total amount of returned vehicles
+            is less than 1000, then the minimum value is not applied. The
+            maximum value is defined as 5000.
+          type: integer
+          minimum: 1000
+          maximum: 5000
+          required: false
+      responses:
+        '200':
+          description: >-
+            The campaign IDs and related import dates have been returned
+            successfully.
+          schema:
+            $ref: '#/definitions/paging_criterion_vehicles_ov2'
+        '400':
+          $ref: '#/responses/400'
+        '401':
+          $ref: '#/responses/401'
+        '403':
+          $ref: '#/responses/403'
+        '404':
+          $ref: '#/responses/404'
+        '408':
+          $ref: '#/responses/408'
+        '429':
+          $ref: '#/responses/429'
+        '500':
+          $ref: '#/responses/default'
+        '501':
+          $ref: '#/responses/501'
+        '503':
+          $ref: '#/responses/503'
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-endpoint-version: 2
+      x-endpoint-logic: true
+  /campaigns/after-sales-service-actions:
+    get:
+      description: >-
+        Creates a request to return a list of after-sales service actions based
+        on various query parameters
+      tags:
+        - Campaign
+      operationId: return_after_sales_service_actions_ov2
+      produces:
+        - application/json
+        - application/problem+json
+      externalDocs:
+        description: At the following address the returned status codes are given.
+        url: >-
+          https://oemil.volkswagen.de/apidoc/statuscodes/campaigns/after-sales-service-actions/index.html
+      parameters:
+        - $ref: '#/parameters/oemil-client-app'
+        - $ref: '#/parameters/oemil-trace-id'
+        - $ref: '#/parameters/oemil-client-brand'
+        - $ref: '#/parameters/oemil-client-country'
+        - $ref: '#/parameters/oemil-lee-country'
+        - $ref: '#/parameters/oemil-lee-name'
+        - $ref: '#/parameters/oemil-api-version'
+        - $ref: '#/parameters/Authorization'
+        - name: ids
+          in: query
+          description: |
+            Search pattern for after-sales service action IDs
+            * e.g.: 99
+          type: array
+          items:
+            type: integer
+          maxItems: 50
+          required: false
+          collectionFormat: csv
+        - name: brand_codes
+          in: query
+          description: >
+            Search pattern for brand codes related to after-sales service
+            actions according to CL00003.
+
+            * e.g.: "V" for "Volkswagen"
+          type: array
+          items:
+            type: string
+            maxLength: 1
+          maxItems: 50
+          required: true
+          collectionFormat: csv
+        - name: change_date_from
+          in: query
+          description: >
+            Search pattern for minimum value for a specific range to query all
+            after-sales service actions that have been changed from this date.
+            Specify the corresponding maximum value for attribute
+            "change_date_until" to complete the search interval.
+
+            * e.g. "2015-05-28T14:07:17Z"
+          type: string
+          format: date-time
+          required: false
+        - name: change_date_until
+          in: query
+          description: >
+            Search pattern for maximum value for a specific range to query all
+            after-sales service actions that have been changed until this date.
+            Specify the corresponding minimum value for attribute
+            "change_date_from" to complete the search interval.
+
+            * e.g. "2015-07-28T14:07:17Z"
+          type: string
+          format: date-time
+          required: false
+      responses:
+        '200':
+          description: A list of after-sales service actions has been returned successfully
+          schema:
+            $ref: '#/definitions/after_sales_service_actions_ov2'
+        '400':
+          $ref: '#/responses/400'
+        '401':
+          $ref: '#/responses/401'
+        '403':
+          $ref: '#/responses/403'
+        '408':
+          $ref: '#/responses/408'
+        '429':
+          $ref: '#/responses/429'
+        '500':
+          $ref: '#/responses/default'
+        '501':
+          $ref: '#/responses/501'
+        '503':
+          $ref: '#/responses/503'
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-endpoint-version: 2
+      x-endpoint-logic: true
+  '/campaigns/after-sales-service-actions/{id}':
+    get:
+      description: >-
+        Creates a request to return a specific after-sales service action based
+        on an after-sales action ID
+      tags:
+        - Campaign
+      operationId: return_after_sales_service_action_ov2
+      produces:
+        - application/json
+        - application/problem+json
+      externalDocs:
+        description: At the following address the returned status codes are given.
+        url: >-
+          https://oemil.volkswagen.de/apidoc/statuscodes/campaigns/after-sales-service-actions/id/index.html
+      parameters:
+        - $ref: '#/parameters/oemil-client-app'
+        - $ref: '#/parameters/oemil-trace-id'
+        - $ref: '#/parameters/oemil-client-brand'
+        - $ref: '#/parameters/oemil-client-country'
+        - $ref: '#/parameters/oemil-lee-country'
+        - $ref: '#/parameters/oemil-lee-name'
+        - $ref: '#/parameters/oemil-api-version'
+        - $ref: '#/parameters/Authorization'
+        - name: id
+          in: path
+          description: >-
+            ID of the after-sales service action (in German
+            "Kundendienstmaßnahme")
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: After-sales service action has been returned successfully
+          schema:
+            $ref: '#/definitions/after_sales_service_action_ov2'
+        '400':
+          $ref: '#/responses/400'
+        '401':
+          $ref: '#/responses/401'
+        '403':
+          $ref: '#/responses/403'
+        '404':
+          $ref: '#/responses/404'
+        '408':
+          $ref: '#/responses/408'
+        '429':
+          $ref: '#/responses/429'
+        '500':
+          $ref: '#/responses/default'
+        '501':
+          $ref: '#/responses/501'
+        '503':
+          $ref: '#/responses/503'
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-endpoint-version: 2
+      x-endpoint-logic: true
+  /campaigns/change-measures:
+    get:
+      description: >
+        Returns the change measures and corresponding import dates based on a
+        given import date-time interval from OEM system Service42.
+
+        The use case "Get change measure data and import dates" is implemented
+        by the functionality for this endpoint, which extends the first use case
+        "Receive change measure data".
+
+        This endpoint is e.g. used for Online Remote Update (ORU).
+
+        OEM system: Service42
+
+        OEM interface: ChangeMeasureNotificationService
+
+        OEM operation: AssignECUChangeMeasure
+      tags:
+        - Campaign
+      operationId: return_change_measures_ov2
+      produces:
+        - application/json
+        - application/problem+json
+      externalDocs:
+        description: At the following address the returned status codes are given.
+        url: >-
+          https://oemil.volkswagen.de/apidoc/statuscodes/campaigns/change-measures/index.html
+      parameters:
+        - $ref: '#/parameters/oemil-client-app'
+        - $ref: '#/parameters/oemil-trace-id'
+        - $ref: '#/parameters/oemil-client-brand'
+        - $ref: '#/parameters/oemil-client-country'
+        - $ref: '#/parameters/oemil-lee-country'
+        - $ref: '#/parameters/oemil-lee-name'
+        - $ref: '#/parameters/oemil-api-version'
+        - $ref: '#/parameters/Authorization'
+        - name: import_date_from
+          in: query
+          description: >
+            Search pattern for minimum value for a specific range to query
+            change measures that have been imported from this date according to
+            RFC3339. Specify the corresponding maximum value for attribute
+            import_date_until to complete the search interval, e.g.
+            "2021-02-28T14:07:17Z". If no search pattern is defined, then all
+            change measures and their import dates of the last 7 days are
+            returned per default. If no import_date_from is given, then
+            import_date_from is set to current timestamp minus 7 days by
+            default. If the import_date_from is greater than the
+            import_date_until or if the import_date_until is less than the
+            import_date_from, then an empty list will be returned. The
+            attributes "import_date_from" and "import_date_until" are connected
+            to each other via logical AND operator.
+          type: string
+          format: date-time
+          required: false
+        - name: import_date_until
+          in: query
+          description: >
+            Search pattern for maximum value for a specific range to query
+            change measures that have been imported until this date according to
+            RFC3339. Specify the corresponding minimum value for attribute
+            import_date_from to complete the search interval, e.g.
+            "2021-02-28T16:07:17Z". If no search pattern is defined, then all
+            change measures and their import dates of the last 7 days are
+            returned per default. If no import_date_until is given or if the
+            import_date_until is greater than the allowed value (current
+            timestamp), then the import_date_until is set to current timestamp
+            by default. If the import_date_until is less than the
+            import_date_from or if the import_date_from is greater than the
+            import_date_until, then an empty list will be returned. The
+            attributes "import_date_from" and "import_date_until" are connected
+            to each other via logical AND operator.
+          type: string
+          format: date-time
+          required: false
+        - name: brand_code
+          in: query
+          description: >-
+            Search criteria for a brand code according to CL00003, e.g. “V” for
+            "Volkswagen".
+          type: string
+          minLength: 1
+          maxLength: 1
+          required: true
+      responses:
+        '200':
+          description: >-
+            The change measures and corresponding import dates have been
+            returned successfully.
+          schema:
+            $ref: '#/definitions/change_measures_ov2'
+        '400':
+          $ref: '#/responses/400'
+        '401':
+          $ref: '#/responses/401'
+        '403':
+          $ref: '#/responses/403'
+        '500':
+          $ref: '#/responses/default'
+        '503':
+          $ref: '#/responses/503'
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-endpoint-version: 2
+      x-endpoint-logic: true
+  /campaigns/checklists:
+    get:
+      description: >-
+        Creates a request to return a list of checklists based on various query
+        parameters
+      tags:
+        - Campaign
+      operationId: return_checklists_ov2
+      produces:
+        - application/json
+        - application/problem+json
+      externalDocs:
+        description: At the following address the returned status codes are given.
+        url: >-
+          https://oemil.volkswagen.de/apidoc/statuscodes/campaigns/checklists/index.html
+      parameters:
+        - $ref: '#/parameters/oemil-client-app'
+        - $ref: '#/parameters/oemil-trace-id'
+        - $ref: '#/parameters/oemil-client-brand'
+        - $ref: '#/parameters/oemil-client-country'
+        - $ref: '#/parameters/oemil-lee-country'
+        - $ref: '#/parameters/oemil-lee-name'
+        - $ref: '#/parameters/oemil-api-version'
+        - $ref: '#/parameters/Authorization'
+        - name: ids
+          in: query
+          description: >
+            Search pattern for checklists IDs, e.g.: "10000001". Please note
+            that at least one of the following attributes needs to be filled out
+            to execute a successful search: ids, status,
+            after_sales_service_action_ids, after_sales_service_action_name.
+          type: array
+          items:
+            type: integer
+          maxItems: 50
+          required: false
+          collectionFormat: csv
+        - name: status
+          in: query
+          description: >
+            Search pattern for the coded status of the checklists. If no value
+            is chosen, all checklist status are requested.
+
+            * e.g. value "860" means "for review" (in German: "zum Review")
+
+            * e.g. value "861" means "deprecated" (in German: "veraltet")
+
+            * e.g. value "862" means "approved" (in German: "freigegeben")
+
+            * e.g. value "863" means "rejected" (in German: "zurückgewiesen")
+
+
+            Please note that at least one of the following attributes needs to
+            be filled out to execute a successful search: ids, status,
+            after_sales_service_action_ids, after_sales_service_action_name.
+          type: array
+          items:
+            type: integer
+          maxItems: 50
+          required: false
+          collectionFormat: csv
+        - name: name
+          in: query
+          description: Search pattern for checklist name(s). Use symbol * as wildcard.
+          type: string
+          required: false
+        - name: after_sales_service_action_ids
+          in: query
+          description: >
+            Search pattern for after-sales service actions Ids, e.g.: "99".
+            Please note that at least one of the following attributes needs to
+            be filled out to execute a successful search: ids, status,
+            after_sales_service_action_ids, after_sales_service_action_name.
+          type: array
+          items:
+            type: integer
+          maxItems: 50
+          required: false
+          collectionFormat: csv
+        - name: after_sales_service_action_name
+          in: query
+          description: >
+            Search pattern for after-sales service action name(s). Use symbol *
+            as wildcard, e.g.: "Test*". Please note that at least one of the
+            following attributes needs to be filled out to execute a successful
+            search: ids, status, after_sales_service_action_ids,
+            after_sales_service_action_name.
+          type: string
+          required: false
+        - name: brand_codes
+          in: query
+          description: >
+            Search pattern for brand codes related to after-sales service
+            actions according to CL00003, e.g.: "V" for "Volkswagen".
+          type: array
+          items:
+            type: string
+            maxLength: 1
+          maxItems: 50
+          required: true
+          collectionFormat: csv
+        - name: vehicle_product_key
+          in: query
+          description: |
+            Search pattern for vehicle product key, e.g.: "10A".
+          type: string
+          maxLength: 4
+          required: false
+        - name: change_date_from
+          in: query
+          description: >
+            Search pattern for minimum value for a specific range to query all
+            checklists that have been changed from this date. Specify the
+            corresponding maximum value for attribute "change_date_until" to
+            complete the search interval, e.g.: "2015-05-28T14:07:17Z".
+          type: string
+          format: date-time
+          required: false
+        - name: change_date_until
+          in: query
+          description: >
+            Search pattern for maximum value for a specific range to query all
+            checklists that have been changed until this date. Specify the
+            corresponding minimum value for attribute "change_date_from" to
+            complete the search interval, e.g.: "2015-07-28T14:07:17Z".
+          type: string
+          format: date-time
+          required: false
+      responses:
+        '200':
+          description: Checklists have been returned successfully
+          schema:
+            $ref: '#/definitions/checklists_ov2'
+        '400':
+          $ref: '#/responses/400'
+        '401':
+          $ref: '#/responses/401'
+        '403':
+          $ref: '#/responses/403'
+        '408':
+          $ref: '#/responses/408'
+        '429':
+          $ref: '#/responses/429'
+        '500':
+          $ref: '#/responses/default'
+        '501':
+          $ref: '#/responses/501'
+        '503':
+          $ref: '#/responses/503'
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-endpoint-version: 2
+      x-endpoint-logic: true
+  '/campaigns/checklists/{id}':
+    get:
+      description: Creates a request to return a specific checklist based on a checklist ID
+      tags:
+        - Campaign
+      operationId: return_checklist_ov2
+      produces:
+        - application/json
+        - application/problem+json
+      externalDocs:
+        description: At the following address the returned status codes are given.
+        url: >-
+          https://oemil.volkswagen.de/apidoc/statuscodes/campaigns/checklists/id/index.html
+      parameters:
+        - $ref: '#/parameters/oemil-client-app'
+        - $ref: '#/parameters/oemil-trace-id'
+        - $ref: '#/parameters/oemil-client-brand'
+        - $ref: '#/parameters/oemil-client-country'
+        - $ref: '#/parameters/oemil-lee-country'
+        - $ref: '#/parameters/oemil-lee-name'
+        - $ref: '#/parameters/oemil-api-version'
+        - $ref: '#/parameters/Authorization'
+        - name: id
+          in: path
+          description: ID of the checklist
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: Checklist has been returned successfully
+          schema:
+            $ref: '#/definitions/checklist_ov2'
+        '400':
+          $ref: '#/responses/400'
+        '401':
+          $ref: '#/responses/401'
+        '403':
+          $ref: '#/responses/403'
+        '404':
+          $ref: '#/responses/404'
+        '408':
+          $ref: '#/responses/408'
+        '429':
+          $ref: '#/responses/429'
+        '500':
+          $ref: '#/responses/default'
+        '501':
+          $ref: '#/responses/501'
+        '503':
+          $ref: '#/responses/503'
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-endpoint-version: 2
+      x-endpoint-logic: true
+definitions:
+  campaign_and_criteria_data_by_vin_ov1:
+    title: campaign_and_criteria_data_by_vin
+    description: Contains the campaign and criteria data according to the given vin.
+    type: object
+    properties:
+      vehicle_reference:
+        $ref: '#/definitions/vehicle_reference_ov1'
+      campaigns:
+        description: List of campaigns.
+        type: array
+        items:
+          title: campaign
+          description: >-
+            Object for campaigns. It returns only campaigns for the requested
+            vehicle.
+          type: object
+          properties:
+            campaign_identifier:
+              $ref: '#/definitions/campaign_identifier_ov1'
+            campaign_description:
+              description: Short description of the campaign.
+              type: string
+              maxLength: 4096
+              example: W-Modify washer fluid reservoir connector
+            campaign_type:
+              description: >
+                Type of the campaign, for example recall or workshop. Only
+                values from the given codelist are valid. - CL00068
+
+                CodeLists are defined in the IA Repository -
+                https://ia/ia-gov-webclient/#/cls
+              type: string
+              example: nonCustomerServiceCampaign
+              x-code-list: CL00068
+            start_date:
+              description: Start date of the campaign.
+              type: string
+              format: date-time
+              example: '2021-05-03T00:00:00Z'
+            criteria:
+              description: List of campaigns.
+              type: array
+              items:
+                $ref: '#/definitions/criterion_ov1'
+            vehicle_information_list:
+              description: List of vehicle information objects.
+              type: array
+              items:
+                $ref: '#/definitions/campaign_vehicle_information_ov1'
+    x-object-version: 1
+    x-object-model: true
+  vehicle_reference_ov1:
+    title: vehicle_reference
+    description: >-
+      Object, which contains the reference to a vehicle for which the result set
+      was generated.
+    type: object
+    properties:
+      vin:
+        title: vin
+        description: Unique vehicle identification number of the vehicle
+        type: string
+        minLength: 17
+        maxLength: 17
+        example: WVWZZZAUZFW900000
+        x-object-version: 1.3
+        x-object-model: true
+    x-object-version: 1
+    x-object-model: true
+  campaign_identifier_ov1:
+    title: campaign_identifier
+    description: 'Object, which contains internal identification of the campaign.'
+    type: object
+    properties:
+      campaign_id:
+        description: This attribute determines a unique identifier for the campaign.
+        type: string
+        maxLength: 4
+        example: 9200
+    x-object-version: 1
+    x-object-model: true
+  cancel_reason_ov1:
+    title: cancel_reason
+    description: >-
+      Object, which contains information about the cancel reason of campaign or
+      criterion.
+    type: object
+    properties:
+      kind:
+        description: Kind or code of the cancel reason.
+        type: string
+        maxLength: 255
+        example: CancelReasonKindSample
+      description:
+        description: Description of the cancel reason.
+        type: string
+        maxLength: 4096
+        example: CancelReasonDescriptionSample
+    x-object-version: 1
+    x-object-model: true
+  campaign_vehicle_information_ov1:
+    title: vehicle_information
+    description: 'Object, which contains vehicle information.'
+    type: object
+    properties:
+      repair_date:
+        description: Repair date of the campaign or criterion.
+        type: string
+        format: date-time
+        example: '2021-11-01T00:00:00Z'
+      cancel_reason:
+        $ref: '#/definitions/cancel_reason_ov1'
+    x-object-version: 1
+    x-object-model: true
+  criterion_ov1:
+    title: criterion
+    description: 'Object, which contains criterion data.'
+    type: object
+    properties:
+      criterion_id:
+        description: |
+          Grouping level for underlying campaigns,
+          * e.g. criteria "01" means first enrollment of remote update,
+          * e.g. criteria "02" means second enrollment of remote update,
+          * etc.
+        type: string
+        maxLength: 2
+        example: '01'
+      criterion_description:
+        description: Short description of the criterion.
+        type: string
+        maxLength: 4096
+        example: CriterionDescriptionSample
+      vehicle_information_list:
+        description: List of vehicle information objects.
+        type: array
+        items:
+          $ref: '#/definitions/campaign_vehicle_information_ov1'
+    x-object-version: 1
+    x-object-model: true
+  error_code_ov1_2:
+    title: error_code
+    description: Definition of the response error
+    type: object
+    properties:
+      type:
+        description: >-
+          Identifies the problem type (e.g. URI) - additional information of the
+          http error
+        type: string
+        example: 'https://oemil.volkswagen.de/apidoc/statuscodes/index.html'
+      title:
+        description: Short message that describes the error
+        type: string
+        maxLength: 255
+      status:
+        description: Http status codes of the error
+        type: number
+        format: int16
+        minimum: 100
+        maximum: 600
+      detail:
+        description: Specific explanation of the occurred problem.
+        type: string
+        maxLength: 255
+      oem_error_code:
+        description: >-
+          Code of the fault. It is the technical identifier for a type of
+          faults.
+        type: string
+        maxLength: 4
+      oem_error_description:
+        type: string
+        description: Written description of the fault.
+        maxLength: 4096
+    required:
+      - type
+      - title
+      - status
+      - detail
+    x-object-version: 1.2
+    x-object-model: true
+  affected_ecu_ov2:
+    title: affected_ecu
+    description: Checklist relevant information about the source and target ecu
+    type: object
+    properties:
+      order:
+        description: >
+          Order of the flash files. Each flash container is in a separate
+          checklist line. This attribute defines the order of all single flash
+          container for an ECU. This attribute is currently not supported by OEM
+          system and will be reworked as soon as a solution is provided.
+          Therefore, as a temporary solution, this attribute will be set to "1"
+          per default.
+        type: integer
+        default: 1
+        example: 1
+      source_sg_version_id:
+        title: sg_version_id
+        description: Identifier of the ECU
+        type: string
+        example: 10473278
+        x-object-version: 2
+        x-object-model: true
+      target_sg_version_id:
+        title: sg_version_id
+        description: Identifier of the ECU
+        type: string
+        example: 10473278
+        x-object-version: 2
+        x-object-model: true
+      target_flash_container_id:
+        description: >-
+          Defined ID for the flashcontainer for the corresponding target ECU
+          version (Document-ID)
+        type: string
+        example: 10481907
+    x-object-version: 2
+    x-object-model: true
+  after_sales_service_action_ov2:
+    title: after_sales_service_action
+    description: >-
+      Contains information related to a after-sales service action (in German
+      "Kundendienstmaßnahme")
+    type: object
+    properties:
+      id:
+        description: >-
+          ID of the after-sales service action (in German
+          "Kundendienstmaßnahme")
+        type: integer
+        example: 99
+      name:
+        description: >-
+          Name of the after-sales service action (in German
+          "Kundendienstmaßnahme")
+        type: string
+        example: ESC B9 HBC Bewarnung 1.4TFSI (Limo/Avant)
+      change_date:
+        description: >-
+          Change date of the after-sales service action (in German
+          "Kundendienstmaßnahme")
+        type: string
+        format: date-time
+        example: '2015-05-28T14:07:17.000Z'
+      brand_code:
+        title: brand_code
+        description: >
+          Brand of the dealer - CL00003 BrandCode
+
+          CodeLists are defined in the IA Repository -
+          https://ia/ia-gov-webclient/#/cls
+        type: string
+        maxLength: 1
+        example: 'N'
+        x-code-list: >-
+          CL00003 BrandCode Describes a brand within the Volkswagen Group.
+          Abbreviation is used because the codes are common within the group.
+        x-object-version: 1.5
+        x-object-model: true
+      deprecated_status:
+        description: >-
+          Determines, whether the after-sales service action (in German
+          "Kundendienstmaßnahme") is deprecated or not
+        type: boolean
+        example: false
+    x-object-version: 2
+    x-object-model: true
+  after_sales_service_actions_ov2:
+    title: after_sales_service_actions
+    type: object
+    properties:
+      after_sales_service_actions:
+        description: List of after-sales service actions
+        type: array
+        items:
+          $ref: '#/definitions/after_sales_service_action_ov2'
+    required:
+      - after_sales_service_actions
+    x-object-version: 2
+    x-object-model: true
+  assigned_ecu_change_measure_ov2:
+    title: assigned_ecu_change_measure
+    description: 'Object, which contains several change measure data.'
+    type: object
+    properties:
+      measure_ref:
+        description: 'Object, which contains an Identifier (ID) of change measure.'
+        type: object
+        properties:
+          change_measure_id:
+            description: Identifier (ID) of change measure.
+            type: string
+            maxLength: 45
+            example: 2714878
+      measure_code:
+        description: Code of change measure.
+        type: string
+        maxLength: 255
+        example: '35E6'
+      measure_description:
+        description: Description of change measure.
+        type: string
+        maxLength: 4096
+        example: Test MBB Export 4KE
+      model_year_range:
+        description: >
+          Object, which contains a start and end year for filtering based on
+          model years.
+
+          In case start and end year are given, all model years in between
+          including the start and end year are affected.  
+
+          In case neither start nor end year is given, all model years are
+          affected. 
+
+          In case only the start year is given, all subsequent model years
+          including the start year are affected. 
+
+          In case only the end year is given, all previous model years including
+          the end year are affected.
+        type: object
+        properties:
+          start_year:
+            description: Start year for filtering based on model years.
+            type: string
+            maxLength: 255
+            example: 2007
+          end_year:
+            description: End year for filtering based on model years.
+            type: string
+            maxLength: 255
+            example: 2007
+      brand_code:
+        description: Brand code of change measure.
+        type: string
+        maxLength: 1
+        example: A
+      model_codes:
+        description: List of model codes.
+        type: array
+        items:
+          description: 'Object, which contains a model code.'
+          type: object
+          properties:
+            model_code:
+              description: >
+                (Technical) code of the model of the changes measure. Determines
+                the German term "Modellbeschreibung Technik (MBT)".
+              type: string
+              example: 4KE
+      ota_description:
+        description: Over The Air (OTA) description of change measure.
+        type: string
+        maxLength: 4096
+        example: Test AM-Export MBB f. 4KE
+      status:
+        description: Status of change measure.
+        type: string
+        example: Testing
+      update_medium_part_number:
+        description: Part number of the flash/update medium of change measure.
+        type: string
+        maxLength: 255
+        example: TBD
+      target_baselines:
+        description: List of target baselines.
+        type: array
+        items:
+          $ref: '#/definitions/target_baseline_ov2'
+      target_ecus:
+        description: List of target Electronic Control Units (ECUs).
+        type: array
+        items:
+          $ref: '#/definitions/target_ecu_ov2'
+      infotainment_update:
+        description: 'Object, which contains information for infotainment updates.'
+        type: object
+        properties:
+          update_id:
+            description: Update identifier (ID) for infotainment updates.
+            type: string
+            maxLength: 255
+            example: TBD
+          document_id:
+            description: Document identifier (ID) for infotainment updates.
+            type: string
+            maxLength: 255
+            example: 10880886
+      group_problem_management_ids:
+        description: List of group problem management identifiers (IDs).
+        type: array
+        items:
+          description: 'Object, which contains a group problem management identifier (ID).'
+          type: object
+          properties:
+            group_problem_management_id:
+              description: >-
+                The Group problem management identifier (ID) defines the
+                functional reference to a group problem management operation or
+                change measure.
+              type: string
+              maxLength: 255
+              example: TBD
+      campaign_ids:
+        description: List of campaign identifiers (IDs).
+        type: array
+        items:
+          description: 'Object, which contains a campaign identifier (ID).'
+          type: object
+          properties:
+            campaign_id:
+              description: Campaign identifier (ID) of change measure.
+              type: string
+              maxLength: 255
+              example: VB01
+    x-object-version: 2
+    x-object-model: true
+  campaign_ov2:
+    title: campaign
+    description: This object contains the provided campaign data from ReCall.
+    type: object
+    properties:
+      campaign_id:
+        description: This attribute determines an unique identifier for the campaign.
+        type: string
+        maxLength: 4
+        example: U001
+      selected_countries:
+        description: This array determines a list of selected countries.
+        type: array
+        items:
+          description: This object determines a selected country.
+          type: object
+          properties:
+            country_code:
+              description: >-
+                This attribute determines the country code according to
+                ISO-3166-Alpha-3.
+              type: string
+              maxLength: 3
+              example: NED
+            campaign_start_time:
+              description: This attribute determines the starting date for the campaign.
+              type: string
+              format: date-time
+              example: '2015-05-28T14:07:17.000Z'
+            country_campaign_status:
+              description: >-
+                This attribute determines the status oft he campaign for this
+                specific country.
+              type: string
+              maxLength: 1
+              example: I
+      excluded_countries:
+        description: >-
+          This array determines a list of countries according to
+          ISO-3166-Alpha-3, which are excluded by ReCall.
+        type: array
+        items:
+          type: string
+          maxLength: 3
+          example: DEU
+      campaign_criteria:
+        description: This array determines a list of criteria for the campaign.
+        type: array
+        items:
+          description: This object determines a criteria for the campaign.
+          type: object
+          properties:
+            criterion:
+              description: >-
+                Determines a grouping level for underlying campaigns, e.g.
+                criteria 01 means frist enrollment of remote update, criteria 02
+                means second enrollment of remote update, etc.
+              type: string
+              maxLength: 2
+              example: 1
+            title_language:
+              description: >-
+                This attribute determines the language for the criterion
+                according to IETF language tag.
+              type: string
+              maxLength: 5
+              example: de-DE
+            title:
+              description: >-
+                This attribute determines a german text from EC04. If the German
+                text is not available, then the English text is derived.
+              type: string
+              maxLength: 60
+              example: This is a title
+            oru_relevant:
+              description: >-
+                Determines wether a specific criterion of a campaign is ORU
+                relevant or not
+              type: boolean
+            vehicles:
+              description: >-
+                This array determines a list of vehicle objects, which are valid
+                for this specific criterion.
+              type: array
+              items:
+                description: >-
+                  This object determines a vehicle object, which is valid for
+                  this specific criterion.
+                type: object
+                properties:
+                  vin:
+                    title: vin
+                    description: Unique vehicle identification number of the vehicle
+                    type: string
+                    minLength: 17
+                    maxLength: 17
+                    example: WVWZZZAUZFW900000
+                    x-object-version: 1.3
+                    x-object-model: true
+                  oru_relevant:
+                    description: >-
+                      Determines wether a specific vehicle of a criterion is ORU
+                      relevant or not
+                    type: boolean
+                  mbv_model_code:
+                    description: >-
+                      This attribute determines the modell description sales.
+                      Determines the german term "Modellbeschreibung Vertrieb
+                      (MBV)".
+                    type: string
+                    maxLength: 6
+                    example: CR74RJ
+                  mbt_model_code:
+                    description: >-
+                      This attribute determines the model description technical.
+                      Determines the german term "Modellbeschreibung Technik
+                      (MBT)".
+                    type: string
+                    maxLength: 4
+                    example: 10A
+                  brand_code:
+                    description: >
+                      Brand of the dealer (CL00003  BrandCode Describes a brand
+                      within the Volkswagen Group)
+
+                      CodeLists are defined in the IA Repository -
+                      https://ia/ia-gov-webclient/#/cls
+                    type: string
+                    maxLength: 1
+                    example: V
+                  pkn:
+                    description: >-
+                      This attribute determines the german term
+                      „Produktionskennnummer“.
+                    type: string
+                    maxLength: 13
+                    example: 0479001662009
+                  vehicle_update_status:
+                    description: This attribute determines the vehicle update status.
+                    type: string
+                    example: Done_by_dealership
+                  delivering_dealer:
+                    description: >-
+                      This attribute determines one of the the dealer numbers of
+                      a vehicle.
+                    type: string
+                    maxLength: 11
+                    example: DEU12432590
+                  supervising _dealer:
+                    description: >-
+                      This attribute determines one of the the dealer numbers of
+                      a vehicle.
+                    type: string
+                    maxLength: 11
+                    example: DEU12432590
+                  ordering_dealer:
+                    description: >-
+                      This attribute determines one of the the dealer numbers of
+                      a vehicle.
+                    type: string
+                    maxLength: 11
+                    example: DEU12432590
+                  equipment_codes:
+                    description: >-
+                      This array determines a list of trim levels of the
+                      vehicle.
+                    type: array
+                    items:
+                      description: This attribute determines the trim level of the vehicle.
+                      type: string
+                      example: 1KD
+                  model_year:
+                    description: This attribute determines the year of the model.
+                    type: string
+                    maxLength: 4
+                    example: 2006
+    x-object-version: 2
+    x-object-model: true
+  campaign_documentation_status_ov2:
+    title: campaign_documentation_status
+    description: Contains the documentation status according to the processing ID.
+    type: object
+    properties:
+      processing_id:
+        description: >-
+          ID of the process as Universally Unique Identifier (UUID) in
+          hexadecimal notation according to RFC4122.
+        type: string
+        format: uuid
+        example: 550e8400-e29b-11d4-a716-446655440000
+      processing_status:
+        description: >-
+          Current status of the process as enumeration of the values "OPEN",
+          "IN_PROGRESS", "DONE" and "FAILED"
+        type: string
+        enum:
+          - OPEN
+          - IN_PROGRESS
+          - DONE
+          - FAILED
+      vin:
+        title: vin
+        description: Unique vehicle identification number of the vehicle
+        type: string
+        minLength: 17
+        maxLength: 17
+        example: WVWZZZAUZFW900000
+        x-object-version: 1.3
+        x-object-model: true
+      campaign_documentation_status:
+        description: >-
+          Contains the documentation status for campaigns according to the
+          processing ID.
+        type: object
+        properties:
+          campaign_kind:
+            description: Kind of the campaign.
+            type: string
+            maxLength: 255
+            example: recall
+          campaign_id:
+            description: OEM internal identification of the campaign.
+            type: string
+            maxLength: 255
+            example: VB09
+          acknowledgement:
+            description: >-
+              Acknowledgement, which determines whether the documentation has
+              been executed successfully by the corresponding OEM system or not.
+              True, if the documentation has been executed successfully, else
+              false. If the documentation failed, then fault parameters by OEM
+              system are returned as well.
+            type: boolean
+            example: true
+          fault:
+            description: Contains error descriptions in case of an error.
+            type: object
+            properties:
+              system:
+                description: >-
+                  System, which recognized the fault according to CL00015.
+                  CodeLists are defined in the IA Repository of Volkswagen.
+                type: string
+                maxLength: 10
+                example: RCL
+              class:
+                description: >-
+                  Class of the fault, which determines the responsible party for
+                  fault handling according to CL00267. CodeLists are defined in
+                  the IA Repository of Volkswagen.
+                type: string
+                maxLength: 10
+                example: technical
+              code:
+                description: >-
+                  Code of the fault, which determines the technical identifier
+                  for a type of faults.
+                type: string
+                maxLength: 4
+                example: '9026'
+              level:
+                description: >-
+                  Level of the fault, which determines the severity of the fault
+                  and indicated level of recovery to be done according to
+                  CL00268. CodeLists are defined in the IA Repository of
+                  Volkswagen.
+                type: string
+                minLength: 1
+                maxLength: 1
+                example: W
+              id:
+                description: >-
+                  ID of the fault, which is generated by the fault system. The
+                  fault ID is mandatory for error level and optional for
+                  information. Additionally, the fault ID is used by the support
+                  to find further information in the system logs.
+                type: string
+                maxLength: 100
+                example: 6e26c196-a7b5-408f-865d-3a7cfbeec562
+              detection_date:
+                description: Date of detection of the fault.
+                type: string
+                format: date-time
+                example: '2015-05-28T14:07:17Z'
+              code_details:
+                description: List of parameters of the fault code details.
+                type: array
+                items:
+                  description: Parameter of the fault code details.
+                  type: object
+                  properties:
+                    parameter_name:
+                      description: Name of the parameter of the fault code details.
+                      type: string
+                      maxLength: 100
+                      example: '9026'
+                    parameter_value:
+                      description: Value of the parameter of the fault code details.
+                      type: string
+                      maxLength: 100
+                      example: Technical validation error
+              system_details:
+                description: List of parameters of the fault system details.
+                type: array
+                items:
+                  description: Parameter of the fault system details.
+                  type: object
+                  properties:
+                    parameter_name:
+                      description: >-
+                        Name of the parameter of the fault system details
+                        according to CL00269. CodeLists are defined in the IA
+                        Repository of Volkswagen.
+                      type: string
+                      maxLength: 100
+                      example: Application
+                    parameter_value:
+                      description: Value of the parameter of the fault system details.
+                      type: string
+                      maxLength: 100
+                      example: CSP-IA-GW@WSGWCPNQ2-WOB
+              reason:
+                description: >-
+                  Reason of the fault, which may be used for nested fault
+                  conditions.
+                type: string
+                maxLength: 255
+                example: XML not schema valid
+    x-object-version: 2
+    x-object-model: true
+  campaign_ecus_ov2:
+    title: campaign_ecus
+    description: >-
+      Contains campaign and vehicle configuration data to update documentation
+      in corresponding OEM systems.
+    type: object
+    properties:
+      vin:
+        title: vin
+        description: Unique vehicle identification number of the vehicle
+        type: string
+        minLength: 17
+        maxLength: 17
+        example: WVWZZZAUZFW900000
+        x-object-version: 1.3
+        x-object-model: true
+      campaign:
+        description: >-
+          Contains campaign data to update documentation in corresponding OEM
+          system.
+        type: object
+        properties:
+          completion_status:
+            description: Resulting status of the campaign for the vehicle.
+            type: string
+            example: DONE_BY_ORU
+          campaign_id:
+            description: OEM internal identification of the campaign
+            type: string
+            maxLength: 255
+            example: VB09
+          criterion_id:
+            description: Identification of selection criterion.
+            type: string
+            maxLength: 255
+            example: '01'
+          reparation_time:
+            description: Date of repair.
+            type: string
+            format: date-time
+            example: '2015-05-28T14:07:17.000Z'
+        required:
+          - completion_status
+          - campaign_id
+          - criterion_id
+      vehicle_ecus:
+        description: >-
+          Contains vehicle configuration data to update documentation in
+          corresponding OEM system.
+        type: object
+        properties:
+          ecu_update:
+            $ref: '#/definitions/ecu_update_ov2'
+        required:
+          - ecu_update
+    required:
+      - vin
+    x-object-version: 2
+    x-object-model: true
+  campaign_filter_ov2:
+    title: campaign_filter
+    description: >-
+      This object contains various filters, which are applied on campaign
+      response.
+    type: object
+    properties:
+      campaign_ids:
+        description: >-
+          This filter determines a filter, which is applied on the
+          "Aktionsnummer". Only data related to the the defined campaign IDs
+          shall be returned. If no filter is set, this filter shall not be
+          evaluated and nothing shall be filtered out (the data of all campaigns
+          are returned).
+        type: array
+        items:
+          type: string
+          maxLength: 4
+          example: AB12
+      criteria:
+        description: >-
+          This filter determines a filter, which is applied on the "criterion".
+          Only data related to the the defined campaign IDs shall be returned.
+          If no filter is set, this filter shall not be evaluated and nothing
+          shall be filtered out (the data of all all criterions are returned).
+        type: array
+        items:
+          type: string
+          maxLength: 2
+          example: 1
+      campaign_status:
+        description: >-
+          This filter determines a list of elements, which are applied on the
+          requested campaign status data. In case of  “ “-value, all active
+          campaigns are returned. In case of “I”-value, all inactive campaigns
+          are returned. In case of “L”-value, campaigns which are deleted soon,
+          are returned. In case of of “A”-value to be archived soon. Thereby,
+          multiple values are allowed. Default value for campaign_status is all
+          campaigns “ “,”I”,”L”,”A” if no value is defined.
+        type: array
+        items:
+          type: string
+          maxLength: 1
+          example: I
+      oru_relevance:
+        description: >-
+          This filter determines a list of elements, which are applied on the
+          requested criteria data. In case of value "RELEVANT", all criteria,
+          which are Online Remote Update (ORU) relevant, are returned. In case
+          of value "NOT_RELEVANT", all those criteria, which are not ORU
+          relevant, are returned. Thereby, multiple values are allowed. Default
+          value for criteria is "ALL" if no value is defined.
+        type: string
+        enum:
+          - ALL
+          - RELEVANT
+          - NOT_RELEVANT
+        example: ALL
+      vehicle_relevance:
+        description: >-
+          This filter determines a list of elements, which are applied on the
+          vehicle data. In case of value "RELEVANT", all criteria, which are
+          Online Remote Update (ORU) relevant, are returned. In case of value
+          "NOT_RELEVANT", all those criteria, which are not ORU relevant, are
+          returned. Thereby, multiple values are allowed. Default value for
+          criteria is "ALL" and if no value is defined.
+        type: string
+        enum:
+          - ALL
+          - RELEVANT
+          - NOT_RELEVANT
+        example: ALL
+      brands:
+        description: >-
+          This filter determines a list of elements, which allow CDS to get only
+          data from selected brands. Default is all Brands.
+        type: array
+        items:
+          description: >
+            This attribute defines a filter, which allows CDS to get only data
+            from selected brands. Default ist all Brands. - CL00003
+
+            CodeLists are defined in the IA Repository -
+            https://ia/ia-gov-webclient/#/cls
+          type: string
+          example: A
+          x-code-list: CL00003
+      excluded_countries:
+        description: >-
+          This filter determines if the response should contain all VINs or only
+          VINs from counties which are not on the excluded countries list. The
+          value “true” means "filtering of excluded VINs", the value “false”
+          means "no filtering". The default value is "false".
+        type: boolean
+        example: false
+    x-object-version: 2
+    x-object-model: true
+  campaign_keys_ov2:
+    title: campaign_keys
+    description: 'Key, which contains a combination of campaign ID and import date.'
+    type: object
+    properties:
+      campaign_keys:
+        description: List of campaign keys
+        type: array
+        items:
+          description: 'Key, which contains a combination of campaign ID and import date.'
+          type: object
+          properties:
+            campaign_id:
+              description: Unique identifier for the campaign.
+              type: string
+              maxLength: 4
+              example: VB01
+            import_date:
+              description: >-
+                Import date of the change record according to RFC3339 and
+                related to the corresponding campaign ID.
+              type: string
+              format: date-time
+              example: '2015-06-28T14:07:17.000Z'
+          required:
+            - campaign_id
+            - import_date
+    required:
+      - campaign_keys
+    x-object-version: 2
+    x-object-model: true
+  campaign_vin_ov2:
+    title: campaign_vin
+    description: >-
+      Contains campaign information to update documentation in corresponding OEM
+      system.
+    type: object
+    properties:
+      campaign_id:
+        description: Unique identification number of a specifc OEM campaign.
+        type: string
+        maxLength: 255
+        example: VB09
+      completion_status:
+        description: Resulting status of the campaign for the vehicle.
+        type: string
+        example: DONE_BY_ORU
+      criterion_id:
+        description: Identification of selection criterion.
+        type: string
+        maxLength: 255
+        example: '01'
+      reparation_time:
+        description: Date of repair.
+        type: string
+        format: date-time
+        example: '2015-05-28T14:07:17.000Z'
+      vin:
+        title: vin
+        description: Unique vehicle identification number of the vehicle
+        type: string
+        minLength: 17
+        maxLength: 17
+        example: WVWZZZAUZFW900000
+        x-object-version: 1.3
+        x-object-model: true
+    required:
+      - completion_status
+      - campaign_id
+      - criterion_id
+      - vin
+    x-object-version: 2
+    x-object-model: true
+  campaigns_ov2:
+    title: campaigns
+    description: This is a list of campaigns.
+    type: object
+    properties:
+      campaigns:
+        type: array
+        items:
+          $ref: '#/definitions/campaign_ov2'
+    required:
+      - campaigns
+    x-object-version: 2
+    x-object-model: true
+  change_measure_ov2:
+    title: change_measure
+    description: >-
+      Object, which contains several change measure data and corresponding
+      import date.
+    type: object
+    properties:
+      import_date:
+        description: Import date of change measure according to RFC3339.
+        type: string
+        format: date-time
+        example: '2021-02-28T14:07:17.000Z'
+      assigned_ecu_change_measure:
+        $ref: '#/definitions/assigned_ecu_change_measure_ov2'
+    x-object-version: 2
+    x-object-model: true
+  change_measures_ov2:
+    title: change_measures
+    description: >-
+      Object, which contains a list of change measures with corresponding import
+      dates.
+    type: object
+    properties:
+      change_measures:
+        description: List of change measures with corresponding import dates.
+        type: array
+        items:
+          $ref: '#/definitions/change_measure_ov2'
+    x-object-version: 2
+    x-object-model: true
+  checklist_ov2:
+    title: checklist
+    description: Checklist result according to requested criteria.
+    type: object
+    properties:
+      id:
+        description: ID of the checklist
+        type: integer
+        example: 10000001
+      version:
+        description: Version of the checklist starting with '1'
+        type: integer
+        example: 1
+      name:
+        description: Name of the checklist
+        type: string
+        example: KD3-Paket_D5._C8._Q8_V1_2018-12-06_0959.xlsx
+      after_sales_service_action_id:
+        description: >-
+          ID of the after-sales service action (in German
+          "Kundendienstmaßnahme")
+        type: integer
+        example: 99
+      after_sales_service_action_name:
+        description: >-
+          Name of the after-sales service action (in German
+          "Kundendienstmaßnahme")
+        type: string
+        example: ESC B9 HBC Bewarnung 1.4TFSI (Limo/Avant)
+      status:
+        description: |
+          Coded status of the checklist
+
+          * e.g. value "860" means "for review" (in German: "zum Review")
+          * e.g. value "861" means "deprecated" (in German: "veraltet")
+          * e.g. value "862" means "approved" (in German: "freigegeben")
+          * e.g. value "863" means "rejected" (in German: "zurückgewiesen")
+        type: string
+        example: 862
+      change_date:
+        description: Change date of the checklist
+        type: string
+        format: date-time
+        example: '2015-05-28T14:07:17.000Z'
+      brand_code:
+        title: brand_code
+        description: >
+          Brand of the dealer - CL00003 BrandCode
+
+          CodeLists are defined in the IA Repository -
+          https://ia/ia-gov-webclient/#/cls
+        type: string
+        maxLength: 1
+        example: 'N'
+        x-code-list: >-
+          CL00003 BrandCode Describes a brand within the Volkswagen Group.
+          Abbreviation is used because the codes are common within the group.
+        x-object-version: 1.5
+        x-object-model: true
+      records:
+        type: array
+        items:
+          $ref: '#/definitions/record_ov2'
+    x-object-version: 2
+    x-object-model: true
+  checklists_ov2:
+    title: checklists
+    type: object
+    properties:
+      checklists:
+        type: array
+        items:
+          $ref: '#/definitions/checklist_ov2'
+    required:
+      - checklists
+    x-object-version: 2
+    x-object-model: true
+  documentation_status_ov2:
+    title: documentation_status
+    description: Contains the documentation status according to the processing ID.
+    type: object
+    properties:
+      processing_id:
+        description: >-
+          ID of the process as Universally Unique Identifier (UUID) in
+          hexadecimal notation according to RFC4122.
+        type: string
+        format: uuid
+        example: 550e8400-e29b-11d4-a716-446655440000
+      vin:
+        title: vin
+        description: Unique vehicle identification number of the vehicle
+        type: string
+        minLength: 17
+        maxLength: 17
+        example: WVWZZZAUZFW900000
+        x-object-version: 1.3
+        x-object-model: true
+      vehicle_documentation_status:
+        description: >-
+          Contains the documentation status for vehicle configurations according
+          to the processing ID.
+        type: object
+        properties:
+          report_id:
+            description: Unique ID of the report.
+            type: string
+            example: '5370947178275224'
+          original_log_record_id:
+            description: ID of the original log record.
+            type: string
+            example: '1283165'
+          processed_log_record_id:
+            description: ID of the processed log record.
+            type: string
+            example: '1283166'
+          processing_result:
+            description: Result of the documentation process as enumeration.
+            type: string
+            enum:
+              - Erfolg
+              - Fehler
+          processing_error:
+            description: Error code from Service42 in case of an error.
+            type: string
+            example: Service42 Error
+          processing_result_carport:
+            description: 'Result of the documentation process from Carport, if available.'
+            type: string
+            example: Carport documentation process result
+          correlation_id:
+            description: ID of the Carport request respectively the Carport response.
+            type: string
+            example: 'ID:414d51205153574951514532202020205d6ab2582e090898'
+          change_procedure_code:
+            description: Code of the change procedure.
+            type: string
+            example: ChangeProcedureCode
+          change_procedure_id:
+            description: ID of the change procedure.
+            type: string
+            example: '33483901'
+          report_date:
+            description: Date of the report according to RFC3339.
+            type: string
+            example: '2019-10-25T12:49:29Z'
+      campaign_documentation_status:
+        description: >-
+          Contains the documentation status for campaigns according to the
+          processing ID.
+        type: object
+        properties:
+          campaign_kind:
+            description: Kind of the campaign.
+            type: string
+            maxLength: 255
+            example: recall
+          campaign_id:
+            description: OEM internal identification of the campaign.
+            type: string
+            maxLength: 255
+            example: VB09
+          acknowledgement:
+            description: >-
+              Acknowledgement, which determines whether the documentation has
+              been executed successfully by the corresponding OEM system or not.
+              True, if the documentation has been executed successfully, else
+              false. If the documentation failed, then fault parameters by OEM
+              system are returned as well.
+            type: boolean
+            example: true
+          fault:
+            description: Contains error descriptions in case of an error.
+            type: object
+            properties:
+              system:
+                description: >-
+                  System, which recognized the fault according to CL00015.
+                  CodeLists are defined in the IA Repository of Volkswagen.
+                type: string
+                maxLength: 10
+                example: RCL
+              class:
+                description: >-
+                  Class of the fault, which determines the responsible party for
+                  fault handling according to CL00267. CodeLists are defined in
+                  the IA Repository of Volkswagen.
+                type: string
+                maxLength: 10
+                example: technical
+              code:
+                description: >-
+                  Code of the fault, which determines the technical identifier
+                  for a type of faults.
+                type: string
+                maxLength: 4
+                example: '9026'
+              level:
+                description: >-
+                  Level of the fault, which determines the severity of the fault
+                  and indicated level of recovery to be done according to
+                  CL00268. CodeLists are defined in the IA Repository of
+                  Volkswagen.
+                type: string
+                minLength: 1
+                maxLength: 1
+                example: W
+              id:
+                description: >-
+                  ID of the fault, which is generated by the fault system. The
+                  fault ID is mandatory for error level and optional for
+                  information. Additionally, the fault ID is used by the support
+                  to find further information in the system logs.
+                type: string
+                maxLength: 100
+                example: 6e26c196-a7b5-408f-865d-3a7cfbeec562
+              detection_date:
+                description: Date of detection of the fault.
+                type: string
+                format: date-time
+                example: '2015-05-28T14:07:17Z'
+              code_details:
+                description: List of parameters of the fault code details.
+                type: array
+                items:
+                  description: Parameter of the fault code details.
+                  type: object
+                  properties:
+                    parameter_name:
+                      description: Name of the parameter of the fault code details.
+                      type: string
+                      maxLength: 100
+                      example: '9026'
+                    parameter_value:
+                      description: Value of the parameter of the fault code details.
+                      type: string
+                      maxLength: 100
+                      example: Technical validation error
+              system_details:
+                description: List of parameters of the fault system details.
+                type: array
+                items:
+                  description: Parameter of the fault system details.
+                  type: object
+                  properties:
+                    parameter_name:
+                      description: >-
+                        Name of the parameter of the fault system details
+                        according to CL00269. CodeLists are defined in the IA
+                        Repository of Volkswagen.
+                      type: string
+                      maxLength: 100
+                      example: Application
+                    parameter_value:
+                      description: Value of the parameter of the fault system details.
+                      type: string
+                      maxLength: 100
+                      example: CSP-IA-GW@WSGWCPNQ2-WOB
+              reason:
+                description: >-
+                  Reason of the fault, which may be used for nested fault
+                  conditions.
+                type: string
+                maxLength: 255
+                example: XML not schema valid
+    x-object-version: 2
+    x-object-model: true
+  ecu_update_ov2:
+    title: ecu_update
+    description: >-
+      Contains Electronic Control Unit (ECU) information to update documentation
+      in corresponding OEM system.
+    type: object
+    properties:
+      user_id:
+        description: User identifier assigned by the leading identity management system.
+        type: string
+        maxLength: 50
+        example: WCDP_ORU
+      process_information:
+        description: Contains process relevant information.
+        type: object
+        properties:
+          task_type:
+            description: >-
+              Type of the task for the process according to CL01422. "7" is
+              defined as default value to ensure documentation with OEM system.
+              Volkswagen codeslists are defined by system owners in the IA
+              Repository (https://ia/ia-gov-webclient/#/cls) or are externally
+              managed. Note that the listed examples may not be up-to-date.
+              Please refer always to the newest codelist.
+            type: string
+            example: '7'
+          change_types:
+            description: |
+              List of Parameter that is needed to fullfill the task.
+            type: array
+            items:
+              type: object
+              properties:
+                value:
+                  description: >-
+                    Value of parameter. Often this value is the same as
+                    ecu_information.diagnostic_information.diagnostic_address.
+                  type: string
+                  maxLength: 255
+                  example: 005F
+                parameter:
+                  description: >-
+                    Type of the parameter, e.g. value of change code for the
+                    type quick check via change code according to CL01432.
+                    Volkswagen codeslists are defined by system owners in the IA
+                    Repository (https://ia/ia-gov-webclient/#/cls) or are
+                    externally managed. Note that the listed examples may not be
+                    up-to-date. Please refer always to the newest codelist.
+                  type: string
+                  example: ComponentRef
+              required:
+                - value
+                - parameter
+        required:
+          - task_type
+          - change_types
+      tester_information:
+        description: Contains tester relevant information.
+        type: object
+        properties:
+          label:
+            description: >
+              Model of diagnostic tester, which used to identify the type of the
+              tester according to CL01420. Volkswagen codeslists are defined by
+              system owners in the IA Repository
+              (https://ia/ia-gov-webclient/#/cls) or are externally managed.
+              Note that the listed examples may not be up-to-date. Please refer
+              always to the newest codelist.
+            type: string
+            example: OEM.IL
+          id:
+            description: Tester ID provided by the tester.
+            type: string
+            maxLength: 255
+            example: WCDP_ORU
+          serial:
+            description: Serial number of tester provided by the tester.
+            type: string
+            maxLength: 255
+            example: APP-33625
+          partner_number:
+            description: >-
+              The Partner number is a 5-digit alphanumeric string (e.g. 74623)
+              given by the importer and only valid in the context of a brand and
+              country.
+            type: string
+            maxLength: 5
+            example: 74623
+          wholesaler_number:
+            description: >-
+              The wholesaler number identifies a wholesaler. The
+              WholesalerNumber is stored in the Group Importer System KVPS as
+              BID.
+            type: string
+            maxLength: 3
+            example: '444'
+          base_sw_version:
+            description: >-
+              Version of the tester's base software, which is needed for the
+              support in error cases.
+            type: string
+            maxLength: 255
+            example: '1.9'
+          diagnostic_sw_version:
+            description: >-
+              Version of the tester's diagnostic software, which is needed for
+              the support in error cases.
+            type: string
+            maxLength: 255
+            example: '1.9'
+          brand_code:
+            description: >
+              Brand of the Vehicle according to CL00003,
+
+              * e.g. code value "V" for description "VW PKW"
+
+              * e.g. code value "N" for description "VW Nutzfahrzeuge"
+
+
+              Volkswagen codeslists are defined by system owners in the IA
+              Repository (https://ia/ia-gov-webclient/#/cls) or are externally
+              managed. Note that the listed examples may not be up-to-date.
+              Please refer always to the newest codelist.
+            type: string
+            maxLength: 1
+            example: V
+        required:
+          - label
+          - id
+          - partner_number
+          - wholesaler_number
+          - base_sw_version
+          - diagnostic_sw_version
+          - brand_code
+      vehicle_information:
+        description: Contains vehicle relevant information.
+        type: object
+        properties:
+          vin_origin:
+            description: >-
+              Origin of the identifier, which defines whether the VIN was typed
+              in manually or read by diagnostic tester.
+            type: string
+            maxLength: 255
+            example: DiagnosticTester
+          odometer_reading:
+            description: Contains odometer information.
+            type: array
+            items:
+              type: object
+              properties:
+                value:
+                  type: string
+                  description: Mileage value of the odometer.
+                  example: 12930
+                unit:
+                  type: string
+                  description: >-
+                    Mileage unit of the odometer according to CL00129.
+                    Volkswagen codeslists are defined by system owners in the IA
+                    Repository (https://ia/ia-gov-webclient/#/cls) or are
+                    externally managed. Note that the listed examples may not be
+                    up-to-date. Please refer always to the newest codelist.
+                  example: km
+              required:
+                - value
+                - unit
+        required:
+          - vin_origin
+          - odometer_reading
+      ecu_information:
+        description: Information about affected Electronic Control Units (ECUs).
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              description: >-
+                Unique identifer within Volkswagen AG provided by the system
+                FAZIT for ECUs, which are relevant for theft protection.
+              maxLength: 23
+            diagnostic_information:
+              type: object
+              description: Contains diagnostic information.
+              properties:
+                diagnostic_address:
+                  type: string
+                  description: >-
+                    Electronic Control Unit (ECU) address as 4-digit hexadecimal
+                    code. Use left-hand zeros if necessary.
+                  maxLength: 4
+                  example: 005F
+                master_related_diagnostic_adress:
+                  type: string
+                  description: >-
+                    Master related Electronic Control Unit (ECU) address as
+                    4-digit hexadecimal code. Use left-hand zeros if necessary.
+                  maxLength: 4
+                  example: 005F
+                ecu_type:
+                  type: string
+                  description: >-
+                    Type of the component according to CL00005. Volkswagen
+                    codeslists are defined by system owners in the IA Repository
+                    (https://ia/ia-gov-webclient/#/cls) or are externally
+                    managed. Note that the listed examples may not be
+                    up-to-date. Please refer always to the newest codelist.
+                  example: Slave
+              required:
+                - diagnostic_address
+            ecu_part_number:
+              type: string
+              description: Spare part number of hardware.
+              maxLength: 18
+              example: 282005491149392400
+            hw_part_number:
+              type: string
+              description: Spare part number of electronic part number.
+              maxLength: 18
+              example: 1A2345678B
+            hw_version:
+              type: string
+              description: Version string of the hardware as 3-digit code.
+              maxLength: 255
+              example: Z05
+            sw_version:
+              type: string
+              description: Version string of the software as 4-digit code.
+              maxLength: 255
+              example: XB01
+            component_check_code:
+              type: string
+              description: >-
+                Identification string of some technical component parameters to
+                enable checking of vehicles tuning activities.
+              maxLength: 8192
+            process_parameter:
+              type: object
+              properties:
+                just_flashed:
+                  type: boolean
+                  example: false
+                  description: >-
+                    Indicates, whether a update has been processed within this
+                    repair (triggered by a previous request).
+                supports_flash:
+                  type: boolean
+                  example: false
+                  description: >-
+                    Indictates, whether the Electronic Control Unit (ECU) is
+                    flashable or not. True, if the ECU is flashable, otherwise
+                    false.
+                just_coded:
+                  type: boolean
+                  example: false
+                  description: >-
+                    Indicates, whether a coding has been processed within this
+                    repair (triggered by a previous request).
+                just_parametrized:
+                  type: boolean
+                  example: false
+                  description: >-
+                    Indicates, whether a parametrizing has been processed within
+                    this repair (triggered by a previous request).
+                flash_always:
+                  type: boolean
+                  example: false
+                  description: >-
+                    Indicates, whether the Electronic Control Unit (ECU) must be
+                    flashed only when a delta exisits by comparing actual versus
+                    target. True, only in case of a delta, otherwise false.
+                repair_time:
+                  type: string
+                  format: date-time
+                  example: '1985-04-12T23:20:50.52Z'
+                  description: >-
+                    Repair time. Only time is relevant - date will be set to
+                    null.
+                just_software_configured:
+                  type: boolean
+                  example: false
+                  description: 'True, if just configured, otherwise false.'
+                just_swap_activated:
+                  type: boolean
+                  example: false
+                  description: 'True, if just swap activated, otherwise false.'
+                just_adjust_calibrated:
+                  type: boolean
+                  example: false
+                  description: >-
+                    Indicates, whether the calibration has been adjusted within
+                    this repair (triggered by a previous request).
+                just_calibration_proofed:
+                  type: boolean
+                  example: false
+                  description: >-
+                    True, if calibration was executed but without deviation,
+                    otherwise false.
+            asam_data:
+              type: object
+              properties:
+                asam_file_identifier:
+                  type: string
+                  description: ASAM data file identifier.
+                  maxLength: 255
+                asam_file_version:
+                  type: string
+                  maxLength: 9
+                  description: ASAM file version.
+              required:
+                - asam_file_identifier
+                - asam_file_version
+          required:
+            - diagnostic_information
+            - ecu_part_number
+            - hw_part_number
+            - hw_version
+            - sw_version
+            - process_parameter
+    required:
+      - user_id
+      - tester_information
+      - process_information
+      - vehicle_information
+      - ecu_information
+    x-object-version: 1
+    x-object-model: true
+  processing_id_ov2:
+    title: processing_id
+    description: 'Contains a processing information, which can be used for status request'
+    type: object
+    properties:
+      processing_id:
+        title: processing_id
+        description: >-
+          Universally Unique Identifier (UUID) in hexadecimal notation. OEM.IL
+          will always create an individual processing_id which will also be used
+          for later feedback.
+        type: string
+        format: uuid
+        example: 550e8400-e29b-11d4-a716-446655440000
+        x-object-version: 1
+        x-object-model: true
+    x-object-version: 1
+    x-object-model: true
+  paging_campaign_change_records_ov2:
+    title: paging_campaign_change_records
+    description: Paged list of change records related to a campaign.
+    type: object
+    properties:
+      campaign_change_records:
+        description: List of change records related to a campaign.
+        type: array
+        items:
+          description: Change record related to a campaign.
+          type: object
+          properties:
+            campaign_id:
+              description: Unique identifier for the campaign.
+              type: string
+              maxLength: 4
+              example: VB01
+            import_date:
+              description: >-
+                Date of import according to RFC3339, which is generated within
+                OEM.IL each time when a new update on a campaign is imported.
+              type: string
+              format: date-time
+              example: '2015-06-28T14:07:17.000Z'
+            brand_codes:
+              description: >
+                Selected brands for the campaign (CL00003 BrandCode describes a
+                brand within the
+
+                Volkswagen Group)
+
+
+                CodeLists are defined in the IA Repository -
+
+                https://ia/ia-gov-webclient/#/cls
+              type: array
+              items:
+                type: string
+              example:
+                - V
+                - 'N'
+            title:
+              description: Title of the campaign
+              type: string
+              example: ORU Test campaign 01
+            title_language:
+              description: Language of the campaign title
+              type: string
+              example: de-DE
+            creation_date:
+              description: Date of the campaign creation
+              type: string
+              format: date-time
+              example: '2015-07-28T14:07:17.000Z'
+            selected_countries:
+              description: List of selected countries for the campaign.
+              type: array
+              items:
+                description: Selected country for the campaign.
+                type: object
+                properties:
+                  country_code:
+                    description: >-
+                      Country code of the campaign according to
+                      ISO-3166-Alpha-3.
+                    type: string
+                    minLength: 3
+                    maxLength: 3
+                    example: NED
+                  start_date:
+                    description: Start date of the campaign according to RFC3339.
+                    type: string
+                    format: date-time
+                    example: '2015-05-28T14:07:17.000Z'
+                  status:
+                    description: >
+                      Status of the campaign as enumeration with the following
+                      values:
+
+                      * " " as empty string means that the campaign is active.
+
+                      * "I" means that the campaign is inactive.
+
+                      * "L" means that the campaign is going to be deleted soon.
+
+                      * "A" means that the campaign is going to be archived
+                      soon.
+                    type: string
+                    enum:
+                      - ' '
+                      - A
+                      - I
+                      - L
+            excluded_countries:
+              description: >-
+                List of excluded countries for the campaign according to
+                ISO-3166-Alpha-3.
+              type: array
+              items:
+                description: >-
+                  Excluded country for the campaign according to
+                  ISO-3166-Alpha-3.
+                type: string
+                minLength: 3
+                maxLength: 3
+              example:
+                - ARG
+                - CHL
+                - ECU
+            campaign_criteria:
+              description: List of criteria related to the campaign.
+              type: array
+              items:
+                description: Criteria related to the campaign.
+                type: object
+                properties:
+                  criterion:
+                    description: >
+                      Grouping level for underlying campaigns,
+
+                      * e.g. criteria "01" means first enrollment of remote
+                      update,
+
+                      * e.g. criteria "02" means second enrollment of remote
+                      update,
+
+                      * etc.
+                    type: string
+                    maxLength: 2
+                    example: '02'
+                  creation_date:
+                    description: Date of the criterion creation
+                    type: string
+                    format: date-time
+                    example: '2015-07-28T14:07:17.000Z'
+                  title_language:
+                    description: >-
+                      Code to identify human language for the criterion
+                      according to IETF language tag.
+                    type: string
+                    maxLength: 5
+                    example: de-DE
+                  title:
+                    description: >-
+                      German title for the criterion from EC04. If the German
+                      title is not available, then the English title is derived.
+                    type: string
+                    maxLength: 60
+                    example: OEM.IL KRITERIUM 02
+                  oru_relevant:
+                    description: >-
+                      Determines, whether a specific criterion of a campaign is
+                      relevant for Online Remote Update (ORU) or not.
+                    type: boolean
+                    example: true
+      offset:
+        description: >
+          Offset (start pointer) of campaigns returned. Start Pointer (paging)
+          is depending on attribute "limit". If no value is defined, then value
+          is set to 0 per default. The minimum value is defined as 0.
+        type: integer
+        default: 0
+        minimum: 0
+        example: 0
+      limit:
+        description: >
+          Maximum number of campaigns returned in the response at once. If no
+          value is defined, then value is set to 20 per default. The minimum
+          value is defined as 10. If the total amount of returned campaigns is
+          less than 10, then the minimum value is not applied. The maximum value
+          is defined as 50.
+        type: integer
+        default: 20
+        minimum: 10
+        maximum: 50
+        example: 20
+      total:
+        description: 'Total number of available campaigns, which are returned.'
+        type: integer
+        example: 208
+    x-object-version: 2
+    x-object-model: true
+  paging_criterion_vehicles_ov2:
+    title: paging_criterion_vehicles
+    description: >-
+      Paged list of vehicles related to a campaign, an import date and a
+      criterion.
+    type: object
+    properties:
+      campaign_id:
+        description: Unique identifier of the campaign.
+        type: string
+        maxLength: 4
+        example: VB01
+      import_date:
+        description: >-
+          Date of import according to RFC3339, which is generated within OEM.IL
+          each time when a new update on a campaign is imported.
+        type: string
+        format: date-time
+        example: '2015-05-28T14:07:17Z'
+      criterion:
+        description: |
+          Grouping level for underlying campaigns,
+          * e.g. criteria "01" means first enrollment of remote update,
+          * e.g. criteria "02" means second enrollment of remote update,
+          * etc.
+        type: string
+        maxLength: 2
+        example: '02'
+      vehicles:
+        description: >-
+          List of vehicles related to a campaign, an import date and a
+          criterion.
+        type: array
+        items:
+          description: 'Vehicle related to a campaign, an import date and a criterion.'
+          type: object
+          properties:
+            vin:
+              title: vin
+              description: Unique vehicle identification number of the vehicle
+              type: string
+              minLength: 17
+              maxLength: 17
+              example: WVWZZZAUZFW900000
+              x-object-version: 1.3
+              x-object-model: true
+            oru_relevant:
+              description: >-
+                Determines, whether a specific criterion of a campaign is
+                relevant for Online Remote Update (ORU) or not.
+              type: boolean
+              example: 'true'
+            oru_relevant_date:
+              description: Creation date of ORU relevant
+              type: string
+              format: date-time
+              example: '2015-07-28T14:07:17.000Z'
+            mbv_model_code:
+              description: >-
+                Code of model according to CL00027 defined by
+                "Modellbeschreibung Vertrieb (MBV)". This code represents a
+                selling code of the Volkswagen (VW) Group. CodeLists are defined
+                in the IA Repository - https://ia/ia-gov-webclient/#/cls.
+              type: string
+              maxLength: 6
+              example: CR74RJ
+            mbt_model_code:
+              description: >-
+                This attribute determines the model description technical.
+                Determines the german term "Modellbeschreibung Technik (MBT)".
+              type: string
+              maxLength: 4
+              example: 10A
+            brand_code:
+              description: >-
+                Brand of the dealer according to CL00003. CodeLists are defined
+                in the IA Repository - https://ia/ia-gov-webclient/#/cls.
+              type: string
+              minLength: 1
+              maxLength: 1
+              example: V
+            pkn:
+              description: Production identifier. In German Produktionskennnummer.
+              type: string
+              maxLength: 13
+              example: 0479001662009
+            update_status:
+              description: >
+                Update status of the vehicle as enumeration with the following
+                values:
+
+                * " " An empty values means that no status is available for this
+                vehicle
+
+                * "CUSTOMER_NOTIFIED" means that the customer was informed about
+                the campaign for his vehicle via HMI.
+
+                * "DONE_BY_ORU" means" that the campaign was implemented
+                successfully via Online Remote Update (ORU).
+
+                * "DONE_BY_DEALERSHIP" means that the Online Remote Update (ORU)
+                recognized that the vehicle already reached its target state.
+                Consequently, there is a high probability that a dealer already
+                implemented the campaign.
+              type: string
+              enum:
+                - ' '
+                - CUSTOMER_NOTIFIED
+                - DONE_BY_ORU
+                - DONE_BY_DEALERSHIP
+            delivering_dealer:
+              description: 'Dealer, which delivers the vehicle.'
+              type: string
+              maxLength: 11
+              example: CHN75813756
+            supervising_dealer:
+              description: 'Dealer, which supervizes the vehicle.'
+              type: string
+              maxLength: 11
+              example: CHN79601076
+            ordering_dealer:
+              description: 'Dealer, which orders the vehicle.'
+              type: string
+              maxLength: 11
+              example: CHN79601061
+            equipment_codes:
+              description: List of equipment codes.
+              type: array
+              items:
+                description: >-
+                  Equipment code according to several CodeLists like PR Number
+                  (CL00364), Package Number, Maneck Code. The code is usually
+                  manufacturer dependent. Can be used for technical equipment
+                  (CL00324), interior equipment (CL00322) and exterior equipment
+                  (CL00323). CodeLists are defined in the IA Repository -
+                  https://ia/ia-gov-webclient/#/cls.
+                type: string
+              example:
+                - AV1
+                - B0A
+                - BLB
+            model_year:
+              description: Year of the model.
+              type: string
+              maxLength: 4
+              example: '2006'
+            model_name:
+              description: Name of the vehicle model
+              type: string
+              example: Golf V6 4Motion
+            creation_date:
+              description: Date of vehicle data creation
+              type: string
+              format: date-time
+              example: '2015-07-28T14:07:17.000Z'
+      offset:
+        description: >
+          Offset (start pointer) of vehicles returned. Start Pointer (paging) is
+          depending on attribute "limit". If no value is defined, then value is
+          set to 0 per default. The minimum value is defined as 0.
+        type: integer
+        default: 0
+        minimum: 0
+        example: 0
+      limit:
+        description: >
+          Maximum number of vehicles returned in the response at once. If no
+          value is defined, then value is set to 2000 per default. The minimum
+          value is defined as 1000. If the total amount of returned vehicles is
+          less than 1000, then the minimum value is not applied. The maximum
+          value is defined as 5000.
+        type: integer
+        default: 2000
+        minimum: 1000
+        maximum: 5000
+        example: 2000
+      total:
+        description: 'Total number of available vehicles, which are returned.'
+        type: integer
+        example: 20827
+    x-object-version: 2
+    x-object-model: true
+  record_ov2:
+    title: record
+    description: Content of one record in the checklist
+    type: object
+    properties:
+      vehicle_product_key:
+        description: Key of the vehicle product (e.g. 10A)
+        type: string
+        maxLength: 4
+        example: 10A
+      vehicle_product_short_name:
+        description: Short name of the vehicle product (e.g. AU581/0)
+        type: string
+        example: AU581/0
+      vehicle_product_name:
+        description: Name of the vehicle product (e.g. C8 Limousine)
+        type: string
+        example: C8 Limousine
+      diagnostic_address:
+        title: diagnostic_address
+        description: Electronic control unit (ECU) address as a 4-digit hexadecimal code.
+        type: string
+        maxLength: 4
+        example: '0001'
+        x-object-version: 1.5
+        x-object-model: true
+      affected_ecus:
+        type: array
+        items:
+          $ref: '#/definitions/affected_ecu_ov2'
+    x-object-version: 2
+    x-object-model: true
+  target_baseline_ov2:
+    title: target_baseline
+    type: object
+    properties:
+      target_baseline:
+        description: Target baseline of change measure.
+        type: object
+        properties:
+          baseline_uuid:
+            description: Universally Unique Identifier (UUID) of the baseline.
+            type: string
+            maxLength: 255
+            example: TBD
+          baseline_tnr:
+            description: >-
+              Part number (in german "Teilenummer", abbreviation "TNR") of the
+              baseline.
+            type: string
+            maxLength: 255
+            example: TBD
+          baseline_revision:
+            description: Revision of the baseline.
+            type: string
+            maxLength: 255
+            example: TBD
+          flash_containers:
+            description: List of flash containers.
+            type: array
+            items:
+              title: flash_container
+              type: object
+              properties:
+                flash_container:
+                  description: Flash container of change measure.
+                  type: object
+                  properties:
+                    flash_container_name:
+                      description: Name of the flash container.
+                      type: string
+                      maxLength: 255
+                      example: TBD
+                    flash_container_document_id:
+                      description: Document ID of the flash container.
+                      type: string
+                      maxLength: 255
+                      example: TBD
+    x-object-version: 2
+    x-object-model: true
+  target_ecu_ov2:
+    title: target_ecu
+    type: object
+    properties:
+      target_ecu:
+        description: Target Electronic Control Unit (ECU) of change measure.
+        type: object
+        properties:
+          ecu:
+            description: Electronic Control Unit (ECU) of change measure.
+            type: object
+            properties:
+              ecu_ref:
+                description: Electronic Control Unit (ECU) reference of change measure.
+                type: object
+                properties:
+                  ecu_uid:
+                    description: >-
+                      Unique Electronic Control Unit (ECU) identification number
+                      of Electronic Control Unit (ECU) reference.
+                    type: string
+                    maxLength: 45
+                    example: 10503271
+              diagnostic_information:
+                description: Diagnostic information of Electronic Control Unit (ECU).
+                type: object
+                properties:
+                  diagnostic_address:
+                    description: Diagnostic address of Electronic Control Unit (ECU).
+                    type: string
+                    maxLength: 4
+                    example: '0001'
+          flash_data_list:
+            description: List of flash data.
+            type: array
+            items:
+              description: Flash data of target Electronic Control Unit (ECU).
+              type: object
+              properties:
+                container_id:
+                  description: Container ID of flash data.
+                  type: string
+                  example: FL_85E035465_X060_PASDENTRY_V001.pdx
+    x-object-version: 2
+    x-object-model: true]]></con:content>
+      <con:type>https://swagger.io/swagger2/specification</con:type>
+    </con:part>
+  </con:definitionCache>
+  <con:endpoints>
+    <con:endpoint>https://oemil-qs.volkswagen.de</con:endpoint>
+    <con:endpoint>https://oemil.volkswagen.de</con:endpoint>
+  </con:endpoints>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:interface>

@@ -1,0 +1,309 @@
+{
+  "modulVersion" : "2.1.1",
+  "modulResult" : true,
+  "scheme" : "VehicleManifestSchema_2.1.0.json",
+  "requestId" : "dcae7e2c-efa4-11eb-b159-eeee0affe107",
+  "description" : "DST-XXVI-VR14",
+  "blPartNumber" : "000000000",
+  "vcHash" : "CEECE34A7A28438D79F3ADE77799948655BB76B921160B79EAD8DCD2FA8CA74B6C29AEAB3E076ED5ACF62B2521DB5562AE92E8AD74E834C3454D211668035C8B",
+  "updateMap" : {
+    "id" : 1,
+    "updateType" : "sequential",
+    "updateItems" : [
+      {
+        "id" : 2,
+        "elementType" : "updateControlItem",
+        "updateControlItem" : {
+          "elementType" : "preProgramming"
+        }
+      },
+      {
+        "id" : 3,
+        "elementType" : "updateBlock",
+        "updateBlock" : {
+          "updateType" : "sequential",
+          "updateItems" : [
+            {
+              "id" : 11,
+              "elementType" : "updateItem",
+              "updateItem" : {
+                "diagnosisAddress" : "0019",
+                "dataType" : "WAIT",
+                "waitInformation" : {
+                  "duration" : 100.0
+                },
+                "retries" : 1,
+                "sequenceControl" : {
+                  "skipTo" : 100,
+                  "executeOnlyByPreResult" : "irgendeine execution",
+                  "continueOnFailure" : false
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id" : 24,
+        "elementType" : "updateBlock",
+        "updateBlock" : {
+          "updateType" : "sequential",
+          "updateItems" : [
+            {
+              "id" : 26,
+              "elementType" : "updateItem",
+              "updateItem" : {
+                "diagnosisAddress" : "812C",
+                "dataType" : "CONF",
+                "confInformation" : {
+                  "validVersionMapping" : [
+                    {
+                      "partNumber" : "1234",
+                      "softwareVersion" : "0001",
+                      "confManifest" : "responset_RL__LL_CentrElectUDS1.json"
+                    },
+                    {
+                      "partNumber" : "1234",
+                      "softwareVersion" : "0002",
+                      "confManifest" : "responset_RL__LL_CentrElectUDS2.json"
+                    }
+                  ],
+                  "duration" : 5000.0
+                },
+                "retries" : 3,
+                "sequenceControl" : {
+                  "skipTo" : 100,
+                  "executeOnlyByPreResult" : "irgendeine execution",
+                  "continueOnFailure" : false
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id" : 30,
+        "elementType" : "updateBlock",
+        "updateBlock" : {
+          "updateType" : "parallel",
+          "updateItems" : [
+            {
+              "id" : 37,
+              "elementType" : "updateBlock",
+              "updateBlock" : {
+                "updateType" : "sequential",
+                "updateItems" : [
+                  {
+                    "id" : 39,
+                    "elementType" : "updateItem",
+                    "updateItem" : {
+                      "diagnosisAddress" : "0009",
+                      "dataType" : "CONF",
+                      "confInformation" : {
+                        "validVersionMapping" : [
+                          {
+                            "confManifest" : "responset_LL_CentrElectUDS.json"
+                          }
+                        ]
+                      },
+                      "retries" : 1,
+                      "sequenceControl" : {
+                        "skipTo" : 100,
+                        "executeOnlyByPreResult" : "irgendeine execution",
+                        "continueOnFailure" : false
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id" : 46,
+        "elementType" : "updateBlock",
+        "updateBlock" : {
+          "updateType" : "sequential",
+          "updateItems" : [
+            {
+              "id" : 52,
+              "elementType" : "updateItem",
+              "updateItem" : {
+                "diagnosisAddress" : "0015",
+                "dataType" : "CONF",
+                "confInformation" : {
+                  "validVersionMapping" : [
+                    {
+                      "confManifest" : "responset_RL__LL_CentrElectUDS.json"
+                    }
+                  ]
+                },
+                "retries" : 1,
+                "sequenceControl" : {
+                  "skipTo" : 100,
+                  "executeOnlyByPreResult" : "irgendeine execution",
+                  "continueOnFailure" : false
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id" : 75,
+        "elementType" : "updateBlock",
+        "updateBlock" : {
+          "updateType" : "parallel",
+          "updateItems" : [
+            {
+              "id" : 76,
+              "elementType" : "updateBlock",
+              "updateBlock" : {
+                "updateType" : "sequential",
+                "updateItems" : [
+                  {
+                    "id" : 83,
+                    "elementType" : "updateItem",
+                    "updateItem" : {
+                      "diagnosisAddress" : "0602",
+                      "dataType" : "CONF",
+                      "confInformation" : {
+                        "validVersionMapping" : [
+                          {
+                            "confManifest" : "responset_RL__LL_CentrElectUDS.json"
+                          }
+                        ]
+                      },
+                      "retries" : 1,
+                      "sequenceControl" : {
+                        "skipTo" : 100,
+                        "executeOnlyByPreResult" : "irgendeine execution",
+                        "continueOnFailure" : false
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id" : 999,
+        "elementType" : "updateBlock",
+        "updateBlock" : {
+          "updateType" : "sequential",
+          "updateItems" : [
+            {
+              "id" : 134,
+              "elementType" : "updateBlock",
+              "updateBlock" : {
+                "updateType" : "parallel",
+                "updateItems" : [
+                  {
+                    "id" : 143,
+                    "elementType" : "updateBlock",
+                    "updateBlock" : {
+                      "updateType" : "sequential",
+                      "updateItems" : [
+                        {
+                          "id" : 146,
+                          "elementType" : "updateItem",
+                          "updateItem" : {
+                            "diagnosisAddress" : "0046",
+                            "dataType" : "CONF",
+                            "confInformation" : {
+                              "validVersionMapping" : [
+                                {
+                                  "confManifest" : "responset_LL_CentrModulComfoSysteUDS.json"
+                                }
+                              ]
+                            },
+                            "retries" : 1,
+                            "sequenceControl" : {
+                              "skipTo" : 100,
+                              "executeOnlyByPreResult" : "irgendeine execution",
+                              "continueOnFailure" : false
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id" : 168,
+              "elementType" : "updateBlock",
+              "updateBlock" : {
+                "updateType" : "parallel",
+                "updateItems" : [
+                  {
+                    "id" : 169,
+                    "elementType" : "updateBlock",
+                    "updateBlock" : {
+                      "updateType" : "sequential",
+                      "updateItems" : [
+                        {
+                          "id" : 173,
+                          "elementType" : "updateItem",
+                          "updateItem" : {
+                            "diagnosisAddress" : "07B3",
+                            "dataType" : "PROG",
+                            "progInformation" : {
+                              "sgvType" : "PUZ",
+                              "law" : "PS#",
+                              "ecuType" : "UDS (ohne ICAS)",
+                              "obdRelevance" : false,
+                              "ivdRelevance" : false,
+                              "diagnosisClass" : "null",
+                              "targetVersions" : [
+                                {
+                                  "partNumber" : "0ML315105A",
+                                  "softwareVersion" : "X220",
+                                  "hardwarePartNumber" : "0ML315105A",
+                                  "hardwareVersion" : "X05"
+                                }
+                              ],
+                              "validVersionMapping" : [
+                                {
+                                  "metaFile" : "FL_95C941571_X332_APPLR_V001_E.odx"
+                                }
+                              ]
+                            },
+                            "retries" : 1,
+                            "sequenceControl" : {
+                              "skipTo" : 100,
+                              "executeOnlyByPreResult" : "irgendeine execution",
+                              "continueOnFailure" : false
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id" : 190,
+        "elementType" : "updateControlItem",
+        "updateControlItem" : {
+          "elementType" : "preProgramming"
+        }
+      },
+      {
+        "id" : 264,
+        "elementType" : "updateControlItem",
+        "updateControlItem" : {
+          "elementType" : "postProgramming"
+        }
+      }
+    ]
+  }
+}

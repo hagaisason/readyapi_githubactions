@@ -1,0 +1,240 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Update Result Schema",
+    "javaType": "domain.backend.mbb.v1.models.uota_v3.UpdateResult",
+
+    "type": "object",
+    "required": [
+        "schema",
+        "updateId",
+        "measureId",
+        "timestamp",
+        "vehicle",
+        "vcHash",
+        "result"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "schema": {
+            "type": "string",
+            "description": "JSON schema used for document"
+        },
+
+        "updateId": {
+            "type": "string",
+            "format" : "uuid",
+            "description": "UUID of this vehicle update"
+        },
+        "measureId": {
+            "type": "string",
+            "description": "Reference ID of this update"
+        },
+
+        "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when update result was generated in vehicle"
+        },
+
+        "vehicle": {
+            "type": "string",
+            "description": "VIN of vehicle this manifest is intended for",
+            "pattern": "^[A-Z0-9]{17}$"
+        },
+        "vcHash": {
+            "type": "string",
+            "description": "VehicleConfiguration hash after update",
+            "pattern": "^[a-zA-Z0-9_-]{64,128}$"
+        },
+
+        "result": {
+            "description": "Update result (aborted did not attempt update at all)",
+            "type": "string",
+            "enum": [ "completed", "aborted", "failed" ]
+        },
+
+        "error": {
+            "type": "string",
+            "description": "If Result != completed: error type (from predefined, but extensible list of well-known types)",
+            "pattern": "^[a-zA-Z0-9._-]{8,64}$",
+            "examples": ["download.failed", "manifest.decryption_failed"]
+        },
+        "errorDetails": {
+            "type": "string",
+            "description": "If Result != COMPLETED: textual details of error"
+        },
+        "customerWarning": {
+            "description": "State of customer warning / DTC dashboard light",
+            "type": "string",
+            "enum": [ "none", "major", "fatal" ]
+        },
+
+        "estimatedEnergyUsage": {
+            "type": "string",
+            "description": "Estimated energy usage of update as calculated beforehand"
+        },
+        "actualEnergyUsage": {
+            "type": "string",
+            "description": "Actual energy usage measured during update"
+        },
+
+        "customerStartAttempts": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of times customer has started/confirmed update in HMI"
+        },
+
+        "estimatedUpdateDuration": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Estimated update duration in seconds, as calculate beforehand"
+        },
+        "customerInstallConfirmationTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the customer confirms the installation in the HMI"
+        },
+        "updateStartTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when update process started"
+        },
+        "updateEndTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when update process ended"
+        },
+        "mileage": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Vehicle mileage at start of update"
+        },
+
+        "updateSession": {
+            "type": "object",
+            "description": "Additional details only available if update process was attempted",
+            "required": [
+                "sessionStatus",
+                "resultCode"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "sessionStatus": {
+                    "$ref": "#/definitions/sessionStatus"
+                },
+                "resultCode": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Update result code"
+                },
+
+                "errorDetails": {
+                    "type": "string",
+                    "description": "Details of update error"
+                },
+                "errorCategories": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Overall category of update error"
+                },
+
+                "domainResults": {
+                    "type": "array",
+                    "description": "Update results for all involved ECUs",
+                    "items": {
+                        "$ref": "#/definitions/domainResult"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "sessionStatus": {
+            "description": "Final state of update session",
+            "type": "string",
+            "enum": [ "none", "notStarted", "successful", "error", "reverted" ]
+        },
+        "validationResult": {
+            "type": "object",
+            "required": [
+                "status",
+                "resultCode"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "status": {
+                    "description": "Result status of validation",
+                    "type": "string",
+                    "enum": [ "none", "notStarted", "successful", "error", "failed" ]
+                },
+                "resultCode": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Validation step result code"
+                },
+                "errorDetails": {
+                    "type": "string",
+                    "description": "Details of validation error"
+                }
+            }
+        },
+        "domainResult": {
+            "type": "object",
+            "required": [
+                "updateItemId",
+                "diagnosticAddress",
+                "sessionType",
+                "sessionStatus",
+                "resultCode",
+                "integrityValidationResult",
+                "safetyValidationResult"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "updateItemId": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "ID of update step in VehicleManifest"
+                },
+                "diagnosticAddress": {
+                    "type": "string",
+                    "description": "Diagnostic ID (16bit) of ECU",
+                    "pattern": "^[0-9A-F]{4}$"
+                },
+                "sessionType": {
+                    "description": "Type of update",
+                    "type": "string",
+                    "enum": [ "update", "config", "reset", "preProgramming", "postProgramming" ]
+                },
+                "sessionStatus": {
+                    "$ref": "#/definitions/sessionStatus"
+                },
+                "resultCode": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Update step result code"
+                },
+                "retries": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Performed number of retries of update step"
+                },
+                "errorDetails": {
+                    "type": "string",
+                    "description": "Details of update error"
+                },
+                "errorCategories": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Overall category of update error"
+                },
+                "integrityValidationResult": {
+                    "$ref": "#/definitions/validationResult"
+                },
+                "safetyValidationResult": {
+                    "$ref": "#/definitions/validationResult"
+                }
+            }
+        }
+    }
+}

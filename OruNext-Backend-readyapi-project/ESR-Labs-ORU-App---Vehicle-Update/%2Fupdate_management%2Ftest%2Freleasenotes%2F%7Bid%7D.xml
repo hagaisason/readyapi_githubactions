@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/update_management/test/releasenotes/{id}" path="/update_management/test/releasenotes/{id}" id="3ec0c56c-8224-4d27-bb83-41789b54f25a" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="d2e22637-1a63-495c-b451-96f9cb589756fileName">%2Fupdate_management%2Ftest%2Freleasenotes%2F%7Bid%7D</con:setting>
+    <con:setting id="3ec0c56c-8224-4d27-bb83-41789b54f25afileName">%2Fupdate_management%2Ftest%2Freleasenotes%2F%7Bid%7D</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter required="true">
+      <con:name>id</con:name>
+      <con:style>TEMPLATE</con:style>
+      <con:description>id</con:description>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="getReleaseNotesInfo" id="26911928-8a41-4552-80e0-eb8869be058d" method="GET">
+    <con:description>Get release notes info</con:description>
+    <con:settings/>
+    <con:parameters>
+      <con:parameter required="true">
+        <con:name>Authorization</con:name>
+        <con:value>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8</con:value>
+        <con:style>HEADER</con:style>
+        <con:default>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8</con:default>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:sampleContent xsi:nil="true"/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="6c6844fa-d698-43db-9fd5-991e889f53ad" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>ORU-app</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:method name="uploadReleaseNotes" id="9518c6da-0136-47b3-8db4-bd86a5755401" method="POST">
+    <con:description>Upload release notes</con:description>
+    <con:settings/>
+    <con:parameters>
+      <con:parameter required="true">
+        <con:name>Authorization</con:name>
+        <con:value>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8</con:value>
+        <con:style>HEADER</con:style>
+        <con:default>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8</con:default>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>file</con:name>
+        <con:style>QUERY</con:style>
+        <con:description>file</con:description>
+      </con:parameter>
+      <con:parameter>
+        <con:name>useCase</con:name>
+        <con:value>aps-campaigns</con:value>
+        <con:style>QUERY</con:style>
+        <con:default>aps-campaigns</con:default>
+        <con:description>useCase</con:description>
+      </con:parameter>
+    </con:parameters>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:sampleContent xsi:nil="true"/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>201</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>multipart/form-data</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="0baf86e1-532d-43ee-a4cd-40c673927946" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>ORU-app</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="{hash}" path="/vehicleConf_v3/vehicleconfiguration/{hash}" id="0a69e0c1-1390-4db9-b2c9-a2acc580c540" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="0b47861b-5a1e-4fff-87cd-3f8bb751ed5ffileName">%7Bhash%7D</con:setting>
+    <con:setting id="5e14b6cd-3645-4793-9e8c-3c9d787dae48fileName">%7Bhash%7D</con:setting>
+    <con:setting id="0a69e0c1-1390-4db9-b2c9-a2acc580c540fileName">%7Bhash%7D</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter required="true">
+      <con:name>hash</con:name>
+      <con:value>hash</con:value>
+      <con:style>TEMPLATE</con:style>
+      <con:default>hash</con:default>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="Method 1" id="de50bb87-0bbf-40fb-b9b2-83251b4e9a6d" method="HEAD">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter required="true">
+        <con:name>lang</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>vc_debounced</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+    </con:parameters>
+    <con:request name="Request 1" id="66b91d74-c177-4b50-b30d-ccae23013b7a" mediaType="application/json">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Authorization" value="Bearer eyJraWQiOiJCYWNrZW5kVGVzdGluZyIsImFsZyI6IlJTMjU2In0.eyAgICJzY3AiIDogWyJ0MV9hOmNhcmNsb3VkIl0sIAoJCQkJCQkJCSJ2ZXIiIDogIjEiLAoJCQkJCQkJCSJpc3MiIDogImludGVjaCIsIAoJCQkJCQkJCSJjY2giIDogIlZFSElDTEUiLCAKCQkJCQkJCQkic3R5cCIgOiAiVDEiLAoJCQkJCQkJCSJ0eXAiIDogIkFUIiwgCgkJCQkJCQkJImV4cCIgOiAxNjQ5Njg0MDQ3LAoJCQkJCQkJCSJpYXQiIDogMTY0OTY4MDQ0NywKCQkJCQkJCQkiYXVkIiA6IFsiVldHTVFUVEMwMURFQVBQMSIsCgkJCQkJCQkJICAgICAgICAgICAgIlZXR0RTUERFQVBQMSIsCgkJCQkJCQkJICAgICAgICAgICAgIlZXR01RVFQwMURFQVBQMSJdLAoKCQkJCQkJCQkgInZpbiIgOiAiVzBMMEFITDQ4NTgxMTg1NTUiLAoJCQkJCQkJCSAidG50IiA6ICJBdWRpLERFIgoJCQkJCQkJCX0.S1h_okgwY3hJbEe8NDyyNeblm28eWyYcstUs4WjNUuY0wCZysg27K62qWID5sT_uAWUpV19ziADJdzHHvRZENBtF9WAK9mbC8ECN-KiiY42Az1cvrogmxqulA4pwjzGyIavZyBxdVmQBloY_BaQ3RjDjwXU4-kohdt4eK3pGpB5G5KgiJxJR5Eyhw7EXiD51WjDipki74tje6wNNiargad0oS8uysjaqi50BsjkiCxf5wi-rJDoXGEMxSDBMBCdVKnbHIGcTqzJrQxdGPVmoffz1PdhYJ78IDbDls9CIP_TjnIwJvPoYLobvU2TyS3dWjgIScd8VcMuHUuo_mXOtqA" xmlns="http://eviware.com/soapui/config"/></con:setting>
+      </con:settings>
+      <con:endpoint>https://api.demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:originalUri>https://api.demo.orunext.com/vehicleConf_v3/vehicleconfiguration/5E8C3E12EBD61E1656E5CC918FA87A6367A9896B4CEA5C554BC23EF0F7312DBC07453CF7E5CFAB2EA937EACD3A580031786480666E6262C86F22C0BDC6C0CB46</con:originalUri>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="lang" value="en_US"/>
+        <con:entry key="hash" value="496477F368471EC1969207247CDA0F03882E32E76BDD47D7B214790A1C10F8BB"/>
+        <con:entry key="vc_debounced" value="true"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>hash</con:entry>
+        <con:entry>lang</con:entry>
+        <con:entry>vc_debounced</con:entry>
+      </con:parameterOrder>
+      <con:environmentSpec>
+        <con:entry environmentId="cadeee3c-c131-4727-a303-b17898acdedb">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="6579a9ac-c496-456c-8ca0-d04088a601b8">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="b895e883-4d3f-481d-a439-6406666cd451">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>ORU-app</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="cadeee3c-c131-4727-a303-b17898acdedb">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="6579a9ac-c496-456c-8ca0-d04088a601b8">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="b895e883-4d3f-481d-a439-6406666cd451">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:method name="Method 2" id="50905cd3-937a-4c3d-888c-0853cfacbb2c" method="PUT">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter required="true">
+        <con:name>lang</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>vc_debounced</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+    </con:parameters>
+    <con:request name="Request 1" id="e97f5109-2a0b-4635-bbb7-18f07c0ac973" mediaType="application/json" postQueryString="false">
+      <con:settings/>
+      <con:endpoint>https://api.demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="lang" value="en_US"/>
+        <con:entry key="vc_debounced" value="optional"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>hash</con:entry>
+        <con:entry>lang</con:entry>
+        <con:entry>vc_debounced</con:entry>
+      </con:parameterOrder>
+      <con:environmentSpec>
+        <con:entry environmentId="cadeee3c-c131-4727-a303-b17898acdedb">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="6579a9ac-c496-456c-8ca0-d04088a601b8">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="b895e883-4d3f-481d-a439-6406666cd451">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>ORU-app</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="cadeee3c-c131-4727-a303-b17898acdedb">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="6579a9ac-c496-456c-8ca0-d04088a601b8">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="b895e883-4d3f-481d-a439-6406666cd451">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="cadeee3c-c131-4727-a303-b17898acdedb">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="6579a9ac-c496-456c-8ca0-d04088a601b8">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="b895e883-4d3f-481d-a439-6406666cd451">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

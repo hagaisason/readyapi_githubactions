@@ -1,0 +1,2281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="9d5121b5-eb24-47df-af3b-db51856f41bb" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="OTA-4392 Status change - from blocked to active" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="GeneratableJUnitReport@Folder">C:\Users\U3636\Desktop</con:setting>
+    <con:setting id="ErrorDetails">false</con:setting>
+    <con:setting id="IncludeOverview">false</con:setting>
+    <con:setting id="03d77b73-d6c2-4221-8d35-41813b4ec0ddfileName">OTA-4392-Status-change---from-blocked-to-active</con:setting>
+    <con:setting id="9d5121b5-eb24-47df-af3b-db51856f41bbfileName">OTA-4392-Status-change---from-blocked-to-active</con:setting>
+  </con:settings>
+  <con:testStep type="groovy" name="[Pre-Condition] Generate Access Token For Technical User" id="64c84d5f-f2fc-4467-b23e-e26314cceefb">
+    <con:settings/>
+    <con:config>
+      <script><![CDATA[import groovy.json.JsonSlurper
+import com.eviware.soapui.support.GroovyUtils
+import org.apache.http.client.methods.CloseableHttpResponse
+import org.apache.http.client.methods.HttpPost
+import org.apache.http.entity.StringEntity
+import org.apache.http.impl.client.CloseableHttpClient
+import org.apache.http.impl.client.HttpClients
+import org.apache.http.ssl.SSLContextBuilder
+import org.apache.http.util.EntityUtils
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.security.KeyFactory
+import java.security.KeyStore
+import java.security.cert.CertificateFactory
+import java.security.spec.PKCS8EncodedKeySpec
+import java.util.Base64
+import java.security.cert.X509Certificate
+import javax.net.ssl.SSLContext
+import javax.net.ssl.TrustManager
+import javax.net.ssl.X509TrustManager
+import org.apache.http.conn.ssl.TrustSelfSignedStrategy
+
+//declare paths to certificate and private key files, as well as the needed authorization inputs
+def path = new GroovyUtils(context).getProjectPath() +"/Certificates/"
+def certPath = path + "certificate.pem"
+def keyPath = path + "private.key"
+def username = context.expand( '${#Project#username}')
+def password = context.expand( '${#Project#password}')
+def clientId = context.expand( '${#Project#clientId}')
+def clientSecret = context.expand( '${#Project#clientSecret}')
+
+//log the values for the needed inputs
+log.info("Cert Path: " + certPath)
+log.info("Key Path: " + keyPath)
+log.info("Username: " + username)
+log.info("Password: " + password)
+log.info("ClientId: " + clientId)
+log.info("ClientSecret: " + clientSecret)
+
+//load the certificate
+def certInputStream = new FileInputStream(certPath)
+def certificateFactory = CertificateFactory.getInstance("X.509")
+def cert = certificateFactory.generateCertificate(certInputStream) as X509Certificate
+certInputStream.close()
+
+//load the private key
+def privateKeyPEM = new String(Files.readAllBytes(Paths.get(keyPath)))
+privateKeyPEM = privateKeyPEM.substring(privateKeyPEM.indexOf('-----BEGIN PRIVATE KEY-----') + 27, privateKeyPEM.indexOf('-----END PRIVATE KEY-----')).replaceAll("\\s", "")
+
+//decode the base64 private key
+def decoded = Base64.getDecoder().decode(privateKeyPEM)
+def spec = new PKCS8EncodedKeySpec(decoded)
+def keyFactory = KeyFactory.getInstance("RSA")
+def privateKey = keyFactory.generatePrivate(spec)
+
+//create a KeyStore and load the certificate and private key
+def keyStore = KeyStore.getInstance(KeyStore.getDefaultType())
+keyStore.load(null, null)
+keyStore.setCertificateEntry("cert", cert)
+keyStore.setKeyEntry("key", privateKey, new char[0], [cert] as java.security.cert.Certificate[])
+
+//create an SSL context with the KeyStore
+def sslContext = SSLContextBuilder.create()
+                                  .loadKeyMaterial(keyStore, null)
+                                  .loadTrustMaterial(new TrustSelfSignedStrategy())
+                                  .build()
+
+//create an HTTP client with the SSL context
+CloseableHttpClient httpClient = HttpClients.custom()
+                                            .setSSLContext(sslContext)
+                                            .build()
+
+//create the HTTP POST request
+HttpPost httpPost = new HttpPost("https://idp.cloud.vwgroup.com/auth/realms/kums-mfa/protocol/openid-connect/token")
+httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded")
+
+//add form parameters to the request
+StringEntity entity = new StringEntity("grant_type=password&scope=openid&username=" + username +  "&password=" + password +  "&client_id=" + clientId + "&client_secret=" + clientSecret)
+httpPost.setEntity(entity)
+
+//execute the request
+CloseableHttpResponse response = httpClient.execute(httpPost)
+try {
+    //get the response body
+    String responseBody = EntityUtils.toString(response.getEntity())
+    log.info("Response status: ${response.getStatusLine().getStatusCode()}")
+    log.info("Response body: ${responseBody}")
+
+    //parse the JSON response
+    def jsonSlurper = new JsonSlurper()
+    def jsonResponse = jsonSlurper.parseText(responseBody)
+
+    //extract the access_token
+    def accessToken = jsonResponse.access_token
+    log.info("Access Token: ${accessToken}")
+
+    //set test case level property storing the value for Code
+	context.testCase.setPropertyValue("accessToken", accessToken)
+	log.info("Property  <<accessToken>> was set at test case level with value <<" + accessToken + ">>")
+} finally {
+    response.close()
+    httpClient.close()
+}]]></script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="checkActionIDs" id="fb96475f-7866-4ab9-a107-385e52253c35" disabled="true">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Campaign" resourcePath="/api/oru/aps_campaigns/recall/actions2/searches" methodName="searchReCallActionsV2" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="checkActionIDs" id="1e051c47-9141-4f04-bdcb-6082c3de4cb9" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request>{
+   "columns" : [
+      "actionCode",
+      "title",
+      "creationTimestamp",
+      "importTimestamp",
+      "oemilInstance",
+      "criteriaCount",
+      "vehiclesCount",
+      "campaignSetActionCode",
+      "oruCreated",
+      "brands",
+      "countries_code"
+   ],
+   "columnConditions" : [
+      {
+         "column" : "actionCode",
+         "operator" : "eq",
+         "value" : "${#TestCase#actionCode}"
+      }
+   ],
+   "sortDirection" : "asc",
+   "limit" : 1,
+   "count" : true,
+   "start" : 0,
+   "sortBy" : "actionCode"
+}</con:request>
+        <con:originalUri>https://demo.orunext.com/api/oru/aps_campaigns/recall/actions2/searches</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="f160906d-6871-49c2-b67d-b1125b6ecd21" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="Authorization" value="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="2c6d89f0-0ea5-4682-820f-ce822c87d07e">
+            <con:authProfile>ORU-OAuth</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="checkVINs" id="0a252494-1800-4a8e-94aa-6eddad36da15" disabled="true">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Campaign" resourcePath="/api/oru/aps_campaigns/vehicles/searches" methodName="searchVehicles" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest id="8fbbf797-3323-4597-9589-dd75045d9898" mediaType="application/json" name="checkVINs" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request>{\r
+   "columns" : [\r
+      "vin",\r
+      "latestConfigurationHash",\r
+      "brand",\r
+      "mbtModelCode",\r
+      "mbvModelCode",\r
+      "modelYear",\r
+      "modelDescription",\r
+      "source",\r
+      "pkn",\r
+      "supportDealer",\r
+      "deliveryDealer",\r
+      "orderDealer",\r
+      "country",\r
+      "activeCampaignActionCode",\r
+      "activeCampaignCriterion",\r
+      "state"\r
+   ],\r
+   "columnConditions" : [ ],\r
+   "sortDirection" : "asc",\r
+   "count" : true,\r
+   "start" : 0,\r
+   "sortBy" : "vin"\r
+}</con:request>
+        <con:originalUri>https://dev.orunext.com/api/oru/aps_campaigns/vehicles/searches</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="b4c76553-cd16-49c4-b8e1-858b91bf3573" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="Authorization" value="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>Authorization</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="2c6d89f0-0ea5-4682-820f-ce822c87d07e">
+            <con:authProfile>ORU-OAuth</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="checkCMs" id="4155cdb2-7a80-4c20-a58d-50fdf1911f12" disabled="true">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Campaign" resourcePath="/api/oru/aps_campaigns/service42/change_measures/searches" methodName="searchService42ChangeMeasures" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest id="e6b2f30a-3c89-479c-b8fe-3b6969c5ffe6" mediaType="application/json" name="checkCMs" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request>{\r
+   "columns" : [\r
+      "code",\r
+      "description",\r
+      "otaDescription",\r
+      "status",\r
+      "containers",\r
+      "creationTimestamp",\r
+      "oemilInstance",\r
+      "requestMock",\r
+      "requested"\r
+   ],\r
+   "columnConditions" : [ ],\r
+   "sortDirection" : "desc",\r
+   "limit" : 10000,\r
+   "count" : true,\r
+   "start" : 0,\r
+   "sortBy" : "updateTimestamp"\r
+}</con:request>
+        <con:originalUri>http://dev.orunext.com/api/oru/aps_campaigns/service42/change_measures/searches</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="be3c86da-3e37-42b9-b81f-d172a933f228" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters/>
+        <con:parameterOrder/>
+        <con:environmentSpec>
+          <con:entry environmentId="2c6d89f0-0ea5-4682-820f-ce822c87d07e">
+            <con:authProfile>ORU-OAuth</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="PRE - create FakeVehicle" id="7e4c219a-e420-40c4-b6e0-e8d19f0ea974">
+    <con:settings/>
+    <con:config>
+      <script>import groovy.json.JsonSlurper
+
+def getRandomNumberInRange(long min, long max) {
+    Random random = new Random();
+    return Math.abs(random.nextLong())% (max-min) + min;
+}
+
+
+	testRunner.runTestStepByName("checkVINs") // run checkVINs step from Groovy
+	def vehiclesList = testRunner.testCase.getTestStepByName("checkVINs") 
+	def responseContent = vehiclesList.getPropertyValue("response") // get the response property
+	def responseSlurper = new JsonSlurper().parseText(responseContent)
+	def VINs = responseSlurper.vin // get vins list from the response
+	def currentTimeStamp = context.expand( '${#TestSuite#currentTimeStamp}' )
+	
+
+	def VIN 
+	do{
+		VIN = "FLORINVEH" + getRandomNumberInRange(10000000, 99999999) 
+	}
+		while(VINs.contains(VIN))
+
+	def PR_numbers = ["\"0K0\""]
+	def Brand = "A"
+	def PKN = getRandomNumberInRange(0, 999999999)
+	def models = ["A3", "A4", "A5", "S3", "Q7", "Q5", "TT", "Q4 e-tron", "SQ5", "Q8", "SQ8", "e-tron S"]
+	def modelsSize = models.size()
+	def r = new Random()
+	def randomModel = models.get(r.nextInt(modelsSize))
+	
+	def jsonBody = '''{
+	  "vin" : ''' + '"' + VIN + '"' + ''',
+	  "mbv_model_code" : "4N803A",
+	  "mbt_model_code" : "4N42",
+	  "brand_code" : ''' + '"' + Brand + '"' + ''',
+	  "pkn" : ''' + '"' + PKN + '"' + ''',
+	  "delivering_dealer" : "125",
+	  "supervising_dealer" : "CHN79601076",
+	  "ordering_dealer" : "CHN79601061",
+	  "equipment_codes" : ''' +  PR_numbers  + ''',
+	  "model_year" : "2021",
+	  "model_name" : ''' + '"' + randomModel + '"' + ''',
+	  "oru_relevant": true,
+       "oru_relevant_date": ''' + '"' + currentTimeStamp + '"' + ''' ,
+       "update_status": "CUSTOMER_NOTIFIED"
+	}'''
+	
+
+context.testCase.setPropertyValue('VIN', VIN.toString()) //creating a property value and set it's value 
+context.testCase.setPropertyValue('jsonBody',jsonBody) //creating a property value and set it's value 
+
+return jsonBody</script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="PRE - getCurrentTime" id="2daecbb5-5f4e-4461-94c6-a2ff60ee57fe">
+    <con:settings/>
+    <con:config>
+      <script>import java.text.SimpleDateFormat
+import groovy.time.TimeCategory
+
+def date = new Date()
+def sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SS'Z'")
+def currentTime = sdf.format(date)
+
+use( TimeCategory ) {
+    after7Days = date + 20.days
+}
+
+def endDate = sdf.format(after7Days)
+
+log.info currentTime
+log.info endDate
+
+context.testCase.setPropertyValue("currentTimeStamp", currentTime)
+context.testCase.setPropertyValue("endDate", endDate)</script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="PRE - generate CMcode" id="7edfc978-5e63-482e-b7c8-539ca6c5472f">
+    <con:settings/>
+    <con:config>
+      <script>import groovy.json.JsonSlurper
+
+testRunner.runTestStepByName("checkCMs") // run checkCMs step from Groovy
+
+def listChangeMeasures = testRunner.testCase.getTestStepByName("checkCMs") 
+def responseContent = listChangeMeasures.getPropertyValue("response") // get the response property
+def responseSlurper = new JsonSlurper().parseText(responseContent)
+def CMs = responseSlurper.code // get CMs list from the response
+
+rand = new Random()
+def randomID
+
+do{
+	randomID =  "CMM" + (rand.nextInt(8999) + 1000).toString() // generate a random 3-digit number
+}
+	while(CMs.contains(randomID))
+	
+	context.testCase.setPropertyValue('changeMeasureCode', randomID) //creating a property value and set it's value 
+	return randomID</script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="PRE - generate ID&amp;criterion" id="b4fc8f38-6f80-4bc8-8649-abf144bbaed8">
+    <con:settings/>
+    <con:config>
+      <script>import groovy.json.JsonSlurper
+
+rand = new Random() // create random object
+def randomID
+def IDs
+
+do {
+	randomID =  "A" + (rand.nextInt(899) + 100).toString()  // generate a random 3-digit number
+	//log.info randomID
+	context.testCase.setPropertyValue('actionCode', randomID)
+	testRunner.runTestStepByName("checkActionIDs") // run checkActionIDs step from Groovy
+	def listRecallActions = testRunner.testCase.getTestStepByName("checkActionIDs")
+	def responseContent = listRecallActions.getPropertyValue("response") // get the response property
+	def responseSlurper = new JsonSlurper().parseText(responseContent)
+	IDs = responseSlurper.actionCode // get actionCodes list from the response
+	//log.info IDs
+}
+while(IDs.contains(randomID))
+
+
+def randomCriterion =  (rand.nextInt(89) + 10).toString() // generate a random 2-digit number
+context.testCase.setPropertyValue('criterion', randomCriterion) //creating a property value and set it's value</script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="PRE - createChangeMeasure" id="37f82a2f-e8b2-456f-b828-f82e45b7327c">
+    <con:settings/>
+    <con:config service="VW Group Services Mock" resourcePath="/change_measures" methodName="createChangeMeasure" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="PRE - createChangeMeasure" id="7edbf88c-ac80-41de-9f55-136e20fc05d6" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com/api/vw-group-services-mock</con:endpoint>
+        <con:request>{
+  "code": "${#TestCase#changeMeasureCode}",
+  "containers": [],
+  "description": "description",
+  "ota_description": "ota_description",
+  "status": "ACTIVE"
+}</con:request>
+        <con:originalUri>https://demo.orunext.com/api/vw-group-services-mock/change_measures</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="2a47808f-56e5-4cdd-9294-a708ba45cd92" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="PRE - createFakeVehicle" id="ddbe1211-7b8e-4e07-a5ce-ac69f796af9a">
+    <con:settings/>
+    <con:config service="VW Group Services Mock" resourcePath="/vehicles" methodName="createFakeVehicle" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="PRE - createFakeVehicle" id="7942e665-7973-4849-b445-576cdb85f772" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com/api/vw-group-services-mock</con:endpoint>
+        <con:request>${#TestCase#jsonBody}</con:request>
+        <con:originalUri>https://demo.orunext.com/api/vw-group-services-mock/vehicles</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="305c1d93-1902-4ea9-8d93-5e0d49bc8f00" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="PRE - update VM&amp;CM files" id="ce1a7ff1-1457-46b8-a287-353bd34b9cdf">
+    <con:settings/>
+    <con:config>
+      <script>import groovy.json.JsonSlurper
+import groovy.json.JsonOutput
+
+def groovyUtils = new com.eviware.soapui.support.GroovyUtils(context)
+def projectDir = groovyUtils.projectPath // get project dir
+def pathForDataManifests = context.expand( '${#TestCase#pathForDataManifests}' )
+
+// read the config file
+jsonSlurper = new JsonSlurper()
+
+// create filePath property for VC
+def VC_path = "file:" + projectDir + pathForDataManifests + "VehicleConfiguration.json"
+context.testCase.setPropertyValue('VC_path', VC_path) 
+
+// create filePath property for VM
+def VM_path = "file:" + projectDir + pathForDataManifests + "VehicleManifest.json"
+context.testCase.setPropertyValue('VM_path', VM_path)
+
+// create filePath property for CM
+def CM_path = "file:" + projectDir + pathForDataManifests + "ConfManifest_0075.json"
+context.testCase.setPropertyValue('CM_path', CM_path)
+
+// read VM file
+def file = new File(projectDir + pathForDataManifests + "VehicleManifest.json")
+data = jsonSlurper.parse(file) //parse the file
+
+//Replacing the odxFile
+odxFile = context.testCase.getPropertyValue("odxName")
+data.updateMap.updateItems[0].updateItem.progInformation.validVersionMapping[0].metaFile = odxFile
+
+//Replacing the binFile1
+binFile1 = context.testCase.getPropertyValue("binName1")
+data.updateMap.updateItems[0].updateItem.progInformation.validVersionMapping[0].dataFiles[0].blockFileName = binFile1
+
+//Replacing the binFile2
+binFile2 = context.testCase.getPropertyValue("binName2")
+data.updateMap.updateItems[0].updateItem.progInformation.validVersionMapping[0].dataFiles[1].blockFileName = binFile2
+
+//Replacing the oucFile
+oucFile1 = context.testCase.getPropertyValue("oucName1")
+String finalOuc1 = oucFile1[0..oucFile1.length()-5] // get rid of the ".ouc" (extension)
+data.updateMap.updateItems[0].updateItem.postActions[0].crcAction.manifest = finalOuc1
+
+
+// write VM file
+def json_str = JsonOutput.toJson(data)
+def json_beauty = JsonOutput.prettyPrint(json_str)
+file.write(json_beauty)</script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="PRE - createRecallAction" id="a644dc7f-235d-4cd7-af68-4be2400d16ba">
+    <con:settings/>
+    <con:config service="VW Group Services Mock" resourcePath="/campaigns" methodName="createRecallAction" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="PRE - createRecallAction" id="9c350462-c034-4d4d-8dc6-8906cd31ba07" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com/api/vw-group-services-mock</con:endpoint>
+        <con:request>{
+    "campaign_id": "${#TestCase#actionCode}",
+    "brand_codes": [
+        "A"
+    ],
+    "campaign_criteria": [
+        {
+            "creation_date": "${#TestCase#currentTimeStamp}",
+            "criterion": "${#TestCase#criterion}",
+            "oru_relevant": "true",
+            "title": "${#TestCase#changeMeasureCode}",
+            "title_language": "de-DE",
+            "vehicles": [
+                "${#TestCase#VIN}"
+            ]
+        }
+    ],
+    "creation_date": "${#TestCase#currentTimeStamp}",
+    "excluded_countries": ["ENG"],
+    "selected_countries": [
+        {
+            "country_code": "DEU",
+            "start_date": "${#TestCase#currentTimeStamp}",
+            "status": ""
+        }
+    ],
+    "title": "${#TestCase#changeMeasureCode}",
+    "title_language": "de-DE"
+}</con:request>
+        <con:originalUri>https://demo.orunext.com/api/vw-group-services-mock/campaigns</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="629a3c65-aaab-4de5-8a85-74b04ac77ac6" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="Check Recall Action In Inbox" id="d764ec31-12b5-4475-bc54-730f2d8f0dad">
+    <con:settings/>
+    <con:config>
+      <script>import groovy.json.JsonSlurper  
+
+// Define the test step name, number of retries, and delay time
+def testStepName = "checkActionIDs"
+numberOfRetries = Integer.parseInt(context.expand( '${#Project#numberOfRetries}' ))
+def retryDelayTime = 3000
+
+
+// Define a function to get the response data for a test step
+def getResponseData(String stepName) {
+    testRunner.runTestStepByName(stepName)
+ 
+    def response = context.expand("\${" + stepName + '#Response}')
+ 
+    return [
+        status: context.expand("\${" + stepName + '#HarResponse#$[\'status\']}').toInteger(),
+        actionCodes: new JsonSlurper().parseText(response).actionCode
+    ]
+}
+
+// Define a function to retry an API call until a certain condition is met
+def retryAPICall(String stepName, int retries, int delay, String reCallActionCode) {
+    while (retries > 0) {
+       
+        def responseData = getResponseData(stepName)
+       
+        if (responseData.actionCodes.contains(reCallActionCode)) {
+            log.info "Assertion passed after ${numberOfRetries - retries} retries."
+            break
+        }
+        retries--
+        if (retries > 0) {
+            log.info "Assertion failed. Retrying in ${delay} milliseconds. ${retries} retries left."
+            Thread.sleep(delay)
+        }
+    }
+
+    if (retries == 0) {
+        throw new Exception("Assertion failed after retrying ${numberOfRetries} times.")
+    }
+}
+
+try {
+    def reCallActionCode = context.expand( '${#TestCase#actionCode}' )
+    def responseData = getResponseData(testStepName)
+    
+    if (responseData.status == 200) {
+        retryAPICall(testStepName, numberOfRetries, retryDelayTime, reCallActionCode)
+    } else {    
+        throw new Exception("Unexpected status code: ${responseData.status}.")
+    }
+} catch (Exception e) {
+    log.error e
+    assert false, e
+}</script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="Check CM In Service42" id="36c8a2e1-c4aa-49ad-8128-49283da4719a">
+    <con:settings/>
+    <con:config>
+      <script>import groovy.json.JsonSlurper 
+ 
+// Define the test step name, number of retries, and delay time
+def testStepName = "checkCMs" // check for change measure in service42
+numberOfRetries = context.expand( '${#Project#numberOfRetries}' ).toInteger() // custom property for number of retries on the test step above
+def retryDelayTime = 3000 // adjustable delay in ms
+ 
+ 
+// Define a function to get the response data for a test step
+def getResponseData(String stepName) {
+    testRunner.runTestStepByName(stepName)
+  
+    def response = context.expand("\${" + stepName + '#Response}')
+  
+    return [
+        status: context.expand("\${" + stepName + '#HarResponse#$[\'status\']}').toInteger(),
+        CMCodes: new JsonSlurper().parseText(response).code
+    ]
+}
+ 
+// Define a function to retry an API call until a certain condition is met
+def retryAPICall(String stepName, int retries, int delay, String changeMeasure) {
+    while (retries > 0) {
+        
+        def responseData = getResponseData(stepName)
+        //log.info responseData.CMCodes
+        if (responseData.CMCodes.contains(changeMeasure)) {
+            log.info "Assertion passed after ${numberOfRetries - retries} retries."
+            break
+        }
+        retries--
+        if (retries > 0) {
+            log.info "Assertion failed. Retrying in ${delay} milliseconds. ${retries} retries left."
+            Thread.sleep(delay)
+        }
+    }
+ 
+    if (retries == 0) {
+        throw new Exception("Assertion failed after retrying ${numberOfRetries}  times.")
+    }
+}
+ 
+try {
+    def changeMeasureCode = context.expand( '${#TestCase#changeMeasureCode}' )
+    def responseData = getResponseData(testStepName)
+     
+    if (responseData.status == 200) {
+        retryAPICall(testStepName, numberOfRetries, retryDelayTime,changeMeasureCode )
+    } else {   
+        throw new Exception("Unexpected status code: ${responseData.status}.")
+    }
+} catch (Exception e) {
+    log.error e
+    assert false, e
+}</script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="PRE - create CampaignSet" id="afffaf77-95f2-48ec-8d7a-013cd922c9c8">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Campaign" resourcePath="/api/oru/aps_campaigns/campaign_sets" methodName="createCampaignSet" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest id="5708fe61-5532-4df9-9a01-c68e08ecd492" mediaType="application/json" name="PRE - create CampaignSet" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request>{
+    "actionCode": "${#TestCase#actionCode}",
+    "type": "ORU4",
+    "author": "",
+    "updateDuration": "PT15M",
+    "progressReportParameters": {
+        "forceTimeInterval": "PT5M",
+        "prerequisites": {
+            "percentage": 10,
+            "timeInterval": "PT59M"
+        }
+    },
+    "oemilInstance": "MOCK",
+    "configuration": {
+        "showDownload": true,
+        "autoDownload": true,
+        "checkEnergyBudget": false,
+        "autoInstall": true,
+        "obdRelevance": true,
+        "tuningRelevance": false,
+        "authorizationLevel": 0
+    }
+}</con:request>
+        <con:originalUri>https://dev.orunext.com/api/oru/aps_campaigns/campaign_sets</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="b2264e7e-5b46-43ea-bca7-78a76752f0fd" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>201</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="Authorization" value=""/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>Authorization</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="2c6d89f0-0ea5-4682-820f-ce822c87d07e">
+            <con:authProfile>ORU-OAuth</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="PRE - createCampaignInCampaignSet" id="45c0b66c-bfe6-419d-8b07-ccc18d015511">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Campaign" resourcePath="/api/oru/aps_campaigns/campaign_sets/{actionCode}/campaigns" methodName="createCampaignInSet" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest id="cc94e422-fa8c-42c1-ad60-d6a3331160bd" mediaType="application/json" name="PRE - createCampaignInCampaignSet" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request>{
+    "criterion": "${#TestCase#criterion}",
+    "changeMeasureCode": "${#TestCase#changeMeasureCode}",
+    "endDate": "${#TestCase#endDate}",
+    "recallExported": true
+}</con:request>
+        <con:originalUri>http://oru-ui.dev.orunext.com/api/oru/aps_campaigns/campaign_sets/R516/campaigns</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="0791c7e3-864c-474b-abcf-2315e05b04b1" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>201</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="Authorization" value=""/>
+          <con:entry key="actionCode" value="${#TestCase#actionCode}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>actionCode</con:entry>
+          <con:entry>Authorization</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="2c6d89f0-0ea5-4682-820f-ce822c87d07e">
+            <con:authProfile>ORU-OAuth</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="PRE - getCampaign" id="2e33b862-5219-4e33-93ce-dc1c7d97c345">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Campaign" resourcePath="/api/oru/aps_campaigns/campaign_sets/{actionCode}" methodName="getCampaignSet" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest id="e95a1e02-5653-468d-ba84-449f1a179305" mediaType="application/json" name="PRE - getCampaign">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://demo.orunext.com/api/oru/aps_campaigns/campaign_sets/</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="f45bfb5c-e263-4402-87b5-59e38488f01a" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="GroovyScriptAssertion" id="5ebf74fd-e578-4eb8-9ec3-a088bd02ff00" name="Script Assertion">
+          <con:configuration>
+            <scriptText>import groovy.json.JsonSlurper
+
+
+
+def response = messageExchange.response.responseContent
+def slurper = new JsonSlurper().parseText(response)
+def releaseNotesId = slurper.releaseNotesId
+
+
+log.info releaseNotesId
+context.testCase.setPropertyValue('releaseNotesID', releaseNotesId)</scriptText>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="actionCode" value="${#TestCase#actionCode}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>actionCode</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="2c6d89f0-0ea5-4682-820f-ce822c87d07e">
+            <con:authProfile>ORU-OAuth</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="PRE - get RN id" id="6eae9344-ad6d-424b-addb-672e7a46ac38">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Campaign" resourcePath="/api/oru/aps_campaigns/campaign_sets/{actionCode}/release_notes" methodName="getReleaseNotesInfo" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="PRE - get RN id" id="16510519-fe31-4b52-a1ad-f212f6837535" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint xsi:nil="true"/>
+        <con:request>nullnullnullnull</con:request>
+        <con:originalUri>http://docs.demo.orunext.com/api/oru/aps_campaigns/campaign_sets/1841/release_notes</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="bd24eb64-d365-49cc-accb-24e42cfd7b73" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="GroovyScriptAssertion" id="c12901f0-fba5-46e4-8d9f-96a22980987d" name="Script Assertion">
+          <con:configuration>
+            <scriptText>import groovy.json.JsonSlurper
+
+
+
+def response = messageExchange.response.responseContent
+def slurper = new JsonSlurper().parseText(response)
+def releaseNotesId = slurper.releaseNotesId
+
+
+log.info releaseNotesId
+assert releaseNotesId != null
+context.testCase.setPropertyValue('releaseNotesID', releaseNotesId)</scriptText>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="actionCode" value="${#TestCase#actionCode}"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="PRE - uploadReleaseNotes" id="0a3f2a6e-6e6b-4302-8170-c513a43b5321">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Campaign" resourcePath="/api/oru/aps_campaigns/release_notes/{id}/{language}" methodName="uploadReleaseNotes" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="PRE - uploadReleaseNotes" id="76bc37f9-0249-4aff-9e5f-956897317143" mediaType="multipart/form-data" postQueryString="true">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://demo.orunext.com/api/oru/api/aps_campaigns/release_notes/76d6e313-71b4-416f-95f8-fad73a84a2c4/en_US</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="12e42658-780c-4861-a5b1-2eb06e6312fd" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>201</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="releaseNotes" value="{&quot;title&quot;:&quot;title&quot;,&quot;updateDescription&quot;:&quot;awdawd&quot;,&quot;updateSummary&quot;:&quot;wadaw&quot;,&quot;additionalFunctions&quot;:&quot;additionalFunctions&quot;,&quot;generalWarning&quot;:&quot;general warning&quot;,&quot;additionalWarning&quot;:&quot;additional warning for ev&quot;}"/>
+          <con:entry key="htmlPackage" value=""/>
+          <con:entry key="r4cReleaseNotes" value=""/>
+          <con:entry key="language" value="en_US"/>
+          <con:entry key="id" value="${#TestCase#releaseNotesID}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>id</con:entry>
+          <con:entry>language</con:entry>
+          <con:entry>htmlPackage</con:entry>
+          <con:entry>releaseNotes</con:entry>
+          <con:entry>r4cReleaseNotes</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="PRE - createRandomVCHash" id="ed9da0f1-127a-4cbb-92c5-eaa3a3d8731c">
+    <con:settings/>
+    <con:config>
+      <script>import groovy.json.JsonSlurper
+import groovy.json.JsonOutput
+import java.text.SimpleDateFormat
+import java.util.Random;
+
+def groovyUtils = new com.eviware.soapui.support.GroovyUtils(context)
+def projectDir = groovyUtils.projectPath // get project dir
+def amCode = context.expand( '${#TestCase#changeMeasureCode}' )
+
+public String GetRandomHexNumber(int numberOfCharacters) //numberOfCharacters represents the length of vcHash
+{
+	Random r = new Random()
+	StringBuilder sb = new StringBuilder()
+
+	while(sb.length() &lt; numberOfCharacters)
+	{
+		sb.append(Integer.toHexString(r.nextInt(16))) //generates random values between 1-15 (hex)
+	}
+
+	return sb.toString()
+}
+
+String vcHASH = GetRandomHexNumber(64).toUpperCase()
+context.testCase.setPropertyValue('vcHash', vcHASH)
+
+def date = new Date()
+def sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SS'Z'")
+def currentTime = sdf.format(date)
+
+// read the config file &amp; Manifest file
+jsonSlurper = new JsonSlurper()
+def pathForData = context.expand( '${#TestCase#pathForData}' )
+def file = new File(projectDir + pathForData + "VehicleConfiguration.json")
+def file2 = new File(projectDir + pathForData + "VehicleManifest.json")
+
+data = jsonSlurper.parse(file) //parse the file config
+data2 =  jsonSlurper.parse(file2) //parse the file Manifest
+
+data.assemblyStatus.vehicleInformation.VIN = context.testCase.getPropertyValue("VIN")  // change the VIN from the VC file
+data.assemblyStatusMetaData.vcHash = vcHASH                                                                             // change the vcHash from the config file with the one that was randomly generated
+data.assemblyStatusMetaData.newestEntryTimestamp = currentTime									  // change the newest timestamp from config file with the current timestamp
+data2.vcHash = vcHASH                                                                                                                    // change the vcHash from the Manifest  file with the one that was randomly generated
+data2.amCode = amCode																								// change amCode from Manifest file with the one that was randomly generated
+
+// write the config file &amp; Manifest file
+def json_str = JsonOutput.toJson(data)
+def json_str2 = JsonOutput.toJson(data2)
+
+def json_beauty = JsonOutput.prettyPrint(json_str)
+def json_beauty2 = JsonOutput.prettyPrint(json_str2)
+
+file.write(json_beauty)
+file2.write(json_beauty2)</script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="PRE - uploadVehicleConfiguration" id="7a9a76f4-5b99-42ba-942d-f3c1689b6dcb">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Vehicle Configuration" resourcePath="/api/oru/vehicle_configurations/configurations/upload" methodName="uploadConfiguration" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="PRE - uploadVehicleConfiguration" id="6549dcc8-7973-470e-a5c8-72f920e9b5b9" mediaType="multipart/form-data" postQueryString="true">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://demo.orunext.com/api/vehicle_configurations/configurations/upload</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="3d7f7b3e-8dbb-4388-b294-9c6043354b99" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>201</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="Authorization" value=""/>
+          <con:entry key="VehicleConfiguration.json" value="${#TestCase#VC_path}"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="PRE - createDefaultBatch" id="69e8655b-193d-4a38-a2ea-eb3cb3fdcf78">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Campaign" resourcePath="/api/oru/aps_campaigns/campaigns/{actionCode}/{criterion}/{changeMeasureCode}/batches/default" methodName="createDefaultBatch_1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="PRE - createDefaultBatch" id="68c36eba-5dde-41a3-8cc0-fa78dbdf3346" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request>{"name":"default"}</con:request>
+        <con:originalUri>https://demo.orunext.com/api/oru/aps_campaigns/campaigns/R516/44/CMC1148/batches/default</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="8f626b2c-a892-485e-ad68-b18a675bac82" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>201</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="changeMeasureCode" value="${#TestCase#changeMeasureCode}"/>
+          <con:entry key="criterion" value="${#TestCase#criterion}"/>
+          <con:entry key="actionCode" value="${#TestCase#actionCode}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>actionCode</con:entry>
+          <con:entry>changeMeasureCode</con:entry>
+          <con:entry>criterion</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="2c6d89f0-0ea5-4682-820f-ce822c87d07e">
+            <con:authProfile>ORU-OAuth</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="delay" name="Delay 2" id="da3bc427-1343-44a0-b116-34aa14dc7b07">
+    <con:settings/>
+    <con:config>
+      <delay>2000</delay>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="PRE - startBatch" id="c042e9c3-8408-4dcf-947c-0f017fd83c8f">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Campaign" resourcePath="/api/oru/aps_campaigns/campaigns/{actionCode}/{criterion}/{changeMeasureCode}/batches/{batchId}/operations/start" methodName="startBatch_1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="PRE - startBatch" id="42d7f167-24c3-4048-a2a5-ce9654288756" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:request/>
+        <con:originalUri>https://demo.orunext.com/api/oru/aps_campaigns/campaigns/1899/77/CMM9773/batches/17/operations/start</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="f6e782bb-4d36-4fed-90ea-c233171b9994" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200,404</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="changeMeasureCode" value="${#TestCase#changeMeasureCode}"/>
+          <con:entry key="criterion" value="${#TestCase#criterion}"/>
+          <con:entry key="actionCode" value="${#TestCase#actionCode}"/>
+          <con:entry key="batchId" value="${PRE - createDefaultBatch#Response}"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="UpdateChangeMeasure" id="1e746f70-1f3e-48e2-93ce-6f94e9a4f6d0">
+    <con:settings/>
+    <con:config service="VW Group Services Mock" resourcePath="/change_measures/{code}" methodName="editChangeMeasure" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="UpdateChangeMeasure" id="3ddd8aa3-7a7e-45bf-83ee-ca89dfc98d1b" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com/api/vw-group-services-mock</con:endpoint>
+        <con:request>{
+   "code" : "${#TestCase#changeMeasureCode}",
+   "description" : "ASD",
+   "ota_description" : "wadwadwadawdawdawd",
+   "status" : "BLOCKED",
+   "containers" : [
+      ""
+   ]
+}</con:request>
+        <con:originalUri>https://demo.orunext.com/api/vw-group-services-mock/change_measures/CMM5649</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="d6b78f0a-9cd5-4913-9b8b-27cb8239639d" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="code" value="${#TestCase#changeMeasureCode}"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="delay" name="Delay 3" id="ecd5b7c9-cb61-40f0-a269-484171813056">
+    <con:settings/>
+    <con:config>
+      <delay>3000</delay>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="UpdateChangeMeasure 2" id="ac7157b7-6a19-44fe-be57-3484fca3debb">
+    <con:settings/>
+    <con:config service="VW Group Services Mock" resourcePath="/change_measures/{code}" methodName="editChangeMeasure" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="UpdateChangeMeasure 2" id="3ddd8aa3-7a7e-45bf-83ee-ca89dfc98d1b" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com/api/vw-group-services-mock</con:endpoint>
+        <con:request>{
+   "code" : "${#TestCase#changeMeasureCode}",
+   "description" : "ASD",
+   "ota_description" : "wadwadwadawdawdawd",
+   "status" : "ACTIVE",
+   "containers" : [
+      ""
+   ]
+}</con:request>
+        <con:originalUri>https://demo.orunext.com/api/vw-group-services-mock/change_measures/CMM5649</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="d6b78f0a-9cd5-4913-9b8b-27cb8239639d" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="code" value="${#TestCase#changeMeasureCode}"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="delay" name="Delay 7" id="e523db3d-0249-402c-8c3f-fb3cad297a42">
+    <con:settings/>
+    <con:config>
+      <delay>15000</delay>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="VerifyMessageInInbox" id="979a9db9-12b1-4d37-9367-1167b6c67e3e">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Campaign" resourcePath="/api/oru/aps_campaigns/mailbox/messages/searches" methodName="searchMailbox" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="VerifyMessageInInbox" id="5d2c95fd-0769-474c-aa89-721162ba5614" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request>{
+   "columns" : [
+      "userId",
+      "messageId",
+      "messageTimestamp",
+      "severity",
+      "resolveTimestamp",
+      "resolveUserExternalId",
+      "resolveUserName",
+      "content",
+      "origin",
+      "type",
+      "duplicationCounter",
+      "actionCode",
+      "criterion",
+      "changeMeasureCode",
+      "vin",
+      "source"
+   ],
+   "columnConditions" : [
+      {
+         "column" : "type",
+         "operator" : "notEqualTo",
+         "value" : "SYSTEM"
+      },
+      {
+         "column" : "severity",
+         "operator" : "in",
+         "value" : [
+            "ERROR",
+            "INFO",
+            "WARNING"
+         ]
+      },
+      {
+         "column" : "resolveUserExternalId",
+         "operator" : "eq",
+         "value" : null
+      }
+   ],
+   "sortDirection" : "desc",
+   "limit" : 1,
+   "count" : true,
+   "start" : 0,
+   "sortBy" : "messageTimestamp"
+}</con:request>
+        <con:originalUri>https://demo.orunext.com/api/oru/aps_campaigns/mailbox/messages/searches</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="a5b54530-b4c5-4542-a788-89e06306aaaf" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="Authorization" value="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="2c6d89f0-0ea5-4682-820f-ce822c87d07e">
+            <con:authProfile>ORU-OAuth</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="SetTestCaseExecution" id="f50638a5-252b-4afa-bb66-44c5d540f430" disabled="true">
+    <con:settings/>
+    <con:config service="TestExecution Automation" resourcePath="/jira/rest/raven/1.0/testexec/{testExecutionId}/execute/{testCaseId}" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="SetTestCaseExecution" id="e20818b5-afc8-42d6-94a1-0f0247f1cf13" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment>&lt;con:entry key="cookie" value="${#Global#jiraCookie}" xmlns:con="http://eviware.com/soapui/config"/>&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/>&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>https://devstack.vwgroup.com</con:endpoint>
+        <con:request>0</con:request>
+        <con:originalUri>https://devstack.vwgroup.com/jira/rest/raven/1.0/testexec/OTA-23096/execute/OTA-4392</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="b9749acf-b01f-4210-8d58-6b495904c536" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="testExecutionId" value="${#Global#testExecutionId}"/>
+          <con:entry key="testCaseId" value="OTA-4392"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="GetTestStepID" id="7d3483ba-762e-4eb8-8d62-c940b4050bf3" disabled="true">
+    <con:settings/>
+    <con:config service="TestExecution Automation" resourcePath="/jira/rest/raven/1.0/testrun/{testId}/steps/{testStepId}/status" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="GetTestStepID" id="8858d1e2-4ea3-4084-b294-fea1de384702" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://devstack.vwgroup.com</con:endpoint>
+        <con:request/>
+        <con:assertion type="Valid HTTP Status Codes" id="b58d4934-d5cf-4af8-bbb8-f754fa9a541a" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="SetTestStepStatus" id="d833be06-9135-46c1-8f8d-cdfaeacaaa4d" disabled="true">
+    <con:settings/>
+    <con:config service="TestExecution Automation" resourcePath="/jira/rest/raven/1.0/testrun/{testId}/steps/{testStepId}/status" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="SetTestStepStatus" id="8858d1e2-4ea3-4084-b294-fea1de384702" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://devstack.vwgroup.com</con:endpoint>
+        <con:request/>
+        <con:assertion type="Valid HTTP Status Codes" id="d435ba09-5501-45e9-b7fd-5449578f8e3d" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="SetActualResult" id="93cfb67a-ea25-4b8f-a5d7-c1808d27a17e" disabled="true">
+    <con:settings/>
+    <con:config service="TestExecution Automation" resourcePath="/jira/rest/raven/1.0/testrun/{testId}/steps/{testStepId}/status" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="SetActualResult" id="8858d1e2-4ea3-4084-b294-fea1de384702" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://devstack.vwgroup.com</con:endpoint>
+        <con:request/>
+        <con:assertion type="Valid HTTP Status Codes" id="0a671c3f-6210-4836-90b5-609e167b3183" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="POST - deleteCampaign" id="1fb6173a-90ce-4777-8f19-5a61f27787fc">
+    <con:settings/>
+    <con:config service="APS Campaign Service" resourcePath="/api/oru/aps_campaigns/campaigns/{actionCode}/{criterion}/{changeMeasureCode}/force" methodName="forceDeleteCampaign_1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="POST - deleteCampaign" id="a886f4b0-7e57-438e-82f8-e5eb47390512" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://demo.orunext.com/api/aps_campaigns/campaigns/AR43/43/ACM20231123161643/force</con:originalUri>
+        <con:assertion type="DataAndMetadataAssertion" id="f4666772-ff4b-4840-a5c5-f18f39839497" name="Status Line is equal to &quot;HTTP/1.1 204 No Content&quot;">
+          <con:configuration xsi:type="con:DataAndMetadataAssertion">
+            <con:mode>Received Metadata</con:mode>
+            <con:elements>
+              <con:path>$['Headers']['x-request-id']</con:path>
+              <con:element>x-request-id</con:element>
+              <con:operatorId>1</con:operatorId>
+              <con:enabled>false</con:enabled>
+              <con:expectedValue>f65a9910cd4fd831</con:expectedValue>
+              <con:caseSensitive>true</con:caseSensitive>
+              <con:numberType>false</con:numberType>
+              <con:expectedDataType>1</con:expectedDataType>
+            </con:elements>
+            <con:elements>
+              <con:path>$['Headers']['date']</con:path>
+              <con:element>date</con:element>
+              <con:operatorId>1</con:operatorId>
+              <con:enabled>false</con:enabled>
+              <con:expectedValue>Thu, 23 Nov 2023 14:20:24 GMT</con:expectedValue>
+              <con:caseSensitive>true</con:caseSensitive>
+              <con:numberType>false</con:numberType>
+              <con:expectedDataType>1</con:expectedDataType>
+            </con:elements>
+            <con:elements>
+              <con:path>$['Headers']['content-length']</con:path>
+              <con:element>content-length</con:element>
+              <con:operatorId>1</con:operatorId>
+              <con:enabled>false</con:enabled>
+              <con:expectedValue>0</con:expectedValue>
+              <con:caseSensitive>true</con:caseSensitive>
+              <con:numberType>false</con:numberType>
+              <con:expectedDataType>1</con:expectedDataType>
+            </con:elements>
+            <con:elements>
+              <con:path>$['Headers']['expires']</con:path>
+              <con:element>expires</con:element>
+              <con:operatorId>1</con:operatorId>
+              <con:enabled>false</con:enabled>
+              <con:expectedValue>0</con:expectedValue>
+              <con:caseSensitive>true</con:caseSensitive>
+              <con:numberType>false</con:numberType>
+              <con:expectedDataType>1</con:expectedDataType>
+            </con:elements>
+            <con:elements>
+              <con:path>$['Headers']['x-content-type-options']</con:path>
+              <con:element>x-content-type-options</con:element>
+              <con:operatorId>1</con:operatorId>
+              <con:enabled>false</con:enabled>
+              <con:expectedValue>nosniff</con:expectedValue>
+              <con:caseSensitive>true</con:caseSensitive>
+              <con:numberType>false</con:numberType>
+              <con:expectedDataType>1</con:expectedDataType>
+            </con:elements>
+            <con:elements>
+              <con:path>$['Headers']['x-xss-protection']</con:path>
+              <con:element>x-xss-protection</con:element>
+              <con:operatorId>1</con:operatorId>
+              <con:enabled>false</con:enabled>
+              <con:expectedValue>1; mode=block</con:expectedValue>
+              <con:caseSensitive>true</con:caseSensitive>
+              <con:numberType>false</con:numberType>
+              <con:expectedDataType>1</con:expectedDataType>
+            </con:elements>
+            <con:elements>
+              <con:path>$['Headers']['x-frame-options']</con:path>
+              <con:element>x-frame-options</con:element>
+              <con:operatorId>1</con:operatorId>
+              <con:enabled>false</con:enabled>
+              <con:expectedValue>DENY</con:expectedValue>
+              <con:caseSensitive>true</con:caseSensitive>
+              <con:numberType>false</con:numberType>
+              <con:expectedDataType>1</con:expectedDataType>
+            </con:elements>
+            <con:elements>
+              <con:path>$['Headers']['#status#']</con:path>
+              <con:element>#status#</con:element>
+              <con:operatorId>1</con:operatorId>
+              <con:enabled>true</con:enabled>
+              <con:expectedValue>HTTP/1.1 204 No Content</con:expectedValue>
+              <con:caseSensitive>true</con:caseSensitive>
+              <con:numberType>false</con:numberType>
+              <con:expectedDataType>1</con:expectedDataType>
+            </con:elements>
+            <con:elements>
+              <con:path>$['Headers']['cache-control']</con:path>
+              <con:element>cache-control</con:element>
+              <con:operatorId>1</con:operatorId>
+              <con:enabled>false</con:enabled>
+              <con:expectedValue>no-cache, no-store, max-age=0, must-revalidate</con:expectedValue>
+              <con:caseSensitive>true</con:caseSensitive>
+              <con:numberType>false</con:numberType>
+              <con:expectedDataType>1</con:expectedDataType>
+            </con:elements>
+            <con:elements>
+              <con:path>$['Headers']['strict-transport-security']</con:path>
+              <con:element>strict-transport-security</con:element>
+              <con:operatorId>1</con:operatorId>
+              <con:enabled>false</con:enabled>
+              <con:expectedValue>max-age=31536000 ; includeSubDomains</con:expectedValue>
+              <con:caseSensitive>true</con:caseSensitive>
+              <con:numberType>false</con:numberType>
+              <con:expectedDataType>1</con:expectedDataType>
+            </con:elements>
+            <con:elements>
+              <con:path>$['Headers']['pragma']</con:path>
+              <con:element>pragma</con:element>
+              <con:operatorId>1</con:operatorId>
+              <con:enabled>false</con:enabled>
+              <con:expectedValue>no-cache</con:expectedValue>
+              <con:caseSensitive>true</con:caseSensitive>
+              <con:numberType>false</con:numberType>
+              <con:expectedDataType>1</con:expectedDataType>
+            </con:elements>
+            <con:originalMessage>{"Headers":{"x-request-id":"f65a9910cd4fd831","date":"Thu, 23 Nov 2023 14:20:24 GMT","content-length":"0","expires":"0","x-content-type-options":"nosniff","x-xss-protection":"1; mode=block","x-frame-options":"DENY","#status#":"HTTP/1.1 204 No Content","cache-control":"no-cache, no-store, max-age=0, must-revalidate","strict-transport-security":"max-age=31536000 ; includeSubDomains","pragma":"no-cache"}}</con:originalMessage>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="changeMeasureCode" value="${#TestCase#changeMeasureCode}"/>
+          <con:entry key="criterion" value="${#TestCase#criterion}"/>
+          <con:entry key="actionCode" value="${#TestCase#actionCode}"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>ORU-demo</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="POST - deleteCampaignSet" id="f7a6f855-b374-4f8e-a085-6b5416a32a4c">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Campaign" resourcePath="/api/oru/aps_campaigns/campaign_sets/{actionCode}" methodName="deleteCampaignSet" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="POST - deleteCampaignSet" id="24a5bdcb-1932-47ed-aa1b-5fe5f8643545" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://demo.orunext.com/api/oru/aps_campaigns/campaign_sets/T442</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="f97f1ad5-d0d2-4905-92c9-e4f4cdd22d51" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="Authorization" value="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"/>
+          <con:entry key="actionCode" value="${#TestCase#actionCode}"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="2c6d89f0-0ea5-4682-820f-ce822c87d07e">
+            <con:authProfile>ORU-OAuth</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="POST - deleteFakeVehicle" id="8800c80b-5d39-48f5-b876-8784bc2de7c2">
+    <con:settings/>
+    <con:config service="VW Group Services Mock" resourcePath="/vehicles/{vin}" methodName="deleteVehicle" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="POST - deleteFakeVehicle" id="6711ce90-9729-41bd-897a-e8b99c6672d7" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com/api/vw-group-services-mock</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://demo.orunext.com/api/vw-group-services-mock/vehicles/W0L0AHL5879471105</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="bbf7100a-2ca7-4fbd-937f-389e68bb268f" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="vin" value="${#TestCase#VIN}"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="POST - deleteReCallAction - APS Campaign" id="e05aefe8-3fcc-4e67-b4fe-2f58e27f57a0">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Campaign" resourcePath="/api/oru/aps_campaigns/recall/actions/{actionCode}" methodName="removeReCallAction" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest id="dfd04783-0fdf-4fe8-be47-c70d303a3512" mediaType="application/json" name="POST - deleteReCallAction - APS Campaign" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://dev.orunext.com/api/oru/aps_campaigns/recall/actions/T442</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="878ecd55-b569-4315-a662-8c20213225d2" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>204</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="Authorization" value="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"/>
+          <con:entry key="actionCode" value="${#TestCase#actionCode}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>actionCode</con:entry>
+          <con:entry>Authorization</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="2c6d89f0-0ea5-4682-820f-ce822c87d07e">
+            <con:authProfile>ORU-OAuth</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="POST - deleteRecallAction - Testing Mock" id="99afd079-fed6-46ba-a229-878b2810d1c8">
+    <con:settings/>
+    <con:config service="VW Group Services Mock" resourcePath="/campaigns/{campaignId}" methodName="deleteCampaign" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="POST - deleteRecallAction - Testing Mock" id="de4664ff-153f-4601-b6d8-c6e9c80e1599" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com/api/vw-group-services-mock</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://demo.orunext.com/api/vw-group-services-mock/campaigns/T442</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="8ff24855-dc20-4ee4-8715-dc66926294d0" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>204</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="campaignId" value="${#TestCase#actionCode}"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="POST - deleteVehicle - Campaign Management" id="184a8f2d-12ce-45c2-827f-cc64b88a33d8">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Campaign" resourcePath="/api/oru/aps_campaigns/vehicles/{vin}" methodName="deleteVehicle" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest id="82fe68ec-1d48-45b7-a2f4-6dd19558c90c" mediaType="application/json" name="POST - deleteVehicle - Campaign Management" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://dev.orunext.com/api/oru/aps_campaigns/vehicles/W0L0AHL5879471105</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="c3848b88-7242-48f4-869d-16d38d7e729a" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <con:entry key="Authorization" value="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU2ODUzMzUsImlhdCI6MTYwNTY4MzUzNSwiYXV0aF90aW1lIjoxNjA1NjgzNDY5LCJqdGkiOiIwYmJhNjg4Ny0xYzU3LTQ5NDQtYTI3OC0wYjI4Nzc5MjllZjgiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJzdWIiOiI3YzVjNmUwNi1hMTJiLTRjNDAtOGUzNi1mMTlkYmQ2MDViZTAiLCJ0eXAiOiJJRCIsImF6cCI6ImlkcC0wZjZjNDYwNC00NzQxLTQ2YWEtYjcwOS03YWI2MzE1ZDJjMjUiLCJub25jZSI6IjAzOGMwNTYzLTVhYzEtNDVmMi04ZWZmLWFkMjQ4MjcwMjgxYiIsInNlc3Npb25fc3RhdGUiOiI5NzhjYmYyZi05YjE5LTRmNjMtOGNhYi02YzdhYWE2NWYxMDkiLCJhY3IiOiIwIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJUZXN0IFRlc3QiLCJncm91cHMiOltdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0IiwiZ2l2ZW5fbmFtZSI6IlRlc3QiLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20ifQ.Y9N_FRkTKvulvRTZqw-N0S8rPeE3PhBIPbSPSdwinU8"/>
+          <con:entry key="vin" value="${#TestCase#VIN}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>vin</con:entry>
+          <con:entry>Authorization</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="2c6d89f0-0ea5-4682-820f-ce822c87d07e">
+            <con:authProfile>ORU-OAuth</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="POST - deleteVehicleConfiguration" id="159a5459-3ec8-46f1-92b6-bdca0230ceb7">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Vehicle Configuration" resourcePath="/api/oru/vehicle_configurations/vehicles/{vin}" methodName="deleteVehicleConfigurationVehicle" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="POST - deleteVehicleConfiguration" id="22254bfd-6197-4cb8-bcd3-96a0e54ab299" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://demo.orunext.com/api/oru/vehicle_configurations/vehicles/W0L0AHL5879471105</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="58122a83-7265-4842-b91e-17974e47dfd0" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>204</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="vin" value="${#TestCase#VIN}"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="POST - deleteVehicleUpdate" id="77f7d159-d302-4305-958e-46b0203959bf">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Vehicle Update" resourcePath="/api/oru/update_management/vehicles/{vin}" methodName="deleteVehicleUpdate" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="POST - deleteVehicleUpdate" id="4ed5be29-ca38-4959-b465-0f2ef3a1366e" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://demo.orunext.com/api/oru/update_management/vehicles/W0L0AHL5879471105</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="b08cec16-8af9-4467-ad46-be26974d5dad" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="vin" value="${#TestCase#VIN}"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="POST - removeChangeMeasure - Testing Mock" id="91ec2f1c-95d8-43cc-9fc7-88797e7be9fa">
+    <con:settings/>
+    <con:config service="VW Group Services Mock" resourcePath="/change_measures/{code}" methodName="deleteChangeMeasure" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="POST - removeChangeMeasure - Testing Mock" id="f6e47bd8-f8e2-48c2-8d08-f300e2220b08" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com/api/vw-group-services-mock</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://demo.orunext.com/api/vw-group-services-mock/change_measures/OTA2977</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="655cd7fc-efe2-4ac4-8c8d-2094dfdb45ee" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>204</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="code" value="${#TestCase#changeMeasureCode}"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="POST - removeChangeMeasure - APS Campaign" id="22bc44a7-8cdd-47e9-89b0-f48f21a9ee50">
+    <con:settings/>
+    <con:config service="ESR Labs ORU App - Campaign" resourcePath="/api/oru/aps_campaigns/service42/change_measures/{code}" methodName="removeService42ChangeMeasure" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="POST - removeChangeMeasure - APS Campaign" id="8234b2ec-3c3b-429e-b836-f773764a34b6" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${#TestCase#accessToken}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>https://demo.orunext.com</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://demo.orunext.com/api/oru/aps_campaigns/service42/change_measures/OTA2977</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="08ac14db-3bbb-4875-8b03-41f9997aa9bf" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>204</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>ORU-demo</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="code" value="${#TestCase#changeMeasureCode}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>code</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="2c6d89f0-0ea5-4682-820f-ce822c87d07e">
+            <con:authProfile>ORU-OAuth</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+            <con:authProfile>ORU-live</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+            <con:authProfile>ORU-app</con:authProfile>
+          </con:entry>
+          <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>criterion</con:name>
+      <con:value>32</con:value>
+    </con:property>
+    <con:property>
+      <con:name>actionCode</con:name>
+      <con:value>A447</con:value>
+    </con:property>
+    <con:property>
+      <con:name>changeMeasureCode</con:name>
+      <con:value>CMM6154</con:value>
+    </con:property>
+    <con:property>
+      <con:name>pathForData</con:name>
+      <con:value>\\OTA-4396\\OTA-4392\\</con:value>
+    </con:property>
+    <con:property>
+      <con:name>pathForDataManifests</con:name>
+      <con:value>\OTA-4396\OTA-4392\</con:value>
+    </con:property>
+    <con:property>
+      <con:name>VIN</con:name>
+      <con:value>FLORINVEH35654696</con:value>
+    </con:property>
+    <con:property>
+      <con:name>jsonBody</con:name>
+      <con:value>{
+	  "vin" : "FLORINVEH35654696",
+	  "mbv_model_code" : "4N803A",
+	  "mbt_model_code" : "4N42",
+	  "brand_code" : "A",
+	  "pkn" : "780130856",
+	  "delivering_dealer" : "125",
+	  "supervising_dealer" : "CHN79601076",
+	  "ordering_dealer" : "CHN79601061",
+	  "equipment_codes" : ["0K0"],
+	  "model_year" : "2021",
+	  "model_name" : "e-tron S",
+	  "oru_relevant": true,
+       "oru_relevant_date": "" ,
+       "update_status": "CUSTOMER_NOTIFIED"
+	}</con:value>
+    </con:property>
+    <con:property>
+      <con:name>currentTimeStamp</con:name>
+      <con:value>2024-07-01T13:46:20.732Z</con:value>
+    </con:property>
+    <con:property>
+      <con:name>endDate</con:name>
+      <con:value>2024-07-21T13:46:20.732Z</con:value>
+    </con:property>
+    <con:property>
+      <con:name>vcHash</con:name>
+      <con:value>70AAEC1797712F344FA6F56274113965D469263C6F9678621C5AD026B92FBC26</con:value>
+    </con:property>
+    <con:property>
+      <con:name>VC_path</con:name>
+      <con:value>file:C:\OruNext Backend\OTA-4396\OTA-4392\VehicleConfiguration.json</con:value>
+    </con:property>
+    <con:property>
+      <con:name>VM_path</con:name>
+      <con:value>file:C:\OruNext Backend\OTA-4396\OTA-4392\VehicleManifest.json</con:value>
+    </con:property>
+    <con:property>
+      <con:name>odxName</con:name>
+      <con:value>FL_xjVc97s58_T633_TEST.odx-f</con:value>
+    </con:property>
+    <con:property>
+      <con:name>oucName1</con:name>
+      <con:value>FL_xjVc97s58_T633_TEST.ouc</con:value>
+    </con:property>
+    <con:property>
+      <con:name>binName1</con:name>
+      <con:value>797978e3e0b3f75cc86fcbf248f742c1.bin</con:value>
+    </con:property>
+    <con:property>
+      <con:name>binName2</con:name>
+      <con:value>41faeb11180959f97c489cca51e68005.bin</con:value>
+    </con:property>
+    <con:property>
+      <con:name>connectionStatus</con:name>
+      <con:value>201</con:value>
+    </con:property>
+    <con:property>
+      <con:name>CM_path</con:name>
+      <con:value>file:C:\OruNext Backend\OTA-4396\OTA-4392\ConfManifest_0075.json</con:value>
+    </con:property>
+    <con:property>
+      <con:name>updateId</con:name>
+      <con:value>a645bbce-db41-4786-a5a7-72215881c8a6</con:value>
+    </con:property>
+    <con:property>
+      <con:name>energyUsage</con:name>
+      <con:value>5 Ah</con:value>
+    </con:property>
+    <con:property>
+      <con:name>releaseNotesID</con:name>
+      <con:value>7a3b78f5-0407-4b1c-b47b-3718c6e3d951</con:value>
+    </con:property>
+    <con:property>
+      <con:name>accessToken</con:name>
+      <con:value>eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJJQjNRTk5TWUJibUJ6ajNaRTM4aFY3dWZYUWhWbjlUcWhDUFpfWlhDTDFnIn0.eyJleHAiOjE3MTk4MzI1ODMsImlhdCI6MTcxOTgzMDc4MywianRpIjoiMDczNDRmOTEtZGUwYy00ZGI3LTg1M2EtM2IwNGYwMjBiNDg5IiwiaXNzIjoiaHR0cHM6Ly9pZHAuY2xvdWQudndncm91cC5jb20vYXV0aC9yZWFsbXMva3Vtcy1tZmEiLCJhdWQiOiJpZHAtZGQxMTU3ZmEtOTJkNS00YjI5LTgxZWEtNTRhM2JiMGU5YTU4LW9ydW5leHQtbWZhLXB1YmxpYyIsInN1YiI6ImQ5NmY4YjY4LTM4ZWYtNGZkNy1iZDkzLWMxOGY1MmZhN2I3MSIsInR5cCI6IkJlYXJlciIsImF6cCI6ImlkcC1kZDExNTdmYS05MmQ1LTRiMjktODFlYS01NGEzYmIwZTlhNTgtb3J1bmV4dC1tZmEtcHVibGljIiwic2Vzc2lvbl9zdGF0ZSI6ImI1Y2Y0YTY0LTA5MzgtNDg0Ny04MzA2LTIxM2JjNmIwZjI4YSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL2NjbW9jay5hcHBzLmRlbW8udWNsLm9ydW5leHQuY29tIiwiaHR0cHM6Ly9hcHAub3J1bmV4dC5jb20iLCJodHRwczovL3BsYXlncm91bmQub3J1bmV4dC5jb20iLCJodHRwczovL2NjbW9jay5hcHBzLmFwcHJvdmFsLnVjbC5vcnVuZXh0LmNvbSIsImh0dHBzOi8vZGVtby5vcnVuZXh0LnZ3YXV0b2Nsb3VkLmNuIiwiaHR0cHM6Ly9hcHAub3J1bmV4dC52d2F1dG9jbG91ZC5jbiIsImh0dHBzOi8vZGVtby5vcnVuZXh0LmNvbSIsImh0dHBzOi8vYXBwLm5hci5vcnVuZXh0LmNvbSIsImh0dHBzOi8vbWVnYS5wbGF5Z3JvdW5kLm9ydW5leHQuY29tIiwiaHR0cHM6Ly90dWktY2Ntb2NrLXVjbC1vcnVuZXh0MjAuYXBwcy5tZWdhLmNhcmlhZC5jbG91ZCIsImh0dHBzOi8vY2Ntb2NrLWFwcHItdWNsLmFwcHMubWVnYS5jYXJpYWQuY2xvdWQiXSwicmVzb3VyY2VfYWNjZXNzIjp7InZ3YWcta3VtcyI6eyJyb2xlcyI6WyJWV0FHX09SVU5FWFRfRUNFX1BSSk1NQlJfREVNTyIsIlZXQUdfT1JVTkVYVF9FQ0VfU3VwT3Buc19ERU1PX1AiLCJWV0FHX09SVU5FWFRfTkFSX1Byak1tYnJfQVBQX0EiLCJWV0FHX09SVU5FWFRfTkFSX1NVUE9QTlNfTElWRSIsIlZXQUdfT1JVTkVYVF9OQVJfUHJqTW1icl9ERU1PX0EiLCJWV0FHX09SVU5FWFRfRUNFX0NNUE1HUklfTElWRV9BIiwiVldBR19PUlVOZXh0X0FQU19BUFAiLCJWV0FHX09SVU5leHRfQVBTX1VBX0RFTU8iLCJWV0FHX09SVU5leHRfQkFDS0VORF9ERU1PIiwiVldBR19PUlVOZXh0X0FQU19VQV9BUFAiLCJWV0FHX09SVU5FWFRfQ0FSQl9ERU1PIiwiVldBR19PUlVORVhUX0VDRV9QcmpNbWJyX0FQUF9QIiwiVldBR19PUlVORVhUX0VDRV9QcmpNbWJyX0RFTU9fQSIsIlZXQUdfT1JVTmV4dF9UQVVfREVNTyIsIlZXQUdfT1JVTmV4dF9CQUNLRU5EX0FQUCIsIlZXQUdfT1JVTkVYVF9FQ0VfUHJqTW1icl9BUFBfQSIsIlZXQUdfT1JVTmV4dF9UQVVfQVBQIiwiVldBR19PUlVOZXh0X0FQU19ERU1PIiwiVldBR19PUlVORVhUX05BUl9TdXBPcG5zX0RFTU9fQSIsIlZXQUdfT1JVTkVYVF9FQ0VfUHJqTW1icl9ERU1PX1AiLCJWV0FHX09SVU5leHRfVkNQX0RFTU8iLCJWV0FHX09SVU5FWFRfRUNFX1N1cE9wbnNfQVBQX0EiLCJWV0FHX09SVU5leHRfRUNFX0Jja0FkbW5fTElWRV9DIiwiVldBR19PUlVORVhUX0VDRV9TdXBPcG5zX0RFTU9fQSIsIlZXQUdfT1JVTmV4dF9WQ1BfQVBQIiwiVldBR19PUlVORVhUX05BUl9TdXBPcG5zX0FQUF9BIiwiVldBR19PUlVORVhUX0VDRV9TdXBPcG5zX0FQUF9QIl19fSwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInNpZCI6ImI1Y2Y0YTY0LTA5MzgtNDg0Ny04MzA2LTIxM2JjNmIwZjI4YSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6IlN0YXR1c2h1YiBTeXN0ZW11c2VyIiwiZ3JvdXBzIjpbIlZXQUdfT1JVTkVYVF9FQ0VfUFJKTU1CUl9ERU1PIiwiVldBR19PUlVORVhUX0VDRV9TdXBPcG5zX0RFTU9fUCIsIlZXQUdfT1JVTkVYVF9OQVJfUHJqTW1icl9BUFBfQSIsIlZXQUdfT1JVTkVYVF9OQVJfU1VQT1BOU19MSVZFIiwiVldBR19PUlVORVhUX05BUl9QcmpNbWJyX0RFTU9fQSIsIlZXQUdfT1JVTkVYVF9FQ0VfQ01QTUdSSV9MSVZFX0EiLCJWV0FHX09SVU5leHRfQVBTX0FQUCIsIlZXQUdfT1JVTmV4dF9BUFNfVUFfREVNTyIsIlZXQUdfT1JVTmV4dF9CQUNLRU5EX0RFTU8iLCJWV0FHX09SVU5leHRfQVBTX1VBX0FQUCIsIlZXQUdfT1JVTkVYVF9DQVJCX0RFTU8iLCJWV0FHX09SVU5FWFRfRUNFX1Byak1tYnJfQVBQX1AiLCJWV0FHX09SVU5FWFRfRUNFX1Byak1tYnJfREVNT19BIiwiVldBR19PUlVOZXh0X1RBVV9ERU1PIiwiVldBR19PUlVOZXh0X0JBQ0tFTkRfQVBQIiwiVldBR19PUlVORVhUX0VDRV9QcmpNbWJyX0FQUF9BIiwiVldBR19PUlVOZXh0X1RBVV9BUFAiLCJWV0FHX09SVU5leHRfQVBTX0RFTU8iLCJWV0FHX09SVU5FWFRfTkFSX1N1cE9wbnNfREVNT19BIiwiVldBR19PUlVORVhUX0VDRV9QcmpNbWJyX0RFTU9fUCIsIlZXQUdfT1JVTmV4dF9WQ1BfREVNTyIsIlZXQUdfT1JVTkVYVF9FQ0VfU3VwT3Buc19BUFBfQSIsIlZXQUdfT1JVTmV4dF9FQ0VfQmNrQWRtbl9MSVZFX0MiLCJWV0FHX09SVU5FWFRfRUNFX1N1cE9wbnNfREVNT19BIiwiVldBR19PUlVOZXh0X1ZDUF9BUFAiLCJWV0FHX09SVU5FWFRfTkFSX1N1cE9wbnNfQVBQX0EiLCJWV0FHX09SVU5FWFRfRUNFX1N1cE9wbnNfQVBQX1AiXSwicHJlZmVycmVkX3VzZXJuYW1lIjoiZWRycWE0YiIsImdpdmVuX25hbWUiOiJTdGF0dXNodWIiLCJmYW1pbHlfbmFtZSI6IlN5c3RlbXVzZXIiLCJlbWFpbCI6ImFzdXRvc2guam9zaGlAY2FyaWFkLnRlY2hub2xvZ3kifQ.T-NM8Dn9H_53sdKy8xSsEkQy_UzDR6v1-rLIudmZpz14Cz1WXZPOw5gtMviH-BaqfnjSQdaEJnozHXpJmAX9GSpGEnrrTx6f5jVDJxUYYggo0P1ExxMu6rarKOUXrzGSg1ZGKwu2B2EUW0Uel2jOg9kxMQ_aMQJeXtiBRXpk-mvh_0yBDmjsrE0H6jC8u7BhN2b4kCIp7L0KNerpU59OEJeqEjXcL6eMd2TTzxnJdJ-NcyPJDLG78j--CVhz6hxGoCy-kZdgS-Qo6M2jDQROsNNexKXM0sebckA9lYd-UKRy5U_SAoTawqPEty7JNE7dAXxhPzgpSsTTfGQV_ohCOQ</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testCase>

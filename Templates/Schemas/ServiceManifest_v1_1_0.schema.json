@@ -1,0 +1,286 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "ServiceManifest Schema",
+    "javaType": "domain.backend.mbb.v1.models.uota_v3.manifest.ServiceManifest",
+
+    "type": "object",
+    "required": [
+        "UpdateId",
+        "Vehicle",
+        "DiagAssemblyStateHash",
+        "UpdateDuration",
+        "AuthLevel",
+        "DownloadReportInterval",
+        "ReleaseNotes",
+        "VehicleManifest",
+        "Resources",
+        "LogCondition"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "Schema": {
+            "type": "string",
+            "description": "Schema this manifest conforms to"
+        },
+        "UpdateId": {
+            "type": "string",
+            "format" : "uuid",
+            "description": "UUID of this vehicle update"
+        },
+        "Created": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when this manifest was created"
+        },
+        "CampaignId": {
+            "type": "string",
+            "description": "Reference to originating campaign for this update"
+        },
+        "Vehicle": {
+            "type": "string",
+            "description": "VIN of vehicle this manifest is intended for",
+            "pattern": "^[A-Z0-9]{17}$"
+        },
+        "DiagAssemblyStateHash": {
+            "type": "string",
+            "description": "Expected VehicleConfiguration hash before the update",
+            "pattern": "^[a-zA-Z0-9_-]{8,128}$"
+        },
+        "UpdateDuration": {
+            "type": "integer",
+            "description": "Expected duration of the update in seconds"
+        },
+        "ShowDownload": {
+            "type": "boolean",
+            "description": "Download should be shown to customer in HMI",
+            "default": false
+        },
+        "DownloadWakelock": {
+            "type": "boolean",
+            "description": "Download should continue when vehicle is parked",
+            "default": false
+        },
+        "AutoDownload": {
+            "type": "boolean",
+            "description": "Download should start without customer confirmation",
+            "default": false
+        },
+        "AutoInstall": {
+            "type": "boolean",
+            "description": "Update should start without customer confirmation",
+            "default": false
+        },
+        "AuthLevel": {
+            "type": "integer",
+            "description": "Required minimum IAA authentication level to confirm update",
+            "minimum": 0,
+            "maximum": 2
+        },
+        "ObdRelevance": {
+            "type": "boolean",
+            "description": "Update is OBD-relevant",
+            "default": false
+        },
+        "TuningRelevance": {
+            "type": "boolean",
+            "description": "Update requires tuning detection",
+            "default": false
+        },
+        "LogCondition": {
+            "type": "string",
+            "enum": ["NEVER", "VEHICLE_DEFINED", "ISSUE_ONLY", "ALWAYS"],
+            "description": "The condition for logging"
+        },
+        "LogRangePreset": {
+            "type": "string",
+            "description": "The name of the log range preset"
+        },
+        "DownloadReportInterval": {
+            "type": "object",
+            "description": "Settings for download progress status update reports",
+            "required": [
+                "MinimumTime",
+                "MinimumPercentage",
+                "MaximumTime"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "MinimumTime": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Minimum time interval in minutes required in addition to minimum percentage interval"
+                },
+                "MinimumPercentage": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "description": "Minimum percentage interval in minutes required in addition to minimum time interval"
+                },
+                "MaximumTime": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Maximum time interval in minutes after which report is sent irrespective of progress"
+                }
+            }
+        },
+        "Preconditions": {
+            "type": "array",
+            "description": "Dynamic update preconditions",
+            "items": {
+                "type": "object",
+                "required": [
+                    "Precondition",
+                    "Setting"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "Precondition": {
+                        "type": "string"
+                    },
+                    "Setting": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "EnergyConsumption": {
+            "type": "array",
+            "description": "Energy consumption details",
+            "items": {
+                "type": "object",
+                "required": [
+                    "Type",
+                    "Value"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "Type": {
+                        "type": "string"
+                    },
+                    "Value": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "ReleaseNotes": {
+            "type": "object",
+            "description": "The ReleaseNotes schema",
+            "required": [
+                "URL"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "URL": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Base URL for download of release notes file"
+                },
+                "EncryptionKey": {
+                    "type": "string",
+                    "description": "Base64-encoded key for AES-256-GCM decryption (32 byte)",
+                    "contentEncoding": "base64",
+                    "pattern": "^[a-zA-Z0-9/+]{43}=$"
+                },
+                "Compressed": {
+                    "type": "boolean",
+                    "description": "Download file is compressed via GZIP",
+                    "default": false
+                }
+            }
+        },
+        "VehicleManifest": {
+            "$ref": "#/definitions/fileInfo"
+        },
+        "Resources": {
+            "type": "array",
+            "description": "List of all related update resources",
+            "items": {
+                "type": "object",
+                "required": [
+                    "Name",
+                    "Type",
+                    "File"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "Name": {
+                        "type": "string",
+                        "description": "Globally unique filename"
+                    },
+                    "Type": {
+                        "type": "string",
+                        "description": "Type of resource"
+                    },
+                    "LocalDownload": {
+                        "type": "boolean",
+                        "description": "File is downloaded by ORU vehicle client itself",
+                        "default": true
+                    },
+                    "File": {
+                        "$ref": "#/definitions/fileInfo"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "fileInfo": {
+            "type": "object",
+            "required": [
+                "Size",
+                "Hash",
+                "URL",
+                "DownloadSize",
+                "DownloadHash"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "Size": {
+                    "type": "integer",
+                    "description": "Size of plain file in bytes",
+                    "minimum": 0
+                },
+                "Hash": {
+                    "type": "string",
+                    "description": "Base64-encoded SHA-256 hash of the plain file (32 byte)",
+                    "contentEncoding": "base64",
+                    "pattern": "^[a-zA-Z0-9/+]{43}=$"
+                },
+                "URL": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Download URL where file can be fetched"
+                },
+                "Compressed": {
+                    "type": "boolean",
+                    "description": "Download file is compressed via GZIP",
+                    "default": false
+                },
+                "DownloadSize": {
+                    "type": "integer",
+                    "description": "Size of downloaded file in bytes",
+                    "minimum": 0
+                },
+                "DownloadHash": {
+                    "type": "string",
+                    "description": "Base64-encoded SHA-256 hash of the downloaded file (32 byte)",
+                    "contentEncoding": "base64",
+                    "pattern": "^[a-zA-Z0-9/+]{43}=$"
+                },
+                "EncryptionKey": {
+                    "type": "string",
+                    "description": "Base64-encoded key for AES-256-GCM decryption (32 byte)",
+                    "contentEncoding": "base64",
+                    "pattern": "^[a-zA-Z0-9/+]{43}=$"
+                },
+                "EncryptionNonce": {
+                    "type": "string",
+                    "description": "Base64-encoded nonce/IV for AES-256-GCM decryption (12 byte)",
+                    "contentEncoding": "base64",
+                    "pattern": "^[a-zA-Z0-9/+]{16}$"
+                }
+            }
+        }
+    }
+}

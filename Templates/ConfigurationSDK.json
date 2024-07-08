@@ -1,0 +1,148 @@
+{
+    "schema": "DiagAssemblyStatus_v1_6_0",
+    "releaseVersion": "1.3.2",
+    "description": "",
+    "assemblyStatusMetaData": {
+        "newestEntryTimestamp": "2020-05-27T18:25:43.511Z",
+        "oldestEntryTimestamp": "2020-05-20T10:22:03.123Z",
+        "vcHash": "957F35BA662AFB541CC3CE02AB7856775175F87DBBF30C0250226C536F33C520"
+    },
+    "assemblyStatus": {
+        "vehicleInformation": {
+            "VIN": "VIRTUAL8628074851"
+        },
+        "assemblyInformation": [
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0075",
+                    "logicalLink": "LL_MainUnitPowerChassUDS",
+                    "dataObjects": {
+                        "partNumber": "ENT346905ES",
+                        "softwareVersion": "A061",
+                        "hardwarePartNumber": "95C907397",
+                        "hardwareVersion": "X00",
+                        "asamFileIdentifier": "",
+                        "asamFileVersion": "",
+                        "zdcPartNumber": "",
+                        "zdcVersion": "",
+                        "fdsProjectData": [
+                            "Param_HashValueOfKey::1234",
+                            "Param_KeyUnlocMecha::1234",
+                            "Param_KeyRepla::1234",
+                            "Param_KeyType::1234",
+                            "Param_FDSProjeID::1234",
+                            "Param_HashValue::1234",
+                            "Param_CertiID::[Param_CertiID::1234]",
+                            "Param_HashValueOfKey::1234",
+                            "Param_KeyUnlocMecha::1234",
+                            "Param_KeyRepla::1234",
+                            "Param_KeyType::1234",
+                            "Param_FDSProjeID::1234",
+                            "Param_HashValue::1234",
+                            "Param_CertiID::[Param_CertiID::1234]"
+                        ],
+                        "datasetVersion": [
+                            "Param_DataSet1::[Param_DataSetID::1234,Param_DataSetVersi::1234,Param_DataSetState::1234]",
+                            "Param_DataSet2::[Param_DataSetID::1234,Param_DataSetVersi::1234,Param_DataSetState::1234]"
+                        ],
+                        "datasetName": [
+                            "Param_NumbeOfDataSetNames::1234,Param_DataSet1::[Param_DataSetID::1234,Param_DataSetName::1234]",
+                            "Param_DataSet2::[Param_DataSetID::1234,Param_DataSetName::1234]"
+                        ],
+                        "softwareBlockIdent": [
+                            "Param_DataBlock0::1234",
+                            "Param_DataBlock1::1234",
+                            "Param_DataBlock2::1234"
+                        ],
+                        "technicalSpecificationVersion": [
+                            "Param_MajorVersi80114::1234",
+                            "Param_MinorVersi80114::1234",
+                            "Param_MajorVersi80124::1234",
+                            "Param_MinorVersi80124::1234",
+                            "Param_MajorVersi80125::1234",
+                            "Param_MinorVersi80125::1234",
+                            "Param_MajorVersi80126::1234",
+                            "Param_MinorVersi80126::1234",
+                            "Param_MajorVersi80127::1234",
+                            "Param_MinorVersi80127::1234",
+                            "Param_MajorVersi801283::1234",
+                            "Param_MinorVersi801283::1234",
+                            "Param_MajorVersiDSDLDataSetDownl::1234",
+                            "Param_MinorVersiDSDLDataSetDownl::1234",
+                            "Param_MajorVersiDULDataUploa::1234",
+                            "Param_MinorVersiDULDataUploa::1234",
+                            "Param_MajorVersiPVDProteOfVehicDiagn::1234",
+                            "Param_MinorVersiPVDProteOfVehicDiagn::1234",
+                            "Param_MajorVersiSWaPSoftwAsAProdu::1234",
+                            "Param_MinorVersiSWaPSoftwAsAProdu::1234",
+                            "Param_MajorVersiORUOnlinRemotUpdat::1234",
+                            "Param_MinorVersiORUOnlinRemotUpdat::1234",
+                            "Param_MajorVersiPModeProduMode::1234",
+                            "Param_MinorVersiPModeProduMode::1234",
+                            "Param_MajorVersiVKMSVehicKeyManagSyste::1234",
+                            "Param_MinorVersiVKMSVehicKeyManagSyste::1234"
+                        ],
+                        "obdSupportedPIDS": [
+                            "Param_SuppoPIDs2140::1234",
+                            "Param_TimeSinceEnginStart::1234",
+                            "Param_AuxilInputStatu::1234",
+                            "Param_LocatOfOxygeSenso2::1234",
+                            "Param_OBDRequiToWhichVehicOrEnginIsCerti::1234",
+                            "Param_Bank24Senso42OxygeSensoOutpuVoltaAndShortTermFuelTrimAssocWithThisSenso::1234",
+                            "Param_Bank24Senso31OxygeSensoOutpuVoltaAndShortTermFuelTrimAssocWithThisSenso::1234",
+                            "Param_Bank23Senso2OxygeSensoOutpuVoltaAndShortTermFuelTrimAssocWithThisSenso::1234",
+                            "Param_Bank23Senso1OxygeSensoOutpuVoltaAndShortTermFuelTrimAssocWithThisSenso::1234",
+                            "Param_Bank12Senso42OxygeSensoOutpuVoltaAndShortTermFuelTrimAssocWithThisSenso::1234",
+                            "Param_Bank12Senso31OxygeSensoOutpuVoltaAndShortTermFuelTrimAssocWithThisSenso::1234",
+                            "Param_Bank12Senso31OxygeSensoOutpuVoltaAndShortTermFuelTrimAssocWithThisSenso::1234",
+                            "Param_Bank1Senso2OxygeSensoOutpuVoltaAndShortTermFuelTrimAssocWithThisSenso::1234",
+                            "Param_Bank1Senso1OxygeSensoOutpuVoltaAndShortTermFuelTrimAssocWithThisSenso::1234",
+                            "Param_LocatOfOxygeSenso::1234",
+                            "Param_CommaSeconAirStatu::1234",
+                            "Param_AbsolThrotPosit::1234",
+                            "Param_AirFlowRateFromMassAirFlowSenso::1234",
+                            "Param_IntakAirTempe::1234",
+                            "Param_IgnitTiminAdvanFor1Cylin::1234",
+                            "Param_VehicSpeedSenso::1234",
+                            "Param_EnginRPM::1234",
+                            "Param_IntakManifAbsolPress::1234",
+                            "Param_FuelRailPressGauge::1234",
+                            "Param_LongTermFuelTrimBank24::1234",
+                            "Param_ShortTermFuelTrimBank24::1234",
+                            "Param_LongTermFuelTrimBank13::1234",
+                            "Param_ShortTermFuelTrimBank13::1234",
+                            "Param_EnginCoolaTempe::1234",
+                            "Param_CalcuLOADValue::1234",
+                            "Param_FuelSysteStatu::1234",
+                            "Param_DTCThatCauseRequiFreezFrameDataStora::1234",
+                            "Param_MonitStatuSinceDTCsClear::1234"
+                        ],
+                        "obdClassDescription": [
+                            "Param_Versi::1234",
+                            "Param_OBDClass::[Param_SeconOBDCompo::1234,Param_SeconOBDECU::1234,Param_PrimaOBDECUNoMILMaste::1234,Param_PrimaOBDECUMILMaste::1234,Param_FullFunctCodeClear::1234]"
+                        ],
+                        "gwBusIdentList": [
+                            "Param_ECUDatabIdent::[Param_BusType::1234,Param_BusNumbe::1234]"
+                        ],
+                        "ivdProgCurrent": "",
+                        "ivdConfCurrent": "",
+                        "sfdProtectionData": ""
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "07B2",
+                    "masterDiagnosisAddress": "008C",
+                    "logicalLink": "LL_HVBatteMonitContrModul2UDS",
+                    "dataObjects": {
+                        "partNumber": "V03826664LG",
+                        "softwareVersion": "X211",
+                        "hardwarePartNumber": "V03826664LG",
+                        "hardwareVersion": "H02"
+                    }
+                }
+            }
+        ]
+    }
+}

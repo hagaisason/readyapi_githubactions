@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite id="608ac73b-c273-4d54-a150-390fecbb851d" name="OTA-5031 [Feature] (BS): Stop update for vehicle" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="037f2a48-cb7c-4701-852c-1b02dfe4efaffileName">OTA-5163-%5BFeature%5D-%28APS%29%3A-Adding-Change-Measures-for-stopped-campaigns</con:setting>
+    <con:setting id="IncludeOverview">true</con:setting>
+    <con:setting id="IncludeResults">true</con:setting>
+    <con:setting id="FlowLayout">false</con:setting>
+    <con:setting id="ErrorDetails">true</con:setting>
+    <con:setting id="IncludeCoverage">true</con:setting>
+    <con:setting id="GeneratableJUnitReport@Style">Single Page (Print)</con:setting>
+    <con:setting id="GeneratableJUnitReport@Folder">C:\Users\U3636\Desktop</con:setting>
+    <con:setting id="0d61adbe-c4c2-428e-b6ce-64731aa7276cfileName">OTA-4236-%5BFeature%5D-%28BS%29-Provide-energy-budget</con:setting>
+    <con:setting id="2c3a0734-570d-44a1-8298-15512507a027fileName">OTA-5031-%5BFeature%5D-%28BS%29%3A-Stop-update-for-vehicle</con:setting>
+    <con:setting id="dd83665c-e271-46b9-94bd-79f2f3585c0efileName">OTA-5031-%5BFeature%5D-%28BS%29%3A-Stop-update-for-vehicle-2</con:setting>
+    <con:setting id="1e38a11e-0349-49d3-935d-356cc5398453fileName">OTA-5031-%5BFeature%5D-%28BS%29%3A-Stop-update-for-vehicle</con:setting>
+    <con:setting id="608ac73b-c273-4d54-a150-390fecbb851dfileName">OTA-5031-%5BFeature%5D-%28BS%29%3A-Stop-update-for-vehicle</con:setting>
+  </con:settings>
+  <con:runType>SEQUENTIAL</con:runType>
+  <con:properties>
+    <con:property>
+      <con:name>releaseNotes</con:name>
+      <con:value>{
+    "en_CN": {
+        "title": "en_CN title",
+        "updateDescription": "en_CN updateDescription",
+        "updateSummary": "en_CN updateSummary",
+        "additionalFunctions": "en_CN additionalFunctions",
+        "generalWarning": "en_CN generalWarning",
+        "additionalWarning": "en_CN additionalWarning"
+    },
+    "ro_RO": {
+        "title": "ro_RO title",
+        "updateDescription": "ro_RO updateDescription",
+        "updateSummary": "ro_RO updateSummary",
+        "additionalFunctions": "ro_RO additionalFunctions",
+        "generalWarning": "ro_RO generalWarning",
+        "additionalWarning": "ro_RO additionalWarning"
+    },
+    "pt_BR": {
+        "title": "pt_BR title",
+        "updateDescription": "pt_BR updateDescription",
+        "updateSummary": "pt_BR updateSummary",
+        "additionalFunctions": "pt_BR additionalFunctions",
+        "generalWarning": "pt_BR generalWarning",
+        "additionalWarning": "pt_BR additionalWarning"
+    },
+    "th_TH": {
+        "title": "th_TH title",
+        "updateDescription": "th_TH updateDescription",
+        "updateSummary": "th_TH updateSummary",
+        "additionalFunctions": "th_TH additionalFunctions",
+        "generalWarning": "th_TH generalWarning",
+        "additionalWarning": "th_TH additionalWarning"
+    },
+    "cs_CZ": {
+        "title": "cs_CZ title",
+        "updateDescription": "cs_CZ updateDescription",
+        "updateSummary": "cs_CZ updateSummary",
+        "additionalFunctions": "cs_CZ additionalFunctions",
+        "generalWarning": "cs_CZ generalWarning",
+        "additionalWarning": "cs_CZ additionalWarning"
+    },
+    "ca_ES": {
+        "title": "ca_ES title",
+        "updateDescription": "ca_ES updateDescription",
+        "updateSummary": "ca_ES updateSummary",
+        "additionalFunctions": "ca_ES additionalFunctions",
+        "generalWarning": "ca_ES generalWarning",
+        "additionalWarning": "ca_ES additionalWarning"
+    },
+    "hu_HU": {
+        "title": "hu_HU title",
+        "updateDescription": "hu_HU updateDescription",
+        "updateSummary": "hu_HU updateSummary",
+        "additionalFunctions": "hu_HU additionalFunctions",
+        "generalWarning": "hu_HU generalWarning",
+        "additionalWarning": "hu_HU additionalWarning"
+    },
+    "ar_SA": {
+        "title": "ar_SA title",
+        "updateDescription": "ar_SA updateDescription",
+        "updateSummary": "ar_SA updateSummary",
+        "additionalFunctions": "ar_SA additionalFunctions",
+        "generalWarning": "ar_SA generalWarning",
+        "additionalWarning": "ar_SA additionalWarning"
+    },
+    "nb_NO": {
+        "title": "nb_NO title",
+        "updateDescription": "nb_NO updateDescription",
+        "updateSummary": "nb_NO updateSummary",
+        "additionalFunctions": "nb_NO additionalFunctions",
+        "generalWarning": "nb_NO generalWarning",
+        "additionalWarning": "nb_NO additionalWarning"
+    },
+    "gl_ES": {
+        "title": "gl_ES title",
+        "updateDescription": "gl_ES updateDescription",
+        "updateSummary": "gl_ES updateSummary",
+        "additionalFunctions": "gl_ES additionalFunctions",
+        "generalWarning": "gl_ES generalWarning",
+        "additionalWarning": "gl_ES additionalWarning"
+    },
+    "es_MX": {
+        "title": "es_MX title",
+        "updateDescription": "es_MX updateDescription",
+        "updateSummary": "es_MX updateSummary",
+        "additionalFunctions": "es_MX additionalFunctions",
+        "generalWarning": "es_MX generalWarning",
+        "additionalWarning": "es_MX additionalWarning"
+    },
+    "sk_SK": {
+        "title": "sk_SK title",
+        "updateDescription": "sk_SK updateDescription",
+        "updateSummary": "sk_SK updateSummary",
+        "additionalFunctions": "sk_SK additionalFunctions",
+        "generalWarning": "sk_SK generalWarning",
+        "additionalWarning": "sk_SK additionalWarning"
+    },
+    "en_TW": {
+        "title": "en_TW title",
+        "updateDescription": "en_TW updateDescription",
+        "updateSummary": "en_TW updateSummary",
+        "additionalFunctions": "en_TW additionalFunctions",
+        "generalWarning": "en_TW generalWarning",
+        "additionalWarning": "en_TW additionalWarning"
+    },
+    "es_ES": {
+        "title": "es_ES title",
+        "updateDescription": "es_ES updateDescription",
+        "updateSummary": "es_ES updateSummary",
+        "additionalFunctions": "es_ES additionalFunctions",
+        "generalWarning": "es_ES generalWarning",
+        "additionalWarning": "es_ES additionalWarning"
+    },
+    "nl_NL": {
+        "title": "nl_NL title",
+        "updateDescription": "nl_NL updateDescription",
+        "updateSummary": "nl_NL updateSummary",
+        "additionalFunctions": "nl_NL additionalFunctions",
+        "generalWarning": "nl_NL generalWarning",
+        "additionalWarning": "nl_NL additionalWarning"
+    },
+    "sv_SE": {
+        "title": "sv_SE title",
+        "updateDescription": "sv_SE updateDescription",
+        "updateSummary": "sv_SE updateSummary",
+        "additionalFunctions": "sv_SE additionalFunctions",
+        "generalWarning": "sv_SE generalWarning",
+        "additionalWarning": "sv_SE additionalWarning"
+    },
+    "da_DK": {
+        "title": "da_DK title",
+        "updateDescription": "da_DK updateDescription",
+        "updateSummary": "da_DK updateSummary",
+        "additionalFunctions": "da_DK additionalFunctions",
+        "generalWarning": "da_DK generalWarning",
+        "additionalWarning": "da_DK additionalWarning"
+    },
+    "sr_RS": {
+        "title": "sr_RS title",
+        "updateDescription": "sr_RS updateDescription",
+        "updateSummary": "sr_RS updateSummary",
+        "additionalFunctions": "sr_RS additionalFunctions",
+        "generalWarning": "sr_RS generalWarning",
+        "additionalWarning": "sr_RS additionalWarning"
+    },
+    "hr_HR": {
+        "title": "hr_HR title",
+        "updateDescription": "hr_HR updateDescription",
+        "updateSummary": "hr_HR updateSummary",
+        "additionalFunctions": "hr_HR additionalFunctions",
+        "generalWarning": "hr_HR generalWarning",
+        "additionalWarning": "hr_HR additionalWarning"
+    },
+    "ko_KR": {
+        "title": "ko_KR title",
+        "updateDescription": "ko_KR updateDescription",
+        "updateSummary": "ko_KR updateSummary",
+        "additionalFunctions": "ko_KR additionalFunctions",
+        "generalWarning": "ko_KR generalWarning",
+        "additionalWarning": "ko_KR additionalWarning"
+    },
+    "en_US": {
+        "title": "en_US title",
+        "updateDescription": "en_US updateDescription",
+        "updateSummary": "en_US updateSummary",
+        "additionalFunctions": "en_US additionalFunctions",
+        "generalWarning": "en_US generalWarning",
+        "additionalWarning": "en_US additionalWarning"
+    },
+    "lt_LT": {
+        "title": "lt_LT title",
+        "updateDescription": "lt_LT updateDescription",
+        "updateSummary": "lt_LT updateSummary",
+        "additionalFunctions": "lt_LT additionalFunctions",
+        "generalWarning": "lt_LT generalWarning",
+        "additionalWarning": "lt_LT additionalWarning"
+    },
+    "el_GR": {
+        "title": "el_GR title",
+        "updateDescription": "el_GR updateDescription",
+        "updateSummary": "el_GR updateSummary",
+        "additionalFunctions": "el_GR additionalFunctions",
+        "generalWarning": "el_GR generalWarning",
+        "additionalWarning": "el_GR additionalWarning"
+    },
+    "it_IT": {
+        "title": "it_IT title",
+        "updateDescription": "it_IT updateDescription",
+        "updateSummary": "it_IT updateSummary",
+        "additionalFunctions": "it_IT additionalFunctions",
+        "generalWarning": "it_IT generalWarning",
+        "additionalWarning": "it_IT additionalWarning"
+    },
+    "ru_RU": {
+        "title": "ru_RU title",
+        "updateDescription": "ru_RU updateDescription",
+        "updateSummary": "ru_RU updateSummary",
+        "additionalFunctions": "ru_RU additionalFunctions",
+        "generalWarning": "ru_RU generalWarning",
+        "additionalWarning": "ru_RU additionalWarning"
+    },
+    "pl_PL": {
+        "title": "pl_PL title",
+        "updateDescription": "pl_PL updateDescription",
+        "updateSummary": "pl_PL updateSummary",
+        "additionalFunctions": "pl_PL additionalFunctions",
+        "generalWarning": "pl_PL generalWarning",
+        "additionalWarning": "pl_PL additionalWarning"
+    },
+    "tr_TR": {
+        "title": "tr_TR title",
+        "updateDescription": "tr_TR updateDescription",
+        "updateSummary": "tr_TR updateSummary",
+        "additionalFunctions": "tr_TR additionalFunctions",
+        "generalWarning": "tr_TR generalWarning",
+        "additionalWarning": "tr_TR additionalWarning"
+    },
+    "hi_IN": {
+        "title": "hi_IN title",
+        "updateDescription": "hi_IN updateDescription",
+        "updateSummary": "hi_IN updateSummary",
+        "additionalFunctions": "hi_IN additionalFunctions",
+        "generalWarning": "hi_IN generalWarning",
+        "additionalWarning": "hi_IN additionalWarning"
+    },
+    "id_ID": {
+        "title": "id_ID title",
+        "updateDescription": "id_ID updateDescription",
+        "updateSummary": "id_ID updateSummary",
+        "additionalFunctions": "id_ID additionalFunctions",
+        "generalWarning": "id_ID generalWarning",
+        "additionalWarning": "id_ID additionalWarning"
+    },
+    "fr_FR": {
+        "title": "fr_FR title",
+        "updateDescription": "fr_FR updateDescription",
+        "updateSummary": "fr_FR updateSummary",
+        "additionalFunctions": "fr_FR additionalFunctions",
+        "generalWarning": "fr_FR generalWarning",
+        "additionalWarning": "fr_FR additionalWarning"
+    },
+    "he_IL": {
+        "title": "he_IL title",
+        "updateDescription": "he_IL updateDescription",
+        "updateSummary": "he_IL updateSummary",
+        "additionalFunctions": "he_IL additionalFunctions",
+        "generalWarning": "he_IL generalWarning",
+        "additionalWarning": "he_IL additionalWarning"
+    },
+    "ja_JP": {
+        "title": "ja_JP title",
+        "updateDescription": "ja_JP updateDescription",
+        "updateSummary": "ja_JP updateSummary",
+        "additionalFunctions": "ja_JP additionalFunctions",
+        "generalWarning": "ja_JP generalWarning",
+        "additionalWarning": "ja_JP additionalWarning"
+    },
+    "de_DE": {
+        "title": "de_DE title",
+        "updateDescription": "de_DE updateDescription",
+        "updateSummary": "de_DE updateSummary",
+        "additionalFunctions": "de_DE additionalFunctions",
+        "generalWarning": "de_DE generalWarning",
+        "additionalWarning": "de_DE additionalWarning"
+    },
+    "ms_MY": {
+        "title": "ms_MY title",
+        "updateDescription": "ms_MY updateDescription",
+        "updateSummary": "ms_MY updateSummary",
+        "additionalFunctions": "ms_MY additionalFunctions",
+        "generalWarning": "ms_MY generalWarning",
+        "additionalWarning": "ms_MY additionalWarning"
+    },
+    "zh_HK": {
+        "title": "zh_HK title",
+        "updateDescription": "zh_HK updateDescription",
+        "updateSummary": "zh_HK updateSummary",
+        "additionalFunctions": "zh_HK additionalFunctions",
+        "generalWarning": "zh_HK generalWarning",
+        "additionalWarning": "zh_HK additionalWarning"
+    },
+    "zh_TW": {
+        "title": "zh_TW title",
+        "updateDescription": "zh_TW updateDescription",
+        "updateSummary": "zh_TW updateSummary",
+        "additionalFunctions": "zh_TW additionalFunctions",
+        "generalWarning": "zh_TW generalWarning",
+        "additionalWarning": "zh_TW additionalWarning"
+    },
+    "eu_ES": {
+        "title": "eu_ES title",
+        "updateDescription": "eu_ES updateDescription",
+        "updateSummary": "eu_ES updateSummary",
+        "additionalFunctions": "eu_ES additionalFunctions",
+        "generalWarning": "eu_ES generalWarning",
+        "additionalWarning": "eu_ES additionalWarning"
+    },
+    "pt_US": {
+        "title": "pt_US title",
+        "updateDescription": "pt_US updateDescription",
+        "updateSummary": "pt_US updateSummary",
+        "additionalFunctions": "pt_US additionalFunctions",
+        "generalWarning": "pt_US generalWarning",
+        "additionalWarning": "pt_US additionalWarning"
+    },
+    "en_JP": {
+        "title": "en_JP title",
+        "updateDescription": "en_JP updateDescription",
+        "updateSummary": "en_JP updateSummary",
+        "additionalFunctions": "en_JP additionalFunctions",
+        "generalWarning": "en_JP generalWarning",
+        "additionalWarning": "en_JP additionalWarning"
+    },
+    "fr_CA": {
+        "title": "fr_CA title",
+        "updateDescription": "fr_CA updateDescription",
+        "updateSummary": "fr_CA updateSummary",
+        "additionalFunctions": "fr_CA additionalFunctions",
+        "generalWarning": "fr_CA generalWarning",
+        "additionalWarning": "fr_CA additionalWarning"
+    },
+    "bg_BG": {
+        "title": "bg_BG title",
+        "updateDescription": "bg_BG updateDescription",
+        "updateSummary": "bg_BG updateSummary",
+        "additionalFunctions": "bg_BG additionalFunctions",
+        "generalWarning": "bg_BG generalWarning",
+        "additionalWarning": "bg_BG additionalWarning"
+    },
+    "az_AZ": {
+        "title": "az_AZ title",
+        "updateDescription": "az_AZ updateDescription",
+        "updateSummary": "az_AZ updateSummary",
+        "additionalFunctions": "az_AZ additionalFunctions",
+        "generalWarning": "az_AZ generalWarning",
+        "additionalWarning": "az_AZ additionalWarning"
+    },
+    "fi_FI": {
+        "title": "fi_FI title",
+        "updateDescription": "fi_FI updateDescription",
+        "updateSummary": "fi_FI updateSummary",
+        "additionalFunctions": "fi_FI additionalFunctions",
+        "generalWarning": "fi_FI generalWarning",
+        "additionalWarning": "fi_FI additionalWarning"
+    },
+    "en_GB": {
+        "title": "en_GB title",
+        "updateDescription": "en_GB updateDescription",
+        "updateSummary": "en_GB updateSummary",
+        "additionalFunctions": "en_GB additionalFunctions",
+        "generalWarning": "en_GB generalWarning",
+        "additionalWarning": "en_GB additionalWarning"
+    },
+    "et_EE": {
+        "title": "et_EE title",
+        "updateDescription": "et_EE updateDescription",
+        "updateSummary": "et_EE updateSummary",
+        "additionalFunctions": "et_EE additionalFunctions",
+        "generalWarning": "et_EE generalWarning",
+        "additionalWarning": "et_EE additionalWarning"
+    },
+    "bs_BA": {
+        "title": "bs_BA title",
+        "updateDescription": "bs_BA updateDescription",
+        "updateSummary": "bs_BA updateSummary",
+        "additionalFunctions": "bs_BA additionalFunctions",
+        "generalWarning": "bs_BA generalWarning",
+        "additionalWarning": "bs_BA additionalWarning"
+    },
+    "lv_LV": {
+        "title": "lv_LV title",
+        "updateDescription": "lv_LV updateDescription",
+        "updateSummary": "lv_LV updateSummary",
+        "additionalFunctions": "lv_LV additionalFunctions",
+        "generalWarning": "lv_LV generalWarning",
+        "additionalWarning": "lv_LV additionalWarning"
+    },
+    "uk_UA": {
+        "title": "uk_UA title",
+        "updateDescription": "uk_UA updateDescription",
+        "updateSummary": "uk_UA updateSummary",
+        "additionalFunctions": "uk_UA additionalFunctions",
+        "generalWarning": "uk_UA generalWarning",
+        "additionalWarning": "uk_UA additionalWarning"
+    },
+    "sl_SI": {
+        "title": "sl_SI title",
+        "updateDescription": "sl_SI updateDescription",
+        "updateSummary": "sl_SI updateSummary",
+        "additionalFunctions": "sl_SI additionalFunctions",
+        "generalWarning": "sl_SI generalWarning",
+        "additionalWarning": "sl_SI additionalWarning"
+    },
+    "zh_CN": {
+        "title": "zh_CN title",
+        "updateDescription": "zh_CN updateDescription",
+        "updateSummary": "zh_CN updateSummary",
+        "additionalFunctions": "zh_CN additionalFunctions",
+        "generalWarning": "zh_CN generalWarning",
+        "additionalWarning": "zh_CN additionalWarning"
+    },
+    "en_KR": {
+        "title": "en_KR title",
+        "updateDescription": "en_KR updateDescription",
+        "updateSummary": "en_KR updateSummary",
+        "additionalFunctions": "en_KR additionalFunctions",
+        "generalWarning": "en_KR generalWarning",
+        "additionalWarning": "en_KR additionalWarning"
+    },
+    "pt_PT": {
+        "title": "pt_PT title",
+        "updateDescription": "pt_PT updateDescription",
+        "updateSummary": "pt_PT updateSummary",
+        "additionalFunctions": "pt_PT additionalFunctions",
+        "generalWarning": "pt_PT generalWarning",
+        "additionalWarning": "pt_PT additionalWarning"
+    }
+}</con:value>
+    </con:property>
+  </con:properties>
+  <con:tearDownScript><![CDATA[import com.eviware.soapui.model.testsuite.TestRunner.Status
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestCaseRunner
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+// get the name of the test suite
+def testSuiteName = context.getTestSuite().name
+
+// get the status of the test suite
+def testSuiteStatus = context.getTestRunner().getStatus().toString()
+
+// get the number of reruns from the project property
+def noOfReruns = Integer.parseInt(context.expand('${#Project#noOfReruns}'))
+
+// set the initial status for the tets suite
+def failTestSuite = false
+
+// declare the name of the test step
+def testStepName = "[Update] Set JIRA Test Case Execution Status"
+
+// declare test case statuses for special test cases
+def testCaseStatus_1
+def testCaseStatus_2
+def testCaseStatus_3
+def testCaseStatus_4
+def testCaseStatus_5
+
+// check which test case failed and rerun it a given number of times
+// iterate over the test case results in the test suite
+for (testCaseResult in runner.results) {
+    // get the name of the current test case
+    def testCaseName = testCaseResult.getTestCase().name
+
+    // check if the test case failed
+    if (testCaseResult.getStatus().toString() == 'FAIL') {
+        def testCaseRunner 
+        
+        // attempt to rerun the test case up to the specified number of times
+        for (i = 0; i < noOfReruns; i++) {
+            // log each rerun attempt
+            log.info("[Test Case] [Rerun] [Attempt " + (i + 1) + "] [Started]: " + testCaseName)
+
+            // rerun the test case
+            testCaseRunner  = testCaseResult.testCase.run(null, false)
+
+            // break if the rerun passes
+            if (testCaseRunner .getStatus().toString() == "PASS") {
+			// log the passed result of the rerun attempt
+           	 log.info("[Test Case] [Rerun] [Attempt " + (i + 1) + "] [Passed]: " + testCaseName)
+       
+                runner.status = Status.FINISHED
+                break
+            }
+        }
+        // mark the test suite as failed if the reruns fail
+        if (testCaseRunner .getStatus().toString() == "FAILED") {
+            // log the failed result of each rerun attempt
+            log.info("[Test Case] [Rerun] [Attempt " + (i + 1) + "] [Failed]: " + testCaseName)
+
+            failTestSuite = true
+        }
+    }
+}
+
+// capture the statuses of the specific test cases after the rerun
+// iterate over the test case results in the test suite
+for (testCaseResult in runner.results) {
+	// get the name of the current test case
+    def testCaseName = testCaseResult.getTestCase().name
+    
+    if (testCaseName == 'the status of an Change Measure set to "BLOCKED"') {
+        testCaseStatus_1 = testCaseResult.getStatus().toString()
+    }
+    else if (testCaseName == 'Batch manual user stop') {
+        testCaseStatus_2 = testCaseResult.getStatus().toString()
+    }
+    else if (testCaseName == 'Campaign Set Prioritization') {
+        testCaseStatus_3 = testCaseResult.getStatus().toString()
+    }
+    else if (testCaseName == 'Campaign Prioritization') {
+        testCaseStatus_4 = testCaseResult.getStatus().toString()
+    }
+    else if (testCaseName == 'Terminating Condition') {
+        testCaseStatus_5 = testCaseResult.getStatus().toString()
+    }
+}
+
+// run the necessary test step to update the JIRA regression for the acceptence criteria that passed
+// iterate over the test case results in the test suite
+for (testCaseResult in runner.results) {
+    // get the name of the current test case
+    def testCaseName = testCaseResult.getTestCase().name
+
+    // check if the test case passed
+    if (testCaseResult.getStatus().toString() == 'PASS') {
+        // check if the test case is the last ReadyAPI test case that covers said acceptance criterion
+        if (testCaseName == 'Oru relevance') {
+        	 //check that all of the other test cases that are part of this group also passed
+            if (testCaseStatus_1 == 'PASS' && testCaseStatus_2 == 'PASS' && testCaseStatus_3 == 'PASS' && testCaseStatus_4 == 'PASS' && testCaseStatus_5 == 'PASS') {
+                runTestStep(testCaseResult, testStepName)
+            }
+            else {
+                log.info("[Test Case]: " + testCaseName + " | Not all test cases part of the same group passed. JIRA regression test execution won't be updated!")
+            }
+        }
+    }
+}
+
+// set the overall status of the test suite based on the rerun results
+if (failTestSuite) {
+    runner.status = Status.FAILED
+}
+
+// log the final result of the test suite execution
+if (testSuiteStatus == 'FAIL') {
+    log.info("[Test Suite] [Failed]: " + testSuiteName)
+}
+else if (testSuiteStatus == 'PASS') {
+    log.info("[Test Suite] [Passed]: " + testSuiteName)
+}
+
+//-------------------- METHODS --------------------//
+
+// method to run a test step and log the results
+public void runTestStep(def testCaseResult, String testStepName){
+    // get the name of the current test case
+    def testCaseName = testCaseResult.getTestCase().name
+
+    // get the specific test step by name
+    def testStep = testCaseResult.testCase.getTestStepByName(testStepName)
+
+    // create a new runner and context for the test step
+    def testCaseRunner = new WsdlTestCaseRunner(testCaseResult.testCase, null)
+    def testCaseRunContext = new WsdlTestRunContext(testStep)
+
+    // log the attempt to run the test step
+    log.info("[" + testCaseName + "][Test Step] [Started]: " + testStepName)
+
+    // run the test step with the test case runner and context
+    def testStepResult = testStep.run(testCaseRunner, testCaseRunContext)
+
+    // log the result of the test step run
+    log.info("[" + testCaseName + "][Test Step] [Completed]: " + testStepName)
+    log.info("[" + testCaseName + "][Test Step] [Status]: " + testStepResult.getStatus())
+    log.info("[" + testCaseName + "][Test Step] [Response]: " + testStepResult.getResponse().getContentAsString())
+}]]></con:tearDownScript>
+  <con:reportParameters/>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testSuite>

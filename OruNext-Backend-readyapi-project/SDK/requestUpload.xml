@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="requestUpload" path="/uota_v3/requestUpload/{updateId}/{file}" id="666e786a-8c13-4393-9a9f-cb91f36d286b" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="37dad5e3-e63e-4e35-854b-f31ef19d246efileName">requestUpload</con:setting>
+    <con:setting id="666e786a-8c13-4393-9a9f-cb91f36d286bfileName">requestUpload</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>updateId</con:name>
+      <con:style>TEMPLATE</con:style>
+    </con:parameter>
+    <con:parameter disableUrlEncoding="true">
+      <con:name>file</con:name>
+      <con:value>file</con:value>
+      <con:style>TEMPLATE</con:style>
+    </con:parameter>
+    <con:parameter required="false" disableUrlEncoding="true">
+      <con:name>size</con:name>
+      <con:value/>
+      <con:style>QUERY</con:style>
+      <con:default/>
+      <con:description xsi:nil="true"/>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="Method 1" id="191b27d2-9ec8-4de8-97f3-cac77fae37ee" method="POST">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter required="false" disableUrlEncoding="true">
+        <con:name>updateId</con:name>
+        <con:value>updateId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>updateId</con:default>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:request name="Request 1" id="47a8eb99-34cb-4e88-a7a2-b0fc5db95fbd" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer eyJraWQiOiJCYWNrZW5kVGVzdGluZyIsImFsZyI6IlJTMjU2In0.eyAgICJzY3AiIDogWyJ0MV9hOmNhcmNsb3VkIl0sIAoJCQkJCQkJCSJ2ZXIiIDogIjEiLAoJCQkJCQkJCSJpc3MiIDogImludGVjaCIsIAoJCQkJCQkJCSJjY2giIDogIlZFSElDTEUiLCAKCQkJCQkJCQkic3R5cCIgOiAiVDEiLAoJCQkJCQkJCSJ0eXAiIDogIkFUIiwgCgkJCQkJCQkJImV4cCIgOiAxNjcwOTQxNzE2LAoJCQkJCQkJCSJpYXQiIDogMTY3MDkzODExNiwKCQkJCQkJCQkiYXVkIiA6IFsiVldHTVFUVEMwMURFQVBQMSIsCgkJCQkJCQkJICAgICAgICAgICAgIlZXR0RTUERFQVBQMSIsCgkJCQkJCQkJICAgICAgICAgICAgIlZXR01RVFQwMURFQVBQMSJdLAoKCQkJCQkJCQkgInZpbiIgOiAiRkFLRVZJTjQyMTA4NDc3NjYiLAoJCQkJCQkJCSAidG50IiA6ICJBdWRpLERFIgoJCQkJCQkJCX0.fl3wIokMmxrzWHVQfwKm_8xVLht6l44oWXRKV3TN0o9kERCGWgwYFJIutfl_Q6tKbmAUx-p8Vf0JwGEUroQVAFJXNagFD6Sb0iVmk5CadmieJtgaDoufETUixdn-l942oWEkJQuX_tKiZIiyGSwSm2bomh3HHCrcBrVQ8W_ScACcSMRJPqYS0Mc5CyFnBIGrlV5ur1B1erUvHcVwUr5OoRdkwP8ZHw58BjOJqqm4NQ3A8_4L4xx-b7T1pTycQC1WZSefKG4VSn5--SGPjAoZvnzS4viPviR0WkvKgp61XC8nKMML1qlx62K-RfEbAVQRhQarHVKkNty7wlQn1NZjeQ" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+      </con:settings>
+      <con:endpoint>https://api.demo.orunext.com</con:endpoint>
+      <con:request/>
+      <con:originalUri>https://api.demo.orunext.com/uota_v3​/requestUpload​/​/file</con:originalUri>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="file" value="file"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>updateId</con:entry>
+        <con:entry>file</con:entry>
+        <con:entry>size</con:entry>
+      </con:parameterOrder>
+      <con:environmentSpec>
+        <con:entry environmentId="cadeee3c-c131-4727-a303-b17898acdedb">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="6579a9ac-c496-456c-8ca0-d04088a601b8">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="b895e883-4d3f-481d-a439-6406666cd451">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>ORU-app</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="cadeee3c-c131-4727-a303-b17898acdedb">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="6579a9ac-c496-456c-8ca0-d04088a601b8">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="b895e883-4d3f-481d-a439-6406666cd451">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="cadeee3c-c131-4727-a303-b17898acdedb">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="6579a9ac-c496-456c-8ca0-d04088a601b8">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="b895e883-4d3f-481d-a439-6406666cd451">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

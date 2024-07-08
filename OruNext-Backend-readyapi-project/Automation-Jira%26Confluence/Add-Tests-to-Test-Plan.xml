@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="Add Tests to Test Plan" path="/jira/rest/raven/1.0/api/testplan/{testPlanKey}/test" id="762a8b2b-f42e-4376-9ba3-0510be069f80" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="2dbb718e-ec72-4e77-95f7-7d3cb6e4203bfileName">Add-Tests-to-Test-Plan</con:setting>
+    <con:setting id="abdcf27f-edd6-4a7c-9c10-66dbb0bee439fileName">Add-Tests-to-Test-Plan</con:setting>
+    <con:setting id="762a8b2b-f42e-4376-9ba3-0510be069f80fileName">Add-Tests-to-Test-Plan</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>testPlanKey</con:name>
+      <con:style>TEMPLATE</con:style>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="Method 1" id="8b651b91-8071-4836-be0a-951a8918a704" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:request name="Request 1" id="a5c26db0-4499-4c2d-8255-d069aa961204" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="cookie" value="seraph.rememberme.cookie=1806731:8605ecc17a092c29b5e767849d18d50a7aa70ed0; JSESSIONID=E8D802B02DCA1C0ACFDB548A754D6DAA; atlassian.xsrf.token=BXOJ-IMY4-HPEH-2DLE_12eef42736a2d51ba4d9b778dbae88104f50ab9f_lin; _ga=GA1.2.87303452.1627892548" xmlns="http://eviware.com/soapui/config"/></con:setting>
+      </con:settings>
+      <con:endpoint>https://devstack.vwgroup.com</con:endpoint>
+      <con:request>{
+	"add" : [
+		"OTA-4041"
+	]	
+}</con:request>
+      <con:originalUri>https://devstack.vwgroup.com/jira/rest/raven/1.0/api/testplan/OTA-4042/testset</con:originalUri>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="testPlanKey" value="OTA-4042"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>testPlanKey</con:entry>
+      </con:parameterOrder>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

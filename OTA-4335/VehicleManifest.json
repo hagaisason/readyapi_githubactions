@@ -1,0 +1,86 @@
+{
+    "modulVersion": "2.1.0",
+    "modulResult": true,
+    "scheme": "VehicleManifestSchema_2.2.0.json",
+    "manifestImplementationVersion": "",
+    "manifestName": "",
+    "manifestFileVersion": "",
+    "requestId": "12345678-1234-1234-1234-12345678abce",
+    "description": "Fake for Automation Testing 2021-01-25",
+    "blPartNumber": "0123456789",
+    "vcHash": "C156E4B7D7E505273204116F4FE3ED02426C55BC43A44C73643955EE4E9F68D6",
+    "useCase": "oru",
+    "checkMap": "checked",
+    "amCode": "CMA7373",
+    "updateMap": {
+        "id": 1,
+        "updateType": "sequential",
+        "updateItems": [
+            {
+                "id": 2,
+                "elementType": "updateItem",
+                "updateItem": {
+                    "diagnosisAddress": "0015",
+                    "dataType": "PROG",
+                    "progInformation": {
+                        "sgvType": "PU_",
+                        "law": "BC#",
+                        "ecuType": "UDS (ohne ICAS)",
+                        "obdRelevance": false,
+                        "ivdRelevance": false,
+                        "diagnosisClass": "DK4",
+                        "duration": 17,
+                        "targetVersions": [
+                            {
+                                "partNumber": "YR041I9VU",
+                                "softwareVersion": "T444"
+                            }
+                        ],
+                        "validVersionMapping": [
+                            {
+                                "odxSessionShortName": "SESD_85F907468_H7E3_VDONLY_V001_E",
+                                "metaFile": "FL_IMTXZGI98_T010_TEST.odx-f",
+                                "dataFiles": [
+                                    {
+                                        "blockFileName": "5ba9b4ddf801b716de879f7e12f29432.bin",
+                                        "blockNo": "000A",
+                                        "blockVersion": "0236",
+                                        "blockInstallationTime": 60,
+                                        "blockFileSize": 115
+                                    },
+                                    {
+                                        "blockFileName": "2b873e43c73111ff8a2f6c2d7611ea47.bin",
+                                        "blockNo": "000B",
+                                        "blockVersion": "0236",
+                                        "blockInstallationTime": 60,
+                                        "blockFileSize": 115
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "retries": 1,
+                    "preActions": [
+                        {
+                            "actionType": "crc",
+                            "id": 3,
+                            "crcAction": {
+                                "fusiTransferDA": true
+                            }
+                        }
+                    ],
+                    "postActions": [
+                        {
+                            "actionType": "crc",
+                            "id": 4,
+                            "retries": 1,
+                            "crcAction": {
+                                "manifest": "FL_IMTXZGI98_T010_TEST"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="Add epic link" path="/jira/rest/greenhopper/1.0/epics/{epic-key}/add" id="1b488ced-a90c-4100-aed5-890fcd1c8e18" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="51b8079f-d0f9-4adb-b1a7-926f485e2190fileName">Add-epic-link</con:setting>
+    <con:setting id="47cc2035-828c-4b5e-8a06-7cf8453492a7fileName">Add-epic-link</con:setting>
+    <con:setting id="1b488ced-a90c-4100-aed5-890fcd1c8e18fileName">Add-epic-link</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>epic-key</con:name>
+      <con:style>TEMPLATE</con:style>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="Method 1" id="5a3cb54b-400e-4cda-9b2a-b3f19bfdd723" method="PUT">
+    <con:settings/>
+    <con:parameters/>
+    <con:request name="Request 1" id="005e9dd7-3095-48ff-beda-afbb4e84f21d" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="cookie" value="seraph.rememberme.cookie=1806731:8605ecc17a092c29b5e767849d18d50a7aa70ed0; JSESSIONID=E8D802B02DCA1C0ACFDB548A754D6DAA; atlassian.xsrf.token=BXOJ-IMY4-HPEH-2DLE_12eef42736a2d51ba4d9b778dbae88104f50ab9f_lin; _ga=GA1.2.87303452.1627892548" xmlns="http://eviware.com/soapui/config"/></con:setting>
+      </con:settings>
+      <con:endpoint>https://devstack.vwgroup.com</con:endpoint>
+      <con:request>{\r
+   "ignoreEpics" : true,\r
+   "issueKeys" : [\r
+      "OTA-4066"
+   ]\r
+}</con:request>
+      <con:originalUri>https://devstack.vwgroup.com/jira/rest/greenhopper/1.0/epics/OTA-2012/add</con:originalUri>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="epic-key" value="OTA-2104"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>epic-key</con:entry>
+      </con:parameterOrder>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

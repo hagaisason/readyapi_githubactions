@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite id="8721e7ac-1bf4-458b-8263-0afdbcfacdd2" name="OTA-17087 [Feature] (APS): Status Event Configuration" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="037f2a48-cb7c-4701-852c-1b02dfe4efaffileName">OTA-5163-%5BFeature%5D-%28APS%29%3A-Adding-Change-Measures-for-stopped-campaigns</con:setting>
+    <con:setting id="IncludeOverview">true</con:setting>
+    <con:setting id="IncludeResults">true</con:setting>
+    <con:setting id="FlowLayout">false</con:setting>
+    <con:setting id="ErrorDetails">true</con:setting>
+    <con:setting id="IncludeCoverage">true</con:setting>
+    <con:setting id="GeneratableJUnitReport@Style">Single Page (Print)</con:setting>
+    <con:setting id="GeneratableJUnitReport@Folder">C:\Users\U3636\Desktop</con:setting>
+    <con:setting id="0d61adbe-c4c2-428e-b6ce-64731aa7276cfileName">OTA-4236-%5BFeature%5D-%28BS%29-Provide-energy-budget</con:setting>
+    <con:setting id="eb268195-c5e8-4158-b5c6-abbfee946dd3fileName">OTA-14624-%5BFeature%5D-%28APS%29%3A-Mocked-ReCall-Customer-notified</con:setting>
+    <con:setting id="22847ab6-1caa-414d-a9f2-ca107c5363a8fileName">OTA-17087-%5BFeature%5D-%28APS%29%3A-Status-Event-Configuration</con:setting>
+    <con:setting id="e6e6897e-e50b-435e-a414-899757df5481fileName">OTA-17087-%5BFeature%5D-%28APS%29%3A-Status-Event-Configuration-2</con:setting>
+    <con:setting id="fb6a22a4-5721-425f-b4c3-b6987068d5cffileName">OTA-17087-%5BFeature%5D-%28APS%29%3A-Status-Event-Configuration</con:setting>
+    <con:setting id="8721e7ac-1bf4-458b-8263-0afdbcfacdd2fileName">OTA-17087-%5BFeature%5D-%28APS%29%3A-Status-Event-Configuration</con:setting>
+  </con:settings>
+  <con:runType>SEQUENTIAL</con:runType>
+  <con:properties>
+    <con:property>
+      <con:name>releaseNotes</con:name>
+      <con:value>{
+    "en_CN": {
+        "downloadDescription": "en_CN downloadDescription",
+        "updateDescription": "en_CN updateDescription",
+        "freeText": "en_CN freeText",
+        "title": "en_CN title"
+    },
+    "ro_RO": {
+        "downloadDescription": "ro_RO downloadDescription",
+        "updateDescription": "ro_RO updateDescription",
+        "freeText": "ro_RO freeText",
+        "title": "ro_RO title"
+    },
+    "pt_BR": {
+        "downloadDescription": "pt_BR downloadDescription",
+        "updateDescription": "pt_BR updateDescription",
+        "freeText": "pt_BR freeText",
+        "title": "pt_BR title"
+    },
+    "th_TH": {
+        "downloadDescription": "th_TH downloadDescription",
+        "updateDescription": "th_TH updateDescription",
+        "freeText": "th_TH freeText",
+        "title": "th_TH title"
+    },
+    "cs_CZ": {
+        "downloadDescription": "cs_CZ downloadDescription",
+        "updateDescription": "cs_CZ updateDescription",
+        "freeText": "cs_CZ freeText",
+        "title": "cs_CZ title"
+    },
+    "ca_ES": {
+        "downloadDescription": "ca_ES downloadDescription",
+        "updateDescription": "ca_ES updateDescription",
+        "freeText": "ca_ES freeText",
+        "title": "ca_ES title"
+    },
+    "hu_HU": {
+        "downloadDescription": "hu_HU downloadDescription",
+        "updateDescription": "hu_HU updateDescription",
+        "freeText": "hu_HU freeText",
+        "title": "hu_HU title"
+    },
+    "ar_SA": {
+        "downloadDescription": "ar_SA downloadDescription",
+        "updateDescription": "ar_SA updateDescription",
+        "freeText": "ar_SA freeText",
+        "title": "ar_SA title"
+    },
+    "nb_NO": {
+        "downloadDescription": "nb_NO downloadDescription",
+        "updateDescription": "nb_NO updateDescription",
+        "freeText": "nb_NO freeText",
+        "title": "nb_NO title"
+    },
+    "gl_ES": {
+        "downloadDescription": "gl_ES downloadDescription",
+        "updateDescription": "gl_ES updateDescription",
+        "freeText": "gl_ES freeText",
+        "title": "gl_ES title"
+    },
+    "es_MX": {
+        "downloadDescription": "es_MX downloadDescription",
+        "updateDescription": "es_MX updateDescription",
+        "freeText": "es_MX freeText",
+        "title": "es_MX title"
+    },
+    "sk_SK": {
+        "downloadDescription": "sk_SK downloadDescription",
+        "updateDescription": "sk_SK updateDescription",
+        "freeText": "sk_SK freeText",
+        "title": "sk_SK title"
+    },
+    "en_TW": {
+        "downloadDescription": "en_TW downloadDescription",
+        "updateDescription": "en_TW updateDescription",
+        "freeText": "en_TW freeText",
+        "title": "en_TW title"
+    },
+    "es_ES": {
+        "downloadDescription": "es_ES downloadDescription",
+        "updateDescription": "es_ES updateDescription",
+        "freeText": "es_ES freeText",
+        "title": "es_ES title"
+    },
+    "nl_NL": {
+        "downloadDescription": "nl_NL downloadDescription",
+        "updateDescription": "nl_NL updateDescription",
+        "freeText": "nl_NL freeText",
+        "title": "nl_NL title"
+    },
+    "sv_SE": {
+        "downloadDescription": "sv_SE downloadDescription",
+        "updateDescription": "sv_SE updateDescription",
+        "freeText": "sv_SE freeText",
+        "title": "sv_SE title"
+    },
+    "da_DK": {
+        "downloadDescription": "da_DK downloadDescription",
+        "updateDescription": "da_DK updateDescription",
+        "freeText": "da_DK freeText",
+        "title": "da_DK title"
+    },
+    "sr_RS": {
+        "downloadDescription": "sr_RS downloadDescription",
+        "updateDescription": "sr_RS updateDescription",
+        "freeText": "sr_RS freeText",
+        "title": "sr_RS title"
+    },
+    "hr_HR": {
+        "downloadDescription": "hr_HR downloadDescription",
+        "updateDescription": "hr_HR updateDescription",
+        "freeText": "hr_HR freeText",
+        "title": "hr_HR title"
+    },
+    "ko_KR": {
+        "downloadDescription": "ko_KR downloadDescription",
+        "updateDescription": "ko_KR updateDescription",
+        "freeText": "ko_KR freeText",
+        "title": "ko_KR title"
+    },
+    "en_US": {
+        "downloadDescription": "en_US downloadDescription",
+        "updateDescription": "en_US updateDescription",
+        "freeText": "en_US freeText",
+        "title": "en_US title"
+    },
+    "lt_LT": {
+        "downloadDescription": "lt_LT downloadDescription",
+        "updateDescription": "lt_LT updateDescription",
+        "freeText": "lt_LT freeText",
+        "title": "lt_LT title"
+    },
+    "el_GR": {
+        "downloadDescription": "el_GR downloadDescription",
+        "updateDescription": "el_GR updateDescription",
+        "freeText": "el_GR freeText",
+        "title": "el_GR title"
+    },
+    "it_IT": {
+        "downloadDescription": "it_IT downloadDescription",
+        "updateDescription": "it_IT updateDescription",
+        "freeText": "it_IT freeText",
+        "title": "it_IT title"
+    },
+    "ru_RU": {
+        "downloadDescription": "ru_RU downloadDescription",
+        "updateDescription": "ru_RU updateDescription",
+        "freeText": "ru_RU freeText",
+        "title": "ru_RU title"
+    },
+    "pl_PL": {
+        "downloadDescription": "pl_PL downloadDescription",
+        "updateDescription": "pl_PL updateDescription",
+        "freeText": "pl_PL freeText",
+        "title": "pl_PL title"
+    },
+    "tr_TR": {
+        "downloadDescription": "tr_TR downloadDescription",
+        "updateDescription": "tr_TR updateDescription",
+        "freeText": "tr_TR freeText",
+        "title": "tr_TR title"
+    },
+    "hi_IN": {
+        "downloadDescription": "hi_IN downloadDescription",
+        "updateDescription": "hi_IN updateDescription",
+        "freeText": "hi_IN freeText",
+        "title": "hi_IN title"
+    },
+    "id_ID": {
+        "downloadDescription": "id_ID downloadDescription",
+        "updateDescription": "id_ID updateDescription",
+        "freeText": "id_ID freeText",
+        "title": "id_ID title"
+    },
+    "fr_FR": {
+        "downloadDescription": "fr_FR downloadDescription",
+        "updateDescription": "fr_FR updateDescription",
+        "freeText": "fr_FR freeText",
+        "title": "fr_FR title"
+    },
+    "he_IL": {
+        "downloadDescription": "he_IL downloadDescription",
+        "updateDescription": "he_IL updateDescription",
+        "freeText": "he_IL freeText",
+        "title": "he_IL title"
+    },
+    "ja_JP": {
+        "downloadDescription": "ja_JP downloadDescription",
+        "updateDescription": "ja_JP updateDescription",
+        "freeText": "ja_JP freeText",
+        "title": "ja_JP title"
+    },
+    "de_DE": {
+        "downloadDescription": "de_DE downloadDescription",
+        "updateDescription": "de_DE updateDescription",
+        "freeText": "de_DE freeText",
+        "title": "de_DE title"
+    },
+    "ms_MY": {
+        "downloadDescription": "ms_MY downloadDescription",
+        "updateDescription": "ms_MY updateDescription",
+        "freeText": "ms_MY freeText",
+        "title": "ms_MY title"
+    },
+    "zh_HK": {
+        "downloadDescription": "zh_HK downloadDescription",
+        "updateDescription": "zh_HK updateDescription",
+        "freeText": "zh_HK freeText",
+        "title": "zh_HK title"
+    },
+    "zh_TW": {
+        "downloadDescription": "zh_TW downloadDescription",
+        "updateDescription": "zh_TW updateDescription",
+        "freeText": "zh_TW freeText",
+        "title": "zh_TW title"
+    },
+    "eu_ES": {
+        "downloadDescription": "eu_ES downloadDescription",
+        "updateDescription": "eu_ES updateDescription",
+        "freeText": "eu_ES freeText",
+        "title": "eu_ES title"
+    },
+    "pt_US": {
+        "downloadDescription": "pt_US downloadDescription",
+        "updateDescription": "pt_US updateDescription",
+        "freeText": "pt_US freeText",
+        "title": "pt_US title"
+    },
+    "en_JP": {
+        "downloadDescription": "en_JP downloadDescription",
+        "updateDescription": "en_JP updateDescription",
+        "freeText": "en_JP freeText",
+        "title": "en_JP title"
+    },
+    "fr_CA": {
+        "downloadDescription": "fr_CA downloadDescription",
+        "updateDescription": "fr_CA updateDescription",
+        "freeText": "fr_CA freeText",
+        "title": "fr_CA title"
+    },
+    "bg_BG": {
+        "downloadDescription": "bg_BG downloadDescription",
+        "updateDescription": "bg_BG updateDescription",
+        "freeText": "bg_BG freeText",
+        "title": "bg_BG title"
+    },
+    "az_AZ": {
+        "downloadDescription": "az_AZ downloadDescription",
+        "updateDescription": "az_AZ updateDescription",
+        "freeText": "az_AZ freeText",
+        "title": "az_AZ title"
+    },
+    "fi_FI": {
+        "downloadDescription": "fi_FI downloadDescription",
+        "updateDescription": "fi_FI updateDescription",
+        "freeText": "fi_FI freeText",
+        "title": "fi_FI title"
+    },
+    "en_GB": {
+        "downloadDescription": "en_GB downloadDescription",
+        "updateDescription": "en_GB updateDescription",
+        "freeText": "en_GB freeText",
+        "title": "en_GB title"
+    },
+    "et_EE": {
+        "downloadDescription": "et_EE downloadDescription",
+        "updateDescription": "et_EE updateDescription",
+        "freeText": "et_EE freeText",
+        "title": "et_EE title"
+    },
+    "bs_BA": {
+        "downloadDescription": "bs_BA downloadDescription",
+        "updateDescription": "bs_BA updateDescription",
+        "freeText": "bs_BA freeText",
+        "title": "bs_BA title"
+    },
+    "lv_LV": {
+        "downloadDescription": "lv_LV downloadDescription",
+        "updateDescription": "lv_LV updateDescription",
+        "freeText": "lv_LV freeText",
+        "title": "lv_LV title"
+    },
+    "uk_UA": {
+        "downloadDescription": "uk_UA downloadDescription",
+        "updateDescription": "uk_UA updateDescription",
+        "freeText": "uk_UA freeText",
+        "title": "uk_UA title"
+    },
+    "sl_SI": {
+        "downloadDescription": "sl_SI downloadDescription",
+        "updateDescription": "sl_SI updateDescription",
+        "freeText": "sl_SI freeText",
+        "title": "sl_SI title"
+    },
+    "zh_CN": {
+        "downloadDescription": "zh_CN downloadDescription",
+        "updateDescription": "zh_CN updateDescription",
+        "freeText": "zh_CN freeText",
+        "title": "zh_CN title"
+    },
+    "en_KR": {
+        "downloadDescription": "en_KR downloadDescription",
+        "updateDescription": "en_KR updateDescription",
+        "freeText": "en_KR freeText",
+        "title": "en_KR title"
+    },
+    "pt_PT": {
+        "downloadDescription": "pt_PT downloadDescription",
+        "updateDescription": "pt_PT updateDescription",
+        "freeText": "pt_PT freeText",
+        "title": "pt_PT title"
+    }
+}</con:value>
+    </con:property>
+    <con:property>
+      <con:name>updateId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>jwt</con:name>
+      <con:value>Bearer eyJraWQiOiJpbnRlY2hCYWNrZW5kVGVzdGluZyIsImFsZyI6IlJTMjU2In0.eyAgICJzY3AiIDogWyJ0MV9hOm9ydW5leHQiXSwgCgkJCQkJCQkJInZlciIgOiAiMSIsCgkJCQkJCQkJImlzcyIgOiAiVEVTVElORyIsIAoJCQkJCQkJCSJjY2giIDogIlZFSElDTEUiLCAKCQkJCQkJCQkic3R5cCIgOiAiVDEiLAoJCQkJCQkJCSJ0eXAiIDogIkFUIiwgCgkJCQkJCQkJImV4cCIgOiAxNjkzMzAyMTkyLAoJCQkJCQkJCSJpYXQiIDogMTY5MzI5ODU5MiwKCQkJCQkJCQkiYXVkIiA6IFsiVldHTVFUVEMwMURFQVBQMSIsCgkJCQkJCQkJICAgICAgICAgICAgIlZXR0RTUERFQVBQMSIsCgkJCQkJCQkJICAgICAgICAgICAgIm9ydW5leHQuY29tIiwKCQkJCQkJCQkgICAgICAgICAgICAiVldHTVFUVDAxREVBUFAxIl0sCgoJCQkJCQkJCSAidmluIiA6ICJGTE9SSU5WRUgzNTU0OTI4OCIsCgkJCQkJCQkJICJ0bnQiIDogIkF1ZGksREUiCgkJCQkJCQkJfQ.YpcO0ayxegYmOgyZsIAyfEgPa7IxaOrLWOjpfCcaiUp2sjdYtnFiqNOjTN-4RLtyS91zs6JfP4IVYUyL9W-exJRaSFwpZBrk7sIAzxITnbHQoap1zazmXxDtpzU00Zl5aYMZvs2d32rkcEYgi10uA_6znYdk107y57SKCvHC6obcm4hF_z1gP5v9tAGCwO0VQR9b0DGA5uAC2osAq3gpGkSzmmO3RmxHHPuWhEvwMCj8tLsYaTYRXMmVhCb4axfxfaj9XBeKZj56NWnIKc-GGR4nVnWBpmenq8BgsumGE0Kz3ODpw6l9txzG_s43qX7FiZaAqU1cX75ELB5pM3NeVw</con:value>
+    </con:property>
+  </con:properties>
+  <con:tearDownScript>import com.eviware.soapui.model.testsuite.TestRunner.Status
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestCaseRunner
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+// get the name of the test suite
+def testSuiteName = context.getTestSuite().name
+
+// get the status of the test suite
+def testSuiteStatus = context.getTestRunner().getStatus().toString()
+
+// get the number of reruns from the project property
+def noOfReruns = Integer.parseInt(context.expand('${#Project#noOfReruns}'))
+
+// set the initial status for the tets suite
+def failTestSuite = false
+
+// declare the name of the test step
+def testStepName = "Set execution status"
+
+// check which test case failed and rerun it a given number of times
+// iterate over the test case results in the test suite
+for (testCaseResult in runner.results) {
+    // get the name of the current test case
+    def testCaseName = testCaseResult.getTestCase().name
+
+    // check if the test case failed
+    if (testCaseResult.getStatus().toString() == 'FAIL') {
+        def testCaseRunner 
+        
+        // attempt to rerun the test case up to the specified number of times
+        for (i = 0; i &lt; noOfReruns; i++) {
+            // log each rerun attempt
+            log.info("[Test Case] [Rerun] [Attempt " + (i + 1) + "] [Started]: " + testCaseName)
+
+            // rerun the test case
+            testCaseRunner  = testCaseResult.testCase.run(null, false)
+
+            // break if the rerun passes
+            if (testCaseRunner .getStatus().toString() == "PASS") {
+			// log the passed result of the rerun attempt
+           	 log.info("[Test Case] [Rerun] [Attempt " + (i + 1) + "] [Passed]: " + testCaseName)
+       
+                runner.status = Status.FINISHED
+                break
+            }
+        }
+        // mark the test suite as failed if the reruns fail
+        if (testCaseRunner .getStatus().toString() == "FAILED") {
+            // log the failed result of each rerun attempt
+            log.info("[Test Case] [Rerun] [Attempt " + (i + 1) + "] [Failed]: " + testCaseName)
+
+            failTestSuite = true
+        }
+    }
+}
+
+// run the necessary test step to update the JIRA regression for the acceptence criteria that passed
+// iterate over the test case results in the test suite
+for (testCaseResult in runner.results) {
+    // check if the test case passed
+    if (testCaseResult.getStatus().toString() == 'PASS') {
+        runTestStep(testCaseResult, testStepName)
+    }
+}
+
+// set the overall status of the test suite based on the rerun results
+if (failTestSuite) {
+    runner.status = Status.FAILED
+}
+
+// log the final result of the test suite execution
+if (testSuiteStatus == 'FAIL') {
+    log.info("[Test Suite] [Failed]: " + testSuiteName)
+}
+else if (testSuiteStatus == 'PASS') {
+    log.info("[Test Suite] [Passed]: " + testSuiteName)
+}
+
+//-------------------- METHODS --------------------//
+
+// method to run a test step and log the results
+public void runTestStep(def testCaseResult, String testStepName){
+    // get the name of the current test case
+    def testCaseName = testCaseResult.getTestCase().name
+
+    // get the specific test step by name
+    def testStep = testCaseResult.testCase.getTestStepByName(testStepName)
+
+    // create a new runner and context for the test step
+    def testCaseRunner = new WsdlTestCaseRunner(testCaseResult.testCase, null)
+    def testCaseRunContext = new WsdlTestRunContext(testStep)
+
+    // log the attempt to run the test step
+    log.info("[" + testCaseName + "][Test Step] [Started]: " + testStepName)
+
+    // run the test step with the test case runner and context
+    def testStepResult = testStep.run(testCaseRunner, testCaseRunContext)
+
+    // log the result of the test step run
+    log.info("[" + testCaseName + "][Test Step] [Completed]: " + testStepName)
+    log.info("[" + testCaseName + "][Test Step] [Status]: " + testStepResult.getStatus())
+    log.info("[" + testCaseName + "][Test Step] [Response]: " + testStepResult.getResponse().getContentAsString())
+}</con:tearDownScript>
+  <con:reportParameters/>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testSuite>

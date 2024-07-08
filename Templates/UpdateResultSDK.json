@@ -1,0 +1,33 @@
+{
+    "schema": "UpdateResultPackage_v1.0.0.json",
+    "updateId": "6c67926f-6942-4ce6-bdbf-23c971d07737",
+    "measureId": "CMC2551",
+    "timestamp": "2022-07-21T14:45:40.728Z",
+    "vehicle": "VIRTUAL8628074851",
+    "vcHash": "957F35BA662AFB541CC3CE02AB7856775175F87DBBF30C0250226C536F33C520",
+    "result": "completed",
+    "actualEnergyUsage": "31Ah",
+    "updateStartTime": "2022-07-21T14:45:36.630Z",
+    "updateEndTime": "2022-07-21T14:45:40.729Z",
+    "updateSession": {
+        "sessionStatus": "successful",
+        "resultCode": 0,
+        "domainResults": [
+            {
+                "updateItemId": 0,
+                "diagnosticAddress": "0075",
+                "sessionType": "update",
+                "sessionStatus": "successful",
+                "resultCode": 0,
+                "integrityValidationResult": {
+                    "status": "successful",
+                    "resultCode": 0
+                },
+                "safetyValidationResult": {
+                    "status": "notStarted",
+                    "resultCode": 0
+                }
+            }
+        ]
+    }
+}

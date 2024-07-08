@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="f7d860d5-07cc-42a9-b4f1-8e7d4fde50bf" created="3.45.0" activeEnvironment="demo" name="OruNext Backend" projectVersion="" resourceRoot="" compositeProjectFormat="1.3" updated="3.45.0" encryptionMode="Not encrypted" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="f7d860d5-07cc-42a9-b4f1-8e7d4fde50bffileName">OruNext-Backend-readyapi-project</con:setting>
+  </con:settings>
+  <con:requirements/>
+  <con:properties>
+    <con:property>
+      <con:name>numberOfRetries</con:name>
+    </con:property>
+    <con:property>
+      <con:name>driverPath</con:name>
+    </con:property>
+    <con:property>
+      <con:name>jwt</con:name>
+    </con:property>
+    <con:property>
+      <con:name>host</con:name>
+    </con:property>
+    <con:property>
+      <con:name>origin</con:name>
+    </con:property>
+    <con:property>
+      <con:name>referer</con:name>
+    </con:property>
+    <con:property>
+      <con:name>cookies</con:name>
+    </con:property>
+    <con:property>
+      <con:name>token</con:name>
+    </con:property>
+    <con:property>
+      <con:name>tuCookies</con:name>
+    </con:property>
+    <con:property>
+      <con:name>tuToken</con:name>
+    </con:property>
+    <con:property>
+      <con:name>username</con:name>
+    </con:property>
+    <con:property>
+      <con:name>password</con:name>
+    </con:property>
+    <con:property>
+      <con:name>clientId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>clientSecret</con:name>
+    </con:property>
+    <con:property>
+      <con:name>noOfReruns</con:name>
+    </con:property>
+    <con:property>
+      <con:name>testExecutionId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>jiraCookie</con:name>
+    </con:property>
+  </con:properties>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer>
+    <con:oAuth2Profile>
+      <con:name>ORU-demo</con:name>
+      <con:type>OAuth 2.0</con:type>
+      <con:authorizationURI>https://idp.cloud.vwgroup.com/auth/realms/kums-mfa/protocol/openid-connect/auth</con:authorizationURI>
+      <con:accessTokenURI>https://idp.cloud.vwgroup.com/auth/realms/kums-mfa/protocol/openid-connect/token</con:accessTokenURI>
+      <con:redirectURI>https://demo.orunext.com/login</con:redirectURI>
+      <con:accessToken>eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJJQjNRTk5TWUJibUJ6ajNaRTM4aFY3dWZYUWhWbjlUcWhDUFpfWlhDTDFnIn0.eyJleHAiOjE3MTk1MDU2OTEsImlhdCI6MTcxOTUwMzg5MSwiYXV0aF90aW1lIjoxNzE5NDg1NDA1LCJqdGkiOiI2OGNiMjE2Yi02ZWU4LTQwZDgtYWYyZC04ZmZhNzhmYjU5MDIiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC1kZDExNTdmYS05MmQ1LTRiMjktODFlYS01NGEzYmIwZTlhNTgtb3J1bmV4dC1tZmEtcHVibGljIiwic3ViIjoiZTE1NjlkNGEtZTE3Ny00MThkLTkxYjQtYzIwMjI4YTUzNzQ2IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiaWRwLWRkMTE1N2ZhLTkyZDUtNGIyOS04MWVhLTU0YTNiYjBlOWE1OC1vcnVuZXh0LW1mYS1wdWJsaWMiLCJzZXNzaW9uX3N0YXRlIjoiNDVlMWZkNTQtMzRmYi00ZTc3LTk4YTAtN2ExNzA3MzYzOWNkIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHBzOi8vY2Ntb2NrLmFwcHMuZGVtby51Y2wub3J1bmV4dC5jb20iLCJodHRwczovL2FwcC5vcnVuZXh0LmNvbSIsImh0dHBzOi8vcGxheWdyb3VuZC5vcnVuZXh0LmNvbSIsImh0dHBzOi8vY2Ntb2NrLmFwcHMuYXBwcm92YWwudWNsLm9ydW5leHQuY29tIiwiaHR0cHM6Ly9kZW1vLm9ydW5leHQudndhdXRvY2xvdWQuY24iLCJodHRwczovL2FwcC5vcnVuZXh0LnZ3YXV0b2Nsb3VkLmNuIiwiaHR0cHM6Ly9kZW1vLm9ydW5leHQuY29tIiwiaHR0cHM6Ly9hcHAubmFyLm9ydW5leHQuY29tIiwiaHR0cHM6Ly9tZWdhLnBsYXlncm91bmQub3J1bmV4dC5jb20iLCJodHRwczovL3R1aS1jY21vY2stdWNsLW9ydW5leHQyMC5hcHBzLm1lZ2EuY2FyaWFkLmNsb3VkIiwiaHR0cHM6Ly9jY21vY2stYXBwci11Y2wuYXBwcy5tZWdhLmNhcmlhZC5jbG91ZCJdLCJyZXNvdXJjZV9hY2Nlc3MiOnsidndhZy1rdW1zIjp7InJvbGVzIjpbIlZXQUdfT1JVTmV4dF9UQVVfQVBQIiwiVldBR19PUlVOZXh0X0FQU19ERU1PIiwiVldBR19PUlVORVhUX0VDRV9QUkpNTUJSX0RFTU8iLCJWV0FHX09SVU5FWFRfRUNFX0tJQkFOQV9MSVZFIiwiVldBR19PUlVOZXh0X1ZDUF9ERU1PIiwiVldBR19PUlVORVhUX0FQU19NR01UX0VYVF9BUFAiLCJWV0FHX09SVU5leHRfQVBTX1VBX0RFTU8iLCJWV0FHX09SVU5leHRfQkFDS0VORF9ERU1PIiwiVldBR19PUlVORVhUX0NBUkJfREVNTyIsIlZXQUdfT1JVTkVYVF9BUFNfTUdNVF9FWFRfREVNTyIsIlZXQUdfT1JVTmV4dF9UQVVfREVNTyIsIlZXQUdfT1JVTmV4dF9WQ1BfQVBQIiwiVldBR19PUlVOZXh0X0JBQ0tFTkRfQVBQIiwiVldBR19PUlVORVhUX0NBUkJfQVBQIl19fSwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInNpZCI6IjQ1ZTFmZDU0LTM0ZmItNGU3Ny05OGEwLTdhMTcwNzM2MzljZCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiQW5kcmVpIElvdGEiLCJncm91cHMiOlsiVldBR19PUlVOZXh0X1RBVV9BUFAiLCJWV0FHX09SVU5leHRfQVBTX0RFTU8iLCJWV0FHX09SVU5FWFRfRUNFX1BSSk1NQlJfREVNTyIsIlZXQUdfT1JVTkVYVF9FQ0VfS0lCQU5BX0xJVkUiLCJWV0FHX09SVU5leHRfVkNQX0RFTU8iLCJWV0FHX09SVU5FWFRfQVBTX01HTVRfRVhUX0FQUCIsIlZXQUdfT1JVTmV4dF9BUFNfVUFfREVNTyIsIlZXQUdfT1JVTmV4dF9CQUNLRU5EX0RFTU8iLCJWV0FHX09SVU5FWFRfQ0FSQl9ERU1PIiwiVldBR19PUlVORVhUX0FQU19NR01UX0VYVF9ERU1PIiwiVldBR19PUlVOZXh0X1RBVV9ERU1PIiwiVldBR19PUlVOZXh0X1ZDUF9BUFAiLCJWV0FHX09SVU5leHRfQkFDS0VORF9BUFAiLCJWV0FHX09SVU5FWFRfQ0FSQl9BUFAiXSwicHJlZmVycmVkX3VzZXJuYW1lIjoiZjVpdTYxOSIsImdpdmVuX25hbWUiOiJBbmRyZWkiLCJmYW1pbHlfbmFtZSI6IklvdGEiLCJlbWFpbCI6ImFuZHJlaS5pb3RhQGluLXRlY2guY29tIn0.V7poxn927c_udqSFAhEimhZVutskusfBbh20dxoO3qP8yg8cg8DOoboVb3xVjZ294uoLWEm9kKyeflxMsonA4HBXS-LG6YJa5bOM6D3syHtlaa0DUg93-u0hvG0QDW3GOosFdeV6tA2HI_9iS1SCOU6oatkrOVGx26XhiiWlDbQ7joa6kvpOw7JT2YoXAids-9WV1or0FmxuvjSrjUkuGDwO65oUeQ5wjcObF09mMlP6L6h8Z3fAMu6N_Huy9spc-BJwq7FxGRbFM7G69zHXf363LsP-yDJ70kKyjqZgMVMFkrS8Z0EyqqhnTxzQvFGYY3O-ygZFjwqFDx0Hd3ihdg</con:accessToken>
+      <con:accessTokenPosition>HEADER</con:accessTokenPosition>
+      <con:accessTokenStartingStatus>RETRIEVED_FROM_SERVER</con:accessTokenStartingStatus>
+      <con:accessTokenIssuedTime>1719503903</con:accessTokenIssuedTime>
+      <con:clientID>idp-dd1157fa-92d5-4b29-81ea-54a3bb0e9a58-orunext-mfa-public</con:clientID>
+      <con:oAuth2Flow>AUTHORIZATION_CODE_GRANT</con:oAuth2Flow>
+      <con:refreshAccessTokenMethod>AUTOMATIC</con:refreshAccessTokenMethod>
+      <con:refreshToken>eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI3N2JlZmM2YS01NTZkLTQwNjctYTg1OS1jYzlhYWIxYTQ3YzIifQ.eyJleHAiOjE3MTk1Mjg2MDUsImlhdCI6MTcxOTUwMzg5MSwianRpIjoiZTk3YjQ3YjUtMDBkYi00YjQwLWExNTUtNzY2NWQwOTU2YmUyIiwiaXNzIjoiaHR0cHM6Ly9pZHAuY2xvdWQudndncm91cC5jb20vYXV0aC9yZWFsbXMva3Vtcy1tZmEiLCJhdWQiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsInN1YiI6ImUxNTY5ZDRhLWUxNzctNDE4ZC05MWI0LWMyMDIyOGE1Mzc0NiIsInR5cCI6IlJlZnJlc2giLCJhenAiOiJpZHAtZGQxMTU3ZmEtOTJkNS00YjI5LTgxZWEtNTRhM2JiMGU5YTU4LW9ydW5leHQtbWZhLXB1YmxpYyIsInNlc3Npb25fc3RhdGUiOiI0NWUxZmQ1NC0zNGZiLTRlNzctOThhMC03YTE3MDczNjM5Y2QiLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwic2lkIjoiNDVlMWZkNTQtMzRmYi00ZTc3LTk4YTAtN2ExNzA3MzYzOWNkIn0.-k4Uejo70lfit_dD7ubOspDp7MUgV7CxW8vOJV26zrc</con:refreshToken>
+      <con:scope>openid</con:scope>
+      <con:accessTokenExpirationTime>1800</con:accessTokenExpirationTime>
+      <con:idToken>eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJJQjNRTk5TWUJibUJ6ajNaRTM4aFY3dWZYUWhWbjlUcWhDUFpfWlhDTDFnIn0.eyJleHAiOjE3MTk1MDU2OTEsImlhdCI6MTcxOTUwMzg5MSwiYXV0aF90aW1lIjoxNzE5NDg1NDA1LCJqdGkiOiI3MWZhZDZkNC1lMWEzLTQwZGUtYjZmZi00MjJhZDNhNDljMDEiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC1kZDExNTdmYS05MmQ1LTRiMjktODFlYS01NGEzYmIwZTlhNTgtb3J1bmV4dC1tZmEtcHVibGljIiwic3ViIjoiZTE1NjlkNGEtZTE3Ny00MThkLTkxYjQtYzIwMjI4YTUzNzQ2IiwidHlwIjoiSUQiLCJhenAiOiJpZHAtZGQxMTU3ZmEtOTJkNS00YjI5LTgxZWEtNTRhM2JiMGU5YTU4LW9ydW5leHQtbWZhLXB1YmxpYyIsInNlc3Npb25fc3RhdGUiOiI0NWUxZmQ1NC0zNGZiLTRlNzctOThhMC03YTE3MDczNjM5Y2QiLCJhdF9oYXNoIjoiWmpkdGlkaXJTSER3bDY0YnJieThOdyIsInNpZCI6IjQ1ZTFmZDU0LTM0ZmItNGU3Ny05OGEwLTdhMTcwNzM2MzljZCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiQW5kcmVpIElvdGEiLCJncm91cHMiOlsiVldBR19PUlVOZXh0X1RBVV9BUFAiLCJWV0FHX09SVU5leHRfQVBTX0RFTU8iLCJWV0FHX09SVU5FWFRfRUNFX1BSSk1NQlJfREVNTyIsIlZXQUdfT1JVTkVYVF9FQ0VfS0lCQU5BX0xJVkUiLCJWV0FHX09SVU5leHRfVkNQX0RFTU8iLCJWV0FHX09SVU5FWFRfQVBTX01HTVRfRVhUX0FQUCIsIlZXQUdfT1JVTmV4dF9BUFNfVUFfREVNTyIsIlZXQUdfT1JVTmV4dF9CQUNLRU5EX0RFTU8iLCJWV0FHX09SVU5FWFRfQ0FSQl9ERU1PIiwiVldBR19PUlVORVhUX0FQU19NR01UX0VYVF9ERU1PIiwiVldBR19PUlVOZXh0X1RBVV9ERU1PIiwiVldBR19PUlVOZXh0X1ZDUF9BUFAiLCJWV0FHX09SVU5leHRfQkFDS0VORF9BUFAiLCJWV0FHX09SVU5FWFRfQ0FSQl9BUFAiXSwicHJlZmVycmVkX3VzZXJuYW1lIjoiZjVpdTYxOSIsImdpdmVuX25hbWUiOiJBbmRyZWkiLCJmYW1pbHlfbmFtZSI6IklvdGEiLCJlbWFpbCI6ImFuZHJlaS5pb3RhQGluLXRlY2guY29tIn0.W9qAHo8vnsNshaPeuUg3NElgnDpIAc8xs-HZxpBIy3APD9Cs5eY5bbWqi5goM2pWKsEZvxO7ZYeqtz4amFFQue7el8PrvOhUMoNDxrm06F0WMMwBGEgvLW06Kq0UjVtiNkVHxiLVK8ArlSojooGyT42ioJ9EAQevNFcBRGjemXVbYq0EQpl9WtX5OTtlq2RfcXJjE7T_K8QKW0113SNaJ3LPHMYBmD-TM93eHiv917CJ37Cka0ih7pOakce8yVafYcl8eq03lJQIVd2CgVNm22iZmVEILJzGX1wx2-EjRy_vRcnwafi9TokC-bDnwkPslMtFLrLh6k7Rl2Z0eHoVRQ</con:idToken>
+      <con:idTokenStatus>RETRIEVED_FROM_SERVER</con:idTokenStatus>
+      <con:idTokenStartingStatus>RETRIEVED_FROM_SERVER</con:idTokenStartingStatus>
+      <con:useNonce>false</con:useNonce>
+      <con:useAuthHeader>true</con:useAuthHeader>
+      <con:jwtConfiguration/>
+      <con:responseType>id_token</con:responseType>
+    </con:oAuth2Profile>
+  </con:oAuth2ProfileContainer>
+  <con:oAuth1ProfileContainer/>
+  <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
+    <con:script disabled="true">// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
+// This code is often used for adding custom authentication to ReadyAPI functional tests
+
+// If hardcoding the token, uncomment and change line 5
+// token = '4567'
+
+// If your token is parameterized in Project level custom property, uncomment line 8
+// token = request.parent.testCase.testSuite.project.getProperty('auth_token').getValue()
+
+// To modify all outgoing calls, remove comments from lines 11 to 16
+// headers = request.requestHeaders
+// if (headers.containsKey('auth_token2') == false) {
+//   headers.put('auth_token2', token)
+//   request.requestHeaders = headers
+// }</con:script>
+  </con:eventHandlers>
+  <con:eventHandlers type="TestRunListener.afterStep" name="TestRunListener.afterStep">
+    <con:script disabled="true">// Save all test step results into files
+// Change the directory path in line 5 to a location where you want to store details
+// then uncomment lines 5 to 10
+
+// filePath = 'C:\\tempOutputDirectory\\'
+// fos = new java.io.FileOutputStream(filePath + testStepResult.testStep.label + '.txt', true)
+// pw = new java.io.PrintWriter(fos)
+// testStepResult.writeTo(pw)
+// pw.close()
+// fos.close()</con:script>
+  </con:eventHandlers>
+  <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
+    <con:script>def bodyPart = context.getProperty("httpMethod").requestEntity.message.content.getBodyPart(0) // get http request method
+bodyPart.removeHeader("Content-Type")  // delete header from request
+bodyPart.addHeader("Content-Type", "application/json") // specify the value for content-type</con:script>
+  </con:eventHandlers>
+  <con:environment id="19d15dbe-9720-4a73-b417-71308b8db01e" name="demo" index="0">
+    <con:service type="REST" name="VW Group Services Mock">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://demo.orunext.com/api/vw-group-services-mock</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="ESR Labs ORU App - Common">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://demo.orunext.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="ESR Labs ORU App - Vehicle Configuration">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://demo.orunext.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="ESR Labs ORU App - Vehicle Update">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://demo.orunext.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="ESR Labs ORU App - Campaign">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://demo.orunext.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="Swagger API Definition - Campaign Domain - v2">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://oemil-qs.volkswagen.de</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="SDK">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://api.demo.orunext.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="Automation Jira&amp;Confluence">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://devstack.vwgroup.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="Swagger API Definition - Vehicle Domain - v1">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://oemil.volkswagen.de</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="TestExecution Automation">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://devstack.vwgroup.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="Swagger API Definition - Vehicle Domain - v2">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://oemil.volkswagen.de</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="APS Campaign Service">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://demo.orunext.com</con:endpoint>
+    </con:service>
+    <con:service type="REST" name="CARB Port">
+      <con:endpoint authProfile="No Authorization" proxyHost="" proxyPort="" proxyUsername="" proxyPassword="">https://demo.orunext.com/api/oru</con:endpoint>
+    </con:service>
+    <con:property>
+      <con:name>numberOfRetries</con:name>
+      <con:value>10</con:value>
+    </con:property>
+    <con:property>
+      <con:name>driverPath</con:name>
+      <con:value>C:/Program Files/SmartBear/ReadyAPI-3.45.0/bin/ext/geckodriver.exe</con:value>
+    </con:property>
+    <con:property>
+      <con:name>jwt</con:name>
+      <con:value>eyJraWQiOiJpbnRlY2hCYWNrZW5kVGVzdGluZyIsImFsZyI6IlJTMjU2In0.eyAgICJzY3AiIDogWyJ0MV9hOm9ydW5leHQiXSwgCgkJCQkJCQkJInZlciIgOiAiMSIsCgkJCQkJCQkJImlzcyIgOiAiVEVTVElORyIsIAoJCQkJCQkJCSJjY2giIDogIlZFSElDTEUiLCAKCQkJCQkJCQkic3R5cCIgOiAiVDEiLAoJCQkJCQkJCSJ0eXAiIDogIkFUIiwgCgkJCQkJCQkJImV4cCIgOiAxNzIwMzY4MDc0LAoJCQkJCQkJCSJpYXQiIDogMTcyMDM2NDQ3NCwKCQkJCQkJCQkiYXVkIiA6IFsiVldHTVFUVEMwMURFQVBQMSIsCgkJCQkJCQkJICAgICAgICAgICAgIlZXR0RTUERFQVBQMSIsCgkJCQkJCQkJICAgICAgICAgICAgIm9ydW5leHQuY29tIiwKCQkJCQkJCQkgICAgICAgICAgICAiVldHTVFUVDAxREVBUFAxIl0sCgoJCQkJCQkJCSAidmluIiA6ICJGTE9SSU5WRUg4MDg1OTE1MSIsCgkJCQkJCQkJICJ0bnQiIDogIkF1ZGksREUiCgkJCQkJCQkJfQ.W1yB3JNXcLPjHeiUOPgecUehbe2pKEfD4agY4v-GrfyzyOJW_1Ud-VQn6LZWt78LgygXT2zMCAzoLB0ENmFX8st1SeLjNa0fk_UcxGtgA-uQOhv9Uk2Vwq6dY6zGhekcq8fwWc97xVpe94vJ6t_fMzQSZ2gbi6HUwYFvrrQKqKWW-b3O8oWBEhlOVV0Y9xi7pvbkf7BxYNSiFO_j6v5wqBz7KBKxr9Gwwo-fG4MuubeVswLzb4GMgAEpsxkKJito7buHUse-KyOcZlh_4ZOupi3XvL3CqQBNjrR8O4HII7LHkQYug6hfQKxfNxEWIhzHSButqH4CCptMd9ZPVEXTXw</con:value>
+    </con:property>
+    <con:property>
+      <con:name>host</con:name>
+      <con:value>demovwcarcloud.blob.core.windows.net</con:value>
+    </con:property>
+    <con:property>
+      <con:name>origin</con:name>
+      <con:value>https://demo.orunext.com</con:value>
+    </con:property>
+    <con:property>
+      <con:name>referer</con:name>
+      <con:value>https://demo.orunext.com/</con:value>
+    </con:property>
+    <con:property>
+      <con:name>cookies</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>token</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>tuCookies</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>tuToken</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>username</con:name>
+      <con:value>EDRQA4B</con:value>
+    </con:property>
+    <con:property>
+      <con:name>password</con:name>
+      <con:value>uXF,26yer@CH</con:value>
+    </con:property>
+    <con:property>
+      <con:name>clientId</con:name>
+      <con:value>idp-dd1157fa-92d5-4b29-81ea-54a3bb0e9a58-orunext-mfa-public</con:value>
+    </con:property>
+    <con:property>
+      <con:name>clientSecret</con:name>
+      <con:value>cidps_mFkhkc939juLHDbfu8KS5mwzzIv2fLTGNEp4ACdgNkHqocd3p35FsyuIjo9QKd6pGnt2KnpMatobF9cdpULHeFla2O3ya2</con:value>
+    </con:property>
+    <con:property>
+      <con:name>noOfReruns</con:name>
+      <con:value>1</con:value>
+    </con:property>
+    <con:property>
+      <con:name>jiraCookie</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>testExecutionId</con:name>
+      <con:value/>
+    </con:property>
+    <con:databaseConnectionContainer/>
+    <con:jmsConnectionContainer/>
+  </con:environment>
+  <con:authRepository>
+    <con:oAuth20AuthEntry>
+      <con:name>ORU-demo</con:name>
+      <con:type>OAuth 2.0</con:type>
+      <con:authorizationURI>https://idp.cloud.vwgroup.com/auth/realms/kums-mfa/protocol/openid-connect/auth</con:authorizationURI>
+      <con:accessTokenURI>https://idp.cloud.vwgroup.com/auth/realms/kums-mfa/protocol/openid-connect/token</con:accessTokenURI>
+      <con:redirectURI>https://demo.orunext.com/login</con:redirectURI>
+      <con:accessToken>eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJJQjNRTk5TWUJibUJ6ajNaRTM4aFY3dWZYUWhWbjlUcWhDUFpfWlhDTDFnIn0.eyJleHAiOjE3MTk1MDU2OTEsImlhdCI6MTcxOTUwMzg5MSwiYXV0aF90aW1lIjoxNzE5NDg1NDA1LCJqdGkiOiI2OGNiMjE2Yi02ZWU4LTQwZDgtYWYyZC04ZmZhNzhmYjU5MDIiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC1kZDExNTdmYS05MmQ1LTRiMjktODFlYS01NGEzYmIwZTlhNTgtb3J1bmV4dC1tZmEtcHVibGljIiwic3ViIjoiZTE1NjlkNGEtZTE3Ny00MThkLTkxYjQtYzIwMjI4YTUzNzQ2IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiaWRwLWRkMTE1N2ZhLTkyZDUtNGIyOS04MWVhLTU0YTNiYjBlOWE1OC1vcnVuZXh0LW1mYS1wdWJsaWMiLCJzZXNzaW9uX3N0YXRlIjoiNDVlMWZkNTQtMzRmYi00ZTc3LTk4YTAtN2ExNzA3MzYzOWNkIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHBzOi8vY2Ntb2NrLmFwcHMuZGVtby51Y2wub3J1bmV4dC5jb20iLCJodHRwczovL2FwcC5vcnVuZXh0LmNvbSIsImh0dHBzOi8vcGxheWdyb3VuZC5vcnVuZXh0LmNvbSIsImh0dHBzOi8vY2Ntb2NrLmFwcHMuYXBwcm92YWwudWNsLm9ydW5leHQuY29tIiwiaHR0cHM6Ly9kZW1vLm9ydW5leHQudndhdXRvY2xvdWQuY24iLCJodHRwczovL2FwcC5vcnVuZXh0LnZ3YXV0b2Nsb3VkLmNuIiwiaHR0cHM6Ly9kZW1vLm9ydW5leHQuY29tIiwiaHR0cHM6Ly9hcHAubmFyLm9ydW5leHQuY29tIiwiaHR0cHM6Ly9tZWdhLnBsYXlncm91bmQub3J1bmV4dC5jb20iLCJodHRwczovL3R1aS1jY21vY2stdWNsLW9ydW5leHQyMC5hcHBzLm1lZ2EuY2FyaWFkLmNsb3VkIiwiaHR0cHM6Ly9jY21vY2stYXBwci11Y2wuYXBwcy5tZWdhLmNhcmlhZC5jbG91ZCJdLCJyZXNvdXJjZV9hY2Nlc3MiOnsidndhZy1rdW1zIjp7InJvbGVzIjpbIlZXQUdfT1JVTmV4dF9UQVVfQVBQIiwiVldBR19PUlVOZXh0X0FQU19ERU1PIiwiVldBR19PUlVORVhUX0VDRV9QUkpNTUJSX0RFTU8iLCJWV0FHX09SVU5FWFRfRUNFX0tJQkFOQV9MSVZFIiwiVldBR19PUlVOZXh0X1ZDUF9ERU1PIiwiVldBR19PUlVORVhUX0FQU19NR01UX0VYVF9BUFAiLCJWV0FHX09SVU5leHRfQVBTX1VBX0RFTU8iLCJWV0FHX09SVU5leHRfQkFDS0VORF9ERU1PIiwiVldBR19PUlVORVhUX0NBUkJfREVNTyIsIlZXQUdfT1JVTkVYVF9BUFNfTUdNVF9FWFRfREVNTyIsIlZXQUdfT1JVTmV4dF9UQVVfREVNTyIsIlZXQUdfT1JVTmV4dF9WQ1BfQVBQIiwiVldBR19PUlVOZXh0X0JBQ0tFTkRfQVBQIiwiVldBR19PUlVORVhUX0NBUkJfQVBQIl19fSwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInNpZCI6IjQ1ZTFmZDU0LTM0ZmItNGU3Ny05OGEwLTdhMTcwNzM2MzljZCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiQW5kcmVpIElvdGEiLCJncm91cHMiOlsiVldBR19PUlVOZXh0X1RBVV9BUFAiLCJWV0FHX09SVU5leHRfQVBTX0RFTU8iLCJWV0FHX09SVU5FWFRfRUNFX1BSSk1NQlJfREVNTyIsIlZXQUdfT1JVTkVYVF9FQ0VfS0lCQU5BX0xJVkUiLCJWV0FHX09SVU5leHRfVkNQX0RFTU8iLCJWV0FHX09SVU5FWFRfQVBTX01HTVRfRVhUX0FQUCIsIlZXQUdfT1JVTmV4dF9BUFNfVUFfREVNTyIsIlZXQUdfT1JVTmV4dF9CQUNLRU5EX0RFTU8iLCJWV0FHX09SVU5FWFRfQ0FSQl9ERU1PIiwiVldBR19PUlVORVhUX0FQU19NR01UX0VYVF9ERU1PIiwiVldBR19PUlVOZXh0X1RBVV9ERU1PIiwiVldBR19PUlVOZXh0X1ZDUF9BUFAiLCJWV0FHX09SVU5leHRfQkFDS0VORF9BUFAiLCJWV0FHX09SVU5FWFRfQ0FSQl9BUFAiXSwicHJlZmVycmVkX3VzZXJuYW1lIjoiZjVpdTYxOSIsImdpdmVuX25hbWUiOiJBbmRyZWkiLCJmYW1pbHlfbmFtZSI6IklvdGEiLCJlbWFpbCI6ImFuZHJlaS5pb3RhQGluLXRlY2guY29tIn0.V7poxn927c_udqSFAhEimhZVutskusfBbh20dxoO3qP8yg8cg8DOoboVb3xVjZ294uoLWEm9kKyeflxMsonA4HBXS-LG6YJa5bOM6D3syHtlaa0DUg93-u0hvG0QDW3GOosFdeV6tA2HI_9iS1SCOU6oatkrOVGx26XhiiWlDbQ7joa6kvpOw7JT2YoXAids-9WV1or0FmxuvjSrjUkuGDwO65oUeQ5wjcObF09mMlP6L6h8Z3fAMu6N_Huy9spc-BJwq7FxGRbFM7G69zHXf363LsP-yDJ70kKyjqZgMVMFkrS8Z0EyqqhnTxzQvFGYY3O-ygZFjwqFDx0Hd3ihdg</con:accessToken>
+      <con:accessTokenPosition>HEADER</con:accessTokenPosition>
+      <con:accessTokenStartingStatus>RETRIEVED_FROM_SERVER</con:accessTokenStartingStatus>
+      <con:accessTokenIssuedTime>1719503903</con:accessTokenIssuedTime>
+      <con:clientID>idp-dd1157fa-92d5-4b29-81ea-54a3bb0e9a58-orunext-mfa-public</con:clientID>
+      <con:oAuth2Flow>AUTHORIZATION_CODE_GRANT</con:oAuth2Flow>
+      <con:refreshAccessTokenMethod>AUTOMATIC</con:refreshAccessTokenMethod>
+      <con:refreshToken>eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI3N2JlZmM2YS01NTZkLTQwNjctYTg1OS1jYzlhYWIxYTQ3YzIifQ.eyJleHAiOjE3MTk1Mjg2MDUsImlhdCI6MTcxOTUwMzg5MSwianRpIjoiZTk3YjQ3YjUtMDBkYi00YjQwLWExNTUtNzY2NWQwOTU2YmUyIiwiaXNzIjoiaHR0cHM6Ly9pZHAuY2xvdWQudndncm91cC5jb20vYXV0aC9yZWFsbXMva3Vtcy1tZmEiLCJhdWQiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsInN1YiI6ImUxNTY5ZDRhLWUxNzctNDE4ZC05MWI0LWMyMDIyOGE1Mzc0NiIsInR5cCI6IlJlZnJlc2giLCJhenAiOiJpZHAtZGQxMTU3ZmEtOTJkNS00YjI5LTgxZWEtNTRhM2JiMGU5YTU4LW9ydW5leHQtbWZhLXB1YmxpYyIsInNlc3Npb25fc3RhdGUiOiI0NWUxZmQ1NC0zNGZiLTRlNzctOThhMC03YTE3MDczNjM5Y2QiLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwic2lkIjoiNDVlMWZkNTQtMzRmYi00ZTc3LTk4YTAtN2ExNzA3MzYzOWNkIn0.-k4Uejo70lfit_dD7ubOspDp7MUgV7CxW8vOJV26zrc</con:refreshToken>
+      <con:scope>openid</con:scope>
+      <con:accessTokenExpirationTime>1800</con:accessTokenExpirationTime>
+      <con:idToken>eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJJQjNRTk5TWUJibUJ6ajNaRTM4aFY3dWZYUWhWbjlUcWhDUFpfWlhDTDFnIn0.eyJleHAiOjE3MTk1MDU2OTEsImlhdCI6MTcxOTUwMzg5MSwiYXV0aF90aW1lIjoxNzE5NDg1NDA1LCJqdGkiOiI3MWZhZDZkNC1lMWEzLTQwZGUtYjZmZi00MjJhZDNhNDljMDEiLCJpc3MiOiJodHRwczovL2lkcC5jbG91ZC52d2dyb3VwLmNvbS9hdXRoL3JlYWxtcy9rdW1zLW1mYSIsImF1ZCI6ImlkcC1kZDExNTdmYS05MmQ1LTRiMjktODFlYS01NGEzYmIwZTlhNTgtb3J1bmV4dC1tZmEtcHVibGljIiwic3ViIjoiZTE1NjlkNGEtZTE3Ny00MThkLTkxYjQtYzIwMjI4YTUzNzQ2IiwidHlwIjoiSUQiLCJhenAiOiJpZHAtZGQxMTU3ZmEtOTJkNS00YjI5LTgxZWEtNTRhM2JiMGU5YTU4LW9ydW5leHQtbWZhLXB1YmxpYyIsInNlc3Npb25fc3RhdGUiOiI0NWUxZmQ1NC0zNGZiLTRlNzctOThhMC03YTE3MDczNjM5Y2QiLCJhdF9oYXNoIjoiWmpkdGlkaXJTSER3bDY0YnJieThOdyIsInNpZCI6IjQ1ZTFmZDU0LTM0ZmItNGU3Ny05OGEwLTdhMTcwNzM2MzljZCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiQW5kcmVpIElvdGEiLCJncm91cHMiOlsiVldBR19PUlVOZXh0X1RBVV9BUFAiLCJWV0FHX09SVU5leHRfQVBTX0RFTU8iLCJWV0FHX09SVU5FWFRfRUNFX1BSSk1NQlJfREVNTyIsIlZXQUdfT1JVTkVYVF9FQ0VfS0lCQU5BX0xJVkUiLCJWV0FHX09SVU5leHRfVkNQX0RFTU8iLCJWV0FHX09SVU5FWFRfQVBTX01HTVRfRVhUX0FQUCIsIlZXQUdfT1JVTmV4dF9BUFNfVUFfREVNTyIsIlZXQUdfT1JVTmV4dF9CQUNLRU5EX0RFTU8iLCJWV0FHX09SVU5FWFRfQ0FSQl9ERU1PIiwiVldBR19PUlVORVhUX0FQU19NR01UX0VYVF9ERU1PIiwiVldBR19PUlVOZXh0X1RBVV9ERU1PIiwiVldBR19PUlVOZXh0X1ZDUF9BUFAiLCJWV0FHX09SVU5leHRfQkFDS0VORF9BUFAiLCJWV0FHX09SVU5FWFRfQ0FSQl9BUFAiXSwicHJlZmVycmVkX3VzZXJuYW1lIjoiZjVpdTYxOSIsImdpdmVuX25hbWUiOiJBbmRyZWkiLCJmYW1pbHlfbmFtZSI6IklvdGEiLCJlbWFpbCI6ImFuZHJlaS5pb3RhQGluLXRlY2guY29tIn0.W9qAHo8vnsNshaPeuUg3NElgnDpIAc8xs-HZxpBIy3APD9Cs5eY5bbWqi5goM2pWKsEZvxO7ZYeqtz4amFFQue7el8PrvOhUMoNDxrm06F0WMMwBGEgvLW06Kq0UjVtiNkVHxiLVK8ArlSojooGyT42ioJ9EAQevNFcBRGjemXVbYq0EQpl9WtX5OTtlq2RfcXJjE7T_K8QKW0113SNaJ3LPHMYBmD-TM93eHiv917CJ37Cka0ih7pOakce8yVafYcl8eq03lJQIVd2CgVNm22iZmVEILJzGX1wx2-EjRy_vRcnwafi9TokC-bDnwkPslMtFLrLh6k7Rl2Z0eHoVRQ</con:idToken>
+      <con:idTokenStatus>RETRIEVED_FROM_SERVER</con:idTokenStatus>
+      <con:idTokenStartingStatus>RETRIEVED_FROM_SERVER</con:idTokenStartingStatus>
+      <con:useNonce>false</con:useNonce>
+      <con:useAuthHeader>true</con:useAuthHeader>
+      <con:jwtConfiguration/>
+      <con:responseType>id_token</con:responseType>
+    </con:oAuth20AuthEntry>
+  </con:authRepository>
+  <con:environmentSpec>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>No Authorization</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+  <con:tags/>
+</con:soapui-project>

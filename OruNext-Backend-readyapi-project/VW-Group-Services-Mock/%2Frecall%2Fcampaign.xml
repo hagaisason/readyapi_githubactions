@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/recall/campaign" path="/recall/campaign" id="fde13c16-8ca6-4dcd-b801-c9ce99958117" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="b3bd997d-2f96-4796-b07e-f12b5af34c34fileName">%2Frecall%2Fcampaign</con:setting>
+    <con:setting id="fde13c16-8ca6-4dcd-b801-c9ce99958117fileName">%2Frecall%2Fcampaign</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:method name="createCampaign" id="828be448-b453-4d3d-9dea-e4e53b700f32" method="PUT">
+    <con:description>Generate ReCall export file for online update campaign</con:description>
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>export</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description>export</con:description>
+      </con:parameter>
+    </con:parameters>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+      <con:sampleContent>{
+  "brands" : [ "string" ],
+  "countries" : [ {
+    "active" : true,
+    "country" : "string",
+    "startTime" : "string"
+  } ],
+  "criterions" : [ {
+    "id" : "string",
+    "onlineUpdateRelevant" : true,
+    "title" : "string",
+    "titleLanguage" : "string",
+    "vehicles" : [ {
+      "brand_code" : "V",
+      "creation_date" : "2019-02-18T12:34:56.777Z",
+      "delivering_dealer" : "CHN75813756",
+      "equipment_codes" : [ "AV1", "B0A", "BLB" ],
+      "mbt_model_code" : "10A",
+      "mbv_model_code" : "CR74RJ",
+      "model_name" : "Golf V6 4Motion",
+      "model_year" : 2010,
+      "ordering_dealer" : "CHN79601061",
+      "oru_relevant" : true,
+      "oru_relevant_date" : "2019-02-18T12:34:56.777Z",
+      "pkn" : "0479001662009",
+      "supervising_dealer" : "CHN79601076",
+      "update_status" : "CUSTOMER_NOTIFIED",
+      "vin" : "WVWZZZAUZFW900000"
+    } ]
+  } ],
+  "exceptionCountries" : [ "string" ],
+  "id" : "string",
+  "title" : "string",
+  "titleLanguage" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:sampleContent xsi:nil="true"/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>201</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="9f816baa-37a2-4837-b4f0-691de13c68c2" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com/api/vw-group-services-mock</con:endpoint>
+      <con:request>{\r
+  "brands" : [ "string" ],\r
+  "countries" : [ {\r
+    "active" : true,\r
+    "country" : "string",\r
+    "startTime" : "string"\r
+  } ],\r
+  "criterions" : [ {\r
+    "id" : "string",\r
+    "onlineUpdateRelevant" : true,\r
+    "title" : "string",\r
+    "titleLanguage" : "string",\r
+    "vehicles" : [ {\r
+      "brand_code" : "V",\r
+      "creation_date" : "2019-02-18T12:34:56.777Z",\r
+      "delivering_dealer" : "CHN75813756",\r
+      "equipment_codes" : [ "AV1", "B0A", "BLB" ],\r
+      "mbt_model_code" : "10A",\r
+      "mbv_model_code" : "CR74RJ",\r
+      "model_name" : "Golf V6 4Motion",\r
+      "model_year" : 2010,\r
+      "ordering_dealer" : "CHN79601061",\r
+      "oru_relevant" : true,\r
+      "oru_relevant_date" : "2019-02-18T12:34:56.777Z",\r
+      "pkn" : "0479001662009",\r
+      "supervising_dealer" : "CHN79601076",\r
+      "update_status" : "CUSTOMER_NOTIFIED",\r
+      "vin" : "WVWZZZAUZFW900000"\r
+    } ]\r
+  } ],\r
+  "exceptionCountries" : [ "string" ],\r
+  "id" : "string",\r
+  "title" : "string",\r
+  "titleLanguage" : "string"\r
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="export" value=""/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>export</con:entry>
+      </con:parameterOrder>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>ORU-app</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

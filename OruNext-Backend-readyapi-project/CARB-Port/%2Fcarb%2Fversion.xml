@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/carb/version" path="/carb/version" id="8888a510-9e26-48ce-9bfc-dd7727ced4d5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="0f1a973b-6dcd-478f-a494-32809be5ae52fileName">%2Fcarb%2Fversion</con:setting>
+    <con:setting id="8888a510-9e26-48ce-9bfc-dd7727ced4d5fileName">%2Fcarb%2Fversion</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:method name="getCarbPortVersion" id="d89d00db-7b32-4881-a73a-af8d54ae29fd" method="GET">
+    <con:description>Get version info for Carb port</con:description>
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:description>OK</con:description>
+    </con:representation>
+    <con:request name="Request 1" id="ec4ba714-037e-4fc9-b2e3-10b2ab95794f" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com/api/oru</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+      <con:environmentSpec>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

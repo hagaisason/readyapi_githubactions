@@ -1,0 +1,36 @@
+{
+    "schema": "DiagAssemblyStatus_DetailLevel_Update_Schema_V1.3.2.json",
+    "description": "",
+    "assemblyStatus": {
+        "vehicleInformation": {
+            "VIN": "FLORINVEH74465736"
+        },
+        "assemblyInformation": [
+            {
+                "ecuInformation": {
+                    "dataObjects": {
+                        "partNumber": "85F907468  ",
+                        "zdcVersion": "",
+                        "fazitIdString": [
+                            "BPA-08528.01.2115281234"
+                        ],
+                        "zdcPartNumber": "",
+                        "asamFileVersion": "004030",
+                        "hardwareVersion": "X09",
+                        "softwareVersion": "G111",
+                        "asamFileIdentifier": "EV_HCP5GatewAU416",
+                        "hardwarePartNumber": "85F907468  "
+                    },
+                    "logicalLink": "",
+                    "diagnosisAddress": "1277"
+                }
+            }
+        ]
+    },
+    "releaseVersion": "1.0.0",
+    "assemblyStatusMetaData": {
+        "vcHash": "16CB5627A9F0379F2E100B0437CB20CE8B470922C358A149515D79573C9CFA4F",
+        "newestEntryTimestamp": "2023-09-27T09:58:49.465Z",
+        "oldestEntryTimestamp": "2022-06-10T10:38:47.833Z"
+    }
+}

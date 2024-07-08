@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:interface xsi:type="con:RestService" basePath="/api/oru" id="8e652a6a-304d-4724-8ea2-f56138cef13f" name="ESR Labs ORU App - Campaign" type="rest" wadlVersion="http://wadl.dev.java.net/2009/02" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:description>This application provides ORU facilities for VW Group vehicles</con:description>
+  <con:settings>
+    <con:setting id="CreateWadlDocumentationAction@report-directory">C:\Users\t4xd94d\Documents\30_ORUnext\SoapUI_Projects</con:setting>
+    <con:setting id="5b6b3c36-9310-4ce4-adc5-7802c881ef58fileName">APS-Campaign</con:setting>
+    <con:setting id="17fcd34d-616f-4ffb-a408-55f20cc36c3efileName">ESR-Labs-ORU-App---Campaign</con:setting>
+    <con:setting id="8e652a6a-304d-4724-8ea2-f56138cef13ffileName">ESR-Labs-ORU-App---Campaign</con:setting>
+  </con:settings>
+  <con:definitionCache type="TEXT"/>
+  <con:endpoints>
+    <con:endpoint>http://docs.demo.orunext.com</con:endpoint>
+    <con:endpoint>https://demo.orunext.com</con:endpoint>
+  </con:endpoints>
+  <con:environmentSpec>
+    <con:entry environmentId="2c6d89f0-0ea5-4682-820f-ce822c87d07e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:interface>

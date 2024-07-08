@@ -1,0 +1,192 @@
+{
+	"$schema": "VehicleManifestSchema_1.3.2#",
+	"title": "Schema Vehicle Manifest",
+	
+	"type": "object",
+	"properties": {
+		"modulVersion": {
+		  "type": "string",
+		  "description": "Softwareversion Vehicle Manifest Generator."
+		},
+		"modulResult": {
+		  "type": "boolean",
+		  "description": ""
+		},
+		"scheme": {
+		  "type": "string",
+		  "description": "scheme file name."
+		},
+		"manifestImplementationVersion": {
+		  "type": "string",
+		  "description": "Version of the requirement sepcification."
+		},
+		"manifestName": {
+		  "type": "string",
+		  "description": "Vehicle Manifest name."
+		},
+		"manifestFileVersion": {
+		  "type": "string",
+		  "description": "Vehicle Manifest file version."
+		},
+		"requestId": {
+		  "type": "string",
+		  "description": "Request ID derived from the VIN."
+		},
+		"description": {
+		  "type": "string",
+		  "description": "Vehicle Manifest description."
+		},
+		"blPartNumber": {
+		  "type": "string",
+		  "description": "Name of Target Baseline."
+		},
+		"vcHash": {
+		  "type": "string",
+		  "description": "Required Vehicle Configuration Checksum."
+		},
+		"updateMap": {
+		  "type": "array",
+		  "items": {
+				"$ref": "#/definitions/updateBlockDef" 			
+		  },
+		  "additionalProperties": false,
+		  "description": "Lists the update blocks."
+		}
+	},
+	"additionalProperties": false,
+	"definitions" : {
+		"updateBlockDef" :{
+			"type": "object",
+			"properties": {
+				"updateType": {
+				"enum": ["sequential", "parallel"],
+				"description": "Update order."
+				},
+				"updateItems": {
+				  "type": "array",
+				  "items": {
+						 "$ref": "#/definitions/updateItem"
+					}
+				}
+			},
+			"additionalProperties": false,
+			"description": "One block to update n nodes either parallel or sequential"
+		},
+		"updateItem" : {
+			"type": "object",
+			"properties": {
+				"diagnosisAddress": {
+				"type": "string",
+				"description": "Diagnosis Address."
+				},
+				"sessionId": {
+				"type": "string",
+				"description": "ODX SessionID."
+				},
+				"dataType": {
+				"enum": ["PROG", "CONF", "RES", "WAIT"],
+				"description": "Select action - Programming, Coding, Reset, Wait."
+				},
+				"resType": {
+				"enum": ["SOFT", "HARD", "SMART"],
+				"description": "Select Type of reset."
+				},
+				"duration": {
+				"type": "number",
+				"description": "Duration of the Action defined by dataType"
+				},
+				"confManifest": {
+				"type": "string",
+				"description": "Reference to ConfManifest per DA"
+				},
+				"flashSetupTime" : {
+				"type" : "number",
+				"description": "Time to flash the node in ms"
+				},
+				"sgvType": {
+				"enum": ["PUZ", "PUS", "PUL"],
+				"description": ""
+				},
+				"law": {
+				"enum": ["HC1", "HC3", "HC5", "UDS", "GB#"],
+				"description": ""
+				},
+				"ecuType": {
+				"enum": ["LUM", "LUM-Client", "ICAS-Host", "ICAS-Slave", "UDS (ohne ICAS)", "UFS", "andere", "leer"],
+				"description": ""
+				},
+				"OBDrelevant": {
+				"type": "boolean",
+				"description": "attribute not yet in use."
+				},
+				"ecuPartNumber": {
+				"type": "string",
+				"description": "Target SW Part Number."
+				},
+				"softwareVersion": {
+				"type": "string",
+				"description": "Target SW Version."
+				},
+				"ivdProgTarget": {
+				"type": "string",
+				"description": "Target Integrity Validation Data Programming."
+				},
+				"internalUpdateOrderFilename": {
+				"type": "string",
+				"description": "InternalUpdateOrder for LUM Master"
+				},
+				"metaFiles": {
+				  "type": "array",
+				  "items": {
+						 "type": "string"
+					}
+				},
+				"dataFiles": {
+				  "type": "array",
+				  "items": {
+						"$ref": "#/definitions/DataFile"
+					}
+				},
+				"updateType": {
+					"enum": ["sequential", "parallel"],
+					"description": "Update order."
+					},
+					"updateItems": {
+					  "type": "array",
+					  "items": {
+							 "$ref": "#/definitions/updateItem"
+						}
+					}
+			},
+			"additionalProperties": false,
+			"description": "A single node to update"
+		},
+		"DataFile" : {
+			"type": "object",
+			"properties": {
+				  "blockFileName": {
+				  "type": "string",
+				  "description": ""
+				  },
+				  "blockNo": {
+				  "type": "string",
+				  "description": ""
+				  },
+				  "blockVersion": {
+				  "type": "string",
+				  "description": ""
+				  },
+				  "blockInstallationTime": {
+				  "type": "number",
+				  "description": "Installation Duration per BIN or zip File."
+				  },
+				  "blockFileSize": {
+				  "type": "number",
+				  "description": "in MB rounded up to the next MB"
+				  }
+			},
+			"additionalProperties": false,
+			"description": "reference to the update file"
+		}
+	} 			
+}

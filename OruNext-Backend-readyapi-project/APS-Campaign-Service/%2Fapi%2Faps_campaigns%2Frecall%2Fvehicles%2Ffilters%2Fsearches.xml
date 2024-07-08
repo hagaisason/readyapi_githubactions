@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/api/aps_campaigns/recall/vehicles/filters/searches" path="/api/aps_campaigns/recall/vehicles/filters/searches" id="84eb6e1f-3f79-45cc-94b0-4f14f7aff711" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="c3c99dc8-0ad0-4c7b-9fbc-d84127906843fileName">%2Fapi%2Faps_campaigns%2Frecall%2Fvehicles%2Ffilters%2Fsearches</con:setting>
+    <con:setting id="84eb6e1f-3f79-45cc-94b0-4f14f7aff711fileName">%2Fapi%2Faps_campaigns%2Frecall%2Fvehicles%2Ffilters%2Fsearches</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:method name="searchVehicleFilters" id="8c07b3bb-8cef-4150-bad2-cfaa908d24df" method="POST">
+    <con:description>Search ReCall vehicles filters</con:description>
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+      <con:sampleContent>{
+  "columnConditions" : [ {
+    "column" : "id",
+    "operator" : "eq",
+    "value" : 123,
+    "value2" : 789
+  } ],
+  "columns" : [ "id", "name", "state" ],
+  "count" : true,
+  "limit" : 10,
+  "noDefaultLimit" : true,
+  "sortBy" : "id",
+  "sortDirection" : "asc",
+  "start" : 0
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:sampleContent xsi:nil="true"/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>201</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="3462b68d-ee43-4cbe-bb12-fc450622d447" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request>{\r
+  "columnConditions" : [ {\r
+    "column" : "id",\r
+    "operator" : "eq",\r
+    "value" : 123,\r
+    "value2" : 789\r
+  } ],\r
+  "columns" : [ "id", "name", "state" ],\r
+  "count" : true,\r
+  "limit" : 10,\r
+  "noDefaultLimit" : true,\r
+  "sortBy" : "id",\r
+  "sortDirection" : "asc",\r
+  "start" : 0\r
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

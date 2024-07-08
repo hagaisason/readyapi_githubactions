@@ -1,0 +1,117 @@
+{
+  "scheme": "ConfigurationManifest_v1_6_0.schema.json",
+  "modulVersion" : "0.5.2",
+  "requestId" : "1234",
+  "diagnosisAddress": "75",
+  "diagnosisAddressMaster" : "75",
+  "nodeAddress" : "75",
+  "diagnosisClass" : "4",
+  "zdcFileName": "Z16_95C_0000_8W0909612D__0012__001.xml",
+  "zdcPartNumber": "8W0909612D",
+  "zdcVersion": "0012",
+  "ivdConfCurrent": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+  "ivdConfTarget": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+  "sfdTokenCfgData":"7f2181b77f4e715f290170420d444555565747505346282808157f4c5b060d2b06010401990a8d110a020003534a57574f2d57574f32362e30352e3133303030313531323000000172aa286ea000000172aa286ea00106006d0e345dad53bd5389f6553644c4f8f9bff07cba095babf413a0b0013eee6b7d5f3740ff80ebfa38e3cd7d905d5f687c401b154feca51eb12aa3350fd752d0ae3c5ededaf7fb88d8a1ae09335567093c006a2d62e3d77ecbd4aa343eff75951d6d4873",
+  "confRule":["AlwaysReadAll","true"],
+  "demandOrientedCoding" : false,
+  "serviceList": [
+    {
+      "elementType":"SPECIALTY",
+      "command":["HexService","31011001040000"],
+      "expectedResponse":"710110"
+    },
+    {
+      "elementType" : "CFGData",
+      "sid" : "2E",
+      "did" : "0600",
+      "value" : "01E0E0F8C04080F6E0",
+      "tableName" : "CodingValue"
+    },
+    {
+      "elementType" : "CFGData",
+      "sid" : "2E",
+      "did" : "0804",
+      "value" : "EA480695",
+      "tableName": "PKZZ_TABROW_XYZ"
+    },
+    {
+      "elementType" : "CFGData",
+      "value" : "00",
+      "did" : "0805",
+      "sid" : "2E",
+      "tableName": "PKZZ_TABROW_XYZ"
+    },
+    {
+      "elementType": "CFGData",
+      "sid": "2E",
+      "did": "0806",
+      "value": "417564695F4D4D495F00000000000000000000000000000000000000000000005F3547487A0000000000",
+      "tableName": "PKZZ_TABROW_XYZ"
+    },
+    {
+      "elementType": "CFGData",
+      "sid": "2E",
+      "did": "0B33",
+      "value": "01",
+      "tableName": "PKZZ_TABROW_XYZ"
+    },
+    {
+      "elementType": "CFGData",
+      "sid": "2E",
+      "did": "0B37",
+      "value": "01",
+      "tableName": "PKZZ_TABROW_XYZ"
+    },
+    {
+      "elementType": "CFGData",
+      "sid": "2E",
+      "did": "0B43",
+      "value": "01",
+      "tableName": "PKZZ_TABROW_XYZ"
+    },
+    {
+      "elementType": "CFGData",
+      "sid": "2E",
+      "did": "0B49",
+      "value": "4445",
+      "tableName": "PKZZ_TABROW_XYZ"
+    },
+    {
+      "elementType": "CFGData",
+      "sid": "2E",
+      "did": "0C23",
+      "value": "01",
+      "tableName": "PKZZ_TABROW_XYZ"
+    },
+    {
+      "elementType": "CFGData",
+      "sid": "2E",
+      "did": "0C27",
+      "value": "8E20",
+      "tableName": "PKZZ_TABROW_XYZ"
+    },
+    {
+      "elementType": "CFGData",
+      "sid": "2E",
+      "did": "0C3B",
+      "value": "F8",
+      "tableName": "PKZZ_TABROW_XYZ"
+    },
+    {
+      "elementType": "CFGData",
+      "sid": "2E",
+      "did": "24F1",
+      "value": "C0",
+      "tableName": "PKZZ_TABROW_XYZ"
+    },
+    {
+      "elementType":"SPECIALTY",
+      "command":["HexService","1101"],
+      "expectedResponse":"51"
+    },
+    {
+      "elementType":"SPECIALTY",
+      "command":["WAIT","1000"]
+    }
+  ]
+}

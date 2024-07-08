@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite id="1dde4a7b-3b30-4203-b939-a7a5a393adb3" name="Test Suite OTA - 4331: Enable Logging through the UpdateJob" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="d337b6e4-37f8-437c-b4db-3d2011cefaaefileName">Test-Suite-OTA---4331%3A-Enable-Logging-through-the-UpdateJob</con:setting>
+    <con:setting id="1dde4a7b-3b30-4203-b939-a7a5a393adb3fileName">Test-Suite-OTA---4331%3A-Enable-Logging-through-the-UpdateJob</con:setting>
+  </con:settings>
+  <con:runType>SEQUENTIAL</con:runType>
+  <con:properties>
+    <con:property>
+      <con:name>reCallActionCode</con:name>
+      <con:value>R106</con:value>
+    </con:property>
+    <con:property>
+      <con:name>criterion</con:name>
+      <con:value>86</con:value>
+    </con:property>
+    <con:property>
+      <con:name>changeMeasureCode</con:name>
+      <con:value>CMC6277</con:value>
+    </con:property>
+    <con:property>
+      <con:name>VIN_string</con:name>
+      <con:value>"FAKEVIN1187923890"</con:value>
+    </con:property>
+    <con:property>
+      <con:name>VIN</con:name>
+      <con:value>FAKEVIN1187923890</con:value>
+    </con:property>
+    <con:property>
+      <con:name>jsonBody</con:name>
+      <con:value>{	  "vin" : "FAKEVIN1187923890",	  "mbv_model_code" : "4N803A",	  "mbt_model_code" : "4N42",	  "brand_code" : "A",	  "pkn" : "964854911",	  "delivering_dealer" : "125",	  "supervising_dealer" : "CHN79601076",	  "ordering_dealer" : "CHN79601061",	  "equipment_codes" : ["0K0"],	  "model_year" : 2021,	  "model_name" : "Q7",	  "oru_relevant": true,       "oru_relevant_date": "2022-04-12T09:28:21.363Z",       "update_status": "CUSTOMER_NOTIFIED"	}</con:value>
+    </con:property>
+    <con:property>
+      <con:name>odxName</con:name>
+      <con:value>FL_YLTDLW7M9_T343_TEST.odx-f</con:value>
+    </con:property>
+    <con:property>
+      <con:name>oucName1</con:name>
+      <con:value>FL_YLTDLW7M9_T343_TEST.ouc</con:value>
+    </con:property>
+    <con:property>
+      <con:name>binName1</con:name>
+      <con:value>d50a57510483d8270e70158a6dafc2bd.bin</con:value>
+    </con:property>
+    <con:property>
+      <con:name>binName2</con:name>
+      <con:value>f174b1d1dd5e40a1f36cd7aa3f2f418e.bin</con:value>
+    </con:property>
+    <con:property>
+      <con:name>vcHash</con:name>
+      <con:value>23AF08AB1F9B20C208D351763E86C240E59A7598CEEA13497DCB838E7E0D3700</con:value>
+    </con:property>
+    <con:property>
+      <con:name>VC_path</con:name>
+      <con:value>file:C:\Users\U3635\Documents\VirtualVehicle\orunext-backend\Templates\VehicleConfiguration.json</con:value>
+    </con:property>
+    <con:property>
+      <con:name>VM_path</con:name>
+      <con:value>file:C:\Users\U3635\Documents\VirtualVehicle\orunext-backend\Templates\VehicleManifest.json</con:value>
+    </con:property>
+  </con:properties>
+  <con:tearDownScript>import com.eviware.soapui.model.testsuite.TestRunner.Status
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestCaseRunner
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+// get the name of the test suite
+def testSuiteName = context.getTestSuite().name
+
+// get the status of the test suite
+def testSuiteStatus = context.getTestRunner().getStatus().toString()
+
+// get the number of reruns from the project property
+def noOfReruns = Integer.parseInt(context.expand('${#Project#noOfReruns}'))
+
+// set the initial status for the tets suite
+def failTestSuite = false
+
+// declare the name of the test step
+def testStepName = "Set execution status"
+
+// check which test case failed and rerun it a given number of times
+// iterate over the test case results in the test suite
+for (testCaseResult in runner.results) {
+    // get the name of the current test case
+    def testCaseName = testCaseResult.getTestCase().name
+
+    // check if the test case failed
+    if (testCaseResult.getStatus().toString() == 'FAIL') {
+        def testCaseRunner 
+        
+        // attempt to rerun the test case up to the specified number of times
+        for (i = 0; i &lt; noOfReruns; i++) {
+            // log each rerun attempt
+            log.info("[Test Case] [Rerun] [Attempt " + (i + 1) + "] [Started]: " + testCaseName)
+
+            // rerun the test case
+            testCaseRunner  = testCaseResult.testCase.run(null, false)
+
+            // break if the rerun passes
+            if (testCaseRunner .getStatus().toString() == "PASS") {
+			// log the passed result of the rerun attempt
+           	 log.info("[Test Case] [Rerun] [Attempt " + (i + 1) + "] [Passed]: " + testCaseName)
+       
+                runner.status = Status.FINISHED
+                break
+            }
+        }
+        // mark the test suite as failed if the reruns fail
+        if (testCaseRunner .getStatus().toString() == "FAILED") {
+            // log the failed result of each rerun attempt
+            log.info("[Test Case] [Rerun] [Attempt " + (i + 1) + "] [Failed]: " + testCaseName)
+
+            failTestSuite = true
+        }
+    }
+}
+
+// run the necessary test step to update the JIRA regression for the acceptence criteria that passed
+// iterate over the test case results in the test suite
+for (testCaseResult in runner.results) {
+    // check if the test case passed
+    if (testCaseResult.getStatus().toString() == 'PASS') {
+        runTestStep(testCaseResult, testStepName)
+    }
+}
+
+// set the overall status of the test suite based on the rerun results
+if (failTestSuite) {
+    runner.status = Status.FAILED
+}
+
+// log the final result of the test suite execution
+if (testSuiteStatus == 'FAIL') {
+    log.info("[Test Suite] [Failed]: " + testSuiteName)
+}
+else if (testSuiteStatus == 'PASS') {
+    log.info("[Test Suite] [Passed]: " + testSuiteName)
+}
+
+//-------------------- METHODS --------------------//
+
+// method to run a test step and log the results
+public void runTestStep(def testCaseResult, String testStepName){
+    // get the name of the current test case
+    def testCaseName = testCaseResult.getTestCase().name
+
+    // get the specific test step by name
+    def testStep = testCaseResult.testCase.getTestStepByName(testStepName)
+
+    // create a new runner and context for the test step
+    def testCaseRunner = new WsdlTestCaseRunner(testCaseResult.testCase, null)
+    def testCaseRunContext = new WsdlTestRunContext(testStep)
+
+    // log the attempt to run the test step
+    log.info("[" + testCaseName + "][Test Step] [Started]: " + testStepName)
+
+    // run the test step with the test case runner and context
+    def testStepResult = testStep.run(testCaseRunner, testCaseRunContext)
+
+    // log the result of the test step run
+    log.info("[" + testCaseName + "][Test Step] [Completed]: " + testStepName)
+    log.info("[" + testCaseName + "][Test Step] [Status]: " + testStepResult.getStatus())
+    log.info("[" + testCaseName + "][Test Step] [Response]: " + testStepResult.getResponse().getContentAsString())
+}</con:tearDownScript>
+  <con:reportParameters/>
+  <con:environmentSpec>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testSuite>

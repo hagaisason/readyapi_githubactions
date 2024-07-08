@@ -1,0 +1,86 @@
+{
+    "modulVersion": "2.1.0",
+    "modulResult": true,
+    "scheme": "VehicleManifestSchema_2.2.0.json",
+    "manifestImplementationVersion": "",
+    "manifestName": "",
+    "manifestFileVersion": "",
+    "requestId": "12345678-1234-1234-1234-12345678abce",
+    "description": "Fake for Automation Testing 2021-01-25",
+    "blPartNumber": "0123456789",
+    "vcHash": "5B74068B21633B8CD9CB04C24126DD707184DB516723AEDC1227CD330EFB3492",
+    "useCase": "oru",
+    "checkMap": "checked",
+    "amCode": "CMM7491",
+    "updateMap": {
+        "id": 1,
+        "updateType": "sequential",
+        "updateItems": [
+            {
+                "id": 2,
+                "elementType": "updateItem",
+                "updateItem": {
+                    "diagnosisAddress": "0019",
+                    "dataType": "PROG",
+                    "progInformation": {
+                        "sgvType": "PU_",
+                        "law": "BC#",
+                        "ecuType": "UDS (ohne ICAS)",
+                        "obdRelevance": false,
+                        "ivdRelevance": false,
+                        "diagnosisClass": "DK4",
+                        "duration": 17,
+                        "targetVersions": [
+                            {
+                                "partNumber": "YR041I9VU",
+                                "softwareVersion": "T444"
+                            }
+                        ],
+                        "validVersionMapping": [
+                            {
+                                "odxSessionShortName": "SESD_85F907468_H7E3_VDONLY_V001_E",
+                                "metaFile": "FL_vAIHcdVNK_T102_TEST.odx-f",
+                                "dataFiles": [
+                                    {
+                                        "blockFileName": "3771d92c091a4067ab430cb55d174ea3.bin",
+                                        "blockNo": "000A",
+                                        "blockVersion": "0236",
+                                        "blockInstallationTime": 60,
+                                        "blockFileSize": 115
+                                    },
+                                    {
+                                        "blockFileName": "d879d39b26241695895ce77a55ef6706.bin",
+                                        "blockNo": "000B",
+                                        "blockVersion": "0236",
+                                        "blockInstallationTime": 60,
+                                        "blockFileSize": 115
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "retries": 1,
+                    "preActions": [
+                        {
+                            "actionType": "crc",
+                            "id": 3,
+                            "crcAction": {
+                                "fusiTransferDA": true
+                            }
+                        }
+                    ],
+                    "postActions": [
+                        {
+                            "actionType": "crc",
+                            "id": 4,
+                            "retries": 1,
+                            "crcAction": {
+                                "manifest": "FL_vAIHcdVNK_T102_TEST"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

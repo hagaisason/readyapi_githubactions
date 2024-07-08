@@ -1,0 +1,86 @@
+{
+    "modulVersion": "2.1.0",
+    "modulResult": true,
+    "scheme": "VehicleManifestSchema_2.2.0.json",
+    "manifestImplementationVersion": "",
+    "manifestName": "",
+    "manifestFileVersion": "",
+    "requestId": "12345678-1234-1234-1234-12345678abce",
+    "description": "Fake for Automation Testing 2021-01-25",
+    "blPartNumber": "0123456789",
+    "vcHash": "C40954B7846E5E539D43B4964858F93BF655058FFF60390598A491273013F4EA",
+    "useCase": "oru",
+    "checkMap": "checked",
+    "amCode": "CMM5185",
+    "updateMap": {
+        "id": 1,
+        "updateType": "sequential",
+        "updateItems": [
+            {
+                "id": 2,
+                "elementType": "updateItem",
+                "updateItem": {
+                    "diagnosisAddress": "0019",
+                    "dataType": "PROG",
+                    "progInformation": {
+                        "sgvType": "PU_",
+                        "law": "BC#",
+                        "ecuType": "UDS (ohne ICAS)",
+                        "obdRelevance": false,
+                        "ivdRelevance": false,
+                        "diagnosisClass": "DK4",
+                        "duration": 17,
+                        "targetVersions": [
+                            {
+                                "partNumber": "YR041I9VU",
+                                "softwareVersion": "T444"
+                            }
+                        ],
+                        "validVersionMapping": [
+                            {
+                                "odxSessionShortName": "SESD_85F907468_H7E3_VDONLY_V001_E",
+                                "metaFile": "FL_3MOgFmNiq_T173_TEST.odx-f",
+                                "dataFiles": [
+                                    {
+                                        "blockFileName": "158fdb7c47a4ed41282ee3e517a4a46b.bin",
+                                        "blockNo": "000A",
+                                        "blockVersion": "0236",
+                                        "blockInstallationTime": 60,
+                                        "blockFileSize": 115
+                                    },
+                                    {
+                                        "blockFileName": "0e78eb962abab249262e4fa098b32b23.bin",
+                                        "blockNo": "000B",
+                                        "blockVersion": "0236",
+                                        "blockInstallationTime": 60,
+                                        "blockFileSize": 115
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "retries": 1,
+                    "preActions": [
+                        {
+                            "actionType": "crc",
+                            "id": 3,
+                            "crcAction": {
+                                "fusiTransferDA": true
+                            }
+                        }
+                    ],
+                    "postActions": [
+                        {
+                            "actionType": "crc",
+                            "id": 4,
+                            "retries": 1,
+                            "crcAction": {
+                                "manifest": "FL_3MOgFmNiq_T173_TEST"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

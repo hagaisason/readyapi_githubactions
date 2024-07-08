@@ -1,0 +1,168 @@
+{
+    "schema": "DiagAssemblyStatus_DetailLevel_Update_Schema_V1.3.2.json",
+    "description": "",
+    "assemblyStatus": {
+        "vehicleInformation": {
+            "VIN": "FLORINVEH48384217"
+        },
+        "assemblyInformation": [
+            {
+                "ecuInformation": {
+                    "dataObjects": {
+                        "partNumber": "85F907468  ",
+                        "zdcVersion": "",
+                        "fazitIdString": [
+                            "BPA-08528.01.2115281234"
+                        ],
+                        "zdcPartNumber": "",
+                        "asamFileVersion": "004030",
+                        "hardwareVersion": "X09",
+                        "softwareVersion": "G111",
+                        "asamFileIdentifier": "EV_HCP5GatewAU416",
+                        "hardwarePartNumber": "85F907468  "
+                    },
+                    "logicalLink": "",
+                    "diagnosisAddress": "0009"
+                }
+            },
+            {
+                "ecuInformation": {
+                    "dataObjects": {
+                        "partNumber": "TESTMOD31",
+                        "zdcVersion": "----",
+                        "fazitIdString": [
+                            "000-00000.00.0000000000"
+                        ],
+                        "zdcPartNumber": "-----------",
+                        "asamFileVersion": "004030",
+                        "softwareVersion": "G111",
+                        "asamFileIdentifier": "EV_HCP5MODAU416",
+                        "hardwarePartNumber": "TESTMOD31"
+                    },
+                    "logicalLink": "",
+                    "diagnosisAddress": "00CA"
+                }
+            },
+            {
+                "ecuInformation": {
+                    "dataObjects": {
+                        "partNumber": "85E907808  ",
+                        "zdcVersion": "8109",
+                        "fazitIdString": [
+                            "BPG-81020.01.2114800043"
+                        ],
+                        "zdcPartNumber": "F5S909133A ",
+                        "asamFileVersion": "002008",
+                        "hardwareVersion": "H08",
+                        "softwareVersion": "X061",
+                        "asamFileIdentifier": "EV_ELVISAU41X",
+                        "hardwarePartNumber": "85E907808  "
+                    },
+                    "logicalLink": "",
+                    "diagnosisAddress": "812C"
+                }
+            },
+            {
+                "ecuInformation": {
+                    "dataObjects": {
+                        "partNumber": "85E907808  ",
+                        "zdcVersion": "8109",
+                        "fazitIdString": [
+                            "BPG-81020.01.2114800043"
+                        ],
+                        "zdcPartNumber": "F5S909133A ",
+                        "asamFileVersion": "002008",
+                        "hardwareVersion": "H08",
+                        "softwareVersion": "X061",
+                        "asamFileIdentifier": "EV_ELVISAU41X",
+                        "hardwarePartNumber": "85E907808  "
+                    },
+                    "logicalLink": "",
+                    "diagnosisAddress": "0042"
+                }
+            },
+            {
+                "ecuInformation": {
+                    "dataObjects": {
+                        "partNumber": "85E907808  ",
+                        "zdcVersion": "8109",
+                        "fazitIdString": [
+                            "BPG-81020.01.2114800043"
+                        ],
+                        "zdcPartNumber": "F5S909133A ",
+                        "asamFileVersion": "002008",
+                        "hardwareVersion": "H08",
+                        "softwareVersion": "X061",
+                        "asamFileIdentifier": "EV_ELVISAU41X",
+                        "hardwarePartNumber": "85E907808  "
+                    },
+                    "logicalLink": "",
+                    "diagnosisAddress": "0052"
+                }
+            },
+            {
+                "ecuInformation": {
+                    "dataObjects": {
+                        "partNumber": "85E907808  ",
+                        "zdcVersion": "8109",
+                        "fazitIdString": [
+                            "BPG-81020.01.2114800043"
+                        ],
+                        "zdcPartNumber": "F5S909133A ",
+                        "asamFileVersion": "002008",
+                        "hardwareVersion": "H08",
+                        "softwareVersion": "X061",
+                        "asamFileIdentifier": "EV_ELVISAU41X",
+                        "hardwarePartNumber": "85E907808  "
+                    },
+                    "logicalLink": "",
+                    "diagnosisAddress": "00BB"
+                }
+            },
+            {
+                "ecuInformation": {
+                    "dataObjects": {
+                        "partNumber": "85E907808  ",
+                        "zdcVersion": "8109",
+                        "fazitIdString": [
+                            "BPG-81020.01.2114800043"
+                        ],
+                        "zdcPartNumber": "F5S909133A ",
+                        "asamFileVersion": "002008",
+                        "hardwareVersion": "H08",
+                        "softwareVersion": "X061",
+                        "asamFileIdentifier": "EV_ELVISAU41X",
+                        "hardwarePartNumber": "85E907808  "
+                    },
+                    "logicalLink": "",
+                    "diagnosisAddress": "00BC"
+                }
+            },
+            {
+                "ecuInformation": {
+                    "dataObjects": {
+                        "partNumber": "85E907808  ",
+                        "zdcVersion": "8109",
+                        "fazitIdString": [
+                            "BPG-81020.01.2114800043"
+                        ],
+                        "zdcPartNumber": "F5S909133A ",
+                        "asamFileVersion": "002008",
+                        "hardwareVersion": "H08",
+                        "softwareVersion": "X061",
+                        "asamFileIdentifier": "EV_ELVISAU41X",
+                        "hardwarePartNumber": "85E907808  "
+                    },
+                    "logicalLink": "",
+                    "diagnosisAddress": "0015"
+                }
+            }
+        ]
+    },
+    "releaseVersion": "1.0.0",
+    "assemblyStatusMetaData": {
+        "vcHash": "C40954B7846E5E539D43B4964858F93BF655058FFF60390598A491273013F4EA",
+        "newestEntryTimestamp": "2024-07-01T16:47:25.938Z",
+        "oldestEntryTimestamp": "2022-06-10T10:38:47.833Z"
+    }
+}

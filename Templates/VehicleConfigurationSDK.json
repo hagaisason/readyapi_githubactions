@@ -1,0 +1,1889 @@
+{
+    "schema": "DiagAssemblyStatus_DetailLevel_Update_Schema_V1.12.json",
+    "releaseVersion": "1.0.0",
+    "description": "VDM DAS",
+    "supportedVMSchema": "2.2.0",
+    "assemblyStatusMetaData": {
+        "newestEntryTimestamp": "2023-02-02T12:11:32.263+0000",
+        "oldestEntryTimestamp": "2023-02-02T12:11:32.263+0000",
+        "vcHash": "957F35BA662AFB541CC3CE02AB7856775175F87DBBF30C0250226C536F33C520"
+    },
+    "assemblyStatus": {
+        "vehicleInformation": {
+            "VIN": "VIRTUAL8628074851"
+        },
+        "assemblyInformation": [
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0003",
+                    "logicalLink": "LL_Brake1UDS",
+                    "dataObjects": {
+                        "partNumber": "8B3909059B ",
+                        "softwareVersion": "X360",
+                        "hardwarePartNumber": "8B3909059A ",
+                        "hardwareVersion": "X12",
+                        "asamFileIdentifier": "EV_BRSAU41X",
+                        "asamFileVersion": "016020",
+                        "zdcPartNumber": "8MA000504S ",
+                        "zdcVersion": "9001",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::3,Param_DataSet1::[Param_DataSetID::28928,Param_DataSetName::BRS354131000],Param_DataSet2::[Param_DataSetID::28929,Param_DataSetName::PBC404243000],Param_DataSet3::[Param_DataSetID::28930,Param_DataSetName::FUMO35000200]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::BPA-085",
+                            "Param_ECUManufDate::14.02.22",
+                            "Param_ECUProduTestSysteNumbe::0099",
+                            "Param_ConseSupplNumbe::0010"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "NegResp",
+                        "ivdConfCurrent": "NegResp",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153234250412D30383531342E30322E323230303939303031300000008B00000185C440287A",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234250412D30383531342E30322E323230303939303031300000008B00000185C440287A",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "710043305644077101433031340771024230304507",
+                        "datasetName": "0371004252533335343133313030307101504243343034323433303030710246554D4F3335303030323030"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0009",
+                    "logicalLink": "LL_CentrElectUDS",
+                    "dataObjects": {
+                        "partNumber": "V04007005BL",
+                        "softwareVersion": "1441",
+                        "hardwarePartNumber": "NegResp",
+                        "hardwareVersion": "NegResp",
+                        "asamFileIdentifier": "EV_HCP4Contr1AU41X",
+                        "asamFileVersion": "010014",
+                        "zdcPartNumber": "8MA000514D ",
+                        "zdcVersion": "9029",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::70,Param_DataSet1::[Param_DataSetID::28928,Param_DataSetName::045771000000],Param_DataSet2::[Param_DataSetID::28960,Param_DataSetName::AU4162FBSHCP],Param_DataSet3::[Param_DataSetID::28961,Param_DataSetName::AU4162FBSHCP],Param_DataSet4::[Param_DataSetID::29024,Param_DataSetName::AM0Q504560Z1],Param_DataSet5::[Param_DataSetID::29040,Param_DataSetName::EQ5LED220708],Param_DataSet6::[Param_DataSetID::29041,Param_DataSetName::EQ5LED220708],Param_DataSet7::[Param_DataSetID::29042,Param_DataSetName::EQ5LED220708],Param_DataSet8::[Param_DataSetID::29043,Param_DataSetName::EQ5LED220708],Param_DataSet9::[Param_DataSetID::29044,Param_DataSetName::EQ5LED220708],Param_DataSet10::[Param_DataSetID::29045,Param_DataSetName::EQ5LED220708],Param_DataSet11::[Param_DataSetID::29046,Param_DataSetName::EQ5LED220708],Param_DataSet12::[Param_DataSetID::29047,Param_DataSetName::EQ5LED220708],Param_DataSet13::[Param_DataSetID::29048,Param_DataSetName::EQ5LED220708],Param_DataSet14::[Param_DataSetID::29056,Param_DataSetName::AU436XEUK1X0],Param_DataSet15::[Param_DataSetID::29057,Param_DataSetName::AU436XEUKEX0],Param_DataSet16::[Param_DataSetID::29058,Param_DataSetName::AU436XEUKEX0],Param_DataSet17::[Param_DataSetID::29059,Param_DataSetName::AU436XEUKEX0],Param_DataSet18::[Param_DataSetID::29060,Param_DataSetName::AU436XEUKEX0],Param_DataSet19::[Param_DataSetID::29061,Param_DataSetName::AU436XEUKEX0],Param_DataSet20::[Param_DataSetID::29062,Param_DataSetName::AU436XEUKEX0],Param_DataSet21::[Param_DataSetID::29063,Param_DataSetName::AU436XEUKEX0],Param_DataSet22::[Param_DataSetID::29064,Param_DataSetName::AU436XEUKEX0],Param_DataSet23::[Param_DataSetID::29065,Param_DataSetName::AU436XEUKEX0],Param_DataSet24::[Param_DataSetID::29066,Param_DataSetName::AU436XEUKEX0],Param_DataSet25::[Param_DataSetID::29067,Param_DataSetName::AU436XEUKEX0],Param_DataSet26::[Param_DataSetID::29068,Param_DataSetName::AU436XEUKEX0],Param_DataSet27::[Param_DataSetID::29069,Param_DataSetName::AU436XEUKEX0],Param_DataSet28::[Param_DataSetID::29070,Param_DataSetName::AU436XEUKEX0],Param_DataSet29::[Param_DataSetID::29071,Param_DataSetName::AU436XEUKEX0],Param_DataSet30::[Param_DataSetID::29072,Param_DataSetName::AU4360EUK000],Param_DataSet31::[Param_DataSetID::29073,Param_DataSetName::AU4162EUB000],Param_DataSet32::[Param_DataSetID::29184,Param_DataSetName::AUPPX0HS1430],Param_DataSet33::[Param_DataSetID::29185,Param_DataSetName::145072010000],Param_DataSet34::[Param_DataSetID::29187,Param_DataSetName::145072030000],Param_DataSet35::[Param_DataSetID::29188,Param_DataSetName::145072040000],Param_DataSet36::[Param_DataSetID::29189,Param_DataSetName::AUALL0FNEUMH],Param_DataSet37::[Param_DataSetID::29190,Param_DataSetName::145072060000],Param_DataSet38::[Param_DataSetID::29191,Param_DataSetName::145072070000],Param_DataSet39::[Param_DataSetID::29192,Param_DataSetName::145072080000],Param_DataSet40::[Param_DataSetID::29193,Param_DataSetName::145072090000],Param_DataSet41::[Param_DataSetID::29194,Param_DataSetName::1450720A0000],Param_DataSet42::[Param_DataSetID::29195,Param_DataSetName::AUNAR0HS0450],Param_DataSet43::[Param_DataSetID::29196,Param_DataSetName::AUQ5NFHS0450],Param_DataSet44::[Param_DataSetID::29200,Param_DataSetName::AU4010KLS801],Param_DataSet45::[Param_DataSetID::29201,Param_DataSetName::AU416XAI0001],Param_DataSet46::[Param_DataSetID::29202,Param_DataSetName::AU416X000003],Param_DataSet47::[Param_DataSetID::29216,Param_DataSetName::AU4162FBSHCP],Param_DataSet48::[Param_DataSetID::29232,Param_DataSetName::AU4163DWACDL],Param_DataSet49::[Param_DataSetID::29233,Param_DataSetName::AU4163XXXCDL],Param_DataSet50::[Param_DataSetID::29248,Param_DataSetName::AU40XTVLK130],Param_DataSet51::[Param_DataSetID::29264,Param_DataSetName::AU4162MQQX00],Param_DataSet52::[Param_DataSetID::29265,Param_DataSetName::AU4162IQQX00],Param_DataSet53::[Param_DataSetID::29266,Param_DataSetName::AU4360MQQX00],Param_DataSet54::[Param_DataSetID::29267,Param_DataSetName::AU4162MQQX00],Param_DataSet55::[Param_DataSetID::29268,Param_DataSetName::AU4163MBASIS],Param_DataSet56::[Param_DataSetID::29269,Param_DataSetName::AU4360MQQ200],Param_DataSet57::[Param_DataSetID::29270,Param_DataSetName::AU4360MQQ200],Param_DataSet58::[Param_DataSetID::29280,Param_DataSetName::AAPPC04560Y1],Param_DataSet59::[Param_DataSetID::29296,Param_DataSetName::145072700000],Param_DataSet60::[Param_DataSetID::29297,Param_DataSetName::AUPPX0HS0450],Param_DataSet61::[Param_DataSetID::29298,Param_DataSetName::PPEEAH220930],Param_DataSet62::[Param_DataSetID::29299,Param_DataSetName::PPEEAH220930],Param_DataSet63::[Param_DataSetID::29300,Param_DataSetName::AUPPX0H00NAR],Param_DataSet64::[Param_DataSetID::29344,Param_DataSetName::0455AU4160SN],Param_DataSet65::[Param_DataSetID::29360,Param_DataSetName::AUPPX0HS0400],Param_DataSet66::[Param_DataSetID::29361,Param_DataSetName::AU0000000000],Param_DataSet67::[Param_DataSetID::29362,Param_DataSetName::AU0000000000],Param_DataSet68::[Param_DataSetID::29376,Param_DataSetName::AUPPX0HS0450],Param_DataSet69::[Param_DataSetID::29378,Param_DataSetName::AUPPX0HS0400],Param_DataSet70::[Param_DataSetID::29392,Param_DataSetName::MDKCONFIG001]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::SME-RBG",
+                            "Param_ECUManufDate::26.07.21",
+                            "Param_ECUProduTestSysteNumbe::0058",
+                            "Param_ConseSupplNumbe::0017"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "DC05DBCF33FB279CFDBBE51DA118D82F7C4E88197E91E8C012A3DE8768E0D4B1",
+                        "ivdConfCurrent": "671C53E1B164032A06C4E115088C0038590DD6FDC503AA51D417B0B91E116A27",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A0200715323534D452D52424732362E30372E323130303538303031370000004500000185E8BBA04A",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323534D452D52424732362E30372E323130303538303031370000004500000185E3CABBF3",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "71003030303107712053303138077121533031340771605A3230310771705450303207717154503032077172545030320771735450303207717454503032077175545030320771765450303207717754503032077178545030320771805830343407718158313434077182583234340771835833343407718458343434077185583534340771865836343407718758373434077188583834340771895839343407718A5841343407718B5842343407718C5843343407718D5844343407718E5845343407718F58463434077190303233350771913030323007720030303033077201303030310772033030303107720430303031077205583030360772063030303107720730303031077208303030310772093030303107720A3030303107720B3030303207720C3030304307721058303031077211303030320772123030303107722053303232077230533030310772315834313207724059303130077250583030380772515830303407725258303131077253583030350772545830303307725558303039077256583030360772605931303107727030303031077271303030310772725445535107727354455351077274303030320772A0585631370772B0583030310772B1583031350772B2583031350772C0303030350772C2303030310772D04530303707",
+                        "datasetName": "467100303435373731303030303030712041553431363246425348435071214155343136324642534843507160414D30513530343536305A3171704551354C454432323037303871714551354C454432323037303871724551354C454432323037303871734551354C454432323037303871744551354C454432323037303871754551354C454432323037303871764551354C454432323037303871774551354C454432323037303871784551354C4544323230373038718041553433365845554B315830718141553433365845554B455830718241553433365845554B455830718341553433365845554B455830718441553433365845554B455830718541553433365845554B455830718641553433365845554B455830718741553433365845554B455830718841553433365845554B455830718941553433365845554B455830718A41553433365845554B455830718B41553433365845554B455830718C41553433365845554B455830718D41553433365845554B455830718E41553433365845554B455830718F41553433365845554B455830719041553433363045554B3030307191415534313632455542303030720041555050583048533134333072013134353037323031303030307203313435303732303330303030720431343530373230343030303072054155414C4C30464E45554D487206313435303732303630303030720731343530373230373030303072083134353037323038303030307209313435303732303930303030720A313435303732304130303030720B41554E415230485330343530720C415551354E4648533034353072104155343031304B4C53383031721141553431365841493030303172124155343136583030303030337220415534313632464253484350723041553431363344574143444C723141553431363358585843444C7240415534305854564C4B31333072504155343136324D5151583030725141553431363249515158303072524155343336304D515158303072534155343136324D515158303072544155343136334D424153495372554155343336304D515132303072564155343336304D51513230307260414150504330343536305931727031343530373237303030303072714155505058304853303435307272505045454148323230393330727350504545414832323039333072744155505058304830304E415272A030343535415534313630534E72B041555050583048533034303072B141553030303030303030303072B241553030303030303030303072C041555050583048533034353072C241555050583048533034303072D04D444B434F4E464947303031"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0601",
+                    "masterDiagnosisAddress": "0009",
+                    "logicalLink": "LL_ContrUnitForWiperMotorUDS",
+                    "dataObjects": {
+                        "partNumber": "80B955119B ",
+                        "softwareVersion": "0590",
+                        "hardwarePartNumber": "80B955119B ",
+                        "hardwareVersion": "041",
+                        "ecuSerialNumber": "00000002112292105401"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0602",
+                    "masterDiagnosisAddress": "0009",
+                    "logicalLink": "LL_RainLightRecogSensoUDS",
+                    "dataObjects": {
+                        "partNumber": "85E955555A ",
+                        "softwareVersion": "0007",
+                        "hardwarePartNumber": "85E955555  ",
+                        "hardwareVersion": "H09",
+                        "ecuSerialNumber": "40001117X85E955555A0"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0616",
+                    "masterDiagnosisAddress": "0009",
+                    "logicalLink": "LL_SensoForAntiTheftAlarmSysteUDS",
+                    "dataObjects": {
+                        "partNumber": "5Q0951172  ",
+                        "softwareVersion": "0316",
+                        "hardwarePartNumber": "5Q0951172  ",
+                        "hardwareVersion": "005",
+                        "ecuSerialNumber": "000000000ZY211750FX2"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0618",
+                    "masterDiagnosisAddress": "0009",
+                    "logicalLink": "LL_AlarmHornUDS",
+                    "dataObjects": {
+                        "partNumber": "5Q0951605A ",
+                        "softwareVersion": "0314",
+                        "hardwarePartNumber": "5Q0951605A ",
+                        "hardwareVersion": "005",
+                        "ecuSerialNumber": "00000000000049461657"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "061E",
+                    "masterDiagnosisAddress": "0009",
+                    "logicalLink": "LL_InterLightModulUDS",
+                    "dataObjects": {
+                        "partNumber": "85E947135AB",
+                        "softwareVersion": "0067",
+                        "hardwarePartNumber": "85E947135AB",
+                        "hardwareVersion": "H40",
+                        "ecuSerialNumber": "00000000000005040006"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "068E",
+                    "masterDiagnosisAddress": "0009",
+                    "logicalLink": "LL_ConveAndDriveAssisOperaUnitUDS",
+                    "dataObjects": {
+                        "partNumber": "85E925301T ",
+                        "softwareVersion": "0105",
+                        "hardwarePartNumber": "85E925301T ",
+                        "hardwareVersion": "H06",
+                        "ecuSerialNumber": "13S 2022-08-06 00292"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "06F9",
+                    "masterDiagnosisAddress": "0009",
+                    "logicalLink": "LL_ConveAndDriveAssisOperaUnit2UDS",
+                    "dataObjects": {
+                        "partNumber": "85H713203M ",
+                        "softwareVersion": "0361",
+                        "hardwarePartNumber": "85H713203M ",
+                        "hardwareVersion": "H06",
+                        "ecuSerialNumber": "01571VG400132-------"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0013",
+                    "logicalLink": "LL_AdaptCruisContrUDS",
+                    "dataObjects": {
+                        "partNumber": "85E907572D ",
+                        "softwareVersion": "X230",
+                        "hardwarePartNumber": "85E907572A ",
+                        "hardwareVersion": "H02",
+                        "asamFileIdentifier": "EV_MidRangeRadar5AU416",
+                        "asamFileVersion": "001015",
+                        "zdcPartNumber": "8MA000863K ",
+                        "zdcVersion": "9001",
+                        "datasetName": [
+                            "Error: Invalid ASCII: 0472004659413835454e33424d4e30710130303038354530305832333071003030303835453030583233307203000000000000000000000000"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::BPV-078",
+                            "Param_ECUManufDate::23.06.22",
+                            "Param_ECUProduTestSysteNumbe::7775",
+                            "Param_ConseSupplNumbe::013F"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "NegResp",
+                        "ivdConfCurrent": "NegResp",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153234250562D30373832332E30362E323237373735303133460000012C00000185C9C3E803",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234250562D30373832332E30362E323237373735303133460000012C00000185C9C3E803",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "72005336323507710145364230077100453642300772032D2D2D2D03",
+                        "datasetName": "Error: Invalid ASCII: 0472004659413835454e33424d4e30710130303038354530305832333071003030303835453030583233307203000000000000000000000000"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0015",
+                    "logicalLink": "LL_AirbaUDS",
+                    "dataObjects": {
+                        "partNumber": "85E959655N ",
+                        "softwareVersion": "0571",
+                        "hardwarePartNumber": "85E959655F ",
+                        "hardwareVersion": "H30",
+                        "asamFileIdentifier": "EV_AirbaVW60SMEAU41X",
+                        "asamFileVersion": "001010",
+                        "zdcPartNumber": "8MA000602J ",
+                        "zdcVersion": "9002",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::11,Param_DataSet1::[Param_DataSetID::28928,Param_DataSetName::85E959655NZZ],Param_DataSet2::[Param_DataSetID::28929,Param_DataSetName::COFLEXFYAVOR],Param_DataSet3::[Param_DataSetID::28930,Param_DataSetName::COCRASFYAPTP],Param_DataSet4::[Param_DataSetID::28931,Param_DataSetName::COHVDFYAPTPZ],Param_DataSet5::[Param_DataSetID::28932,Param_DataSetName::COFGSF5SINEZ],Param_DataSet6::[Param_DataSetID::28933,Param_DataSetName::COEDRF5SSERZ],Param_DataSet7::[Param_DataSetID::28934,Param_DataSetName::COAUSF5SSERZ],Param_DataSet8::[Param_DataSetID::28935,Param_DataSetName::COPCBF5SPTPZ],Param_DataSet9::[Param_DataSetID::28936,Param_DataSetName::COPCSF5SPTPZ],Param_DataSet10::[Param_DataSetID::28937,Param_DataSetName::COPCFF5SPTPZ],Param_DataSet11::[Param_DataSetID::28938,Param_DataSetName::CORDCAPPESER]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::TSR-TSR",
+                            "Param_ECUManufDate::21.04.22",
+                            "Param_ECUProduTestSysteNumbe::1574",
+                            "Param_ConseSupplNumbe::0077"
+                        ],
+                        "ecuSerialNumber": "00000000301B9R8AXR55",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "7B8698A4989626F2A9D8D25F64971EAE445F61005AEBF3184D25C66540104162",
+                        "ivdConfCurrent": "A789E8E4967C00C2D7F9CDB965140C0A8D5313AB394174CB4C82A0EC49DCFE73",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153235453522D54535232312E30342E323231353734303037370000003000000185C4C13887",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553235453522D54535232312E30342E323231353734303037370000003000000185C4C13887",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "71003034303207710130334131077102303355390771033033553707710430303036077105303131360771063031313107710730315539077108303055380771093030553807710A3030303207",
+                        "datasetName": "0B71003835453935393635354E5A5A7101434F464C4558465941564F527102434F435241534659415054507103434F4856444659415054505A7104434F464753463553494E455A7105434F4544524635535345525A7106434F4155534635535345525A7107434F5043424635535054505A7108434F5043534635535054505A7109434F5043464635535054505A710A434F52444341505045534552"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0016",
+                    "logicalLink": "LL_SteerColumElectUDS",
+                    "dataObjects": {
+                        "partNumber": "85E907129L ",
+                        "softwareVersion": "0065",
+                        "hardwarePartNumber": "85E907129L ",
+                        "hardwareVersion": "H06",
+                        "asamFileIdentifier": "EV_SMLWSKLOAU41X",
+                        "asamFileVersion": "001008",
+                        "zdcPartNumber": "NegResp",
+                        "zdcVersion": "NegResp",
+                        "datasetName": [
+                            "NegResp"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::KOS-KLO",
+                            "Param_ECUManufDate::29.09.22",
+                            "Param_ECUProduTestSysteNumbe::2049",
+                            "Param_ConseSupplNumbe::0310"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_protection",
+                        "ivdProgCurrent": "7190E62D3C63B881FC37EA5A7B67162317EADA6B16224226442F919BD46AA9FD",
+                        "ivdConfCurrent": "Error: java.io.IOException: IntegrityValidationConfiguration(0) failed: error 3",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153234B4F532D4B4C4F32392E30392E323232303439303331300000007D00000185E7F3E37E",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234B4F532D4B4C4F32392E30392E323232303439303331300000007D00000185E7F3E37E",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "NegResp",
+                        "datasetName": "NegResp"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0017",
+                    "logicalLink": "LL_DashBoardUDS",
+                    "dataObjects": {
+                        "partNumber": "V04007003HA",
+                        "softwareVersion": "P382",
+                        "hardwarePartNumber": "NegResp",
+                        "hardwareVersion": "NegResp",
+                        "asamFileIdentifier": "EV_DashBoardAU41X",
+                        "asamFileVersion": "001001",
+                        "zdcPartNumber": "85H909525A ",
+                        "zdcVersion": "0007",
+                        "datasetName": [
+                            "NegResp"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::JTH-076",
+                            "Param_ECUManufDate::25.07.22",
+                            "Param_ECUProduTestSysteNumbe::4746",
+                            "Param_ConseSupplNumbe::0076"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "596EE9FBB51E3FB3AC1859A36805A6A34CAF771400498A5B03B30AEE53F8AFB6",
+                        "ivdConfCurrent": "73BA2E89D3C5F11BD900DB4ABE376FFE9DF789AEEF9F20761F03ED918ACC6329",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153234A54482D30373632352E30372E323234373436303037360000007700000185E248D26C",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234A54482D30373632352E30372E323234373436303037360000007700000185CE3E1706",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "NegResp",
+                        "datasetName": "NegResp"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0019",
+                    "logicalLink": "LL_GatewUDS",
+                    "dataObjects": {
+                        "partNumber": "85C907468A ",
+                        "softwareVersion": "Y3E1",
+                        "hardwarePartNumber": "85C907468  ",
+                        "hardwareVersion": "X22",
+                        "asamFileIdentifier": "EV_HCP5GatewAU416",
+                        "asamFileVersion": "009033",
+                        "zdcPartNumber": "85H909515L ",
+                        "zdcVersion": "0055",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::20,Param_DataSet1::[Param_DataSetID::28928,Param_DataSetName::------------],Param_DataSet2::[Param_DataSetID::29184,Param_DataSetName::VW426NEM2511],Param_DataSet3::[Param_DataSetID::29185,Param_DataSetName::AU416RWB0000],Param_DataSet4::[Param_DataSetID::29186,Param_DataSetName::DATENSATZAUD],Param_DataSet5::[Param_DataSetID::29187,Param_DataSetName::AU416CHA0001],Param_DataSet6::[Param_DataSetID::29188,Param_DataSetName::AU416CHA0002],Param_DataSet7::[Param_DataSetID::29189,Param_DataSetName::AU416CHA0003],Param_DataSet8::[Param_DataSetID::29190,Param_DataSetName::--8WH---0001],Param_DataSet9::[Param_DataSetID::29191,Param_DataSetName::HCP5CANSEC01],Param_DataSet10::[Param_DataSetID::29193,Param_DataSetName::PO426HEM3520],Param_DataSet11::[Param_DataSetID::29195,Param_DataSetName::------------],Param_DataSet12::[Param_DataSetID::29196,Param_DataSetName::PO426HEM1922],Param_DataSet13::[Param_DataSetID::29197,Param_DataSetName::HVKSWCFUNCDS],Param_DataSet14::[Param_DataSetID::29198,Param_DataSetName::0152HVLSF005],Param_DataSet15::[Param_DataSetID::29199,Param_DataSetName::0055PACO0001],Param_DataSet16::[Param_DataSetID::29202,Param_DataSetName::0138ECP00004],Param_DataSet17::[Param_DataSetID::29203,Param_DataSetName::HCP5WAPOXXXX],Param_DataSet18::[Param_DataSetID::29205,Param_DataSetName::------------],Param_DataSet19::[Param_DataSetID::29215,Param_DataSetName::0139ECM00004],Param_DataSet20::[Param_DataSetID::29216,Param_DataSetName::VW8WHNEM0230]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::BXJ-53F",
+                            "Param_ECUManufDate::11.07.22",
+                            "Param_ECUProduTestSysteNumbe::9534",
+                            "Param_ConseSupplNumbe::0203"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "9C950FBAC6F5AE5A5BC590422AEA8B744401EE59B0624B1AA6212766B8D4A27A",
+                        "ivdConfCurrent": "D8012F0ED79D5C6187844C91EC84D9C4D1BC7B1F2BAB3AA63E668FE2268A4653",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A020071532342584A2D35334631312E30372E323239353334303230330000005200000185C4402A38",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A020075532342584A2D35334631312E30372E323239353334303230330000005200000185DEE3FA1A",
+                        "regNameVersion": [
+                            
+                        ],
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "71002D2D2D2D03720032353131077201304E30370772023130303207720341303135077204413031350772054130313507720630303031077207303030320772093335323007720B2D2D2D2D06720C3139323207720D3233303307720E5641304207720F3133303707721256413032077213313030310772152D2D2D2D06721F564130320772203032333007",
+                        "datasetName": "1471002D2D2D2D2D2D2D2D2D2D2D2D720056573432364E454D3235313172014155343136525742303030307202444154454E5341545A41554472034155343136434841303030317204415534313643484130303032720541553431364348413030303372062D2D3857482D2D2D3030303172074843503543414E53454330317209504F34323648454D33353230720B2D2D2D2D2D2D2D2D2D2D2D2D720C504F34323648454D31393232720D48564B53574346554E434453720E3031353248564C5346303035720F303035355041434F3030303172123031333845435030303030347213484350355741504F5858585872152D2D2D2D2D2D2D2D2D2D2D2D721F3031333945434D3030303034722056573857484E454D30323330"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0637",
+                    "masterDiagnosisAddress": "0019",
+                    "logicalLink": "LL_BatteMonitContrModulUDS",
+                    "dataObjects": {
+                        "partNumber": "8MA915181A ",
+                        "softwareVersion": "2350",
+                        "hardwarePartNumber": "8MA915181A ",
+                        "hardwareVersion": "H01",
+                        "ecuSerialNumber": "9678308605          "
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0029",
+                    "logicalLink": "LL_LightContrLeftUDS",
+                    "dataObjects": {
+                        "partNumber": "95C941571M ",
+                        "softwareVersion": "X520",
+                        "hardwarePartNumber": "95C941571M ",
+                        "hardwareVersion": "H12",
+                        "asamFileIdentifier": "EV_LSGLeftMELCOPO426",
+                        "asamFileVersion": "001030",
+                        "zdcPartNumber": "8MA000519A ",
+                        "zdcVersion": "9001",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::1,Param_DataSet1::[Param_DataSetID::28928,Param_DataSetName::Q5PT220823E0]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::MEC-0ST",
+                            "Param_ECUManufDate::06.06.22",
+                            "Param_ECUProduTestSysteNumbe::06H1",
+                            "Param_ConseSupplNumbe::0005"
+                        ],
+                        "ecuSerialNumber": "--------------------",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "Error: java.io.IOException: IntegrityValidationConfiguration(1) failed: error 1",
+                        "ivdConfCurrent": "Error: java.io.IOException: IntegrityValidationConfiguration(0) failed: error 1",
+                        "sfdProtectionData": "654D734B060D2B06010401990A8D110A020074533A4D45432D30535430362E30362E323230364831303030355634323935333230313131333935432E3934312E3537310000009F0000000000000000",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234D45432D30535430362E30362E323230364831303030350000009F0000000000000000",
+                        "sfdUnlockStatus": "group attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "71004350323507",
+                        "datasetName": "017100513550543232303832334530"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0039",
+                    "logicalLink": "LL_LightContrRightUDS",
+                    "dataObjects": {
+                        "partNumber": "95C941571M ",
+                        "softwareVersion": "X520",
+                        "hardwarePartNumber": "95C941571M ",
+                        "hardwareVersion": "H12",
+                        "asamFileIdentifier": "EV_LSGRightMELCOPO426",
+                        "asamFileVersion": "001030",
+                        "zdcPartNumber": "8MA000520A ",
+                        "zdcVersion": "9001",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::1,Param_DataSet1::[Param_DataSetID::28928,Param_DataSetName::Q5PT220823E0]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::MEC-0ST",
+                            "Param_ECUManufDate::06.06.22",
+                            "Param_ECUProduTestSysteNumbe::06H1",
+                            "Param_ConseSupplNumbe::0127"
+                        ],
+                        "ecuSerialNumber": "--------------------",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "Error: java.io.IOException: IntegrityValidationConfiguration(1) failed: error 1",
+                        "ivdConfCurrent": "Error: java.io.IOException: IntegrityValidationConfiguration(0) failed: error 1",
+                        "sfdProtectionData": "654D734B060D2B06010401990A8D110A020074533A4D45432D30535430362E30362E323230364831303132375634323935333230313131333935432E3934312E3537310000009F0000000000000000",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234D45432D30535430362E30362E323230364831303132370000009F0000000000000000",
+                        "sfdUnlockStatus": "group attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "71004350323507",
+                        "datasetName": "017100513550543232303832334530"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0042",
+                    "logicalLink": "LL_DoorElectDriveSideUDS",
+                    "dataObjects": {
+                        "partNumber": "85E959593  ",
+                        "softwareVersion": "0151",
+                        "hardwarePartNumber": "85E959593  ",
+                        "hardwareVersion": "001",
+                        "asamFileIdentifier": "EV_DCU4DriveSideMAXHKLO",
+                        "asamFileVersion": "001012",
+                        "zdcPartNumber": "8MA000872C ",
+                        "zdcVersion": "9015",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::1,Param_DataSet1::[Param_DataSetID::29184,Param_DataSetName::4X0150AU436X]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::KO9-MAL",
+                            "Param_ECUManufDate::11.08.22",
+                            "Param_ECUProduTestSysteNumbe::VHB8",
+                            "Param_ConseSupplNumbe::8420"
+                        ],
+                        "ecuSerialNumber": "YA007VHB88420       ",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "D5ABDB2F82A0F921B8773D0FC12DB4725D5D73E50C5C8EF37B4D0E4F8B0DBC1E",
+                        "ivdConfCurrent": "C9B21CE4E5EF5A3447431431F4908D6AFFF8A1F6B7194F92A0F2A2782058FD06",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153234B4F392D4D414C31312E30382E3232564842383834323000000048000001852E257E9B",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234B4F392D4D414C31312E30382E3232564842383834323000000048000001852E257E9B",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "72003136303707",
+                        "datasetName": "017200345830313530415534333658"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "075B",
+                    "masterDiagnosisAddress": "0042",
+                    "logicalLink": "LL_DoorContrPanelDriveSideUDS",
+                    "dataObjects": {
+                        "partNumber": "85E959441A ",
+                        "softwareVersion": "0122",
+                        "hardwarePartNumber": "85E959441A ",
+                        "hardwareVersion": "H03",
+                        "fazitIdString": [
+                            "Param_SubSyVWFAZITIdentStrin::[Param_VWFAZITIdentStrin::[Param_ECUProduPlantNumbe::MDM-MXM,Param_ECUManufDate::27.10.22,Param_ECUProduTestSysteNumbe::2485,Param_ConseSupplNumbe::0266]]"
+                        ],
+                        "ecuSerialNumber": "Error: Invalid ASCII: ffffffffffffffffffffffffffffffffffffffff",
+                        "ivdProgCurrent": "0B03CF19E1162D178D42252B3763A726E3725A8C62CFB6FFC050D2426F00F361",
+                        "ivdConfCurrent": "2037A5575E46B4DEAA161714923C8E85D67D074510420901F3078C21A5104E83"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0044",
+                    "logicalLink": "LL_SteerAssisUDS",
+                    "dataObjects": {
+                        "partNumber": "8MA909144D ",
+                        "softwareVersion": "X151",
+                        "hardwarePartNumber": "Error: Invalid ASCII: 384d413930393134344200",
+                        "hardwareVersion": "H03",
+                        "asamFileIdentifier": "EV_EPSFSBASE3",
+                        "asamFileVersion": "002007",
+                        "zdcPartNumber": "-----------",
+                        "zdcVersion": "0013",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::3,Param_DataSet1::[Param_DataSetID::28929,Param_DataSetName::0111ZX151Z04],Param_DataSet2::[Param_DataSetID::28930,Param_DataSetName::0115ZX151Z04],Param_DataSet3::[Param_DataSetID::28931,Param_DataSetName::0104ZX151Z04]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::RBA-432",
+                            "Param_ECUManufDate::29.06.22",
+                            "Param_ECUProduTestSysteNumbe::0299",
+                            "Param_ConseSupplNumbe::0157"
+                        ],
+                        "ecuSerialNumber": "Error: Invalid ASCII: 3030313537000000000000000000000000000000",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "87902AADF160268A724169E9EFBF354D7CC8A296BBEE029F44480DC82F21075E",
+                        "ivdConfCurrent": "Error: java.io.IOException: IntegrityValidationConfiguration(0) failed: error 3",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153235242412D34333232392E30362E323230323939303135370000005F00000185E8BBE519",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553235242412D34333232392E30362E323230323939303135370000005F00000185E8BBE519",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "710130303034077102303030340771033030303407",
+                        "datasetName": "037101303131315A583135315A30347102303131355A583135315A30347103303130345A583135315A3034"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0046",
+                    "logicalLink": "LL_CentrModulComfoSysteUDS",
+                    "dataObjects": {
+                        "partNumber": "85E907064BH",
+                        "softwareVersion": "X190",
+                        "hardwarePartNumber": "85E907064BH",
+                        "hardwareVersion": "046",
+                        "asamFileIdentifier": "EV_SensoActorRear",
+                        "asamFileVersion": "008009",
+                        "zdcPartNumber": "8MA909501A ",
+                        "zdcVersion": "9011",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::25,Param_DataSet1::[Param_DataSetID::29184,Param_DataSetName::LIN000000000],Param_DataSet2::[Param_DataSetID::29185,Param_DataSetName::HECKSCHLOSS0],Param_DataSet3::[Param_DataSetID::29186,Param_DataSetName::TANKKLAPPE00],Param_DataSet4::[Param_DataSetID::29187,Param_DataSetName::FRONTSCHEIHZ],Param_DataSet5::[Param_DataSetID::29188,Param_DataSetName::STECKDOSEVER],Param_DataSet6::[Param_DataSetID::29189,Param_DataSetName::DTCMASKE0000],Param_DataSet7::[Param_DataSetID::29190,Param_DataSetName::DIAGNOSE0000],Param_DataSet8::[Param_DataSetID::29191,Param_DataSetName::TANKGEBER000],Param_DataSet9::[Param_DataSetID::29192,Param_DataSetName::HECKWISCHER0],Param_DataSet10::[Param_DataSetID::29193,Param_DataSetName::HECKSCHEIBHZ],Param_DataSet11::[Param_DataSetID::29194,Param_DataSetName::HECKROLLO000],Param_DataSet12::[Param_DataSetID::29195,Param_DataSetName::LICHT0000000],Param_DataSet13::[Param_DataSetID::29196,Param_DataSetName::CCUREQUSTSEN],Param_DataSet14::[Param_DataSetID::29197,Param_DataSetName::TRUNKLIDPOSI],Param_DataSet15::[Param_DataSetID::29198,Param_DataSetName::TRUNKLIDCTRL],Param_DataSet16::[Param_DataSetID::29199,Param_DataSetName::LUGGAGECOVER],Param_DataSet17::[Param_DataSetID::29200,Param_DataSetName::LATCHCONTROL],Param_DataSet18::[Param_DataSetID::29201,Param_DataSetName::FSOUNDER0000],Param_DataSet19::[Param_DataSetID::29202,Param_DataSetName::ACTSOUNDOUT0],Param_DataSet20::[Param_DataSetID::29203,Param_DataSetName::LEHNENFERN00],Param_DataSet21::[Param_DataSetID::29204,Param_DataSetName::TRUNKENTRAP0],Param_DataSet22::[Param_DataSetID::29205,Param_DataSetName::FRONTSCHLOSS],Param_DataSet23::[Param_DataSetID::29206,Param_DataSetName::HBL200000000],Param_DataSet24::[Param_DataSetID::29207,Param_DataSetName::SOFTTOUCH000],Param_DataSet25::[Param_DataSetID::29208,Param_DataSetName::SPOILERLICHT]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::HRE-SAR",
+                            "Param_ECUManufDate::01.09.22",
+                            "Param_ECUProduTestSysteNumbe::P001",
+                            "Param_ConseSupplNumbe::0040"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "C181E9D7F6313611FBA84DEC50D931B4B927E5F8346C1E47A5A0755A8D9C4487",
+                        "ivdConfCurrent": "7F68DEA9257F5C32AB14394D846766DB6952B4DF8FF07932633F9498F0039B95",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153234852452D53415230312E30392E323250303031303034300000003100000185C440293C",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234852452D53415230312E30392E323250303031303034300000003100000185C440293C",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "72004130303007720141303030077202413030300772034130303007720441303030077205413030300772064130303007720741303030077208413030310772094130303007720A4130303007720B4130303107720C4141313507720D4141313507720E4141313507720F4130303007721041413135077211414131350772124141313507721341303030077214413030310772154130303007721641303031077217414131350772184130303007",
+                        "datasetName": "1972004C494E30303030303030303072014845434B5343484C4F535330720254414E4B4B4C415050453030720346524F4E545343484549485A7204535445434B444F534556455272054454434D41534B45303030307206444941474E4F534530303030720754414E4B474542455230303072084845434B574953434845523072094845434B534348454942485A720A4845434B524F4C4C4F303030720B4C4943485430303030303030720C43435552455155535453454E720D5452554E4B4C4944504F5349720E5452554E4B4C49444354524C720F4C554747414745434F56455272104C41544348434F4E54524F4C721146534F554E444552303030307212414354534F554E444F55543072134C45484E454E4645524E303072145452554E4B454E5452415030721546524F4E545343484C4F5353721648424C3230303030303030307217534F4654544F554348303030721853504F494C45524C49434854"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0052",
+                    "logicalLink": "LL_DoorElectPasseSideUDS",
+                    "dataObjects": {
+                        "partNumber": "85E959592  ",
+                        "softwareVersion": "0151",
+                        "hardwarePartNumber": "85E959592  ",
+                        "hardwareVersion": "001",
+                        "asamFileIdentifier": "EV_DCU4PasseSideMAXHKLO",
+                        "asamFileVersion": "001012",
+                        "zdcPartNumber": "8MA909873C ",
+                        "zdcVersion": "0015",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::1,Param_DataSet1::[Param_DataSetID::29184,Param_DataSetName::4X0150AU436X]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::KO9-MAL",
+                            "Param_ECUManufDate::12.08.22",
+                            "Param_ECUProduTestSysteNumbe::VHC9",
+                            "Param_ConseSupplNumbe::1960"
+                        ],
+                        "ecuSerialNumber": "YA007VHC91960       ",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "FD82948DA2B3A11E586FAD562500E8C9B31F08C73D6886D072A2C6C777FB6EED",
+                        "ivdConfCurrent": "3157B63B01C9960A534192B1229DD352D29987050544DAA7277F54F1FAE629AC",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153234B4F392D4D414C31322E30382E3232564843393139363000000048000001852E25A55B",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234B4F392D4D414C31322E30382E3232564843393139363000000048000001852E25A55B",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "72003136303707",
+                        "datasetName": "017200345830313530415534333658"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "005F",
+                    "logicalLink": "LL_InforContrUnit1UDS",
+                    "dataObjects": {
+                        "partNumber": "85F035024E ",
+                        "softwareVersion": "P421",
+                        "hardwarePartNumber": "85F035024  ",
+                        "hardwareVersion": "040",
+                        "asamFileIdentifier": "EV_HCP3BaseNodeAU41X",
+                        "asamFileVersion": "001001",
+                        "zdcPartNumber": "8B3000545A ",
+                        "zdcVersion": "9005",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::8,Param_DataSet1::[Param_DataSetID::29185,Param_DataSetName::AU4XXTNKAPPL],Param_DataSet2::[Param_DataSetID::29189,Param_DataSetName::------------],Param_DataSet3::[Param_DataSetID::29190,Param_DataSetName::------------],Param_DataSet4::[Param_DataSetID::29191,Param_DataSetName::------------],Param_DataSet5::[Param_DataSetID::29192,Param_DataSetName::------------],Param_DataSet6::[Param_DataSetID::29193,Param_DataSetName::------------],Param_DataSet7::[Param_DataSetID::29194,Param_DataSetName::------------],Param_DataSet8::[Param_DataSetID::29195,Param_DataSetName::------------]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::JTH-076",
+                            "Param_ECUManufDate::25.07.22",
+                            "Param_ECUProduTestSysteNumbe::4746",
+                            "Param_ConseSupplNumbe::0076"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "681C970FCE50BF71150E81EF6955CAFDD8B7580F619524CAB0AE83B19C1C4FAF",
+                        "ivdConfCurrent": "92D7499A4A68E7C2968923672F5457FF20486023CD5D383FBFB38737EEB76D04",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153234A54482D30373632352E30372E323234373436303037360000007600000185C44027A6",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234A54482D30373632352E30372E323234373436303037360000007600000185C44027A6",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "7201313239300772052D2D2D2D0372062D2D2D2D0372072D2D2D2D0372082D2D2D2D0372092D2D2D2D03720A2D2D2D2D03720B2D2D2D2D03",
+                        "datasetName": "0872014155345858544E4B4150504C72052D2D2D2D2D2D2D2D2D2D2D2D72062D2D2D2D2D2D2D2D2D2D2D2D72072D2D2D2D2D2D2D2D2D2D2D2D72082D2D2D2D2D2D2D2D2D2D2D2D72092D2D2D2D2D2D2D2D2D2D2D2D720A2D2D2D2D2D2D2D2D2D2D2D2D720B2D2D2D2D2D2D2D2D2D2D2D2D"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0693",
+                    "masterDiagnosisAddress": "005F",
+                    "logicalLink": "LL_VolumContr1UDS",
+                    "dataObjects": {
+                        "partNumber": "85E919616  ",
+                        "softwareVersion": "0021",
+                        "hardwarePartNumber": "85E919616  ",
+                        "hardwareVersion": "H33",
+                        "fazitIdString": [
+                            "Param_SubSyVWFAZITIdentStrin::[Param_VWFAZITIdentStrin::[Param_ECUProduPlantNumbe::MMN-MMD,Param_ECUManufDate::22.06.22,Param_ECUProduTestSysteNumbe::1864,Param_ConseSupplNumbe::1526]]"
+                        ],
+                        "ecuSerialNumber": "Error: Invalid ASCII: 0000000000000000000000000000000000000000",
+                        "ivdProgCurrent": "0000000000000000000000000000000000000000000000000000000000000000"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0075",
+                    "logicalLink": "LL_TelemCommuUnitUDS",
+                    "dataObjects": {
+                        "partNumber": "85H035283  ",
+                        "softwareVersion": "X317",
+                        "hardwarePartNumber": "85H035283  ",
+                        "hardwareVersion": "013",
+                        "asamFileIdentifier": "EV_ConModAU41X",
+                        "asamFileVersion": "001010",
+                        "zdcPartNumber": "8B3000612D ",
+                        "zdcVersion": "9001",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::5,Param_DataSet1::[Param_DataSetID::28928,Param_DataSetName::AUDIOTUNINGS],Param_DataSet2::[Param_DataSetID::29184,Param_DataSetName::AUPPECCOMUSA],Param_DataSet3::[Param_DataSetID::29185,Param_DataSetName::AUPPECECLRDW],Param_DataSet4::[Param_DataSetID::29186,Param_DataSetName::DATASETGWSM1],Param_DataSet5::[Param_DataSetID::29187,Param_DataSetName::AUDIOGAINSAN]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::JTH-076",
+                            "Param_ECUManufDate::04.07.22",
+                            "Param_ECUProduTestSysteNumbe::6095",
+                            "Param_ConseSupplNumbe::0E07"
+                        ],
+                        "ecuSerialNumber": "V04719N185900046    ",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "9652E8C0FC6579916ECDA322259E3E247E10B10BF7E999BCDE875086CE860B9D",
+                        "ivdConfCurrent": "Error: java.io.IOException: IntegrityValidationConfiguration(0) failed: error 1",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153234A54482D30373630342E30372E3232363039353045303700000070000001852F4D7961",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234A54482D30373630342E30372E323236303935304530370000007000000185C9C43A6A",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "7100583030350772003033333507720130333238077202583030310772035830303307",
+                        "datasetName": "057100415544494F54554E494E47537200415550504543434F4D555341720141555050454345434C5244577202444154415345544757534D317203415544494F4741494E53414E"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "007E",
+                    "logicalLink": "LL_DashBoardDisplUnitUDS",
+                    "dataObjects": {
+                        "partNumber": "85E920795  ",
+                        "softwareVersion": "X112",
+                        "hardwarePartNumber": "85E920795  ",
+                        "hardwareVersion": "H45",
+                        "asamFileIdentifier": "EV_FahreInforDisplAU416",
+                        "asamFileVersion": "001001",
+                        "zdcPartNumber": "-----------",
+                        "zdcVersion": "----",
+                        "datasetName": [
+                            "NegResp"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::VD1-048",
+                            "Param_ECUManufDate::16.06.22",
+                            "Param_ECUProduTestSysteNumbe::7415",
+                            "Param_ConseSupplNumbe::0335"
+                        ],
+                        "ecuSerialNumber": "                    ",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "7CD54CA978B2F6555E893B30927CBEB7B42F61990DBCE005967607A6630AE88E",
+                        "ivdConfCurrent": "DDE8AE30B86705CF62C026B3B3171E95019A5F069C4ECC919F01F98800298552",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153235644312D30343831362E30362E323237343135303333350000005400000185C4402B21",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553235644312D30343831362E30362E323237343135303333350000005400000185C4402B21",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "NegResp",
+                        "datasetName": "NegResp"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0081",
+                    "logicalLink": "LL_GearShiftContrModulUDS",
+                    "dataObjects": {
+                        "partNumber": "85E713041B ",
+                        "softwareVersion": "0325",
+                        "hardwarePartNumber": "85E713041B ",
+                        "hardwareVersion": "H05",
+                        "asamFileIdentifier": "EV_GearShiftModulAU416",
+                        "asamFileVersion": "001007",
+                        "zdcPartNumber": "NegResp",
+                        "zdcVersion": "NegResp",
+                        "datasetName": [
+                            "NegResp"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::KM7-MK1",
+                            "Param_ECUManufDate::16.05.22",
+                            "Param_ECUProduTestSysteNumbe::2446",
+                            "Param_ConseSupplNumbe::412B"
+                        ],
+                        "ecuSerialNumber": "YB075VEG0412B-------",
+                        "sfdProtectionMode": "PVD_access_protection",
+                        "ivdProgCurrent": "E0F712746D2CA6CAB1BC8B9766D2AD649168C52A2A94DBF341D3E21AEABF1AF2",
+                        "ivdConfCurrent": "Error: java.io.IOException: IntegrityValidationConfiguration(0) failed: error 1",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153234B4D372D4D4B3131362E30352E323232343436343132420000009E00000185C961F4F1",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234B4D372D4D4B3131362E30352E323232343436343132420000009E00000185C961F4F1",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "NegResp",
+                        "datasetName": "NegResp"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "07AB",
+                    "masterDiagnosisAddress": "0081",
+                    "logicalLink": "LL_GearShiftOperaUnitUDS",
+                    "dataObjects": {
+                        "partNumber": "85H713203M ",
+                        "softwareVersion": "0361",
+                        "hardwarePartNumber": "85H713203M ",
+                        "hardwareVersion": "H06",
+                        "fazitIdString": [
+                            "Param_SubSyVWFAZITIdentStrin::[Param_VWFAZITIdentStrin::[Param_ECUProduPlantNumbe::KM7-MK1,Param_ECUManufDate::04.07.22,Param_ECUProduTestSysteNumbe::5496,Param_ConseSupplNumbe::0132]]"
+                        ],
+                        "ecuSerialNumber": "01571VG400132-------",
+                        "ivdProgCurrent": "9C53127197F0EC75920AAD5CC364E2AE816102441CDEF57C2E7EEF090164386B"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "00A5",
+                    "logicalLink": "LL_FrontSensoDriveAssisSysteUDS",
+                    "dataObjects": {
+                        "partNumber": "85E907217C ",
+                        "softwareVersion": "Y127",
+                        "hardwarePartNumber": "85E907217A ",
+                        "hardwareVersion": "H16",
+                        "asamFileIdentifier": "EV_MFK5",
+                        "asamFileVersion": "002014",
+                        "zdcPartNumber": "8MA909466J ",
+                        "zdcVersion": "9002",
+                        "datasetName": [
+                            "Error: Invalid ASCII: 0c71003031415534333630304e423071013031415534333630304e42307102303041553431363030303030710341564e492044494c202020207104303041553431363030303030710530314446303030303030303071060000000000000000000000007107303144463030303030303030710830304155303030303030303071092d2d2d2d2d2d2d2d2d2d2d2d710a303144463030303030303030710b303041553030303030303030"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::WLO-TIE",
+                            "Param_ECUManufDate::11.10.22",
+                            "Param_ECUProduTestSysteNumbe::0001",
+                            "Param_ConseSupplNumbe::0433"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "NegResp",
+                        "ivdConfCurrent": "NegResp",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A0200715323574C4F2D54494531312E31302E323230303031303433330000009500000185DE5EDE2D",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323574C4F2D54494531312E31302E323230303031303433330000009500000185DE5EDE2D",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "71005831323707710158313237077102593132370771032D2D2D2D06710458313236077105593132370771062D2D2D2D04710759313237077108583132370771092D2D2D2D03710A5931323707710B5931323707",
+                        "datasetName": "Error: Invalid ASCII: 0c71003031415534333630304e423071013031415534333630304e42307102303041553431363030303030710341564e492044494c202020207104303041553431363030303030710530314446303030303030303071060000000000000000000000007107303144463030303030303030710830304155303030303030303071092d2d2d2d2d2d2d2d2d2d2d2d710a303144463030303030303030710b303041553030303030303030"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "00BB",
+                    "logicalLink": "LL_DoorElectRearDriveSideUDS",
+                    "dataObjects": {
+                        "partNumber": "85E959595  ",
+                        "softwareVersion": "0151",
+                        "hardwarePartNumber": "85E959595  ",
+                        "hardwareVersion": "001",
+                        "asamFileIdentifier": "EV_DCU4RearDriveMAXHKLO",
+                        "asamFileVersion": "001012",
+                        "zdcPartNumber": "8MA909897C ",
+                        "zdcVersion": "0017",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::1,Param_DataSet1::[Param_DataSetID::29184,Param_DataSetName::4X0150AU436X]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::KO9-MAL",
+                            "Param_ECUManufDate::15.08.22",
+                            "Param_ECUProduTestSysteNumbe::VHF9",
+                            "Param_ConseSupplNumbe::9640"
+                        ],
+                        "ecuSerialNumber": "YA007VHF99640       ",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "9D45D56F31B215C52F921F6ABBF1C96425A3F8165D9E7C166CF513373B3F7D65",
+                        "ivdConfCurrent": "39EA291F30C654820B1BB2375421477054067F8BB458AB1D3D834E3E8C42FAB9",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153234B4F392D4D414C31352E30382E3232564846393936343000000048000001852F3C9203",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234B4F392D4D414C31352E30382E3232564846393936343000000048000001852F3C9203",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "72003136303707",
+                        "datasetName": "017200345830313530415534333658"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "00BC",
+                    "logicalLink": "LL_DoorElectRearPasseSideUDS",
+                    "dataObjects": {
+                        "partNumber": "85E959594  ",
+                        "softwareVersion": "0151",
+                        "hardwarePartNumber": "85E959594  ",
+                        "hardwareVersion": "001",
+                        "asamFileIdentifier": "EV_DCU4RearPasseMAXHKLO",
+                        "asamFileVersion": "001012",
+                        "zdcPartNumber": "8MA909896C ",
+                        "zdcVersion": "0017",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::1,Param_DataSet1::[Param_DataSetID::29184,Param_DataSetName::4X0150AU436X]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::KO9-MAL",
+                            "Param_ECUManufDate::12.08.22",
+                            "Param_ECUProduTestSysteNumbe::VHC9",
+                            "Param_ConseSupplNumbe::1320"
+                        ],
+                        "ecuSerialNumber": "YA007VHC91320       ",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "9D45D56F31B215C52F921F6ABBF1C96425A3F8165D9E7C166CF513373B3F7D65",
+                        "ivdConfCurrent": "39EA291F30C654820B1BB2375421477054067F8BB458AB1D3D834E3E8C42FAB9",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153234B4F392D4D414C31322E30382E323256484339313332300000004800000185C4D2555F",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234B4F392D4D414C31322E30382E323256484339313332300000004800000185C4D2555F",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "72003136303707",
+                        "datasetName": "017200345830313530415534333658"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "00C5",
+                    "logicalLink": "LL_ThermManagUDS",
+                    "dataObjects": {
+                        "partNumber": "85E907059E ",
+                        "softwareVersion": "2441",
+                        "hardwarePartNumber": "85E907059J ",
+                        "hardwareVersion": "H10",
+                        "asamFileIdentifier": "EV_HCP4Contr2OBDAU41X",
+                        "asamFileVersion": "010015",
+                        "zdcPartNumber": "8MA909476E ",
+                        "zdcVersion": "0022",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::4,Param_DataSet1::[Param_DataSetID::28929,Param_DataSetName::8WH003U42457],Param_DataSet2::[Param_DataSetID::28944,Param_DataSetName::8WH003U42457],Param_DataSet3::[Param_DataSetID::29184,Param_DataSetName::245072000000],Param_DataSet4::[Param_DataSetID::29200,Param_DataSetName::KRNNNNNNX350]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::SME-RBG",
+                            "Param_ECUManufDate::26.07.21",
+                            "Param_ECUProduTestSysteNumbe::0058",
+                            "Param_ConseSupplNumbe::0017"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "03FA92BC7E7BC4D66006472F0EAAB84051C8EFCE794A573B71C357AB8FA81EC5",
+                        "ivdConfCurrent": "8C36EB378EA3BD3C661B928FCF8C85BC6E511614FCDEB58CD4C822533F7FDAED",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A0200715323534D452D52424732362E30372E323130303538303031370000006900000185DEA1C662",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323534D452D52424732362E30372E323130303538303031370000006900000185DE9BB796",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "71013030303007711030303030077200303030310772103030303107",
+                        "datasetName": "0471013857483030335534323435377110385748303033553432343537720032343530373230303030303072104B524E4E4E4E4E4E58333530"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "00CA",
+                    "logicalLink": "LL_ContrModulForSunroUDS",
+                    "dataObjects": {
+                        "partNumber": "85E907594AC",
+                        "softwareVersion": "Z065",
+                        "hardwarePartNumber": "85E907594  ",
+                        "hardwareVersion": "008",
+                        "asamFileIdentifier": "EV_SunRoofCONTIAU41X",
+                        "asamFileVersion": "003004",
+                        "zdcPartNumber": "Error: Invalid ASCII: 0000000000000000000000",
+                        "zdcVersion": "Error: Invalid ASCII: 00000000",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::2,Param_DataSet1::[Param_DataSetID::28928,Param_DataSetName::004360002202],Param_DataSet2::[Param_DataSetID::28929,Param_DataSetName::004360002202]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::CNK-KAU",
+                            "Param_ECUManufDate::15.09.22",
+                            "Param_ECUProduTestSysteNumbe::0003",
+                            "Param_ConseSupplNumbe::1422"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "18D5451247EB6E46A7DF205DE13E1905182FDCFAF71DE09DBA8F6B638E14A4B5",
+                        "ivdConfCurrent": "3F1F85D5F0A7F3D8C601F3E6738279A8D86DAEE5DFDA99E3CA1559C34D00E022",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A0200715323434E4B2D4B415531352E30392E323230303033313432320000008F0000018519F28983",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323434E4B2D4B415531352E30392E323230303033313432320000008F0000018519F28983",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "7100303731310771013037313107",
+                        "datasetName": "0271003030343336303030323230327101303034333630303032323032"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "8109",
+                    "logicalLink": "LL_CloseRangeRadar1UDS",
+                    "dataObjects": {
+                        "partNumber": "95C907541L ",
+                        "softwareVersion": "X451",
+                        "hardwarePartNumber": "95C907541  ",
+                        "hardwareVersion": "H07",
+                        "asamFileIdentifier": "EV_NR1HELLAPO426",
+                        "asamFileVersion": "001067",
+                        "zdcPartNumber": "8MA909410G ",
+                        "zdcVersion": "0002",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::2,Param_DataSet1::[Param_DataSetID::28928,Param_DataSetName::AU4366V0B004],Param_DataSet2::[Param_DataSetID::28929,Param_DataSetName::ASX450DEFAUL]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::HLH-45F",
+                            "Param_ECUManufDate::11.07.22",
+                            "Param_ECUProduTestSysteNumbe::7CA2",
+                            "Param_ConseSupplNumbe::0416"
+                        ],
+                        "ecuSerialNumber": "10140047279430      ",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "44BC5246FDB3EF2C3E77386170690D1427CFF1072F1864694544DA25D099E0BE",
+                        "ivdConfCurrent": "4B2A1ECDBCC6817FA941AD91ABFEC2FBBA07C23DB1773DFD58DD2ACA023F9D51",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A0200715323484C482D34354631312E30372E323237434132303431360000008400000185DDDA719A",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323484C482D34354631312E30372E323237434132303431360000008400000185DDDA719A",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "71003531423007710131314D3407",
+                        "datasetName": "027100415534333636563042303034710141535834353044454641554C"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "810A",
+                    "logicalLink": "LL_CloseRangeRadar2UDS",
+                    "dataObjects": {
+                        "partNumber": "95C907541L ",
+                        "softwareVersion": "X451",
+                        "hardwarePartNumber": "95C907541  ",
+                        "hardwareVersion": "H07",
+                        "asamFileIdentifier": "EV_NR2HELLAPO426",
+                        "asamFileVersion": "001067",
+                        "zdcPartNumber": "8MA909411G ",
+                        "zdcVersion": "0002",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::2,Param_DataSet1::[Param_DataSetID::28928,Param_DataSetName::AU4366V0B004],Param_DataSet2::[Param_DataSetID::28929,Param_DataSetName::ASX450DEFAUL]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::HLH-45F",
+                            "Param_ECUManufDate::11.07.22",
+                            "Param_ECUProduTestSysteNumbe::7CA2",
+                            "Param_ConseSupplNumbe::0178"
+                        ],
+                        "ecuSerialNumber": "10140047279275      ",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "44BC5246FDB3EF2C3E77386170690D1427CFF1072F1864694544DA25D099E0BE",
+                        "ivdConfCurrent": "4B2A1ECDBCC6817FA941AD91ABFEC2FBBA07C23DB1773DFD58DD2ACA023F9D51",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A0200715323484C482D34354631312E30372E323237434132303137380000008400000185DDDAEB85",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323484C482D34354631312E30372E323237434132303137380000008400000185DDDAEB85",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "71003531423007710131314D3407",
+                        "datasetName": "027100415534333636563042303034710141535834353044454641554C"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "810B",
+                    "logicalLink": "LL_CloseRangeRadar3UDS",
+                    "dataObjects": {
+                        "partNumber": "95C907541L ",
+                        "softwareVersion": "X451",
+                        "hardwarePartNumber": "95C907541  ",
+                        "hardwareVersion": "H07",
+                        "asamFileIdentifier": "EV_NR3HELLAPO426",
+                        "asamFileVersion": "001067",
+                        "zdcPartNumber": "8MA909412G ",
+                        "zdcVersion": "0002",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::2,Param_DataSet1::[Param_DataSetID::28928,Param_DataSetName::AU4366V0B004],Param_DataSet2::[Param_DataSetID::28929,Param_DataSetName::ASX450DEFAUL]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::HLH-45F",
+                            "Param_ECUManufDate::11.07.22",
+                            "Param_ECUProduTestSysteNumbe::7CA2",
+                            "Param_ConseSupplNumbe::0417"
+                        ],
+                        "ecuSerialNumber": "10140047279441      ",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "44BC5246FDB3EF2C3E77386170690D1427CFF1072F1864694544DA25D099E0BE",
+                        "ivdConfCurrent": "8698E0C43688DD75A4157E3A46FA73BD23864792DEF6ABC8BDA27F705DB4557D",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A0200715323484C482D34354631312E30372E323237434132303431370000008400000185DDDB936A",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323484C482D34354631312E30372E323237434132303431370000008400000185DDDB936A",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "71003531423007710131314D3407",
+                        "datasetName": "027100415534333636563042303034710141535834353044454641554C"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "810C",
+                    "logicalLink": "LL_CloseRangeRadar4UDS",
+                    "dataObjects": {
+                        "partNumber": "95C907541L ",
+                        "softwareVersion": "X451",
+                        "hardwarePartNumber": "95C907541  ",
+                        "hardwareVersion": "H07",
+                        "asamFileIdentifier": "EV_NR4HELLAPO426",
+                        "asamFileVersion": "001067",
+                        "zdcPartNumber": "8MA909413G ",
+                        "zdcVersion": "0002",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::2,Param_DataSet1::[Param_DataSetID::28928,Param_DataSetName::AU4366V0B004],Param_DataSet2::[Param_DataSetID::28929,Param_DataSetName::ASX450DEFAUL]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::HLH-45F",
+                            "Param_ECUManufDate::11.07.22",
+                            "Param_ECUProduTestSysteNumbe::7CA2",
+                            "Param_ConseSupplNumbe::0326"
+                        ],
+                        "ecuSerialNumber": "10140047279227      ",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "44BC5246FDB3EF2C3E77386170690D1427CFF1072F1864694544DA25D099E0BE",
+                        "ivdConfCurrent": "A29D3177D54B4FFB7AF12DA5E6A5354F1BF0938B2D0FDC4D9301EC1E8F70BD95",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A0200715323484C482D34354631312E30372E323237434132303332360000008400000185DDDBF228",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323484C482D34354631312E30372E323237434132303332360000008400000185DDDBF228",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "71003531423007710131314D3407",
+                        "datasetName": "027100415534333636563042303034710141535834353044454641554C"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "8117",
+                    "logicalLink": "LL_AreaViewCamerRearUDS",
+                    "dataObjects": {
+                        "partNumber": "85E980568D ",
+                        "softwareVersion": "X125",
+                        "hardwarePartNumber": "85E980568  ",
+                        "hardwareVersion": "H05",
+                        "asamFileIdentifier": "EV_CamSysRVCSmartConti",
+                        "asamFileVersion": "003017",
+                        "zdcPartNumber": "8MA909589A ",
+                        "zdcVersion": "0013",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::1,Param_DataSet1::[Param_DataSetID::28928,Param_DataSetName::AU85E980568X]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::CU5-RVC",
+                            "Param_ECUManufDate::04.07.22",
+                            "Param_ECUProduTestSysteNumbe::0111",
+                            "Param_ConseSupplNumbe::0066"
+                        ],
+                        "ecuSerialNumber": "RVC04.07.2201110066 ",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "3CA0DC12C1AFC011963A6DB621614E162A568020B43899197B65AA8B0394465E",
+                        "ivdConfCurrent": "7E7B78E63CA789C07230145FCFB3918102E30EE9EAF590181041D0352045B410",
+                        "sfdProtectionData": "NegResp",
+                        "sfdProtectionDataValidation": "NegResp",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "71003030383507",
+                        "datasetName": "017100415538354539383035363858"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "8119",
+                    "logicalLink": "LL_MultiFunctSteerWheelContrModul3UDS",
+                    "dataObjects": {
+                        "partNumber": "85E951523A ",
+                        "softwareVersion": "0108",
+                        "hardwarePartNumber": "85E951523A ",
+                        "hardwareVersion": "H22",
+                        "asamFileIdentifier": "EV_MFLGen3AU416",
+                        "asamFileVersion": "002010",
+                        "zdcPartNumber": "---------- ",
+                        "zdcVersion": "----",
+                        "datasetName": [
+                            "NegResp"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::BK7-SMT",
+                            "Param_ECUManufDate::23.06.22",
+                            "Param_ECUProduTestSysteNumbe::3080",
+                            "Param_ConseSupplNumbe::0068"
+                        ],
+                        "ecuSerialNumber": "20K22Y02801221740068",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "7331A6803950BC1113C2F7702400E11810B029AC2DD8E25C54411A5BDE76F20C",
+                        "ivdConfCurrent": "38FA3F847759FA2B226B38EF3593D46F1742D04D6827FF0AA4A66DE8DDBFBEE7",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A0200715323424B372D534D5432332E30362E323233303830303036380000008200000185C4402AC2",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323424B372D534D5432332E30362E323233303830303036380000008200000185C4402AC2",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "NegResp",
+                        "datasetName": "NegResp"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "811E",
+                    "logicalLink": "LL_RelayStatiAttacDevic1FrontLeftUDS",
+                    "dataObjects": {
+                        "partNumber": "85H962133A ",
+                        "softwareVersion": "0235",
+                        "hardwarePartNumber": "85H962133A ",
+                        "hardwareVersion": "H31",
+                        "asamFileIdentifier": "EV_UWBRSADVLAU41X",
+                        "asamFileVersion": "003002",
+                        "zdcPartNumber": "NegResp",
+                        "zdcVersion": "NegResp",
+                        "datasetName": [
+                            "NegResp"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::SME-RBG",
+                            "Param_ECUManufDate::06.04.22",
+                            "Param_ECUProduTestSysteNumbe::0056",
+                            "Param_ConseSupplNumbe::0107"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_protection",
+                        "ivdProgCurrent": "06CB10B9845525946E39E1349C0B4E0BCB4DF041909062971D88C113767217C7",
+                        "ivdConfCurrent": "NegResp",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A0200715323534D452D52424730362E30342E32323030353630313037000000F700000185C4402A84",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323534D452D52424730362E30342E32323030353630313037000000F700000185C4402A84",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "NegResp",
+                        "datasetName": "NegResp"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "811F",
+                    "logicalLink": "LL_RelayStatiAttacDevic2FrontRightUDS",
+                    "dataObjects": {
+                        "partNumber": "85H962133B ",
+                        "softwareVersion": "0235",
+                        "hardwarePartNumber": "85H962133B ",
+                        "hardwareVersion": "H30",
+                        "asamFileIdentifier": "EV_UWBRSADVRAU41X",
+                        "asamFileVersion": "003002",
+                        "zdcPartNumber": "NegResp",
+                        "zdcVersion": "NegResp",
+                        "datasetName": [
+                            "NegResp"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::SME-RBG",
+                            "Param_ECUManufDate::28.04.22",
+                            "Param_ECUProduTestSysteNumbe::0056",
+                            "Param_ConseSupplNumbe::0239"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_protection",
+                        "ivdProgCurrent": "9AA7342164C2072C7CF9538CB180889C42F4EEA048AD0E26F140984C1CB7EE14",
+                        "ivdConfCurrent": "NegResp",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A0200715323534D452D52424732382E30342E32323030353630323339000000F700000185C440267B",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323534D452D52424732382E30342E32323030353630323339000000F700000185C440267B",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "NegResp",
+                        "datasetName": "NegResp"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "8120",
+                    "logicalLink": "LL_RelayStatiAttacDevic3RearLeftUDS",
+                    "dataObjects": {
+                        "partNumber": "85H962133B ",
+                        "softwareVersion": "0235",
+                        "hardwarePartNumber": "85H962133B ",
+                        "hardwareVersion": "H30",
+                        "asamFileIdentifier": "EV_UWBRSADHLAU41X",
+                        "asamFileVersion": "003002",
+                        "zdcPartNumber": "NegResp",
+                        "zdcVersion": "NegResp",
+                        "datasetName": [
+                            "NegResp"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::SME-RBG",
+                            "Param_ECUManufDate::06.04.22",
+                            "Param_ECUProduTestSysteNumbe::0056",
+                            "Param_ConseSupplNumbe::0368"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_protection",
+                        "ivdProgCurrent": "9AA7342164C2072C7CF9538CB180889C42F4EEA048AD0E26F140984C1CB7EE14",
+                        "ivdConfCurrent": "NegResp",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A0200715323534D452D52424730362E30342E32323030353630333638000000F70000018519F2F68E",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323534D452D52424730362E30342E32323030353630333638000000F70000018519F2F68E",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "NegResp",
+                        "datasetName": "NegResp"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "8121",
+                    "logicalLink": "LL_RelayStatiAttacDevic4RearRightUDS",
+                    "dataObjects": {
+                        "partNumber": "85H962133A ",
+                        "softwareVersion": "0235",
+                        "hardwarePartNumber": "85H962133A ",
+                        "hardwareVersion": "H31",
+                        "asamFileIdentifier": "EV_UWBRSADHRAU41X",
+                        "asamFileVersion": "003002",
+                        "zdcPartNumber": "NegResp",
+                        "zdcVersion": "NegResp",
+                        "datasetName": [
+                            "NegResp"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::SME-RBG",
+                            "Param_ECUManufDate::06.04.22",
+                            "Param_ECUProduTestSysteNumbe::0056",
+                            "Param_ConseSupplNumbe::0102"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_protection",
+                        "ivdProgCurrent": "06CB10B9845525946E39E1349C0B4E0BCB4DF041909062971D88C113767217C7",
+                        "ivdConfCurrent": "NegResp",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A0200715323534D452D52424730362E30342E32323030353630313032000000F700000185C4402764",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323534D452D52424730362E30342E32323030353630313032000000F700000185C4402764",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "NegResp",
+                        "datasetName": "NegResp"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "8122",
+                    "logicalLink": "LL_RelayStatiAttacDevic5InterUDS",
+                    "dataObjects": {
+                        "partNumber": "85H962133A ",
+                        "softwareVersion": "0235",
+                        "hardwarePartNumber": "85H962133A ",
+                        "hardwareVersion": "H31",
+                        "asamFileIdentifier": "EV_UWBRSADINAU41X",
+                        "asamFileVersion": "003002",
+                        "zdcPartNumber": "NegResp",
+                        "zdcVersion": "NegResp",
+                        "datasetName": [
+                            "NegResp"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::SME-RBG",
+                            "Param_ECUManufDate::28.04.22",
+                            "Param_ECUProduTestSysteNumbe::0056",
+                            "Param_ConseSupplNumbe::0461"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_protection",
+                        "ivdProgCurrent": "06CB10B9845525946E39E1349C0B4E0BCB4DF041909062971D88C113767217C7",
+                        "ivdConfCurrent": "NegResp",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A0200715323534D452D52424732382E30342E32323030353630343631000000F700000184C7FD62D1",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323534D452D52424732382E30342E32323030353630343631000000F700000184C7FD62D1",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "NegResp",
+                        "datasetName": "NegResp"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "8124",
+                    "logicalLink": "LL_AppliServe1Syste2JavaUDS",
+                    "dataObjects": {
+                        "partNumber": "V04007002SR",
+                        "softwareVersion": "Y3E1",
+                        "hardwarePartNumber": "NegResp",
+                        "hardwareVersion": "NegResp",
+                        "asamFileIdentifier": "EV_HCP5MODAU416",
+                        "asamFileVersion": "009033",
+                        "zdcPartNumber": "85H909441G ",
+                        "zdcVersion": "0033",
+                        "datasetName": [
+                            "NegResp"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::BXJ-53F",
+                            "Param_ECUManufDate::11.07.22",
+                            "Param_ECUProduTestSysteNumbe::9534",
+                            "Param_ConseSupplNumbe::0203"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "4F2539CB77C9A13437E687331749D634EF1D48EC52C8E2662B486A4FCE30E271",
+                        "ivdConfCurrent": "Error: java.io.IOException: IntegrityValidationConfiguration(0) failed: error 1",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A020071532342584A2D35334631312E30372E323239353334303230330000008000000186024C701B",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A020075532342584A2D35334631312E30372E32323935333430323033000000800000018485D34534",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "NegResp",
+                        "datasetName": "NegResp"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "07E2",
+                    "masterDiagnosisAddress": "8124",
+                    "logicalLink": "LL_AppliSubServeCentr2UDS",
+                    "dataObjects": {
+                        "partNumber": "V04007003MC",
+                        "softwareVersion": "0001",
+                        "fazitIdString": [
+                            "Param_SubSyVWFAZITIdentStrin::[Param_VWFAZITIdentStrin::[Param_ECUProduPlantNumbe::BXJ-53F,Param_ECUManufDate::11.07.22,Param_ECUProduTestSysteNumbe::9534,Param_ConseSupplNumbe::0203]]"
+                        ],
+                        "ivdProgCurrent": "41FCA7777CAF855421DE3AD29D34F1F72BD11B6911C151EE7CFC2A7EE7F65A10"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "8125",
+                    "logicalLink": "LL_AppliServe3Syste1InfotUDS",
+                    "dataObjects": {
+                        "partNumber": "V04007003GT",
+                        "softwareVersion": "P382",
+                        "hardwarePartNumber": "NegResp",
+                        "hardwareVersion": "NegResp",
+                        "asamFileIdentifier": "EV_ContrElect1AU41X",
+                        "asamFileVersion": "001001",
+                        "zdcPartNumber": "8B3000595A ",
+                        "zdcVersion": "9003",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::16,Param_DataSet1::[Param_DataSetID::28934,Param_DataSetName::------------],Param_DataSet2::[Param_DataSetID::28962,Param_DataSetName::------------],Param_DataSet3::[Param_DataSetID::28963,Param_DataSetName::------------],Param_DataSet4::[Param_DataSetID::28964,Param_DataSetName::------------],Param_DataSet5::[Param_DataSetID::28965,Param_DataSetName::------------],Param_DataSet6::[Param_DataSetID::28966,Param_DataSetName::------------],Param_DataSet7::[Param_DataSetID::28967,Param_DataSetName::------------],Param_DataSet8::[Param_DataSetID::28968,Param_DataSetName::------------],Param_DataSet9::[Param_DataSetID::29196,Param_DataSetName::MMISYSTSPRA0],Param_DataSet10::[Param_DataSetID::29209,Param_DataSetName::AIRQUALITYAU],Param_DataSet11::[Param_DataSetID::29217,Param_DataSetName::------------],Param_DataSet12::[Param_DataSetID::29218,Param_DataSetName::------------],Param_DataSet13::[Param_DataSetID::29219,Param_DataSetName::------------],Param_DataSet14::[Param_DataSetID::29220,Param_DataSetName::------------],Param_DataSet15::[Param_DataSetID::29221,Param_DataSetName::------------],Param_DataSet16::[Param_DataSetID::29222,Param_DataSetName::------------]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::JTH-076",
+                            "Param_ECUManufDate::25.07.22",
+                            "Param_ECUProduTestSysteNumbe::4746",
+                            "Param_ConseSupplNumbe::0076"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "23C844DE930FE4170EC5FC75B0472E34491E8E1C0BE8C5BD073421402EC0703F",
+                        "ivdConfCurrent": "95FE5012538F7526265919287738CFE42739B9F7EC27C8D8FF33A9898ED9C095",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153234A54482D30373632352E30372E3232343734363030373600000078000001851558A6B7",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234A54482D30373632352E30372E3232343734363030373600000078000001852E3EC76D",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "71062D2D2D2D0771222D2D2D2D0371232D2D2D2D0371242D2D2D2D0371252D2D2D2D0371262D2D2D2D0371272D2D2D2D0371282D2D2D2D03720C48353030077219303130320772212D2D2D2D0372222D2D2D2D0372232D2D2D2D0372242D2D2D2D0372252D2D2D2D0372262D2D2D2D03",
+                        "datasetName": "1071062D2D2D2D2D2D2D2D2D2D2D2D71222D2D2D2D2D2D2D2D2D2D2D2D71232D2D2D2D2D2D2D2D2D2D2D2D71242D2D2D2D2D2D2D2D2D2D2D2D71252D2D2D2D2D2D2D2D2D2D2D2D71262D2D2D2D2D2D2D2D2D2D2D2D71272D2D2D2D2D2D2D2D2D2D2D2D71282D2D2D2D2D2D2D2D2D2D2D2D720C4D4D4953595354535052413072194149525155414C495459415572212D2D2D2D2D2D2D2D2D2D2D2D72222D2D2D2D2D2D2D2D2D2D2D2D72232D2D2D2D2D2D2D2D2D2D2D2D72242D2D2D2D2D2D2D2D2D2D2D2D72252D2D2D2D2D2D2D2D2D2D2D2D72262D2D2D2D2D2D2D2D2D2D2D2D"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "812C",
+                    "logicalLink": "LL_MainUnitPowerChassUDS",
+                    "dataObjects": {
+                        "partNumber": "0Z7907181A ",
+                        "softwareVersion": "N1FA",
+                        "hardwarePartNumber": "95C907157  ",
+                        "hardwareVersion": "Y07",
+                        "asamFileIdentifier": "EV_HCP1MIDBOSCH",
+                        "asamFileVersion": "010001",
+                        "zdcPartNumber": "8MA909423A ",
+                        "zdcVersion": "0004",
+                        "datasetName": [
+                            "Error: Invalid dataset name payload for 18 datasets: length=98"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::BPG-810",
+                            "Param_ECUManufDate::16.06.22",
+                            "Param_ECUProduTestSysteNumbe::1063",
+                            "Param_ConseSupplNumbe::0018"
+                        ],
+                        "ecuSerialNumber": "Error: Invalid ASCII: 0000000000000000000000002020202020202020",
+                        "sfdProtectionMode": "NegResp",
+                        "ivdProgCurrent": "E98E4A1C4F8FD13A613808F1F7C6EE826B997D657966542E3B1D1288EB2F740C",
+                        "ivdConfCurrent": "Error: java.io.IOException: IntegrityValidationConfiguration(0) failed: error 1",
+                        "odometerReading": "16777215"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "710344323530077104443235300771103030303107711130303230077108443235300771C1303032300771C02D2D2D2D07",
+                        "datasetName": "Error: Invalid dataset name payload for 18 datasets: length=98"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "07C9",
+                    "masterDiagnosisAddress": "812C",
+                    "logicalLink": "LL_AppliSubServe1PowerTrainOBDUDS",
+                    "dataObjects": {
+                        "partNumber": "8MA906256C ",
+                        "softwareVersion": "D251",
+                        "fazitIdString": [
+                            "Param_SubSyVWFAZITIdentStrin::[Param_VWFAZITIdentStrin::[Param_ECUProduPlantNumbe::BPG-810,Param_ECUManufDate::16.06.22,Param_ECUProduTestSysteNumbe::1063,Param_ConseSupplNumbe::0018]]"
+                        ]
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "07CC",
+                    "masterDiagnosisAddress": "812C",
+                    "logicalLink": "LL_AppliSubServe1ChassUDS",
+                    "dataObjects": {
+                        "partNumber": "V04007005KG",
+                        "softwareVersion": "P631",
+                        "fazitIdString": [
+                            "Param_SubSyVWFAZITIdentStrin::[Param_VWFAZITIdentStrin::[Param_ECUProduPlantNumbe::BPG-810,Param_ECUManufDate::16.06.22,Param_ECUProduTestSysteNumbe::1063,Param_ConseSupplNumbe::0018]]"
+                        ]
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "07CE",
+                    "masterDiagnosisAddress": "812C",
+                    "logicalLink": "LL_AppliSubServe3ChassUDS",
+                    "dataObjects": {
+                        "partNumber": "V04007005KQ",
+                        "softwareVersion": "P631",
+                        "fazitIdString": [
+                            "Param_SubSyVWFAZITIdentStrin::[Param_VWFAZITIdentStrin::[Param_ECUProduPlantNumbe::BPG-810,Param_ECUManufDate::16.06.22,Param_ECUProduTestSysteNumbe::1063,Param_ConseSupplNumbe::0018]]"
+                        ]
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "07D0",
+                    "masterDiagnosisAddress": "812C",
+                    "logicalLink": "LL_AppliSubServe1ChassOBDUDS",
+                    "dataObjects": {
+                        "partNumber": "V04007005KL",
+                        "softwareVersion": "P631",
+                        "fazitIdString": [
+                            "Param_SubSyVWFAZITIdentStrin::[Param_VWFAZITIdentStrin::[Param_ECUProduPlantNumbe::BPG-810,Param_ECUManufDate::16.06.22,Param_ECUProduTestSysteNumbe::1063,Param_ConseSupplNumbe::0018]]"
+                        ]
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "07E7",
+                    "masterDiagnosisAddress": "812C",
+                    "logicalLink": "LL_AppliSubServe3ChassOBDUDS",
+                    "dataObjects": {
+                        "partNumber": "V04007005LA",
+                        "softwareVersion": "P631",
+                        "fazitIdString": [
+                            "Param_SubSyVWFAZITIdentStrin::[Param_VWFAZITIdentStrin::[Param_ECUProduPlantNumbe::BPG-810,Param_ECUManufDate::16.06.22,Param_ECUProduTestSysteNumbe::1063,Param_ConseSupplNumbe::0018]]"
+                        ]
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "8131",
+                    "logicalLink": "LL_AirSuspeContrUnitUDS",
+                    "dataObjects": {
+                        "partNumber": "95C907778E ",
+                        "softwareVersion": "0740",
+                        "hardwarePartNumber": "95C907778E ",
+                        "hardwareVersion": "H02",
+                        "asamFileIdentifier": "EV_ASCWABCOPO426",
+                        "asamFileVersion": "001740",
+                        "zdcPartNumber": "NegResp",
+                        "zdcVersion": "NegResp",
+                        "datasetName": [
+                            "Error: Invalid dataset name payload for 1 datasets: length=28"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::WBW-115",
+                            "Param_ECUManufDate::28.04.22",
+                            "Param_ECUProduTestSysteNumbe::3651",
+                            "Param_ConseSupplNumbe::0813"
+                        ],
+                        "ecuSerialNumber": "57092001156128000813",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "C320AB3F2B505A6D278CC4B756CC202F3CB3D1A6CA8B722C593F7B22C5D2F84D",
+                        "ivdConfCurrent": "5CF87E873DD316082A6F81255F44B5A020844FF147FED8AB9908E8B2C9068DEE",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153235742572D31313532382E30342E323233363531303831330000005800000185E7F8ABAB",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553235742572D31313532382E30342E323233363531303831330000005800000185E7F8ABAB",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "0071414F30330700000000000000",
+                        "datasetName": "Error: Invalid dataset name payload for 1 datasets: length=28"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "8132",
+                    "logicalLink": "LL_HighPerfoCompuPlatfBodySyste1UDS",
+                    "dataObjects": {
+                        "partNumber": "V04007005BM",
+                        "softwareVersion": "3441",
+                        "hardwarePartNumber": "NegResp",
+                        "hardwareVersion": "NegResp",
+                        "asamFileIdentifier": "EV_HCP4Contr2NoOBDAU41X",
+                        "asamFileVersion": "010014",
+                        "zdcPartNumber": "8B3909594G ",
+                        "zdcVersion": "0039",
+                        "datasetName": [
+                            "Error: Invalid dataset name payload for 19 datasets: length=252"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::SME-RBG",
+                            "Param_ECUManufDate::26.07.21",
+                            "Param_ECUProduTestSysteNumbe::0058",
+                            "Param_ConseSupplNumbe::0017"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "5125770599C32EF43C982184EBE59257CA09F6177245642A3CCF31683B47BF29",
+                        "ivdConfCurrent": "B8995C943CCD20F0250BB41C753EE577088E0B59F815C88BA542ACF27DC32420",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A0200715323534D452D52424732362E30372E323130303538303031370000004E00000185DEA1E989",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323534D452D52424732362E30372E323130303538303031370000004E00000185DE9C8BF0",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "710030303031057110524330300772003030303107720130303032077204303030310772104730303007721147303030077212473030300772135530303007721430303031077220303030330772213030303207722230303031077223303030310772243030303107723030303031077231303030310772403030303107",
+                        "datasetName": "Error: Invalid dataset name payload for 19 datasets: length=252"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "061B",
+                    "masterDiagnosisAddress": "8132",
+                    "logicalLink": "LL_FreshAirBloweFrontUDS",
+                    "dataObjects": {
+                        "partNumber": "8B1820021  ",
+                        "softwareVersion": "Y022",
+                        "hardwarePartNumber": "8B1820021  ",
+                        "hardwareVersion": "H02",
+                        "fazitIdString": [
+                            "Param_SubSyVWFAZITIdentStrin::[Param_VWFAZITIdentStrin::[Param_ECUProduPlantNumbe::DN5-BLB,Param_ECUManufDate::09.03.22,Param_ECUProduTestSysteNumbe::0102,Param_ConseSupplNumbe::7373]]"
+                        ],
+                        "ecuSerialNumber": "39702203090304062613"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "0758",
+                    "masterDiagnosisAddress": "8132",
+                    "logicalLink": "LL_InterTempeSensoUDS",
+                    "dataObjects": {
+                        "partNumber": "5WA907527A ",
+                        "softwareVersion": "0103",
+                        "hardwarePartNumber": "5WA907527A ",
+                        "hardwareVersion": "H01",
+                        "fazitIdString": [
+                            "Param_SubSyVWFAZITIdentStrin::[Param_VWFAZITIdentStrin::[Param_ECUProduPlantNumbe::BXH-001,Param_ECUManufDate::21.12.21,Param_ECUProduTestSysteNumbe::0427,Param_ConseSupplNumbe::4422]]"
+                        ],
+                        "ecuSerialNumber": "00002151221102649505"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "8133",
+                    "logicalLink": "LL_LowVoltaPowerDistr1UDS",
+                    "dataObjects": {
+                        "partNumber": "85E907808C ",
+                        "softwareVersion": "X140",
+                        "hardwarePartNumber": "85E907808A ",
+                        "hardwareVersion": "H11",
+                        "asamFileIdentifier": "EV_ELVISAU41X",
+                        "asamFileVersion": "003017",
+                        "zdcPartNumber": "85H909405F ",
+                        "zdcVersion": "9017",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::13,Param_DataSet1::[Param_DataSetID::29184,Param_DataSetName::OHMGELB01031],Param_DataSet2::[Param_DataSetID::29185,Param_DataSetName::RBELVIS10031],Param_DataSet3::[Param_DataSetID::29186,Param_DataSetName::RBELVIS10031],Param_DataSet4::[Param_DataSetID::29187,Param_DataSetName::RBELVIS10031],Param_DataSet5::[Param_DataSetID::29188,Param_DataSetName::RBELVIS10031],Param_DataSet6::[Param_DataSetID::29190,Param_DataSetName::RBELVIS10031],Param_DataSet7::[Param_DataSetID::29191,Param_DataSetName::RBELVIS10031],Param_DataSet8::[Param_DataSetID::29192,Param_DataSetName::RBELVIS10031],Param_DataSet9::[Param_DataSetID::29193,Param_DataSetName::RBELVIS10031],Param_DataSet10::[Param_DataSetID::29194,Param_DataSetName::RBELVIS10031],Param_DataSet11::[Param_DataSetID::29195,Param_DataSetName::RBELVIS10031],Param_DataSet12::[Param_DataSetID::29196,Param_DataSetName::RBELVIS10031],Param_DataSet13::[Param_DataSetID::29197,Param_DataSetName::RBELVIS10031]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::BPG-810",
+                            "Param_ECUManufDate::01.06.22",
+                            "Param_ECUProduTestSysteNumbe::1480",
+                            "Param_ConseSupplNumbe::0022"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "821D2CE7FFAE7C655528C521FF099C2DA6DD47A61DC0CD02B5266D6915C5F7A5",
+                        "ivdConfCurrent": "815AB83DD18F76F9145D8E9D6BA474D09A8EA7CB0B480912017DE18687DC1464",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153234250472D38313030312E30362E323231343830303032320000003600000185DE0378C1",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234250472D38313030312E30362E323231343830303032320000003600000185DE0378C1",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "720033313031077201303033310772023030333107720330303331077204303033310772063030333107720730303331077208303033310772093030333107720A3030333107720B3030333107720C3030333107720D3030333107",
+                        "datasetName": "0D72004F484D47454C42303130333172015242454C564953313030333172025242454C564953313030333172035242454C564953313030333172045242454C564953313030333172065242454C564953313030333172075242454C564953313030333172085242454C564953313030333172095242454C5649533130303331720A5242454C5649533130303331720B5242454C5649533130303331720C5242454C5649533130303331720D5242454C5649533130303331"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "8136",
+                    "logicalLink": "LL_DedicShortRangeCommuDriveSideUDS",
+                    "dataObjects": {
+                        "partNumber": "85E927753  ",
+                        "softwareVersion": "0100",
+                        "hardwarePartNumber": "85E927753  ",
+                        "hardwareVersion": "H05",
+                        "asamFileIdentifier": "EV_NFCDriveSideAU41X",
+                        "asamFileVersion": "001003",
+                        "zdcPartNumber": "-----------",
+                        "zdcVersion": "0001",
+                        "datasetName": [
+                            "NegResp"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::CNF-CNF",
+                            "Param_ECUManufDate::04.04.22",
+                            "Param_ECUProduTestSysteNumbe::0002",
+                            "Param_ConseSupplNumbe::6857"
+                        ],
+                        "ecuSerialNumber": "           924366857",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "0D4085BADC654E7B965BC0AEFB7BEE7E5996783737D66723DF657E904DF3DFDF",
+                        "ivdConfCurrent": "4789266B097EE7330AB9D2523CB0FCB47AC2C40596A00DC0C9F582D621FC5AAA",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A0200715323434E462D434E4630342E30342E323230303032363835370000009700000185E3C9AFA1",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323434E462D434E4630342E30342E323230303032363835370000009700000185E3C9AFA1",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "NegResp",
+                        "datasetName": "NegResp"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "813F",
+                    "logicalLink": "LL_MainUnitCockpSyste1SoundUDS",
+                    "dataObjects": {
+                        "partNumber": "V04007003HB",
+                        "softwareVersion": "P382",
+                        "hardwarePartNumber": "NegResp",
+                        "hardwareVersion": "NegResp",
+                        "asamFileIdentifier": "EV_SoundCubeAU41X",
+                        "asamFileVersion": "001001",
+                        "zdcPartNumber": "8B3909443B ",
+                        "zdcVersion": "0005",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::24,Param_DataSet1::[Param_DataSetID::28930,Param_DataSetName::APSCUBEANN00],Param_DataSet2::[Param_DataSetID::28935,Param_DataSetName::SIGNALFLOW00],Param_DataSet3::[Param_DataSetID::28936,Param_DataSetName::APSCUBEEAU00],Param_DataSet4::[Param_DataSetID::28937,Param_DataSetName::APSCUBEENT00],Param_DataSet5::[Param_DataSetID::28938,Param_DataSetName::SC3PARTY1000],Param_DataSet6::[Param_DataSetID::28939,Param_DataSetName::SC3PARTY2000],Param_DataSet7::[Param_DataSetID::28940,Param_DataSetName::SC3PARTYFOD4],Param_DataSet8::[Param_DataSetID::28941,Param_DataSetName::SC3PARTY3000],Param_DataSet9::[Param_DataSetID::28942,Param_DataSetName::SC3PARTYFOD3],Param_DataSet10::[Param_DataSetID::28943,Param_DataSetName::SC3PARTYFOD1],Param_DataSet11::[Param_DataSetID::28944,Param_DataSetName::------------],Param_DataSet12::[Param_DataSetID::28946,Param_DataSetName::SC3PARTYFOD2],Param_DataSet13::[Param_DataSetID::28947,Param_DataSetName::------------],Param_DataSet14::[Param_DataSetID::28948,Param_DataSetName::------------],Param_DataSet15::[Param_DataSetID::28949,Param_DataSetName::------------],Param_DataSet16::[Param_DataSetID::28950,Param_DataSetName::------------],Param_DataSet17::[Param_DataSetID::29188,Param_DataSetName::APSCUBECON00],Param_DataSet18::[Param_DataSetID::29198,Param_DataSetName::EASOACOUPDC0],Param_DataSet19::[Param_DataSetID::29199,Param_DataSetName::APSCUBEENGSO],Param_DataSet20::[Param_DataSetID::29200,Param_DataSetName::APSCUBESYSTO],Param_DataSet21::[Param_DataSetID::29201,Param_DataSetName::------------],Param_DataSet22::[Param_DataSetID::29202,Param_DataSetName::------------],Param_DataSet23::[Param_DataSetID::29203,Param_DataSetName::------------],Param_DataSet24::[Param_DataSetID::29204,Param_DataSetName::------------]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::JTH-076",
+                            "Param_ECUManufDate::25.07.22",
+                            "Param_ECUProduTestSysteNumbe::4746",
+                            "Param_ConseSupplNumbe::0076"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "4F1CBDB675BD963A13112FF54B37E7D38A303A92CAD8961F346058E378DFA7DE",
+                        "ivdConfCurrent": "2FFF1C4A6580F0B633945A51B326207505312E87AD229DA17C9F7B5C5F6D7315",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153234A54482D30373632352E30372E323234373436303037360000007900000185C4402C33",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234A54482D30373632352E30372E3232343734363030373600000079000001852E3F8293",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "71024130304507710741304430077108413044590771094130445307710A4130345907710B4130303107710C4130303307710D4130303207710E4130303307710F413030330771102D2D2D2D077112413030320771132D2D2D2D0371142D2D2D2D0371152D2D2D2D0371162D2D2D2D0372044130303107720E3030313707720F41303031077210413030390772112D2D2D2D0772122D2D2D2D0372132D2D2D2D0372142D2D2D2D03",
+                        "datasetName": "18710241505343554245414E4E303071075349474E414C464C4F5730307108415053435542454541553030710941505343554245454E543030710A534333504152545931303030710B534333504152545932303030710C5343335041525459464F4434710D534333504152545933303030710E5343335041525459464F4433710F5343335041525459464F443171102D2D2D2D2D2D2D2D2D2D2D2D71125343335041525459464F443271132D2D2D2D2D2D2D2D2D2D2D2D71142D2D2D2D2D2D2D2D2D2D2D2D71152D2D2D2D2D2D2D2D2D2D2D2D71162D2D2D2D2D2D2D2D2D2D2D2D720441505343554245434F4E3030720E4541534F41434F5550444330720F41505343554245454E47534F721041505343554245535953544F72112D2D2D2D2D2D2D2D2D2D2D2D72122D2D2D2D2D2D2D2D2D2D2D2D72132D2D2D2D2D2D2D2D2D2D2D2D72142D2D2D2D2D2D2D2D2D2D2D2D"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "8146",
+                    "logicalLink": "LL_CentrDisplUnitForMultiSysteUDS",
+                    "dataObjects": {
+                        "partNumber": "85E919606  ",
+                        "softwareVersion": "X113",
+                        "hardwarePartNumber": "85E919606  ",
+                        "hardwareVersion": "H32",
+                        "asamFileIdentifier": "EV_CenteInforDisplAU416",
+                        "asamFileVersion": "001001",
+                        "zdcPartNumber": "NegResp",
+                        "zdcVersion": "NegResp",
+                        "datasetName": [
+                            "NegResp"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::VD1-048",
+                            "Param_ECUManufDate::04.07.22",
+                            "Param_ECUProduTestSysteNumbe::7416",
+                            "Param_ConseSupplNumbe::0009"
+                        ],
+                        "ecuSerialNumber": "                    ",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "2099C0E82B28B92458F5EF28506B586B018D697B2EA5CE26669218EDE8901A8B",
+                        "ivdConfCurrent": "Error: java.io.IOException: IntegrityValidationConfiguration(0) failed: error 3",
+                        "sfdProtectionData": "654D734B060D2B06010401990A8D110A020074533A5644312D30343830342E30372E323237343136303030395634323934313230303730363835452E3931392E363036000000870000000000000000",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553235644312D30343830342E30372E32323734313630303039000000870000000000000000",
+                        "sfdUnlockStatus": "group attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "NegResp",
+                        "datasetName": "NegResp"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "8153",
+                    "logicalLink": "LL_MainUnitCockpSyste3AndroUDS",
+                    "dataObjects": {
+                        "partNumber": "V04007003GQ",
+                        "softwareVersion": "P284",
+                        "hardwarePartNumber": "NegResp",
+                        "hardwareVersion": "NegResp",
+                        "asamFileIdentifier": "EV_InVehicInfotAU41X",
+                        "asamFileVersion": "001001",
+                        "zdcPartNumber": "8B3909444A ",
+                        "zdcVersion": "0005",
+                        "datasetName": [
+                            "Param_VWDataSetName::[Param_NumbeOfDataSetNames::16,Param_DataSet1::[Param_DataSetID::28945,Param_DataSetName::APSCUBEVLS00],Param_DataSet2::[Param_DataSetID::28928,Param_DataSetName::SPEECHSIGNAL],Param_DataSet3::[Param_DataSetID::28979,Param_DataSetName::------------],Param_DataSet4::[Param_DataSetID::28980,Param_DataSetName::------------],Param_DataSet5::[Param_DataSetID::28981,Param_DataSetName::------------],Param_DataSet6::[Param_DataSetID::28982,Param_DataSetName::------------],Param_DataSet7::[Param_DataSetID::28983,Param_DataSetName::------------],Param_DataSet8::[Param_DataSetID::28984,Param_DataSetName::------------],Param_DataSet9::[Param_DataSetID::29232,Param_DataSetName::------------],Param_DataSet10::[Param_DataSetID::29233,Param_DataSetName::------------],Param_DataSet11::[Param_DataSetID::29234,Param_DataSetName::------------],Param_DataSet12::[Param_DataSetID::29235,Param_DataSetName::------------],Param_DataSet13::[Param_DataSetID::29236,Param_DataSetName::------------],Param_DataSet14::[Param_DataSetID::29237,Param_DataSetName::------------],Param_DataSet15::[Param_DataSetID::29238,Param_DataSetName::------------],Param_DataSet16::[Param_DataSetID::29239,Param_DataSetName::------------]]"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::JTH-076",
+                            "Param_ECUManufDate::25.07.22",
+                            "Param_ECUProduTestSysteNumbe::4746",
+                            "Param_ConseSupplNumbe::0076"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_and_end_to_end_protection",
+                        "ivdProgCurrent": "4D92F0A8C634737DF30A51109BF7B8B58A949A09BAE0536A995B9DCBF96AEC85",
+                        "ivdConfCurrent": "9D3D65070E4B6A8BBF779172002522C8D31985606F676848969528F249401B74",
+                        "sfdProtectionData": "65367334060D2B06010401990A8D110A02007153234A54482D30373632352E30372E323234373436303037360000007A00000185C44029F9",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A02007553234A54482D30373632352E30372E323234373436303037360000007A00000185CE3E4434",
+                        "sfdUnlockStatus": "PVD individual attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "711141303031077100443036330771332D2D2D2D0371342D2D2D2D0371352D2D2D2D0371362D2D2D2D0371372D2D2D2D0371382D2D2D2D0372302D2D2D2D0372312D2D2D2D0372322D2D2D2D0372332D2D2D2D0372342D2D2D2D0372352D2D2D2D0372362D2D2D2D0372372D2D2D2D03",
+                        "datasetName": "10711141505343554245564C53303071005350454543485349474E414C71332D2D2D2D2D2D2D2D2D2D2D2D71342D2D2D2D2D2D2D2D2D2D2D2D71352D2D2D2D2D2D2D2D2D2D2D2D71362D2D2D2D2D2D2D2D2D2D2D2D71372D2D2D2D2D2D2D2D2D2D2D2D71382D2D2D2D2D2D2D2D2D2D2D2D72302D2D2D2D2D2D2D2D2D2D2D2D72312D2D2D2D2D2D2D2D2D2D2D2D72322D2D2D2D2D2D2D2D2D2D2D2D72332D2D2D2D2D2D2D2D2D2D2D2D72342D2D2D2D2D2D2D2D2D2D2D2D72352D2D2D2D2D2D2D2D2D2D2D2D72362D2D2D2D2D2D2D2D2D2D2D2D72372D2D2D2D2D2D2D2D2D2D2D2D"
+                    }
+                }
+            },
+            {
+                "ecuInformation": {
+                    "diagnosisAddress": "8157",
+                    "logicalLink": "LL_RelayStatiAttacDevic6Inter2UDS",
+                    "dataObjects": {
+                        "partNumber": "85H962133B ",
+                        "softwareVersion": "0235",
+                        "hardwarePartNumber": "85H962133B ",
+                        "hardwareVersion": "H32",
+                        "asamFileIdentifier": "EV_UWBRSADIN2AU41X",
+                        "asamFileVersion": "003002",
+                        "zdcPartNumber": "NegResp",
+                        "zdcVersion": "NegResp",
+                        "datasetName": [
+                            "NegResp"
+                        ],
+                        "fazitIdString": [
+                            "Param_ECUProduPlantNumbe::SME-RBG",
+                            "Param_ECUManufDate::20.10.22",
+                            "Param_ECUProduTestSysteNumbe::0056",
+                            "Param_ConseSupplNumbe::0162"
+                        ],
+                        "ecuSerialNumber": "NegResp",
+                        "sfdProtectionMode": "PVD_access_protection",
+                        "ivdProgCurrent": "7E2A40B8E46B62E02F7F8A76E6182EEAA9E355C28B52AB9DB06E366757978E32",
+                        "ivdConfCurrent": "NegResp",
+                        "sfdProtectionData": "654D734B060D2B06010401990A8D110A020074533A534D452D52424732302E31302E323230303536303136325634323936313230313231313835482E3936322E313333000000F70000000000000000",
+                        "sfdProtectionDataValidation": "65367334060D2B06010401990A8D110A0200755323534D452D52424732302E31302E32323030353630313632000000F70000000000000000",
+                        "sfdUnlockStatus": "group attribute set"
+                    },
+                    "dataObjectsRaw": {
+                        "datasetVersion": "NegResp",
+                        "datasetName": "NegResp"
+                    }
+                }
+            }
+        ]
+    }
+}

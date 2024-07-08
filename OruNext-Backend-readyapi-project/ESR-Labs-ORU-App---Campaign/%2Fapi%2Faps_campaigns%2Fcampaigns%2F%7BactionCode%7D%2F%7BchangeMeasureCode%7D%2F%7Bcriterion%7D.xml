@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="/api/aps_campaigns/campaigns/{actionCode}/{changeMeasureCode}/{criterion}" path="/api/aps_campaigns/campaigns/{actionCode}/{changeMeasureCode}/{criterion}" id="d846c89b-8ec1-4d4d-bead-eeaec781c88a" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="e1bf1156-e770-4813-9b10-cdd57d80f13ffileName">%2Fapi%2Faps_campaigns%2Fcampaigns%2F%7BactionCode%7D%2F%7BchangeMeasureCode%7D%2F%7Bcriterion%7D</con:setting>
+    <con:setting id="d846c89b-8ec1-4d4d-bead-eeaec781c88afileName">%2Fapi%2Faps_campaigns%2Fcampaigns%2F%7BactionCode%7D%2F%7BchangeMeasureCode%7D%2F%7Bcriterion%7D</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>actionCode</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+    </con:parameter>
+    <con:parameter>
+      <con:name>changeMeasureCode</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+    </con:parameter>
+    <con:parameter>
+      <con:name>criterion</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="updateCampaign" id="a658c5ee-868c-4d3b-9287-c20a10eecf6b" method="PUT">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>201</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>401</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>403</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:request name="Request 1" id="7b4f1bc8-ac89-4bda-8ad8-18333e721393" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>https://demo.orunext.com</con:endpoint>
+      <con:request>{\r
+  "actionCode" : "48CD",\r
+  "author" : "John Doe",\r
+  "campaignConfiguration" : {\r
+    "authorizationLevel" : 0,\r
+    "autoDownload" : true,\r
+    "autoInstall" : true,\r
+    "checkEnergyBudget" : true,\r
+    "energyCalculation" : true,\r
+    "highEnergyConsumption" : 1.1,\r
+    "highVoltageEnergyConsumption" : 1.1,\r
+    "highVoltageSupport" : true,\r
+    "highVoltageUpdateDuration" : "P2DT3H4M",\r
+    "lowEnergyConsumption" : 1.1,\r
+    "lowVoltageEnergyConsumption" : 1.1,\r
+    "lowVoltageUpdateDuration" : "P2DT3H4M",\r
+    "obdRelevance" : true,\r
+    "showDownload" : true,\r
+    "timerBasedUpdate" : true,\r
+    "tuningRelevance" : true,\r
+    "wifiUpdate" : true\r
+  },\r
+  "changeMeasureCode" : "string",\r
+  "creationTimestamp" : "2019-02-18T12:34:56Z",\r
+  "criterion" : "string",\r
+  "descriptionId" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",\r
+  "expectedEndDate" : "2022-02-18T21:59:59Z",\r
+  "id" : "3fa85f64-5717-4562-b3fc-2c963f66afa6",\r
+  "name" : "My first battery update",\r
+  "oemilInstance" : "MOCK",\r
+  "priority" : 0,\r
+  "progressReportParameters" : {\r
+    "forceTimeInterval" : "P2DT3H4M",\r
+    "prerequisites" : {\r
+      "percentage" : 0,\r
+      "timeInterval" : "P2DT3H4M"\r
+    }\r
+  },\r
+  "state" : "BLOCKED",\r
+  "statistics" : {\r
+    "aborted" : 0,\r
+    "aborting" : 0,\r
+    "configurationUnknown" : 0,\r
+    "done" : 0,\r
+    "energyBudgetExceeded" : 0,\r
+    "failed" : 0,\r
+    "finalDocumentationFailed" : 0,\r
+    "finalDocumentationPerformed" : 0,\r
+    "finalDocumentationTriggered" : 0,\r
+    "manifestFailed" : 0,\r
+    "manifestPending" : 0,\r
+    "notOruRelevant" : 0,\r
+    "pending" : 0,\r
+    "requestingFlashData" : 0,\r
+    "started" : 0,\r
+    "tuningDetection" : 0,\r
+    "updated" : 0,\r
+    "updatingDownloading" : 0,\r
+    "updatingInstalling" : 0,\r
+    "updatingNotified" : 0,\r
+    "updatingOffered" : 0,\r
+    "updatingReady" : 0,\r
+    "waiting" : 0\r
+  },\r
+  "testCampaign" : true\r
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="changeMeasureCode" value=""/>
+        <con:entry key="criterion" value=""/>
+        <con:entry key="actionCode" value=""/>
+      </con:parameters>
+      <con:environmentSpec>
+        <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+          <con:authProfile>Inherit From Parent</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+          <con:authProfile>ORU-live</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+          <con:authProfile>ORU-app</con:authProfile>
+        </con:entry>
+        <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+    <con:environmentSpec>
+      <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+      <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+        <con:authProfile>Inherit From Parent</con:authProfile>
+      </con:entry>
+    </con:environmentSpec>
+  </con:method>
+  <con:environmentSpec>
+    <con:entry environmentId="4f515789-2a71-4da6-9bbc-0aff4cd795fa">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="9ba48164-5af1-48d4-aa59-9d1e85e3e71a">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="7b56b5f6-5164-4fbf-8821-ef5b0d3790b7">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+    <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:resource>

@@ -15,28 +15,17 @@ on:
         default: ''
         options:
         - ''
-        - 'Petstore'
-        - 'Facebook'
-        - 'Mix'
-        - 'ORUnext'
+        - 'Test Suite OTA - 4335:  Add MeasureId to UpdateJob'
+        - 'Test Suite OTA - 4331: Enable Logging through the UpdateJob'
+        - 'OTA-4396 Update1 - [Feature] (APS): Change Measures: Determining the behaviour of APS'
+        - 'OTA-17087 [Feature] (APS): Status Event Configuration'
+        - 'OTA-14624 [Feature] (APS): Mocked ReCall Customer notified'
+        - 'OTA-5031 [Feature] (BS): Stop update for vehicle'
+        - 'OTA-15269 [Feature] (APS): Display & Download UpdateResult'
         - 'OTA-19177 [Feature] (HM): Access Sensitive Data'
       test:
-        type: choice
         description: Test
         default: ''
-        options:
-        - ''
-        - 'User Creation'
-        - 'Cookie Approval'
-        - 'CARB Port Search Results Download'
-        - '[Test] [OTA-19173] Event generation for the export of sensitive data'
-        - '[TU] [Test] [OTA-19173] Event generation for the export of sensitive data'
-        - '[TU-P] [Test] [OTA-19173] Event generation for the export of sensitive data'
-        - 'Test'
-        - 'Test 2'
-        - 'Test 3'
-        - 'Download CARB Search History'
-        - 'Download CARB Search History 2'
       environment:
         type: choice
         description: Environment

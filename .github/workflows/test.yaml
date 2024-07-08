@@ -52,6 +52,8 @@ env:
   test_set: ${{ github.event.inputs.test_set || '' }}
   test: ${{ github.event.inputs.test || '' }}
   environment: ${{ github.event.inputs.environment || 'demo' }}
+  execuion-id: ${{ github.event.inputs.execuion-id || '' }}
+  jira-cookie: ${{ github.event.inputs.jira-cookie || '' }}
 
 jobs:
   test-job:

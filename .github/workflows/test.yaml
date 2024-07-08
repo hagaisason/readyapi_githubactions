@@ -105,15 +105,15 @@ jobs:
           exit 1
       - name: Run Test
         if: env.test_set == '' && env.test == ''
-        run: testrunner.bat -r -a -j -J -f${{ github.workspace }}\Reports "-E${{ env.environment }}" "-RProject Report" -FPDF "-EDefault environment" -accessKey ${{ secrets.API_KEY }} ${{ github.workspace }}\OruNext-Backend-readyapi-project
+        run: testrunner.bat -r -a -j -J -f${{ github.workspace }}\Reports "-E${{ env.environment }}" "-Pproject.testExecutionId=${{ env.execution-id }}" "-Pproject.jiraCookie=${{ env.jira-cookie }}" "-RProject Report" -FPDF "-EDefault environment" -accessKey ${{ secrets.API_KEY }} ${{ github.workspace }}\OruNext-Backend-readyapi-project
         working-directory: C:\Program Files\SmartBear\ReadyAPI-3.51.0\bin
       - name: Run Test
         if: env.test_set != '' && env.test == ''
-        run: testrunner.bat -r -a -j -J -f${{ github.workspace }}\Reports "-E${{ env.environment }}" "-RTestSuite Report" -FPDF "-EDefault environment" -accessKey ${{ secrets.API_KEY }} "-s${{ env.test_set }}" ${{ github.workspace }}\OruNext-Backend-readyapi-project
+        run: testrunner.bat -r -a -j -J -f${{ github.workspace }}\Reports "-E${{ env.environment }}" "-Pproject.testExecutionId=${{ env.execution-id }}" "-Pproject.jiraCookie=${{ env.jira-cookie }}" "-RTestSuite Report" -FPDF "-EDefault environment" -accessKey ${{ secrets.API_KEY }} "-s${{ env.test_set }}" ${{ github.workspace }}\OruNext-Backend-readyapi-project
         working-directory: C:\Program Files\SmartBear\ReadyAPI-3.51.0\bin
       - name: Run Test
         if: env.test_set != '' && env.test != ''
-        run: testrunner.bat -r -a -j -J -f${{ github.workspace }}\Reports "-E${{ env.environment }}" "-RTestCase Report" -FPDF "-EDefault environment" -accessKey ${{ secrets.API_KEY }} "-s${{ env.test_set }}" "-c${{ env.test }}" ${{ github.workspace }}\OruNext-Backend-readyapi-project
+        run: testrunner.bat -r -a -j -J -f${{ github.workspace }}\Reports "-E${{ env.environment }}" "-Pproject.testExecutionId=${{ env.execution-id }}" "-Pproject.jiraCookie=${{ env.jira-cookie }}" "-RTestCase Report" -FPDF "-EDefault environment" -accessKey ${{ secrets.API_KEY }} "-s${{ env.test_set }}" "-c${{ env.test }}" ${{ github.workspace }}\OruNext-Backend-readyapi-project
         working-directory: C:\Program Files\SmartBear\ReadyAPI-3.51.0\bin
       - name: Publish Test Results
         uses: mikepenz/action-junit-report@v4

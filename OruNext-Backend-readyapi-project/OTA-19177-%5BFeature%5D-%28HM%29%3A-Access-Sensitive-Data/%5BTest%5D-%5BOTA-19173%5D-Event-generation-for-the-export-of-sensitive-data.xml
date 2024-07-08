@@ -5439,7 +5439,7 @@ assert timestamp.contains(currentDate)</scriptText>
       </con:restRequest>
     </con:config>
   </con:testStep>
-  <con:testStep type="delay" name="[Delay] 30 Seconds 2" id="9e84db55-53a3-45a5-881b-54c6f499eba0">
+  <con:testStep type="delay" name="[Delay] [6] 30 Seconds" id="9e84db55-53a3-45a5-881b-54c6f499eba0">
     <con:settings/>
     <con:config>
       <delay>30000</delay>

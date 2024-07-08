@@ -1,0 +1,7 @@
+*.odx-f
+*.ouc
+*.bin
+!*.template
+!template.ouc
+/Screenshots
+/Reports

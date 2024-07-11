@@ -890,3 +890,4 @@ OTA-19177-%5BFeature%5D-%28HM%29%3A-Access-Sensitive-Data\%5BTest%5D-%5BOTA-1917
 OTA-19177-%5BFeature%5D-%28HM%29%3A-Access-Sensitive-Data\%5BTest%5D-%5BOTA-19174%5D-Event-generation-for-accessing-and-manipulating-sensitive-data.xml
 OTA-19177-%5BFeature%5D-%28HM%29%3A-Access-Sensitive-Data\%5BTest%5D-%5BOTA-19175%5D-Required-parameters-for-SIEM..xml
 OTA-19177-%5BFeature%5D-%28HM%29%3A-Access-Sensitive-Data\%5BTest%5D-%5BOTA-19176%5D-Required-parameters-for-Kibana.xml
+Test-Suite\Test-Case.xml

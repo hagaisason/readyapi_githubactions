@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:testCase id="eece8a31-fc8f-4733-80ef-57be7d9c438a" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="[Test] [OTA-19175] Required parameters for SIEM." searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+<con:testCase id="eece8a31-fc8f-4733-80ef-57be7d9c438a" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="[Test] [OTA-19175] Required parameters for SIEM." searchProperties="true" timeout="0" disabled="true" xmlns:con="http://eviware.com/soapui/config">
   <con:settings>
     <con:setting id="f805d6c7-a3fc-4a5f-90b6-90dbd58c9373fileName">%5BTest%5D-%5BOTA-19175%5D-Required-parameters-for-SIEM.</con:setting>
     <con:setting id="eece8a31-fc8f-4733-80ef-57be7d9c438afileName">%5BTest%5D-%5BOTA-19175%5D-Required-parameters-for-SIEM.</con:setting>

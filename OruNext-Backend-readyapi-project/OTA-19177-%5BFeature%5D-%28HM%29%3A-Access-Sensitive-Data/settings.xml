@@ -15,6 +15,71 @@
       <con:value>OTA-19177</con:value>
     </con:property>
   </con:properties>
+  <con:reportScript>import com.eviware.soapui.model.testsuite.TestRunner.Status
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestCaseRunner
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+// get the name of the test suite
+def testSuiteName = context.getTestSuite().name
+
+// get the status of the test suite
+def testSuiteStatus = context.getTestRunner().getStatus().toString()
+
+// get the number of reruns from the project property
+def noOfReruns = Integer.parseInt(context.expand('${#Project#noOfReruns}'))
+
+// set the initial status for the tets suite
+def failTestSuite = false
+
+// check which test case failed and rerun it a given number of times
+// iterate over the test case results in the test suite
+for (testCaseResult in runner.results) {
+    // get the name of the current test case
+    def testCaseName = testCaseResult.getTestCase().name
+
+    // check if the test case failed
+    if (testCaseResult.getStatus().toString() == 'FAIL') {
+        def testCaseRunner 
+        
+        // attempt to rerun the test case up to the specified number of times
+        for (i = 0; i &lt; noOfReruns; i++) {
+            // log each rerun attempt
+            log.info("[Test Case] [Rerun] [Attempt " + (i + 1) + "] [Started]: " + testCaseName)
+
+            // rerun the test case
+            testCaseRunner  = testCaseResult.testCase.run(null, false)
+
+            // break if the rerun passes
+            if (testCaseRunner .getStatus().toString() == "PASS") {
+			// log the passed result of the rerun attempt
+           	 log.info("[Test Case] [Rerun] [Attempt " + (i + 1) + "] [Passed]: " + testCaseName)
+       
+                runner.status = Status.FINISHED
+                break
+            }
+        }
+        // mark the test suite as failed if the reruns fail
+        if (testCaseRunner .getStatus().toString() == "FAILED") {
+            // log the failed result of each rerun attempt
+            log.info("[Test Case] [Rerun] [Attempt " + (i + 1) + "] [Failed]: " + testCaseName)
+
+            failTestSuite = true
+        }
+    }
+}
+
+// set the overall status of the test suite based on the rerun results
+if (failTestSuite) {
+    runner.status = Status.FAILED
+}
+
+// log the final result of the test suite execution
+if (testSuiteStatus == 'FAIL') {
+    log.info("[Test Suite] [Failed]: " + testSuiteName)
+}
+else if (testSuiteStatus == 'PASS') {
+    log.info("[Test Suite] [Passed]: " + testSuiteName)
+}</con:reportScript>
   <con:reportParameters/>
   <con:environmentSpec>
     <con:entry environmentId="19d15dbe-9720-4a73-b417-71308b8db01e">

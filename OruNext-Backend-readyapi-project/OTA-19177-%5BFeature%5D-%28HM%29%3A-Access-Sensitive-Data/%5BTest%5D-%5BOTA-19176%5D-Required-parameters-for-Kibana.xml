@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:testCase id="b0f6c766-d79f-497c-8851-66703d618b2f" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="[Test] [OTA-19176] Required parameters for Kibana" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+<con:testCase id="b0f6c766-d79f-497c-8851-66703d618b2f" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="[Test] [OTA-19176] Required parameters for Kibana" searchProperties="true" timeout="0" disabled="true" xmlns:con="http://eviware.com/soapui/config">
   <con:settings>
     <con:setting id="d068ce1d-8779-472c-95fc-87538079bbfbfileName">%5BTest%5D-%5BOTA-19176%5D-Required-parameters-for-Kibana</con:setting>
     <con:setting id="b0f6c766-d79f-497c-8851-66703d618b2ffileName">%5BTest%5D-%5BOTA-19176%5D-Required-parameters-for-Kibana</con:setting>

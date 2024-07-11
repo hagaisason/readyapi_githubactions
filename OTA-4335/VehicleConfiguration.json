@@ -3,7 +3,7 @@
     "description": "Initial VC",
     "assemblyStatus": {
         "vehicleInformation": {
-            "VIN": "AAKEVIN4982460782"
+            "VIN": "AAKEVIN6992595166"
         },
         "assemblyInformation": [
             {
@@ -66,8 +66,8 @@
     },
     "releaseVersion": "1.0.0",
     "assemblyStatusMetaData": {
-        "vcHash": "C156E4B7D7E505273204116F4FE3ED02426C55BC43A44C73643955EE4E9F68D6",
-        "newestEntryTimestamp": "2024-07-04T20:06:10.913Z",
+        "vcHash": "CCC42BDFDD64447F20F4B2DAFAA8EB57A0A281C278B3E62B451F379820AAB7D1",
+        "newestEntryTimestamp": "2024-07-08T15:28:39.978Z",
         "oldestEntryTimestamp": "2021-03-29T11:25:12.242+0000"
     }
 }

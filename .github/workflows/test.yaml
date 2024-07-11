@@ -23,7 +23,7 @@ on:
         - 'OTA-5031 [Feature] (BS): Stop update for vehicle'
         - 'OTA-15269 [Feature] (APS): Display & Download UpdateResult'
         - 'OTA-19177 [Feature] (HM): Access Sensitive Data'
-		- 'Test Suite'
+        - 'Test Suite'
       test:
         description: Test
         default: ''

@@ -8,10 +8,10 @@
     "requestId": "12345678-1234-1234-1234-12345678abce",
     "description": "Fake for Automation Testing 2021-01-25",
     "blPartNumber": "0123456789",
-    "vcHash": "CCC42BDFDD64447F20F4B2DAFAA8EB57A0A281C278B3E62B451F379820AAB7D1",
+    "vcHash": "6091CC5A6CA82F67D833E2E74AC0A1D15C20364CAE51A55C579B29D900463B10",
     "useCase": "oru",
     "checkMap": "checked",
-    "amCode": "CMA6624",
+    "amCode": "CMA3762",
     "updateMap": {
         "id": 1,
         "updateType": "sequential",
@@ -39,17 +39,17 @@
                         "validVersionMapping": [
                             {
                                 "odxSessionShortName": "SESD_85F907468_H7E3_VDONLY_V001_E",
-                                "metaFile": "FL_B7WPB8OVY_T898_TEST.odx-f",
+                                "metaFile": "FL_RVNZWEF27_T909_TEST.odx-f",
                                 "dataFiles": [
                                     {
-                                        "blockFileName": "8f433469e1b99645787f8524213c8ea3.bin",
+                                        "blockFileName": "93038c6f41270bdace3ce089ffd2da2f.bin",
                                         "blockNo": "000A",
                                         "blockVersion": "0236",
                                         "blockInstallationTime": 60,
                                         "blockFileSize": 115
                                     },
                                     {
-                                        "blockFileName": "f2f7e63ce4c6097241b041a3968d7d17.bin",
+                                        "blockFileName": "1ded819cf9050433ffe07c2ebc7af108.bin",
                                         "blockNo": "000B",
                                         "blockVersion": "0236",
                                         "blockInstallationTime": 60,
@@ -75,7 +75,7 @@
                             "id": 4,
                             "retries": 1,
                             "crcAction": {
-                                "manifest": "FL_B7WPB8OVY_T898_TEST"
+                                "manifest": "FL_RVNZWEF27_T909_TEST"
                             }
                         }
                     ]

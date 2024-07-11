@@ -361,7 +361,7 @@ def noOfReruns = Integer.parseInt(context.expand('${#Project#noOfReruns}'))
 def failTestSuite = false
 
 // declare the name of the test step
-def testStepName = "Set execution status"
+def testStepName = "setJiraTestCaseExecution"
 
 // check which test case failed and rerun it a given number of times
 // iterate over the test case results in the test suite

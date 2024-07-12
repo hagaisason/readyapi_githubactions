@@ -1,0 +1,137 @@
+name: Windows ReadyAPI TestRunner Downstream Test Workflow
+
+defaults:
+  run:
+    shell: cmd
+
+on:
+  #schedule:
+    #- cron: '30 10 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      test_set:
+        type: choice
+        description: Test Set
+        default: ''
+        options:
+        - ''
+        - 'Test Suite OTA - 4335:  Add MeasureId to UpdateJob'
+        - 'Test Suite OTA - 4331: Enable Logging through the UpdateJob'
+        - 'OTA-4396 Update1 - [Feature] (APS): Change Measures: Determining the behaviour of APS'
+        - 'OTA-17087 [Feature] (APS): Status Event Configuration'
+        - 'OTA-14624 [Feature] (APS): Mocked ReCall Customer notified'
+        - 'OTA-5031 [Feature] (BS): Stop update for vehicle'
+        - 'OTA-15269 [Feature] (APS): Display & Download UpdateResult'
+        - 'OTA-19177 [Feature] (HM): Access Sensitive Data'
+        - 'Test Suite'
+      test:
+        description: Test
+        default: ''
+      environment:
+        type: choice
+        description: Environment
+        default: 'demo'
+        options:
+        - 'demo'
+        - 'live'
+        - 'app'
+      execuion-id:
+        description: Execution Id
+        default: ''
+      jira-cookie:
+        description: JIRA Cookie
+        default: ''
+  workflow_run:
+    workflows:
+      - Deployment Workflow
+    types:
+      - completed
+  repository_dispatch:
+    types: [upstream-event]
+
+env:
+  test_set: ${{ github.event.inputs.test_set || '' }}
+  test: ${{ github.event.inputs.test || '' }}
+  environment: ${{ github.event.inputs.environment || 'demo' }}
+  execution-id: ${{ github.event.inputs.execuion-id || '' }}
+  jira-cookie: ${{ github.event.inputs.jira-cookie || '' }}
+
+jobs:
+  test-job:
+    runs-on: windows-latest
+    steps:
+      - name: Enable Long Paths
+        run: git config --system core.longpaths true
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+      - name: Setup 7-Zip
+        uses: milliewalky/setup-7-zip@v1
+      - name: Unzip Certificate Files
+        run: |
+          cd ${{ github.workspace }}\Certificates
+          7z x -p${{ secrets.PASSWORD }} -o${{ github.workspace }}\Certificates ${{ github.workspace }}\Certificates\Certificates.zip
+      - name: Unzip Profile Files
+        run: |
+          cd ${{ github.workspace }}\Profiles
+          7z x -p${{ secrets.PASSWORD }} -o${{ github.workspace }}\Profiles ${{ github.workspace }}\Profiles\Profiles.zip
+      - name: Setup Firefox Browser
+        uses: browser-actions/setup-firefox@v1.5.0
+        with:
+          firefox-version: 'latest'
+      - name: Setup Firefox User Profile
+        run: |
+          C:
+          cd  C:\Program Files\Firefox_latest
+          dir
+          firefox -CreateProfile selenium
+      - name: Add Profile Files To Profile Folder
+        run: |
+          C:
+          cd %Appdata%\mozilla\firefox\profiles
+          dir /b /o:gn
+          for /f "delims=" %%a in ('dir /b /o:gn') do set "selenium_profile=%%a"
+          xcopy "${{github.workspace}}\Profiles\" "%Appdata%\mozilla\firefox\profiles\%selenium_profile%" /y /e /h /c /i
+      - name: Setup Geckodriver
+        uses: browser-actions/setup-geckodriver@latest
+      - name: Download ReadyAPI
+        run: curl -o ${{ github.workspace }}\ReadyAPI-x64-3.51.0.exe https://dl.eviware.com/ready-api/3.51.0/ReadyAPI-x64-3.51.0.exe
+      - name: Install ReadyAPI
+        run: ${{ github.workspace }}\ReadyAPI-x64-3.51.0.exe -q
+      - name: Add .jar Files To ReadyAPI
+        run: xcopy "${{github.workspace}}\Executables\*.jar" "C:\Program Files\SmartBear\ReadyAPI-3.51.0\bin\ext" /y
+      - name: Run Test
+        if: env.test_set == '' && env.test != ''
+        run: |
+          echo "The value for Test Set cannot be empty when chosing a Test"
+          exit 1
+      - name: Run Test
+        if: env.test_set == '' && env.test == ''
+        run: testrunner.bat -r -a -j -J -f${{ github.workspace }}\Reports "-E${{ env.environment }}" "-GtestExecutionId=${{ env.execution-id }}" "-GjiraCookie=${{ env.jira-cookie }}"  "-GTechUser_username=${{ secrets.TU_USERNAME }}" "-GTechUser_password=${{ secrets.TU_PASSWORD }}" "-GTechUser_clientId=${{ secrets.TU_CLIENT_ID }}" "-GTechUser_clientSecret=${{ secrets.TU_CLIENT_SECRET }}" "-RProject Report" -FPDF "-EDefault environment" -accessKey ${{ secrets.API_KEY }} ${{ github.workspace }}\OruNext-Backend-readyapi-project
+        working-directory: C:\Program Files\SmartBear\ReadyAPI-3.51.0\bin
+      - name: Run Test
+        if: env.test_set != '' && env.test == ''
+        run: testrunner.bat -r -a -j -J -f${{ github.workspace }}\Reports "-E${{ env.environment }}" "-GtestExecutionId=${{ env.execution-id }}" "-GjiraCookie=${{ env.jira-cookie }}"  "-GTechUser_username=${{ secrets.TU_USERNAME }}" "-GTechUser_password=${{ secrets.TU_PASSWORD }}" "-GTechUser_clientId=${{ secrets.TU_CLIENT_ID }}" "-GTechUser_clientSecret=${{ secrets.TU_CLIENT_SECRET }}" "-RTestSuite Report" -FPDF "-EDefault environment" -accessKey ${{ secrets.API_KEY }} "-s${{ env.test_set }}" ${{ github.workspace }}\OruNext-Backend-readyapi-project
+        working-directory: C:\Program Files\SmartBear\ReadyAPI-3.51.0\bin
+      - name: Run Test
+        if: env.test_set != '' && env.test != ''
+        run: testrunner.bat -r -a -j -J -f${{ github.workspace }}\Reports "-E${{ env.environment }}" "-GtestExecutionId=${{ env.execution-id }}" "-GjiraCookie=${{ env.jira-cookie }}"  "-GTechUser_username=${{ secrets.TU_USERNAME }}" "-GTechUser_password=${{ secrets.TU_PASSWORD }}" "-GTechUser_clientId=${{ secrets.TU_CLIENT_ID }}" "-GTechUser_clientSecret=${{ secrets.TU_CLIENT_SECRET }}" "-RTestCase Report" -FPDF "-EDefault environment" -accessKey ${{ secrets.API_KEY }} "-s${{ env.test_set }}" "-c${{ env.test }}" ${{ github.workspace }}\OruNext-Backend-readyapi-project
+        working-directory: C:\Program Files\SmartBear\ReadyAPI-3.51.0\bin
+      - name: Publish Test Results
+        uses: mikepenz/action-junit-report@v4
+        if: always()
+        id: testresults
+        with:
+          detailed_summary: true
+          report_paths: ${{ github.workspace }}\Reports\TEST-*.xml
+      - name: Upload Reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Reports
+          path: ${{ github.workspace }}\Reports
+      - name: Upload Screenshots
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Screenshots
+          path: ${{ github.workspace }}\Screenshots

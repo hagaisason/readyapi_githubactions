@@ -1,4 +1,4 @@
-name: Windows ReadyAPI TestRunner Downstream Test Workflow
+name: Windows ReadyAPI TestRunner Downstream Tags Test Workflow
 
 defaults:
   run:
@@ -10,20 +10,8 @@ on:
   workflow_dispatch:
     inputs:
       test_set:
-        type: choice
         description: Test Set
         default: ''
-        options:
-        - ''
-        - 'Test Suite OTA - 4335:  Add MeasureId to UpdateJob'
-        - 'Test Suite OTA - 4331: Enable Logging through the UpdateJob'
-        - 'OTA-4396 Update1 - [Feature] (APS): Change Measures: Determining the behaviour of APS'
-        - 'OTA-17087 [Feature] (APS): Status Event Configuration'
-        - 'OTA-14624 [Feature] (APS): Mocked ReCall Customer notified'
-        - 'OTA-5031 [Feature] (BS): Stop update for vehicle'
-        - 'OTA-15269 [Feature] (APS): Display & Download UpdateResult'
-        - 'OTA-19177 [Feature] (HM): Access Sensitive Data'
-        - 'Test Suite'
       test:
         description: Test
         default: ''

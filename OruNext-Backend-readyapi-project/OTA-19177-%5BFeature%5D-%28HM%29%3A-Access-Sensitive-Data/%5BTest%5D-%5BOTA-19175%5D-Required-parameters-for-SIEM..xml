@@ -33,10 +33,10 @@ import org.apache.http.conn.ssl.TrustSelfSignedStrategy
 def path = new GroovyUtils(context).getProjectPath() +"/Certificates/"
 def certPath = path + "certificate.pem"
 def keyPath = path + "private.key"
-def username = context.expand( '${#Project#username}')
-def password = context.expand( '${#Project#password}')
-def clientId = context.expand( '${#Project#clientId}')
-def clientSecret = context.expand( '${#Project#clientSecret}')
+def username = context.expand( '${#Global#TechUser_username}' )
+def password = context.expand( '${#Global#TechUser_password}' )
+def clientId = context.expand( '${#Global#TechUser_clientId}' )
+def clientSecret = context.expand( '${#Global#TechUser_clientSecret}' )
 
 //log the values for the needed inputs
 log.info("Cert Path: " + certPath)
@@ -17870,4 +17870,5 @@ public void deleteFiles(String path, String vin) {
       <con:authProfile>Inherit From Parent</con:authProfile>
     </con:entry>
   </con:environmentSpec>
+  <con:tagId>560676a3-3faa-473d-9103-d649e229014d</con:tagId>
 </con:testCase>

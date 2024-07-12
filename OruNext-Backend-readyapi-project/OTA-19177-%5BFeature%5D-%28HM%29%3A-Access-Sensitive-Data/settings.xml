@@ -86,4 +86,5 @@ else if (testSuiteStatus == 'PASS') {
       <con:authProfile>Inherit From Parent</con:authProfile>
     </con:entry>
   </con:environmentSpec>
+  <con:tagId>2338e9d1-6534-4e25-a208-0c14cef3db53</con:tagId>
 </con:testSuite>

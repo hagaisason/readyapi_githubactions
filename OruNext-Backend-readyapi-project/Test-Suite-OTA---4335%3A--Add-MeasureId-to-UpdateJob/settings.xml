@@ -168,4 +168,5 @@ public void runTestStep(def testCaseResult, String testStepName){
       <con:authProfile>Inherit From Parent</con:authProfile>
     </con:entry>
   </con:environmentSpec>
+  <con:tagId>a1f487ae-1498-4d18-b8c6-d7f87f4691b3</con:tagId>
 </con:testSuite>

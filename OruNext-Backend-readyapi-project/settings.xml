@@ -36,25 +36,7 @@
       <con:name>tuToken</con:name>
     </con:property>
     <con:property>
-      <con:name>username</con:name>
-    </con:property>
-    <con:property>
-      <con:name>password</con:name>
-    </con:property>
-    <con:property>
-      <con:name>clientId</con:name>
-    </con:property>
-    <con:property>
-      <con:name>clientSecret</con:name>
-    </con:property>
-    <con:property>
       <con:name>noOfReruns</con:name>
-    </con:property>
-    <con:property>
-      <con:name>testExecutionId</con:name>
-    </con:property>
-    <con:property>
-      <con:name>jiraCookie</con:name>
     </con:property>
   </con:properties>
   <con:wssContainer/>
@@ -202,32 +184,8 @@ bodyPart.addHeader("Content-Type", "application/json") // specify the value for 
       <con:value/>
     </con:property>
     <con:property>
-      <con:name>username</con:name>
-      <con:value>EDRQA4B</con:value>
-    </con:property>
-    <con:property>
-      <con:name>password</con:name>
-      <con:value>uXF,26yer@CH</con:value>
-    </con:property>
-    <con:property>
-      <con:name>clientId</con:name>
-      <con:value>idp-dd1157fa-92d5-4b29-81ea-54a3bb0e9a58-orunext-mfa-public</con:value>
-    </con:property>
-    <con:property>
-      <con:name>clientSecret</con:name>
-      <con:value>cidps_mFkhkc939juLHDbfu8KS5mwzzIv2fLTGNEp4ACdgNkHqocd3p35FsyuIjo9QKd6pGnt2KnpMatobF9cdpULHeFla2O3ya2</con:value>
-    </con:property>
-    <con:property>
       <con:name>noOfReruns</con:name>
       <con:value>1</con:value>
-    </con:property>
-    <con:property>
-      <con:name>jiraCookie</con:name>
-      <con:value/>
-    </con:property>
-    <con:property>
-      <con:name>testExecutionId</con:name>
-      <con:value/>
     </con:property>
     <con:databaseConnectionContainer/>
     <con:jmsConnectionContainer/>
@@ -263,5 +221,110 @@ bodyPart.addHeader("Content-Type", "application/json") // specify the value for 
       <con:authProfile>No Authorization</con:authProfile>
     </con:entry>
   </con:environmentSpec>
-  <con:tags/>
+  <con:tags>
+    <con:tag>
+      <con:id>a1f487ae-1498-4d18-b8c6-d7f87f4691b3</con:id>
+      <con:name>OTA4335</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>659df005-87df-4e8a-b752-5563adbf016d</con:id>
+      <con:name>OTA4331</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>b55f124a-d793-4b22-9bcd-f11c10e3628c</con:id>
+      <con:name>OTA4396</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>46167076-9da3-4928-998d-71b60bcf70ac</con:id>
+      <con:name>OTA17087</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>09f87a59-47d7-4514-bab0-68695557321b</con:id>
+      <con:name>OTA14624</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>9b031f0f-2bf0-4e2b-a8b1-fa9feb2ad73a</con:id>
+      <con:name>OTA5031</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>9f5799f6-8831-47f2-9d30-cdb074152563</con:id>
+      <con:name>OTA15269</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>2338e9d1-6534-4e25-a208-0c14cef3db53</con:id>
+      <con:name>OTA19177</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>64659476-fbd4-4661-b354-0937f1689599</con:id>
+      <con:name>OTA4333</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>e54a2aa6-096b-40cd-91e2-a8e145460a45</con:id>
+      <con:name>OTA4329</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>c97cb835-ff72-4232-9b4f-8d4420c88169</con:id>
+      <con:name>OTA4330</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>374fa9cc-c1f4-406d-8cbe-e17006773b3f</con:id>
+      <con:name>OTA4394</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>81c056dd-904f-4ae6-8428-caa0fc9dd99f</con:id>
+      <con:name>OTA4395</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>ccc8631e-5fd3-4586-9805-0493a4ba92ad</con:id>
+      <con:name>OTA4391</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>f304b9cb-3325-4e3c-9e4e-4fe3483d2b02</con:id>
+      <con:name>OTA4392</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>5bb4776b-18b2-4fa9-bb8a-a614924e8955</con:id>
+      <con:name>OTA4393</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>a77f97d8-4524-47a9-9063-936af4f6067d</con:id>
+      <con:name>OTA17086</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>177dd580-2495-45a2-8927-2668a2356304</con:id>
+      <con:name>OTA14622</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>0b9e906a-cdc1-44ea-a4a9-3a0dd85476ae</con:id>
+      <con:name>OTA14623</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>c142938d-75cc-4ff2-bad9-327b579ffcbe</con:id>
+      <con:name>OTA3433</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>7fbcba21-3469-4832-92f1-605afce2cc71</con:id>
+      <con:name>OTA15267</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>0b18448f-ae4b-4572-8d18-4c4356e59a80</con:id>
+      <con:name>OTA15268</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>5c2f1049-b510-4b69-ae4e-9ac16953a0ec</con:id>
+      <con:name>OTA19173</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>47142b42-6f38-4e95-900b-c084e2561501</con:id>
+      <con:name>OTA19174</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>560676a3-3faa-473d-9103-d649e229014d</con:id>
+      <con:name>OTA19175</con:name>
+    </con:tag>
+    <con:tag>
+      <con:id>3d4084cd-49eb-472a-922f-59b9af4b8ae1</con:id>
+      <con:name>OTA19176</con:name>
+    </con:tag>
+  </con:tags>
 </con:soapui-project>
